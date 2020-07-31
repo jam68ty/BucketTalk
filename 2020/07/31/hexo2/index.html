@@ -22,30 +22,41 @@
     var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="BucketTalk">
-<meta property="og:url" content="https://jam68ty.github.io/BucketTalk/index.html">
+  <meta name="description" content="前置作業都準備好之後就開始我們的實作吧~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="實作使用GitHub Pages &amp; Hexo 建立個人Blog">
+<meta property="og:url" content="https://jam68ty.github.io/BucketTalk/2020/07/31/hexo2/index.html">
 <meta property="og:site_name" content="BucketTalk">
+<meta property="og:description" content="前置作業都準備好之後就開始我們的實作吧~">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1zV_oUdr01QxRl0hU3Nf9yM5n-WStWlZB">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1QMX4V9QCWWm_omeJeFyDiG8l8gbOxtZh">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1_LzRyXQCcVDn21jgp3fv-jTpB54ITpa4">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1FfvCgHxH7_Op8aqZWiuizKMbQVKKcbw-">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1GYRrBmn3UU3KekNq2zmHhLP0QCdaTipE">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1RH4N2UZ3fcJbe-ClFDzqSvZ2b_Ua0omX">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=16zt2F2jDkxY_L1FgeAx-9UWvFFqgje6R">
+<meta property="article:published_time" content="2020-07-30T16:01:56.000Z">
+<meta property="article:modified_time" content="2020-07-31T14:27:49.825Z">
 <meta property="article:author" content="Chia Chen">
-<meta property="article:tag" content="code">
-<meta property="article:tag" content=" note">
+<meta property="article:tag" content="GitHub Pages &amp; Hexo">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://drive.google.com/uc?export=view&id=1zV_oUdr01QxRl0hU3Nf9yM5n-WStWlZB">
 
-<link rel="canonical" href="https://jam68ty.github.io/BucketTalk/">
+<link rel="canonical" href="https://jam68ty.github.io/BucketTalk/2020/07/31/hexo2/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-TW'
   };
 </script>
 
-  <title>BucketTalk</title>
+  <title>實作使用GitHub Pages & Hexo 建立個人Blog | BucketTalk</title>
   
 
 
@@ -162,7 +173,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目錄
@@ -174,6 +185,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#新增資料夾"><span class="nav-number">1.</span> <span class="nav-text">新增資料夾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝git佈署套件"><span class="nav-number">2.</span> <span class="nav-text">安裝git佈署套件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo設定檔"><span class="nav-number">3.</span> <span class="nav-text">Hexo設定檔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#補充"><span class="nav-number">4.</span> <span class="nav-text">補充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -230,159 +242,10 @@
       <div class="main-inner">
         
 
-        <div class="content index posts-expand">
-          
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/2020/07/31/hexo4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/BucketTalk/images/avatar.gif">
-      <meta itemprop="name" content="Chia Chen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BucketTalk">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/BucketTalk/2020/07/31/hexo4/" class="post-title-link" itemprop="url">Hexo常用功能</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2020-07-31 00:01:59 / 修改時間：22:36:50" itemprop="dateCreated datePublished" datetime="2020-07-31T00:01:59+08:00">2020-07-31</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/BucketTalk/categories/%E4%BD%BF%E7%94%A8-GitHub-Pages-Hexo-%E5%BB%BA%E7%AB%8B%E5%80%8B%E4%BA%BABlog/" itemprop="url" rel="index"><span itemprop="name">使用 GitHub Pages & Hexo 建立個人Blog</span></a>
-                </span>
-            </span>
-
+        <div class="content post posts-expand">
           
 
-        </div>
-      </header>
-
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>這邊紀錄了一些Hexo的常用功能，如新增、刪除文章等<br>另外還有比較複雜一點的使用Google Drive作為圖片來源插入圖片的方式</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/BucketTalk/2020/07/31/hexo4/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/2020/07/31/hexo3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/BucketTalk/images/avatar.gif">
-      <meta itemprop="name" content="Chia Chen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BucketTalk">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/BucketTalk/2020/07/31/hexo3/" class="post-title-link" itemprop="url">個人化你的Blog</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2020-07-31 00:01:57 / 修改時間：22:28:55" itemprop="dateCreated datePublished" datetime="2020-07-31T00:01:57+08:00">2020-07-31</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/BucketTalk/categories/%E4%BD%BF%E7%94%A8-GitHub-Pages-Hexo-%E5%BB%BA%E7%AB%8B%E5%80%8B%E4%BA%BABlog/" itemprop="url" rel="index"><span itemprop="name">使用 GitHub Pages & Hexo 建立個人Blog</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Blog的個人化方法有太多，實在是沒有辦法用幾篇文章就說明白<br>更何況我自己也還沒有全部試過呢~<br>在網路上找到不錯的資源也都可以試著實作<br>當然要記得自己改了什麼東西，免得為了試新功能導致原本的專案毀損<br>這就牽扯到hexo的master跟branch了，這些以後有空再來研究看看吧~<br>這邊我們先從Hexo的主題套用說起!</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/BucketTalk/2020/07/31/hexo3/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
@@ -398,10 +261,9 @@
       <meta itemprop="name" content="BucketTalk">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/BucketTalk/2020/07/31/hexo2/" class="post-title-link" itemprop="url">實作使用GitHub Pages & Hexo 建立個人Blog</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          實作使用GitHub Pages & Hexo 建立個人Blog
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -434,111 +296,80 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>前置作業都準備好之後就開始我們的實作吧~</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/BucketTalk/2020/07/31/hexo2/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+        <p>前置作業都準備好之後就開始我們的實作吧~</p>
+<a id="more"></a>
+
+<h2 id="新增資料夾"><a href="#新增資料夾" class="headerlink" title="新增資料夾"></a>新增資料夾</h2><p>資料夾的名字會是你的網址，所以可以取個有意義的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder_name&gt;</span><br><span class="line"><span class="built_in">cd</span> &lt;folder_name&gt;  //接下來的步驟記得進入資料夾下執行</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p><img src="https://drive.google.com/uc?export=view&id=1zV_oUdr01QxRl0hU3Nf9yM5n-WStWlZB" alt=""></p>
+<p>建立出來的資料夾內容<br><img src="https://drive.google.com/uc?export=view&id=1QMX4V9QCWWm_omeJeFyDiG8l8gbOxtZh" alt=""></p>
+<h2 id="安裝git佈署套件"><a href="#安裝git佈署套件" class="headerlink" title="安裝git佈署套件"></a>安裝git佈署套件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p><img src="https://drive.google.com/uc?export=view&id=1_LzRyXQCcVDn21jgp3fv-jTpB54ITpa4" alt=""></p>
+<h2 id="Hexo設定檔"><a href="#Hexo設定檔" class="headerlink" title="Hexo設定檔"></a>Hexo設定檔</h2><p>打開專案下的_config.yml，修改裡面的內容</p>
+<p>(1) Blog的基本資訊(line 6 ~12)<br><img src="https://drive.google.com/uc?export=view&id=1FfvCgHxH7_Op8aqZWiuizKMbQVKKcbw-" alt=""></p>
+<p>(2) 第16行修改成你自己的Github Pages的網址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url: http:&#x2F;&#x2F;&lt;yourname&gt;.github.io&#x2F;&lt;your_project_name&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://drive.google.com/uc?export=view&id=1GYRrBmn3UU3KekNq2zmHhLP0QCdaTipE" alt=""></p>
+<p>root的地方記得要加上 <code>/&lt;your_project_name&gt;/</code> 否則主題會顯示不出來</p>
+<p>(3) 修改佈署至Git上的設定(line 98~)<br><img src="https://drive.google.com/uc?export=view&id=1RH4N2UZ3fcJbe-ClFDzqSvZ2b_Ua0omX" alt=""><br>type改為git、並且加上repo以及branch<br>repo的路徑為：<code>https://github.com/&lt;yourname&gt;/&lt;your_project_name&gt;.git</code></p>
+<p>(4) 接著在cmd視窗下指令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo cl &#x2F;&#x2F;清除(cl: clean)建立的靜態檔案</span><br><span class="line">hexo g &#x2F;&#x2F;建立(g: generate)靜態檔案</span><br><span class="line">hexo d &#x2F;&#x2F;佈署(d: deploy)至Github pages上</span><br></pre></td></tr></table></figure>
+<p>(5) 輸入網址就可以看到使用Hexo佈署上去的樣子啦~<br><img src="https://drive.google.com/uc?export=view&id=16zt2F2jDkxY_L1FgeAx-9UWvFFqgje6R" alt=""><br>網址為我們在設定檔的第16行所設定的<br><code>url: http://&lt;yourname&gt;.github.io/&lt;your_project_name&gt;</code></p>
+<hr>
+<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><p>大部分的教學在建立project時通常會將project_name取作<yourname>.github.io，因此只要輸入http://<yourname>.github.io就可以看到自己的github page了，差異會出現在3-2步驟，其餘皆相同。<br>更多詳細的教學可以到參考的文章去看看~</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
+<li><a href="https://ed521.github.io/2019/07/hexo-install/" target="_blank" rel="noopener">https://ed521.github.io/2019/07/hexo-install/</a></li>
+<li><a href="https://medium.com/@bebebobohaha/%E4%BD%BF%E7%94%A8-hexo-gitpage-%E6%90%AD%E5%BB%BA%E5%80%8B%E4%BA%BA-blog-5c6ed52f23db" target="_blank" rel="noopener">https://medium.com/@bebebobohaha/%E4%BD%BF%E7%94%A8-hexo-gitpage-%E6%90%AD%E5%BB%BA%E5%80%8B%E4%BA%BA-blog-5c6ed52f23db</a></li>
+<li><a href="https://hexo.io/zh-tw/docs/one-command-deployment.html" target="_blank" rel="noopener">https://hexo.io/zh-tw/docs/one-command-deployment.html</a></li>
+</ol>
+
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/BucketTalk/tags/GitHub-Pages-Hexo/" rel="tag"># GitHub Pages & Hexo</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/2020/07/31/hexo1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/BucketTalk/images/avatar.gif">
-      <meta itemprop="name" content="Chia Chen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BucketTalk">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/BucketTalk/2020/07/31/hexo1/" class="post-title-link" itemprop="url">GitHub Pages & Hexo</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2020-07-31 00:01:54 / 修改時間：22:08:44" itemprop="dateCreated datePublished" datetime="2020-07-31T00:01:54+08:00">2020-07-31</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/BucketTalk/categories/%E4%BD%BF%E7%94%A8-GitHub-Pages-Hexo-%E5%BB%BA%E7%AB%8B%E5%80%8B%E4%BA%BABlog/" itemprop="url" rel="index"><span itemprop="name">使用 GitHub Pages & Hexo 建立個人Blog</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>這邊分享與紀錄了我製作這個Blog的一些過程<br>除了可以讓有需要的人參考，主要是留一份筆記給自己<br>如果有錯誤的地方也都歡迎下面留言指正~</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/BucketTalk/2020/07/31/hexo1/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/BucketTalk/2020/07/31/hexo1/" rel="prev" title="GitHub Pages & Hexo">
+      <i class="fa fa-chevron-left"></i> GitHub Pages & Hexo
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/BucketTalk/2020/07/31/hexo3/" rel="next" title="個人化你的Blog">
+      個人化你的Blog <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
+    
   </article>
   
   
   
 
 
-  
-
-
 
         </div>
         
+    
+      <div class="comments" id="comments">
+          <script src="https://utteranc.es/client.js"
+            repo="jam68ty/Comment"
+            issue-term="pathname"
+            label="Comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+          </script>
+      </div>
 
 <script>
   window.addEventListener('tabs:register', () => {

@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jam68ty.github.io/BucketTalk/2020/08/05/opencv-read-image/</loc>
+    
+    <lastmod>2020-08-06T14:32:01.945Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/2020/08/05/opencv-image-cropped/</loc>
+    
+    <lastmod>2020-08-06T14:32:01.941Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/2020/08/05/opencv-data-argumentation/</loc>
+    
+    <lastmod>2020-08-06T14:32:01.928Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jam68ty.github.io/BucketTalk/about/index.html</loc>
     
     <lastmod>2020-08-01T18:08:10.459Z</lastmod>
@@ -33,27 +54,6 @@
     <loc>https://jam68ty.github.io/BucketTalk/2020/07/31/Create-Blog-With-GitHub-Pages-And-Hexo/</loc>
     
     <lastmod>2020-08-01T17:11:22.537Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jam68ty.github.io/BucketTalk/lib/three/renovate.json</loc>
-    
-    <lastmod>2020-07-31T17:14:35.693Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jam68ty.github.io/BucketTalk/lib/three/package.json</loc>
-    
-    <lastmod>2020-07-31T17:14:35.691Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jam68ty.github.io/BucketTalk/lib/three/README.html</loc>
-    
-    <lastmod>2020-07-31T17:14:35.665Z</lastmod>
     
   </url>
   

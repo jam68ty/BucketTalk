@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jam68ty.github.io/BucketTalk/about/index.html</loc>
+    
+    <lastmod>2020-08-17T15:14:23.972Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/opencv-read-image/</loc>
     
     <lastmod>2020-08-06T14:32:01.945Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://jam68ty.github.io/BucketTalk/post/opencv-data-argumentation/</loc>
     
     <lastmod>2020-08-06T14:32:01.928Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jam68ty.github.io/BucketTalk/about/index.html</loc>
-    
-    <lastmod>2020-08-01T18:08:10.459Z</lastmod>
     
   </url>
   

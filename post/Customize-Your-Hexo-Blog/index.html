@@ -335,7 +335,7 @@
         <p>Blog的個人化方法有太多，實在是沒有辦法用幾篇文章就說明白<br>更何況我自己也還沒有全部試過呢~<br>在網路上找到不錯的資源也都可以試著實作<br>當然要記得自己改了什麼東西，免得為了試新功能導致原本的專案毀損<br>這就牽扯到hexo的master跟branch了，這些以後有空再來研究看看吧~<br>這邊我們先從Hexo的主題套用說起!</p>
 <a id="more"></a>
 
-<p>Hexo預設使用的主題是landscape，我們在專案的themes資料夾中可以看到這個主題檔案<br>目前最多人使用的主題是: <a href="https://github.com/next-theme/hexo-theme-next" target="_blank" rel="noopener">NexT</a><br>這個主題的文件十分清楚且可以進行很多個人化的設置，所以這邊以套用這個主題為例<br>另外這邊也有很多主題可以挑選使用：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
+<p>Hexo預設使用的主題是landscape，我們在專案的themes資料夾中可以看到這個主題檔案<br>目前最多人使用的主題是: <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL25leHQtdGhlbWUvaGV4by10aGVtZS1uZXh0">NexT<i class="fa fa-external-link-alt"></i></span><br>這個主題的文件十分清楚且可以進行很多個人化的設置，所以這邊以套用這個主題為例<br>另外這邊也有很多主題可以挑選使用：<span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL3RoZW1lcy8=">https://hexo.io/themes/<i class="fa fa-external-link-alt"></i></span></p>
 <h2 id="複製主題檔"><a href="#複製主題檔" class="headerlink" title="複製主題檔"></a>複製主題檔</h2><p>首先我們進到themes資料夾下並複製NexT的檔案下來，結果可以看到目錄下多了一個主題hexo-theme-next</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next.git</span><br></pre></td></tr></table></figure>
 <p><img src="https://drive.google.com/uc?export=view&id=1pSWz2mCLm_dSUFUhAV9tahIUK2j9SVVt" alt=""></p>
@@ -358,16 +358,16 @@
 <ol>
 <li><p>取消底下的由 Hexo 強力驅動 v3.7.1 | 主題 — NexT<br>搜尋powered:將true設置成false<br><img src="https://drive.google.com/uc?export=view&id=1YZAKj9gU25y43fuJDqrx9NADhKs99Fej" alt=""></p>
 </li>
-<li><p>安裝sitemap、baidusitemap(<a href="https://blog.typeart.cc/HEXO%E6%90%AD%E9%85%8D%E4%B8%BB%E9%A1%8Cnext%E5%9F%BA%E7%A4%8E%E9%85%8D%E7%BD%AE%E6%95%99%E5%AD%B8/" target="_blank" rel="noopener">參考</a>)</p>
+<li><p>安裝sitemap、baidusitemap(<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLnR5cGVhcnQuY2MvSEVYTyVFNiU5MCVBRCVFOSU4NSU4RCVFNCVCOCVCQiVFOSVBMSU4Q25leHQlRTUlOUYlQkElRTclQTQlOEUlRTklODUlOEQlRTclQkQlQUUlRTYlOTUlOTklRTUlQUQlQjgv">參考<i class="fa fa-external-link-alt"></i></span>)</p>
 </li>
-<li><p>新增tags、categories、archives 頁面…等等就不一一贅述<br>還可以參考 <a href="https://io-oi.me/tech/hexo-next-optimization/" target="_blank" rel="noopener">https://io-oi.me/tech/hexo-next-optimization/</a><br>裡面還有很多用法我還沒試過的大家都可以試試看</p>
+<li><p>新增tags、categories、archives 頁面…等等就不一一贅述<br>還可以參考 <span class="exturl" data-url="aHR0cHM6Ly9pby1vaS5tZS90ZWNoL2hleG8tbmV4dC1vcHRpbWl6YXRpb24v">https://io-oi.me/tech/hexo-next-optimization/<i class="fa fa-external-link-alt"></i></span><br>裡面還有很多用法我還沒試過的大家都可以試試看</p>
 </li>
 </ol>
 <h2 id="評論區"><a href="#評論區" class="headerlink" title="評論區"></a>評論區</h2><p>評論區目前我使用的是utterances<br>這是一個使用Github的repo去儲存評論的工具，設置起來也很簡單，且訪客必須使用GitHub的帳號登入才能留言。</p>
 <ol>
 <li><p>先新增一個Repository，取了名字要記得，權限記得設為public，否則訪客的評論進不來。</p>
 </li>
-<li><p>進入到 <a href="https://utteranc.es/?installation_id=10940522&amp;setup_action=install" target="_blank" rel="noopener">https://utteranc.es/?installation_id=10940522&amp;setup_action=install</a><br>在Configuration的repo打上你的github id以及剛剛創建的repo名稱，如user/comments<br><img src="https://drive.google.com/uc?export=view&id=1Yr_mwP87hBAxq34HwHyiQjzgVYcbMJg-" alt=""></p>
+<li><p>進入到 <span class="exturl" data-url="aHR0cHM6Ly91dHRlcmFuYy5lcy8/aW5zdGFsbGF0aW9uX2lkPTEwOTQwNTIyJmFtcDtzZXR1cF9hY3Rpb249aW5zdGFsbA==">https://utteranc.es/?installation_id=10940522&amp;setup_action=install<i class="fa fa-external-link-alt"></i></span><br>在Configuration的repo打上你的github id以及剛剛創建的repo名稱，如user/comments<br><img src="https://drive.google.com/uc?export=view&id=1Yr_mwP87hBAxq34HwHyiQjzgVYcbMJg-" alt=""></p>
 </li>
 <li><p>打開主題配置 <code>hexo_theme_next/_config.yml</code> 加上</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># utterances</span><br><span class="line">utterances:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure></li>
@@ -387,8 +387,8 @@
 <li>並且回到GitHub的repo裡可以看到剛剛的回覆<br><img src="https://drive.google.com/uc?export=view&id=1hiVvx3HQodwIpJDCSDJVAa414ALKT1R1" alt=""></li>
 </ol>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
-<li><a href="https://io-oi.me/tech/hexo-next-optimization/" target="_blank" rel="noopener">https://io-oi.me/tech/hexo-next-optimization/</a></li>
-<li><a href="http://kidneyweakx.com/2019/19log-1026-hexo-com.html" target="_blank" rel="noopener">http://kidneyweakx.com/2019/19log-1026-hexo-com.html</a></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9pby1vaS5tZS90ZWNoL2hleG8tbmV4dC1vcHRpbWl6YXRpb24v">https://io-oi.me/tech/hexo-next-optimization/<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL2tpZG5leXdlYWt4LmNvbS8yMDE5LzE5bG9nLTEwMjYtaGV4by1jb20uaHRtbA==">http://kidneyweakx.com/2019/19log-1026-hexo-com.html<i class="fa fa-external-link-alt"></i></span></li>
 </ol>
 
     </div>

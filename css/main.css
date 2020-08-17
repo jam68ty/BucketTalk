@@ -2696,3 +2696,9 @@ ul.breadcrumb li + li:last-child {
   background: var(--body-bg-color);
   border-radius: 4px;
 }
+body {
+  background: url("/image/bk.jpg");
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+}

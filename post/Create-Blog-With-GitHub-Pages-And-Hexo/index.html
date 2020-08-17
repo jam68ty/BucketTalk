@@ -24,23 +24,31 @@
     var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
   </script>
 
-  <meta name="description" content="在做機器學習時獲得的資料圖片內容常常是很雜亂的訓練的目標可能只是一大張圖裡的一小區塊那此時我們可以進行批次裁切以節省時間">
+  <meta name="description" content="這邊分享與紀錄了我製作這個Blog的一些過程除了可以讓有需要的人參考，主要是留一份筆記給自己如果有錯誤的地方也都歡迎下面留言指正~">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenCV系列 影像批次裁切">
-<meta property="og:url" content="https://jam68ty.github.io/BucketTalk/2020/08/05/opencv-image-cropped/index.html">
+<meta property="og:title" content="GitHub Pages &amp; Hexo 開始你的Blog吧!">
+<meta property="og:url" content="https://jam68ty.github.io/BucketTalk/post/Create-Blog-With-GitHub-Pages-And-Hexo/index.html">
 <meta property="og:site_name" content="BucketTalk">
-<meta property="og:description" content="在做機器學習時獲得的資料圖片內容常常是很雜亂的訓練的目標可能只是一大張圖裡的一小區塊那此時我們可以進行批次裁切以節省時間">
+<meta property="og:description" content="這邊分享與紀錄了我製作這個Blog的一些過程除了可以讓有需要的人參考，主要是留一份筆記給自己如果有錯誤的地方也都歡迎下面留言指正~">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-08-05T03:29:10.000Z">
-<meta property="article:modified_time" content="2020-08-06T14:32:01.941Z">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1Ev9NWnxlAIvhrQYYlNMfAJTFUEGFYmtf">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1pY76pKJZMXUYmok4FkoWWxs5ejSDbyTq">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1naUOCaj9suSSo_Lbj2N0EJc7I6s0UeAx">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1BDfWIlzwWeCl4PZMkXBFvF09ERag-mD_">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=11CLZfTX-vqehoPKMkeAhPijCzpa_gGcZ">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1-5fVitbTh9xiC_CN4otfvjXMXUGow94L">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=17AMcTp79srIEgLOxjFKaVlpqkLaovsHz">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=16hlnCtIqinO4gfqBpFtY2afGpi82cEGs">
+<meta property="article:published_time" content="2020-07-30T16:01:54.000Z">
+<meta property="article:modified_time" content="2020-08-01T17:11:22.537Z">
 <meta property="article:author" content="Chia Chen">
-<meta property="article:tag" content="opencv">
-<meta property="article:tag" content="image process">
-<meta property="article:tag" content="影像處理">
-<meta property="article:tag" content="機器學習s">
+<meta property="article:tag" content="GitHubPages">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Blog">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://drive.google.com/uc?export=view&id=1Ev9NWnxlAIvhrQYYlNMfAJTFUEGFYmtf">
 
-<link rel="canonical" href="https://jam68ty.github.io/BucketTalk/2020/08/05/opencv-image-cropped/">
+<link rel="canonical" href="https://jam68ty.github.io/BucketTalk/post/Create-Blog-With-GitHub-Pages-And-Hexo/">
 
 
 <script class="page-configurations">
@@ -53,7 +61,7 @@
   };
 </script>
 
-  <title>OpenCV系列 影像批次裁切 | BucketTalk</title>
+  <title>GitHub Pages & Hexo 開始你的Blog吧! | BucketTalk</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
     <script>
@@ -191,7 +199,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#裁切大小"><span class="nav-number">1.</span> <span class="nav-text">裁切大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整程式碼"><span class="nav-number">2.</span> <span class="nav-text">完整程式碼</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub是什麼"><span class="nav-number">1.</span> <span class="nav-text">GitHub是什麼?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github-Page是什麼"><span class="nav-number">2.</span> <span class="nav-text">Github Page是什麼?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo是什麼"><span class="nav-number">3.</span> <span class="nav-text">Hexo是什麼?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我需要什麼"><span class="nav-number">4.</span> <span class="nav-text">我需要什麼?</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -267,7 +275,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/2020/08/05/opencv-image-cropped/">
+    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/Create-Blog-With-GitHub-Pages-And-Hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
@@ -280,7 +288,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          OpenCV系列 影像批次裁切
+          GitHub Pages & Hexo 開始你的Blog吧!
         </h1>
 
         <div class="post-meta">
@@ -290,14 +298,14 @@
               </span>
               <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2020-08-05 11:29:10" itemprop="dateCreated datePublished" datetime="2020-08-05T11:29:10+08:00">2020-08-05</time>
+              <time title="創建時間：2020-07-31 00:01:54" itemprop="dateCreated datePublished" datetime="2020-07-31T00:01:54+08:00">2020-07-31</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-08-06 22:32:01" itemprop="dateModified" datetime="2020-08-06T22:32:01+08:00">2020-08-06</time>
+                <time title="修改時間：2020-08-02 01:11:22" itemprop="dateModified" datetime="2020-08-02T01:11:22+08:00">2020-08-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -305,7 +313,7 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/BucketTalk/categories/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">機器學習筆記</span></a>
+                  <a href="/BucketTalk/categories/%E4%BD%BF%E7%94%A8-GitHub-Pages-Hexo-%E5%BB%BA%E7%AB%8B%E5%80%8B%E4%BA%BABlog/" itemprop="url" rel="index"><span itemprop="name">使用 GitHub Pages & Hexo 建立個人Blog</span></a>
                 </span>
             </span>
 
@@ -320,13 +328,33 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在做機器學習時獲得的資料圖片內容常常是很雜亂的<br>訓練的目標可能只是一大張圖裡的一小區塊<br>那此時我們可以進行批次裁切以節省時間</p>
+        <p>這邊分享與紀錄了我製作這個Blog的一些過程<br>除了可以讓有需要的人參考，主要是留一份筆記給自己<br>如果有錯誤的地方也都歡迎下面留言指正~</p>
 <a id="more"></a>
-<h2 id="裁切大小"><a href="#裁切大小" class="headerlink" title="裁切大小"></a>裁切大小</h2><p>首先我們必須先確認好需要裁切的區域(X,Y軸座標)<br>如裁切目標座標為[0:498, 496:1263]，則裁切的區域為(496,0)與(1263,498)構成的矩形</p>
-<h2 id="完整程式碼"><a href="#完整程式碼" class="headerlink" title="完整程式碼"></a>完整程式碼</h2><p>程式碼中比較需要注意的是影像讀入的方式與前幾篇稍微有些不同</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img_1 &#x3D; cv2.imread(&#39;test.jpg&#39;)  #讀入圖片</span><br><span class="line">img_2 &#x3D; cv2.imdecode(np.fromfile(filepath,dtype&#x3D;np.uint8),cv2.IMREAD_COLOR)</span><br></pre></td></tr></table></figure>
-<p>但實際上都是讀入圖片，imread是從指定路徑讀入圖片，imdecode是從指定的緩存內讀入圖片</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">from os import walk</span><br><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">mypath &#x3D; &quot;目標資料夾&quot;</span><br><span class="line">file&#x3D;[]</span><br><span class="line"># 遞迴列出所有子目錄與檔案</span><br><span class="line">print(&quot;Processing....&quot;)</span><br><span class="line">for root, dirs, files in walk(mypath):</span><br><span class="line">    for i in range(len(files)):</span><br><span class="line">        filepath&#x3D;root+&quot;&#x2F;&quot;+files[i]</span><br><span class="line">        img &#x3D; cv2.imdecode(np.fromfile(filepath,dtype&#x3D;np.uint8),cv2.IMREAD_COLOR)</span><br><span class="line">        cropped &#x3D; img[0:498, 496:1263]  # 裁剪座標[y0:y1, x0:x1]</span><br><span class="line">        img_file &#x3D; &quot;data&#x2F;&quot;+root.split(&#39;&#x2F;&#39;)[1]+&#39;&#x2F;&#39;</span><br><span class="line">        if not os.path.exists(img_file):</span><br><span class="line">            os.mkdir(img_file)</span><br><span class="line">        cv2.imencode(&#39;.bmp&#39;, cropped)[1].tofile(img_file+files[i])</span><br><span class="line">print(&quot;Done.&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="GitHub是什麼"><a href="#GitHub是什麼" class="headerlink" title="GitHub是什麼?"></a>GitHub是什麼?</h2><p>Git是一個工具，讓你可以進行版本控制(就是所謂的軟體更新v1 v2 v3….)<br>GitHub是一個網站，讓你的專案可以放在網站上與其他工程師共享或是與你的組員共同完成專案，也可以去學習、探索其他大神們的作品</p>
+<h2 id="Github-Page是什麼"><a href="#Github-Page是什麼" class="headerlink" title="Github Page是什麼?"></a>Github Page是什麼?</h2><p>GitHub Page提供了免費的域名讓你上傳你完成的專案，一個人甚至可以擁有多個GitHub Page，但是前提是你放上去的專案只能呈現靜態的(HTML、CSS都算是靜態的)，動態的無法展示(有任何需要HTTP Request之類的網站)，如果想要自己的域名，GitHub Page上也可以使用第三方的域名。<br>!!注意!!GitHub Page中一個目錄的檔案存放上限為1GB. 流量限制為1 個月100GB，所以建議需要存放大量圖片者不要放在專案的目錄中，可以善用網路工具，如Google相簿等，後面會詳述。</p>
+<h2 id="Hexo是什麼"><a href="#Hexo是什麼" class="headerlink" title="Hexo是什麼?"></a>Hexo是什麼?</h2><p>Hexo 是一個快速、簡單且強大的網誌框架。Hexo 使用 Markdown（或其他標記語言）解析您的文章，並在幾秒鐘內，透過漂亮的主題產生靜態檔案。(來自Hexo官網的介紹)<br>簡單來說就是透過Hexo讓原本只是一個靜態網頁的GitHub Page可以像一個Blog一樣運行，詳細的說明可以參考 <a href="https://www.zhihu.com/question/51588481" target="_blank" rel="noopener">https://www.zhihu.com/question/51588481</a> ，裡面也有比我講得更詳細的敘述。</p>
+<h2 id="我需要什麼"><a href="#我需要什麼" class="headerlink" title="我需要什麼?"></a>我需要什麼?</h2><ol>
+<li><p>Local本機環境需要安裝<br>(1) <a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a><br>(2) <a href="https://git-scm.com/" target="_blank" rel="noopener">Git</a></p>
+</li>
+<li><p>註冊一個GitHub帳號<br><a href="https://github.com/join" target="_blank" rel="noopener">https://github.com/join</a></p>
+</li>
+<li><p>一個順手的文字編輯器，我使用的是Notepad++<br><a href="https://notepad-plus-plus.org/downloads/" target="_blank" rel="noopener">https://notepad-plus-plus.org/downloads/</a></p>
+</li>
+<li><p>安裝Hexo<br>打開CMD輸入指令<br><img src="https://drive.google.com/uc?export=view&id=1Ev9NWnxlAIvhrQYYlNMfAJTFUEGFYmtf" alt=""></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p><img src="https://drive.google.com/uc?export=view&id=1pY76pKJZMXUYmok4FkoWWxs5ejSDbyTq" alt=""></p>
+</li>
+<li><p>建立一個專案</p>
+</li>
+</ol>
+<p>(1) 在Github上Start a project<br><img src="https://drive.google.com/uc?export=view&id=1naUOCaj9suSSo_Lbj2N0EJc7I6s0UeAx" alt=""></p>
+<p>(2) 替你的Repostitory命名並Create<br><img src="https://drive.google.com/uc?export=view&id=1BDfWIlzwWeCl4PZMkXBFvF09ERag-mD_" alt=""></p>
+<p>(3) 建立完成後進入到Setting，找到下面的GitHub Pages並且選擇Choose a theme<br><img src="https://drive.google.com/uc?export=view&id=11CLZfTX-vqehoPKMkeAhPijCzpa_gGcZ" alt=""><br><img src="https://drive.google.com/uc?export=view&id=1-5fVitbTh9xiC_CN4otfvjXMXUGow94L" alt=""></p>
+<p>(4) 隨便選擇一個主題，按下Select theme，這個主題只是暫時的<br><img src="https://drive.google.com/uc?export=view&id=17AMcTp79srIEgLOxjFKaVlpqkLaovsHz" alt=""></p>
+<p>(5) 輸入<yourname>.github.io/<your_project_name>就可以看到剛剛建立的GitHub Pages<br><img src="https://drive.google.com/uc?export=view&id=16hlnCtIqinO4gfqBpFtY2afGpi82cEGs" alt=""></p>
+<p>到目前為止我們的前置作業就算是完成了~<br>下面幾篇會詳細的紀錄實作過程~</p>
+
     </div>
 
     
@@ -335,10 +363,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/BucketTalk/tags/opencv/" rel="tag"># opencv</a>
-              <a href="/BucketTalk/tags/image-process/" rel="tag"># image process</a>
-              <a href="/BucketTalk/tags/%E5%BD%B1%E5%83%8F%E8%99%95%E7%90%86/" rel="tag"># 影像處理</a>
-              <a href="/BucketTalk/tags/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92s/" rel="tag"># 機器學習s</a>
+              <a href="/BucketTalk/tags/GitHubPages/" rel="tag"># GitHubPages</a>
+              <a href="/BucketTalk/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/BucketTalk/tags/Blog/" rel="tag"># Blog</a>
           </div>
 
         
@@ -346,11 +373,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/BucketTalk/2020/08/05/opencv-data-argumentation/" rel="prev" title="OpenCV系列 資料增強 Data Argumentation">
-      <i class="fa fa-chevron-left"></i> OpenCV系列 資料增強 Data Argumentation
-    </a></div>
       <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/BucketTalk/post/Implement-with-GitHub-Pages-And-Hexo/" rel="next" title="實作使用GitHub Pages & Hexo 建立個人Blog">
+      實作使用GitHub Pages & Hexo 建立個人Blog <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     

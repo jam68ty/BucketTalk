@@ -24,30 +24,26 @@
     var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
   </script>
 
-  <meta name="description" content="這邊紀錄了一些Hexo的常用功能，如新增、刪除文章等另外還有比較複雜一點的使用Google Drive作為圖片來源插入圖片的方式">
+  <meta name="description" content="因為同實驗室的研究內容與影像處理有關一起討論的同時也寫了一些程式紀錄一下使用OpenCV讀入影像的過程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo常用功能">
-<meta property="og:url" content="https://jam68ty.github.io/BucketTalk/2020/07/31/Common-Fuction-In-Hexo/index.html">
+<meta property="og:title" content="OpenCV系列 使用OpenCV讀入影像">
+<meta property="og:url" content="https://jam68ty.github.io/BucketTalk/post/opencv-read-image/index.html">
 <meta property="og:site_name" content="BucketTalk">
-<meta property="og:description" content="這邊紀錄了一些Hexo的常用功能，如新增、刪除文章等另外還有比較複雜一點的使用Google Drive作為圖片來源插入圖片的方式">
+<meta property="og:description" content="因為同實驗室的研究內容與影像處理有關一起討論的同時也寫了一些程式紀錄一下使用OpenCV讀入影像的過程">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1khSz2_cipFDyurpSmNtQ-w_39UEd1EIr">
-<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1OUiI36tPudao-bUpVIBXqcoL3rg6gVTP">
-<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1hF1guIfbs-9hpTaKsnSzfeC-dxzQn4tM">
-<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1JXSEsXEBvy99UkdNxTzyTxIWhy02rdCn">
-<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1vexlZeIiAp-891u4v7dBS1aVR0BYFvRs">
-<meta property="og:image" content="https://drive.google.com/uc?export=view&id=12iY-m5NYFMI-WoV_Ug2lHMfhHzhE4is-">
-<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1AQR_NLUIguomawDdyhRhGQMXiWeo4MAm">
-<meta property="article:published_time" content="2020-07-30T16:01:59.000Z">
-<meta property="article:modified_time" content="2020-08-01T17:18:26.096Z">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1E7NcIB_jT24tQ8pN_8IgNM7gycuOguv4">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1bCJNWUjgXOMao4fgC5jTXO8-GDMGJWqO">
+<meta property="article:published_time" content="2020-08-05T03:28:09.000Z">
+<meta property="article:modified_time" content="2020-08-06T14:32:01.945Z">
 <meta property="article:author" content="Chia Chen">
-<meta property="article:tag" content="GitHubPages">
-<meta property="article:tag" content="Hexo">
-<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="opencv">
+<meta property="article:tag" content="image process">
+<meta property="article:tag" content="影像處理">
+<meta property="article:tag" content="機器學習">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://drive.google.com/uc?export=view&id=1khSz2_cipFDyurpSmNtQ-w_39UEd1EIr">
+<meta name="twitter:image" content="https://drive.google.com/uc?export=view&id=1E7NcIB_jT24tQ8pN_8IgNM7gycuOguv4">
 
-<link rel="canonical" href="https://jam68ty.github.io/BucketTalk/2020/07/31/Common-Fuction-In-Hexo/">
+<link rel="canonical" href="https://jam68ty.github.io/BucketTalk/post/opencv-read-image/">
 
 
 <script class="page-configurations">
@@ -60,7 +56,7 @@
   };
 </script>
 
-  <title>Hexo常用功能 | BucketTalk</title>
+  <title>OpenCV系列 使用OpenCV讀入影像 | BucketTalk</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
     <script>
@@ -198,7 +194,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#新增文章"><span class="nav-number">1.</span> <span class="nav-text">新增文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#刪除文章"><span class="nav-number">2.</span> <span class="nav-text">刪除文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入圖片"><span class="nav-number">3.</span> <span class="nav-text">插入圖片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝OpenCV"><span class="nav-number">1.</span> <span class="nav-text">安裝OpenCV</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#讀入圖片"><span class="nav-number">2.</span> <span class="nav-text">讀入圖片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#讀入灰階"><span class="nav-number">3.</span> <span class="nav-text">讀入灰階</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制視窗"><span class="nav-number">4.</span> <span class="nav-text">控制視窗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寫入圖檔"><span class="nav-number">5.</span> <span class="nav-text">寫入圖檔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#設定-JPEG-圖片品質為-90（可用值為-0-100）"><span class="nav-number">6.</span> <span class="nav-text">設定 JPEG 圖片品質為 90（可用值為 0 ~ 100）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#設定-PNG-壓縮層級為-5（可用值為-0-9）"><span class="nav-number">7.</span> <span class="nav-text">設定 PNG 壓縮層級為 5（可用值為 0 ~ 9）</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -274,7 +270,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/2020/07/31/Common-Fuction-In-Hexo/">
+    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/opencv-read-image/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
@@ -287,7 +283,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hexo常用功能
+          OpenCV系列 使用OpenCV讀入影像
         </h1>
 
         <div class="post-meta">
@@ -297,14 +293,14 @@
               </span>
               <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2020-07-31 00:01:59" itemprop="dateCreated datePublished" datetime="2020-07-31T00:01:59+08:00">2020-07-31</time>
+              <time title="創建時間：2020-08-05 11:28:09" itemprop="dateCreated datePublished" datetime="2020-08-05T11:28:09+08:00">2020-08-05</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-08-02 01:18:26" itemprop="dateModified" datetime="2020-08-02T01:18:26+08:00">2020-08-02</time>
+                <time title="修改時間：2020-08-06 22:32:01" itemprop="dateModified" datetime="2020-08-06T22:32:01+08:00">2020-08-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -312,7 +308,7 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/BucketTalk/categories/%E4%BD%BF%E7%94%A8-GitHub-Pages-Hexo-%E5%BB%BA%E7%AB%8B%E5%80%8B%E4%BA%BABlog/" itemprop="url" rel="index"><span itemprop="name">使用 GitHub Pages & Hexo 建立個人Blog</span></a>
+                  <a href="/BucketTalk/categories/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">機器學習筆記</span></a>
                 </span>
             </span>
 
@@ -327,39 +323,39 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>這邊紀錄了一些Hexo的常用功能，如新增、刪除文章等<br>另外還有比較複雜一點的使用Google Drive作為圖片來源插入圖片的方式</p>
+        <p>因為同實驗室的研究內容與影像處理有關<br>一起討論的同時也寫了一些程式<br>紀錄一下使用OpenCV讀入影像的過程</p>
 <a id="more"></a>
+<h2 id="安裝OpenCV"><a href="#安裝OpenCV" class="headerlink" title="安裝OpenCV"></a>安裝OpenCV</h2><p>一開始需要安裝openCV的套件<br>進入CMD輸入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install opencv-python</span><br></pre></td></tr></table></figure>
 
-<h2 id="新增文章"><a href="#新增文章" class="headerlink" title="新增文章"></a>新增文章</h2><ol>
-<li>CMD輸入指令後在source/_posts裡會出現剛剛新增的文章<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"First Post"</span></span><br></pre></td></tr></table></figure>
-<img src="https://drive.google.com/uc?export=view&id=1khSz2_cipFDyurpSmNtQ-w_39UEd1EIr" alt=""></li>
-</ol>
-<p>新增的文章都會儲存在<code>&lt;your_project_name&gt;\source\_posts</code>下，可以直接使用文字編輯器修改<br>另外如果對markdown語法不熟，也可以使用網路上有的<a href="https://markdown-editor.github.io/" target="_blank" rel="noopener">markdown線上練習網頁輔助</a></p>
-<ol start="2">
-<li>文章必須使用Markdown語法，修改完後依序進行hexo cl -&gt; g -&gt; s -&gt;d<br><img src="https://drive.google.com/uc?export=view&id=1OUiI36tPudao-bUpVIBXqcoL3rg6gVTP" alt=""></li>
-</ol>
-<p><em>更多Markdown的用法請參考：<a href="https://markdown.tw/" target="_blank" rel="noopener">https://markdown.tw/</a></em></p>
-<h2 id="刪除文章"><a href="#刪除文章" class="headerlink" title="刪除文章"></a>刪除文章</h2><ol>
-<li>先找到source/_posts底下的原檔並且刪除</li>
-<li>重新執行hexo cl -&gt; g -&gt; s -&gt;d</li>
-</ol>
-<p>** 有時候佈署上去後須等待一段時間才可以看到修改，稍微耐心點等待即可 **</p>
-<h2 id="插入圖片"><a href="#插入圖片" class="headerlink" title="插入圖片"></a>插入圖片</h2><p>還記得我們前面說過，Github pages是有流量和空間限制的，當有大量的圖片時，建議可以使用URL的方式。<br>這邊介紹一個我自己使用的方式。當然你也可以選擇上傳到其他空間，只要能取得URL即可。</p>
+<h2 id="讀入圖片"><a href="#讀入圖片" class="headerlink" title="讀入圖片"></a>讀入圖片</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np  <span class="comment">#載入需要的函式庫</span></span><br><span class="line"><span class="keyword">import</span> cv2  <span class="comment">#載入OpenCV</span></span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'test.jpg'</span>)  <span class="comment">#讀入圖片</span></span><br><span class="line">print(type(img))  <span class="comment">#顯示img在opencv中儲存的格式</span></span><br><span class="line">print(img.shape)  <span class="comment">#顯示該numpy的陣列大小(長,寬,圖片的chnnel)</span></span><br><span class="line">cv2.imshow(<span class="string">'My Image'</span>, img)  <span class="comment"># 顯示圖片</span></span><br><span class="line">cv2.waitKey(<span class="number">0</span>)  <span class="comment"># 顯示圖片後不要有任何動作，等待按下鍵盤上的任一鍵</span></span><br><span class="line">cv2.destroyWindow(<span class="string">'My Image'</span>)  <span class="comment"># 關閉 'My Image' 視窗</span></span><br></pre></td></tr></table></figure>
+<p>接著就可以看到我們讀取出來的圖片了<br><img src="https://drive.google.com/uc?export=view&id=1E7NcIB_jT24tQ8pN_8IgNM7gycuOguv4" alt=""></p>
+<p>該圖片的type為 &lt;class ‘numpy.ndarray’&gt;<br>圖片讀入numpy後的陣列大小為(512, 512, 3)</p>
+<h2 id="讀入灰階"><a href="#讀入灰階" class="headerlink" title="讀入灰階"></a>讀入灰階</h2><p>如果想要讀入灰階的圖片該怎麼做呢?<br>以下為讀入時可以參考的參數</p>
 <ol>
-<li>使用Google Drive作為來源插入圖片<br>(1) 首先我用的是教育帳號的Google Drive，所以沒有空間限制(目前來看是這樣，這也是為什麼我選擇使用Google Drive的原因)。<br>(2) 進入Google Drive後上傳你所需要的圖片，可以稍微用資料夾分類整理一下，之後會比較好管理。對資料夾點右鍵-取得檔案共用連結，將權限改為「知道連結的使用者」<br><img src="https://drive.google.com/uc?export=view&id=1hF1guIfbs-9hpTaKsnSzfeC-dxzQn4tM" alt=""></li>
+<li>CV_LOAD_IMAGE_UNCHANGED (&lt;0)，讀取原始image</li>
+<li>CV_LOAD_IMAGE_GRAYSCALE ( 0)，讀取灰階image</li>
+<li>CV_LOAD_IMAGE_COLOR (&gt;0)，讀取RGB image</li>
 </ol>
-<p>(3) 取得Image_ID: 一樣對圖片按右鍵-取得檔案共用連結，ID就是紅框框起來的那段<br><img src="https://drive.google.com/uc?export=view&id=1JXSEsXEBvy99UkdNxTzyTxIWhy02rdCn" alt=""></p>
-<p>接下來使用下列語法插入圖片，並將剛剛取得的Image_ID放進網址中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](https:&#x2F;&#x2F;drive.google.com&#x2F;uc?export&#x3D;view&amp;id&#x3D;[Image_ID])</span><br></pre></td></tr></table></figure>
-<p>這樣就完成插入圖片了~</p>
-<p>但是！當你有很多圖片怎麼辦？難道要一個一個插入嗎？<br>我找到一個方法大家可以參考一下，或者有更方便的做法也歡迎告訴我<br>2. 使用Photo Gallery外掛<br>(1) 首先打開你Google的線上試算表(Excel)，點選外掛程式-取得外掛程式，並且搜索Photo Gallery<br><img src="https://drive.google.com/uc?export=view&id=1vexlZeIiAp-891u4v7dBS1aVR0BYFvRs" alt=""></p>
-<p>(2) 點選剛剛安裝的外掛程式後-&gt;選擇Use exisiting album-&gt;選擇你剛剛存放圖片的資料夾-&gt;最後會取得這個資料夾中的所有圖片ID(我們只需要前面兩欄，後面都可以直接刪掉)<br><img src="https://drive.google.com/uc?export=view&id=12iY-m5NYFMI-WoV_Ug2lHMfhHzhE4is-" alt=""></p>
-<p>(3) 善用Excel的功能幫我們寫好Markdown所需要的完整語法<br><img src="https://drive.google.com/uc?export=view&id=1AQR_NLUIguomawDdyhRhGQMXiWeo4MAm" alt=""></p>
-<p>最後只要插入到文章中就大功告成啦~</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
-<li><a href="https://support.awesome-table.com/hc/en-us/articles/115002196665-Display-images-from-Google-Drive" target="_blank" rel="noopener">https://support.awesome-table.com/hc/en-us/articles/115002196665-Display-images-from-Google-Drive</a></li>
-</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">img_gray = cv2.imread(<span class="string">'test.jpg'</span>, <span class="number">0</span>)</span><br><span class="line">cv2.imshow(<span class="string">'My Image'</span>, img_gray)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyWindow(<span class="string">'My Image'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://drive.google.com/uc?export=view&id=1bCJNWUjgXOMao4fgC5jTXO8-GDMGJWqO" alt=""></p>
+<h2 id="控制視窗"><a href="#控制視窗" class="headerlink" title="控制視窗"></a>控制視窗</h2><ol>
+<li><p>讓視窗可以自由縮放大小</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.namedWindow(<span class="string">'My Image'</span>, cv2.WINDOW_NORMAL)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>關閉 ‘My Image’ 視窗</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.destroyWindow(<span class="string">'My Image'</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>按下任意鍵則關閉所有視窗</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
 
+</li>
+</ol>
+<h2 id="寫入圖檔"><a href="#寫入圖檔" class="headerlink" title="寫入圖檔"></a>寫入圖檔</h2><p>可以將彩色的圖檔以灰階格式讀入後輸出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.imwrite(<span class="string">'output.jpg'</span>, img)</span><br></pre></td></tr></table></figure>
+<p>也可以寫入不同圖檔格式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cv2.imwrite(<span class="string">'output.png'</span>, img)</span><br><span class="line">cv2.imwrite(<span class="string">'output.tiff'</span>, img)</span><br></pre></td></tr></table></figure>
+<h2 id="設定-JPEG-圖片品質為-90（可用值為-0-100）"><a href="#設定-JPEG-圖片品質為-90（可用值為-0-100）" class="headerlink" title="設定 JPEG 圖片品質為 90（可用值為 0 ~ 100）"></a>設定 JPEG 圖片品質為 90（可用值為 0 ~ 100）</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.imwrite(<span class="string">'output.jpg'</span>, img, [cv2.IMWRITE_JPEG_QUALITY, <span class="number">90</span>])</span><br></pre></td></tr></table></figure>
+<h2 id="設定-PNG-壓縮層級為-5（可用值為-0-9）"><a href="#設定-PNG-壓縮層級為-5（可用值為-0-9）" class="headerlink" title="設定 PNG 壓縮層級為 5（可用值為 0 ~ 9）"></a>設定 PNG 壓縮層級為 5（可用值為 0 ~ 9）</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.imwrite(<span class="string">'output.png'</span>, img, [cv2.IMWRITE_PNG_COMPRESSION, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -368,9 +364,10 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/BucketTalk/tags/GitHubPages/" rel="tag"># GitHubPages</a>
-              <a href="/BucketTalk/tags/Hexo/" rel="tag"># Hexo</a>
-              <a href="/BucketTalk/tags/Blog/" rel="tag"># Blog</a>
+              <a href="/BucketTalk/tags/opencv/" rel="tag"># opencv</a>
+              <a href="/BucketTalk/tags/image-process/" rel="tag"># image process</a>
+              <a href="/BucketTalk/tags/%E5%BD%B1%E5%83%8F%E8%99%95%E7%90%86/" rel="tag"># 影像處理</a>
+              <a href="/BucketTalk/tags/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/" rel="tag"># 機器學習</a>
           </div>
 
         
@@ -379,12 +376,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/BucketTalk/2020/07/31/Customize-Your-Hexo-Blog/" rel="prev" title="個人化你的Hexo Blog">
-      <i class="fa fa-chevron-left"></i> 個人化你的Hexo Blog
+    <a href="/BucketTalk/post/Common-Fuction-In-Hexo/" rel="prev" title="Hexo常用功能">
+      <i class="fa fa-chevron-left"></i> Hexo常用功能
     </a></div>
       <div class="post-nav-item">
-    <a href="/BucketTalk/2020/08/05/opencv-read-image/" rel="next" title="OpenCV系列 使用OpenCV讀入影像">
-      OpenCV系列 使用OpenCV讀入影像 <i class="fa fa-chevron-right"></i>
+    <a href="/BucketTalk/post/opencv-data-argumentation/" rel="next" title="OpenCV系列 資料增強 Data Argumentation">
+      OpenCV系列 資料增強 Data Argumentation <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>

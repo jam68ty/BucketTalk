@@ -2697,8 +2697,18 @@ ul.breadcrumb li + li:last-child {
   border-radius: 4px;
 }
 body {
-  background: url("/image/bk.jpg");
+  background: url("https://drive.google.com/uc?export=view&id=19aWULO-VZM6DoO2DxhqHWWh5x2K3bVg-");
+  background-size: cover;
   background-repeat: repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
+}
+.content-wrap {
+  opacity: 0.85;
+}
+.sidebar {
+  opacity: 0.85;
+}
+.header-inner {
+  background: rgba(255,255,255,0.85);
 }

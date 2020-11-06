@@ -24,21 +24,31 @@
     var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
   </script>
 
-  <meta name="description" content="Chia ChenGraduated From FJU University Information Management因為能吃能喝所以綽號是桶子，但念完大學四年得了胃病覺得自己很廢，老是拿不出證明自己有做過什麼事的假工程師正在努力累積實力與經驗，但目前主要還是困在自己的論文裡  雖然運氣不好，但是也不能不努力">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="https://jam68ty.github.io/BucketTalk/about/index.html">
+  <meta name="description" content="這篇文章中會提到使用API Shell的指令對資料庫進行操作這邊的API是Django提供的一種介面讓使用者能夠直接對資料庫進行修改而不會去動到程式碼">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django系列 資料庫(二)">
+<meta property="og:url" content="https://jam68ty.github.io/BucketTalk/post/django-db2/index.html">
 <meta property="og:site_name" content="BucketTalk">
-<meta property="og:description" content="Chia ChenGraduated From FJU University Information Management因為能吃能喝所以綽號是桶子，但念完大學四年得了胃病覺得自己很廢，老是拿不出證明自己有做過什麼事的假工程師正在努力累積實力與經驗，但目前主要還是困在自己的論文裡  雖然運氣不好，但是也不能不努力">
+<meta property="og:description" content="這篇文章中會提到使用API Shell的指令對資料庫進行操作這邊的API是Django提供的一種介面讓使用者能夠直接對資料庫進行修改而不會去動到程式碼">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-07-29T15:29:54.000Z">
-<meta property="article:modified_time" content="2020-08-17T15:14:23.972Z">
+<meta property="og:image" content="https://i.imgur.com/JGskpSW.png">
+<meta property="og:image" content="https://i.imgur.com/nkQCmTn.png">
+<meta property="og:image" content="https://i.imgur.com/Natcafm.png">
+<meta property="og:image" content="https://i.imgur.com/ZYjyKkk.png">
+<meta property="og:image" content="https://i.imgur.com/En3Or5D.png">
+<meta property="og:image" content="https://i.imgur.com/po5TsY6.png">
+<meta property="og:image" content="https://i.imgur.com/Ov2BfZG.png">
+<meta property="og:image" content="https://i.imgur.com/dHlUzNE.png">
+<meta property="article:published_time" content="2020-11-06T16:45:09.000Z">
+<meta property="article:modified_time" content="2020-11-06T16:55:01.038Z">
 <meta property="article:author" content="Chia Chen">
-<meta property="article:tag" content="code">
-<meta property="article:tag" content=" note">
+<meta property="article:tag" content="Django">
+<meta property="article:tag" content="Database">
+<meta property="article:tag" content="models">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/JGskpSW.png">
 
-<link rel="canonical" href="https://jam68ty.github.io/BucketTalk/about/">
+<link rel="canonical" href="https://jam68ty.github.io/BucketTalk/post/django-db2/">
 
 
 <script class="page-configurations">
@@ -46,13 +56,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-TW'
   };
 </script>
 
-  <title>About Me | BucketTalk
-</title>
+  <title>Django系列 資料庫(二) | BucketTalk</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
     <script>
@@ -190,7 +199,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chia-Chen"><span class="nav-number">1.</span> <span class="nav-text">Chia Chen</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用API"><span class="nav-number">1.</span> <span class="nav-text">使用API</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -258,47 +267,129 @@
 
       <div class="main-inner">
         
-  
-  
 
-        <div class="content page posts-expand">
+        <div class="content post posts-expand">
           
 
     
-    
-    
-    <div class="post-block" lang="zh-TW">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/django-db2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="name" content="Chia Chen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BucketTalk">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Django系列 資料庫(二)
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">About Me
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
 
-<div class="post-meta">
+              <time title="創建時間：2020-11-07 00:45:09 / 修改時間：00:55:01" itemprop="dateCreated datePublished" datetime="2020-11-07T00:45:09+08:00">2020-11-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/BucketTalk/categories/Django%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">Django系列</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>這篇文章中會提到使用API Shell的指令對資料庫進行操作<br>這邊的API是Django提供的一種介面<br>讓使用者能夠直接對資料庫進行修改而不會去動到程式碼</p>
+<a id="more"></a>
+
+<h1 id="使用API"><a href="#使用API" class="headerlink" title="使用API"></a>使用API</h1><p>(這邊操作都是在Shell中，實際還是需要寫到models裡)</p>
+<ol>
+<li><p>開啟API Shell</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py shell</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在API Shell裡面進行操作<br><img src="https://i.imgur.com/JGskpSW.png" alt=""></p>
+</li>
+</ol>
+<ol start="3">
+<li>因為Query回傳的資料不具有可讀性，因此在<code>polls/models.py</code>裡重新定義如何回傳資料<br><img src="https://i.imgur.com/nkQCmTn.png" alt=""></li>
+</ol>
+<blockquote>
+<p>SHELL的指令下錯怎麼辦？重新migrate<br>python manage.py makemigrations<br>python manage.py migrate</p>
+</blockquote>
+<ol start="4">
+<li>繼續為資料庫新增、修改資料<br><img src="https://i.imgur.com/Natcafm.png" alt=""><br><img src="https://i.imgur.com/ZYjyKkk.png" alt=""></li>
+</ol>
+<ol start="5">
+<li><p>使用Django的Admin介面</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py createsuperuser</span><br><span class="line"><span class="function">User:<span class="title">admin</span> </span></span><br><span class="line"><span class="function"><span class="title">Password</span>:123456789</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/En3Or5D.png" alt=""></p>
+</li>
+<li><p>接著Runserver，登入後會看到下面的畫面</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py runserverer</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/po5TsY6.png" alt=""></p>
+</li>
+</ol>
+<ol start="7">
+<li>但是我們的Question、Choice都沒有出現在資料庫裡，所以我們要讓他也能在Admin介面中修改，因此開啟<code>polls/admin.py</code><br><img src="https://i.imgur.com/Ov2BfZG.png" alt=""></li>
+</ol>
+<ol start="8">
+<li>完成後可以看到Question出現在我們的資料庫中(Choice也做一樣的修改就行了)<br><img src="https://i.imgur.com/dHlUzNE.png" alt=""></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/BucketTalk/tags/Django/" rel="tag"># Django</a>
+              <a href="/BucketTalk/tags/Database/" rel="tag"># Database</a>
+              <a href="/BucketTalk/tags/models/" rel="tag"># models</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/BucketTalk/post/django-view/" rel="prev" title="Django系列 介面(Views)">
+      <i class="fa fa-chevron-left"></i> Django系列 介面(Views)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <h2 id="Chia-Chen"><a href="#Chia-Chen" class="headerlink" title="Chia Chen"></a><strong>Chia Chen</strong></h2><p><em>Graduated From FJU University Information Management</em><br>因為能吃能喝所以綽號是桶子，但念完大學四年得了胃病<br>覺得自己很廢，老是拿不出證明自己有做過什麼事的假工程師<br>正在努力累積實力與經驗，但目前主要還是困在自己的論文裡</p>
-<blockquote>
-<p>雖然運氣不好，但是也不能不努力</p>
-</blockquote>
-
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
         </div>

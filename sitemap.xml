@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jam68ty.github.io/BucketTalk/post/django-view/</loc>
+    
+    <lastmod>2020-11-06T17:08:16.320Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/post/django-db2/</loc>
+    
+    <lastmod>2020-11-06T16:55:01.038Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/post/django-db1/</loc>
+    
+    <lastmod>2020-11-06T16:55:01.036Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/post/django-start/</loc>
+    
+    <lastmod>2020-11-06T16:54:43.102Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/php-mysql-fileupload/</loc>
     
     <lastmod>2020-11-06T13:32:53.309Z</lastmod>

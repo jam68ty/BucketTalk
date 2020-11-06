@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta name="google-site-verification" content="RwN5OOI1f7pbAaVUsMbKZsYo1v6ATxMWQVDkZ-1bt0Y" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/BucketTalk/css/main.css">
+
+
+<link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
+  
+  <link rel="stylesheet" href="/BucketTalk/lib/animate-css/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.min.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
+  </script>
+
+  <meta name="description" content="表單的部分其實一直是我在大學時期沒有學好的東西後端程式設計甚至是我大學所有與資訊相關的科目中成績最低的，真的很多事情不是你以為過了就過了沒學好的還是會回來找你的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP-MySQL系列 Form表單(一)">
+<meta property="og:url" content="https://jam68ty.github.io/BucketTalk/post/php-mysql-form1/index.html">
+<meta property="og:site_name" content="BucketTalk">
+<meta property="og:description" content="表單的部分其實一直是我在大學時期沒有學好的東西後端程式設計甚至是我大學所有與資訊相關的科目中成績最低的，真的很多事情不是你以為過了就過了沒學好的還是會回來找你的">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/JE5onXn.png">
+<meta property="og:image" content="https://i.imgur.com/82YGA6U.png">
+<meta property="og:image" content="https://i.imgur.com/mGY3iCs.png">
+<meta property="og:image" content="https://i.imgur.com/PVGtZWv.png">
+<meta property="og:image" content="https://i.imgur.com/XG1BS4h.png">
+<meta property="og:image" content="https://i.imgur.com/5CMbwCM.png">
+<meta property="og:image" content="https://i.imgur.com/PNqnUdF.png">
+<meta property="og:image" content="https://i.imgur.com/AtUXUzH.png">
+<meta property="article:published_time" content="2020-11-06T12:29:09.000Z">
+<meta property="article:modified_time" content="2020-11-06T13:17:54.597Z">
+<meta property="article:author" content="Chia Chen">
+<meta property="article:tag" content="PHP">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/JE5onXn.png">
+
+<link rel="canonical" href="https://jam68ty.github.io/BucketTalk/post/php-mysql-form1/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>PHP-MySQL系列 Form表單(一) | BucketTalk</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-174207718-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <main class="main">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/BucketTalk/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BucketTalk</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">return null</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-about">
+
+    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/BucketTalk/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#表單練習"><span class="nav-number">1.</span> <span class="nav-text">表單練習</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝xampp或是Appserv，並且開啟Apache和MySQL"><span class="nav-number">1.1.</span> <span class="nav-text">安裝xampp或是Appserv，並且開啟Apache和MySQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立專案，在以下路徑建立一個叫做form的資料夾"><span class="nav-number">1.2.</span> <span class="nav-text">建立專案，在以下路徑建立一個叫做form的資料夾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝編譯器"><span class="nav-number">1.3.</span> <span class="nav-text">安裝編譯器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表單範例"><span class="nav-number">1.3.1.</span> <span class="nav-text">表單範例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PHP部分的表單"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">PHP部分的表單</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chia Chen"
+      src="/BucketTalk/image/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Chia Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/BucketTalk/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/BucketTalk/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/BucketTalk/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </header>
+
+      
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+      <div class="main-inner">
+        
+
+        <div class="content post posts-expand">
+          
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/php-mysql-form1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="name" content="Chia Chen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BucketTalk">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PHP-MySQL系列 Form表單(一)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-11-06 20:29:09 / 修改時間：21:17:54" itemprop="dateCreated datePublished" datetime="2020-11-06T20:29:09+08:00">2020-11-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/BucketTalk/categories/PHP-MySQL%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">PHP-MySQL系列</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>表單的部分其實一直是我在大學時期沒有學好的東西<br>後端程式設計甚至是我大學所有與資訊相關的科目中<br>成績最低的，真的很多事情不是你以為過了就過了<br>沒學好的還是會回來找你的</p>
+<a id="more"></a>
+
+<h1 id="表單練習"><a href="#表單練習" class="headerlink" title="表單練習"></a>表單練習</h1><p>分為HTML Form與PHP Form兩個部分<br>** 注意！預設的http port號為80！如果是https就是443！**</p>
+<h2 id="安裝xampp或是Appserv，並且開啟Apache和MySQL"><a href="#安裝xampp或是Appserv，並且開啟Apache和MySQL" class="headerlink" title="安裝xampp或是Appserv，並且開啟Apache和MySQL"></a>安裝xampp或是Appserv，並且開啟Apache和MySQL</h2><p><img src="https://i.imgur.com/JE5onXn.png" alt=""><br><img src="https://i.imgur.com/82YGA6U.png" alt=""></p>
+<h2 id="建立專案，在以下路徑建立一個叫做form的資料夾"><a href="#建立專案，在以下路徑建立一個叫做form的資料夾" class="headerlink" title="建立專案，在以下路徑建立一個叫做form的資料夾"></a>建立專案，在以下路徑建立一個叫做form的資料夾</h2><p>xampp：<code>C:\xampp\htdocs</code><br>AppServ：<code>C:\AppServ\www</code></p>
+<h2 id="安裝編譯器"><a href="#安裝編譯器" class="headerlink" title="安裝編譯器"></a>安裝編譯器</h2><p>使用Brackets可以用他的Live Preview功能<br>Brackets：<span class="exturl" data-url="aHR0cDovL2JyYWNrZXRzLmlvLw==">http://brackets.io/<i class="fa fa-external-link-alt"></i></span></p>
+<blockquote>
+<p>設定Live Preview</p>
+<ol>
+<li><img src="https://i.imgur.com/mGY3iCs.png" alt=""></li>
+<li><img src="https://i.imgur.com/PVGtZWv.png" alt=""></li>
+<li>之後要修改Live Preview的網址請到File&gt;Project Settings裡修改，記得如果Port號不同也要修改</li>
+</ol>
+</blockquote>
+<h3 id="表單範例"><a href="#表單範例" class="headerlink" title="表單範例"></a>表單範例</h3><p>HTML部分的表單</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;h1&gt;Hello world! Welcome User!&lt;/h1&gt;"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;form&gt;</span><br><span class="line">    姓名：&lt;input type=<span class="string">"text"</span> name=<span class="string">"UserName"</span> placeholder=<span class="string">"輸入姓名"</span>&gt;&lt;br&gt;&lt;br&gt;</span><br><span class="line">    密碼：&lt;input type=<span class="string">"password"</span> name=<span class="string">"Password"</span> placeholder=<span class="string">"輸入密碼"</span>&gt;&lt;br&gt;&lt;br&gt;</span><br><span class="line">    性別：&lt;input type=<span class="string">"radio"</span> name=<span class="string">"Sex"</span>&gt;男 &lt;input type=<span class="string">"radio"</span> name=<span class="string">"Sex"</span>&gt;女&lt;br&gt;&lt;br&gt;</span><br><span class="line">    生日：&lt;input type=<span class="string">"date"</span> name=<span class="string">"Date"</span>&gt;&lt;br&gt;&lt;br&gt;</span><br><span class="line">    工作狀況：&lt;select name=<span class="string">"Job"</span>&gt;</span><br><span class="line">    &lt;option value=<span class="string">""</span> selected disabled hidden&gt;請選擇&lt;/option&gt;</span><br><span class="line">    &lt;option value=<span class="string">"student"</span>&gt;學生&lt;/option&gt;</span><br><span class="line">    &lt;option value=<span class="string">"fulltime"</span>&gt;全職&lt;/option&gt;</span><br><span class="line">    &lt;option value=<span class="string">"parttime"</span>&gt;兼職&lt;/option&gt;</span><br><span class="line">    &lt;option value=<span class="string">"await"</span>&gt;待業&lt;/option&gt;</span><br><span class="line">    &lt;/select&gt;&lt;br&gt;&lt;br&gt;</span><br><span class="line">    內容：&lt;textarea name=<span class="string">"Content"</span> placeholder=<span class="string">"輸入詳細內容"</span>&gt;&lt;/textarea&gt;&lt;br&gt;&lt;br&gt;</span><br><span class="line">    &lt;input type=<span class="string">"submit"</span> value=<span class="string">"送出表單"</span>&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<p>結果：<br><img src="https://i.imgur.com/XG1BS4h.png" alt=""><br><img src="https://i.imgur.com/5CMbwCM.png" alt=""></p>
+<p>預設的method是GET，表單輸入的內容會出現在網址的部分<br>如果使用的是POST表單的輸入內容就不會出現在網址</p>
+<h4 id="PHP部分的表單"><a href="#PHP部分的表單" class="headerlink" title="PHP部分的表單"></a>PHP部分的表單</h4><p>在PHP中，用<code>$_GET</code>與<code>$_POST</code>這兩個變數來儲存資料<br>我們在剛剛的form裡新增action呼叫PHP Script以及將他的method設為post</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;h1&gt;Hello world! Welcome!&lt;/h1&gt;"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;form action=<span class="string">"newProfile.php"</span> method=<span class="string">"post"</span>&gt;</span><br><span class="line">    姓名：&lt;input type=<span class="string">"text"</span> name=<span class="string">"username"</span> placeholder=<span class="string">"輸入姓名"</span>&gt;&lt;br&gt;&lt;br&gt;</span><br><span class="line">    密碼：&lt;input type=<span class="string">"password"</span> name=<span class="string">"password"</span> placeholder=<span class="string">"輸入密碼"</span>&gt;&lt;br&gt;&lt;br&gt;</span><br><span class="line">    性別：&lt;input type=<span class="string">"radio"</span> name=<span class="string">"sex"</span> value=<span class="string">"male"</span>&gt;男 &lt;input type=<span class="string">"radio"</span> name=<span class="string">"sex"</span> value=<span class="string">"female"</span>&gt;女&lt;br&gt;&lt;br&gt;</span><br><span class="line">    生日：&lt;input type=<span class="string">"date"</span> name=<span class="string">"date"</span>&gt;&lt;br&gt;&lt;br&gt;</span><br><span class="line">    工作狀況：&lt;select name=<span class="string">"job"</span>&gt;</span><br><span class="line">    &lt;option value=<span class="string">""</span> selected disabled hidden&gt;請選擇&lt;/option&gt;</span><br><span class="line">    &lt;option value=<span class="string">"student"</span>&gt;學生&lt;/option&gt;</span><br><span class="line">    &lt;option value=<span class="string">"fulltime"</span>&gt;全職&lt;/option&gt;</span><br><span class="line">    &lt;option value=<span class="string">"parttime"</span>&gt;兼職&lt;/option&gt;</span><br><span class="line">    &lt;option value=<span class="string">"await"</span>&gt;待業&lt;/option&gt;</span><br><span class="line">    &lt;/select&gt;&lt;br&gt;&lt;br&gt;</span><br><span class="line">    內容：&lt;textarea name=<span class="string">"content"</span> placeholder=<span class="string">"輸入詳細內容"</span>&gt;&lt;/textarea&gt;&lt;br&gt;&lt;br&gt;</span><br><span class="line">    &lt;input type=<span class="string">"submit"</span> value=<span class="string">"送出表單"</span>&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<p>新增一個PHP Scipt命名為<code>newProfile.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">$username=$_POST[<span class="string">"username"</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>($_POST[<span class="string">"sex"</span>]==<span class="string">"female"</span>)&#123;</span><br><span class="line">    $sex=<span class="string">"女性"</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    $sex=<span class="string">"男性"</span>;</span><br><span class="line">&#125;</span><br><span class="line">$date=$_POST[<span class="string">"date"</span>];</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;h1&gt;Hello world! Welcome "</span>.$username.<span class="string">"!&lt;/h1&gt;&lt;br&gt;"</span>.</span><br><span class="line">    <span class="string">"你的密碼是："</span>.$_POST[<span class="string">"password"</span>].<span class="string">"&lt;br&gt;"</span>.</span><br><span class="line">    <span class="string">"你的性別是："</span>.$sex.<span class="string">"&lt;br&gt;"</span>.</span><br><span class="line">    <span class="string">"你的生日是："</span>.$_POST[<span class="string">"date"</span>].<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"><span class="keyword">switch</span>($_POST[<span class="string">"job"</span>])&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"student"</span>:</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"你是個學生&lt;br&gt;"</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"fulltime"</span>:</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"你是個全職工作者&lt;br&gt;"</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"parttime"</span>:</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"你是個兼職工作者&lt;br&gt;"</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"await"</span>:</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"你是個米蟲&lt;br&gt;"</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">$content=$_POST[<span class="string">"content"</span>];</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"詳細內容: "</span>.$content;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>最後輸出結果：<br><img src="https://i.imgur.com/PNqnUdF.png" alt=""><br><img src="https://i.imgur.com/AtUXUzH.png" alt=""></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/BucketTalk/tags/PHP/" rel="tag"># PHP</a>
+              <a href="/BucketTalk/tags/MySQL/" rel="tag"># MySQL</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/BucketTalk/post/php-mysql-introduce/" rel="prev" title="PHP-MySQL系列 簡介">
+      <i class="fa fa-chevron-left"></i> PHP-MySQL系列 簡介
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/BucketTalk/post/php-mysql-form2/" rel="next" title="PHP-MySQL系列 Form表單(二)">
+      PHP-MySQL系列 Form表單(二) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+        </div>
+        
+    
+      <div class="comments" id="comments">
+          <script src="https://utteranc.es/client.js"
+            repo="jam68ty/Comment"
+            issue-term="pathname"
+            label="Comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+          </script>
+      </div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chia Chen</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/BucketTalk/lib/anime.min.js"></script>
+
+<script src="/BucketTalk/js/utils.js"></script>
+
+<script src="/BucketTalk/js/motion.js"></script>
+
+
+<script src="/BucketTalk/js/next-boot.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

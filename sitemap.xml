@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jam68ty.github.io/BucketTalk/post/opencv-data-agumentation/</loc>
+    
+    <lastmod>2020-11-06T17:47:45.024Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/django-customize/</loc>
     
     <lastmod>2020-11-06T17:38:27.871Z</lastmod>
@@ -110,13 +117,6 @@
     <loc>https://jam68ty.github.io/BucketTalk/post/opencv-image-cropped/</loc>
     
     <lastmod>2020-08-17T15:20:51.698Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jam68ty.github.io/BucketTalk/post/opencv-data-argumentation/</loc>
-    
-    <lastmod>2020-08-17T15:20:51.691Z</lastmod>
     
   </url>
   

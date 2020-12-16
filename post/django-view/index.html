@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.2.0">
   <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
   <meta http-equiv="Cache-Control" content="no-transform">
   <meta http-equiv="Cache-Control" content="no-siteapp">
@@ -21,7 +21,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
   </script>
 
   <meta name="description" content="Django是一種基於Python開發網頁的架構這篇文章主要就是針對MVC中的V做修改 還記得第一次用到MVC架構是在寫Android Studio時當時只學了一學期Python、一學期Java甚至還對寫程式有莫名的恐懼與厭惡那個時候的我還沒有感受到架構的好現在才體會到、想學各種架構卻發現時間不夠用啊!">
@@ -126,7 +126,11 @@
   </style>
 </noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -212,7 +216,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#建立Views"><span class="nav-number">1.</span> <span class="nav-text">建立Views</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8BViews"><span class="nav-number">1.</span> <span class="nav-text">建立Views</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -228,7 +232,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/BucketTalk/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -241,7 +245,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/BucketTalk/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -338,7 +342,6 @@
         <p>Django是一種基於Python開發網頁的架構<br>這篇文章主要就是針對MVC中的V做修改</p>
 <p>還記得第一次用到MVC架構是在寫Android Studio時<br>當時只學了一學期Python、一學期Java<br>甚至還對寫程式有莫名的恐懼與厭惡<br>那個時候的我還沒有感受到架構的好<br>現在才體會到、想學各種架構<br>卻發現時間不夠用啊!</p>
 <a id="more"></a>
-
 <h1 id="建立Views"><a href="#建立Views" class="headerlink" title="建立Views"></a>建立Views</h1><ol>
 <li><p>在<code>polls/views.py</code>裡面設定函數<br><img src="https://i.imgur.com/kblIF79.png" alt=""></p>
 </li>
@@ -349,17 +352,17 @@
 <p><span class="exturl" data-url="aHR0cDovLzEyNy4wLjAuMTo4MDAwL3BvbGxzLzUv">http://127.0.0.1:8000/polls/5/<i class="fa fa-external-link-alt"></i></span><br><img src="https://i.imgur.com/7Vw0u5L.png" alt=""></p>
 <p><span class="exturl" data-url="aHR0cDovLzEyNy4wLjAuMTo4MDAwL3BvbGxzLzUvcmVzdWx0cy8=">http://127.0.0.1:8000/polls/5/results/<i class="fa fa-external-link-alt"></i></span><br><img src="https://i.imgur.com/ZCmlzEI.png" alt=""></p>
 <p><span class="exturl" data-url="aHR0cDovLzEyNy4wLjAuMTo4MDAwL3BvbGxzLzUvdm90ZS8=">http://127.0.0.1:8000/polls/5/vote/<i class="fa fa-external-link-alt"></i></span><br><img src="https://i.imgur.com/qesYc8m.png" alt=""></p>
-<ol start="3">
+<ol>
 <li>在polls下建立一個名為templates的資料夾，接著在建立一個名為polls的資料夾，最後在裡面新增一個名為<code>index.html</code>的檔案。以及修改view.py讓index這個函數能夠呼叫我們所創的tmplate頁面<br><img src="https://i.imgur.com/uaEhEVZ.png" alt=""></li>
 </ol>
 <blockquote>
 <p>這邊也要記得import loader、models等，這邊是根據發布日期顯示我們在Django中內建的資料庫中的前五個Question<br><img src="https://i.imgur.com/PjSppMz.png" alt=""></p>
 </blockquote>
 <p>最後顯示出來的畫面：<br><img src="https://i.imgur.com/VBFTDkq.png" alt=""></p>
-<ol start="4">
+<ol>
 <li>(較佳)或者我們可以將函數中的HttpResponse用render()取代，直接get template中的html<br><img src="https://i.imgur.com/KT6uE6T.png" alt=""></li>
 </ol>
-<ol start="5">
+<ol>
 <li><p>處理404 Error的畫面，使用到raise的觀念，如果網址中輸入的Question並不存在，就raise Http404這個畫面(記得import Http404)，當然也可以使用自己設計404的頁面，但是就要另外做一些設定(<span class="exturl" data-url="aHR0cHM6Ly9oYXRlbWVnYWxheHkuYmxvZ3Nwb3QuY29tLzIwMTcvMDUvZGphbmdvLWVycm9yLTQwNC1kamFuZ28tY3VzdG9taXplZC5odG0=">點我<i class="fa fa-external-link-alt"></i></span><br>另外記得新增<code>detail.html</code>，裡面可以先放&#123;&#123; question &#125;&#125;，就可以先runserver跑看看有沒有成功了<br><img src="https://i.imgur.com/KDxRTYC.png" alt=""><br>404的頁面<br><img src="https://i.imgur.com/gncmdlx.png" alt=""></p>
 </li>
 <li><p>或者是使用<code>get_object_or_404</code>來處理404的畫面<br><img src="https://i.imgur.com/ISJ23CO.png" alt=""><br>與使用ObjectDoesNotExist的方法出來的結果頁面稍微不同<br><img src="https://i.imgur.com/zKXGyU7.png" alt=""></p>
@@ -367,14 +370,12 @@
 <li><p>修改<code>detail.py</code>，方法調用發生在&#123;% for %&#125;迴圈中<br><img src="https://i.imgur.com/oDSKAkg.png" alt=""><br><img src="https://i.imgur.com/Qh7gUYh.png" alt=""></p>
 </li>
 </ol>
-<ol start="8">
-<li>原本在<code>index.html</code>裡，我們為Question的連結網址做了下面這樣的設定<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/polls/&#123;&#123; question.id &#125;&#125;/"</span>&gt;</span>&#123;&#123; question.question_text &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>原本在<code>index.html</code>裡，我們為Question的連結網址做了下面這樣的設定<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/polls/&#123;&#123; question.id &#125;&#125;/&quot;</span>&gt;</span>&#123;&#123; question.question_text &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
 可以在url.py中看到我們為detail這個設的是<code>&lt;int:question_id&gt;</code><br><img src="https://i.imgur.com/fvZtl7M.png" alt=""></li>
 </ol>
-<p>但是如果今天我們的網址名稱不想用polls或是想在polls後再新增一個路徑<br>如：<code>polls/specifics/5</code>，此時我們就需在html裡面進行更動，當內容一多起來操作就會變得困難，因此我們將<code>index.html</code>以及<code>urls.py</code><br>成下面這樣</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'detail' question.id %&#125;"</span>&gt;</span>&#123;&#123; question.question_text &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/lOXH4YX.png" alt=""><br><img src="https://i.imgur.com/0D3JKMZ.png" alt=""></p>
-<ol start="9">
+<p>但是如果今天我們的網址名稱不想用polls或是想在polls後再新增一個路徑<br>如：<code>polls/specifics/5</code>，此時我們就需在html裡面進行更動，當內容一多起來操作就會變得困難，因此我們將<code>index.html</code>以及<code>urls.py</code><br>成下面這樣<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&#123;% url &#x27;detail&#x27; question.id %&#125;&quot;</span>&gt;</span>&#123;&#123; question.question_text &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure><br><img src="https://i.imgur.com/lOXH4YX.png" alt=""><br><img src="https://i.imgur.com/0D3JKMZ.png" alt=""></p>
+<ol>
 <li>但是由於一個Django專案裡可能會有很多個APP，此時url就會變得模糊<br>因此我們為polls進行命名，在<code>polls/urls.py</code>新增一個APP_NAME<br><img src="https://i.imgur.com/jO0O9Ux.png" alt=""><br>同時<code>index.html</code>也要記得加上url的名稱<br><img src="https://i.imgur.com/UOzUO5v.png" alt=""></li>
 </ol>
 
@@ -508,6 +509,8 @@
 
 
 
+
+  
 
   
 

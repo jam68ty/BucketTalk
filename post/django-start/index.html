@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.2.0">
   <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
   <meta http-equiv="Cache-Control" content="no-transform">
   <meta http-equiv="Cache-Control" content="no-siteapp">
@@ -21,7 +21,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
   </script>
 
   <meta name="description" content="大學時曾經學過Django，架在了AWS上但是當時年輕不懂事，沒有好好地聽老師上課結果過了幾年，又需要用到，只得自己研究這份筆記是研究所在寫資料庫的課堂作業時根據Django的官方教學文件做出的筆記">
@@ -108,7 +108,11 @@
   </style>
 </noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -194,7 +198,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#建立專案"><span class="nav-number">1.</span> <span class="nav-text">建立專案</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88"><span class="nav-number">1.</span> <span class="nav-text">建立專案</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -210,7 +214,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/BucketTalk/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -223,7 +227,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/BucketTalk/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -319,16 +323,14 @@
       
         <p>大學時曾經學過Django，架在了AWS上<br>但是當時年輕不懂事，沒有好好地聽老師上課<br>結果過了幾年，又需要用到，只得自己研究<br>這份筆記是研究所在寫資料庫的課堂作業時<br>根據Django的官方教學文件做出的筆記</p>
 <a id="more"></a>
-
 <h1 id="建立專案"><a href="#建立專案" class="headerlink" title="建立專案"></a>建立專案</h1><ol>
-<li><p>確認django版本</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python -m django --version</span><br></pre></td></tr></table></figure></li>
+<li>確認django版本<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python -m django --version</span><br></pre></td></tr></table></figure></li>
 <li><p>建立專案</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ django-admin startproject mysite</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>建立出來的檔案結構<br>–mysite/<br>—-manage.py<br>——mysite/<br>———<strong>init</strong>.py<br>———settings.py<br>———urls.py<br>———wsgi.py</p>
+<p>建立出來的檔案結構<br>—mysite/<br>——manage.py<br>———mysite/<br>————-<strong>init</strong>.py<br>————-settings.py<br>————-urls.py<br>————-wsgi.py</p>
 </blockquote>
-<p> • 外部的 mysite/ 隨時能更改命名<br> • manage.py 創建了DJANGO_SETTINGS_MODULE 的環境,<br> 功能就跟django-admin一樣，可以用來與專案互動<br> • 內部的 mysite/ 是Django真正的Python package，名字很重要<br> • <em>init</em>.py 告訴Python這個目錄應該被視為Package<br> • settings.py 專案的設置<br> • urls.py Django的目錄，告訴他該對應哪個URL<br> • wsgi.py 提供服務的入口</p>
+<p> • 外部的 mysite/ 隨時能更改命名<br> • manage.py 創建了DJANGO<em>SETTINGS_MODULE 的環境,<br> 功能就跟django-admin一樣，可以用來與專案互動<br> • 內部的 mysite/ 是Django真正的Python package，名字很重要<br> • _init</em>.py 告訴Python這個目錄應該被視為Package<br> • settings.py 專案的設置<br> • urls.py Django的目錄，告訴他該對應哪個URL<br> • wsgi.py 提供服務的入口</p>
 </li>
 <li><p>實際執行(記得進入路徑)</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py runserver</span><br></pre></td></tr></table></figure>
@@ -336,19 +338,17 @@
 </li>
 </ol>
 <p><img src="https://i.imgur.com/ol0xzHf.png" alt=""></p>
-<ol start="4">
+<ol>
 <li>新增一個APP<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py startapp polls</span><br></pre></td></tr></table></figure></li>
 <li>在<code>polls/views.py</code>中加入Response的內容<br><img src="https://i.imgur.com/Uf6wYOU.png" alt=""></li>
 </ol>
-<ol start="6">
+<ol>
 <li><p>在<code>polls/</code>路徑下新增一個<code>urls.py</code>，並加上路徑<br><img src="https://i.imgur.com/s8AU1IL.png" alt=""></p>
 </li>
-<li><p>在<code>mysite/urls.py</code>中include進<code>polls/urls.py</code></p>
+<li><p>在<code>mysite/urls.py</code>中include進<code>polls/urls.py</code><br><strong>記得也要import include</strong><br><img src="https://i.imgur.com/dOVo4x4.png" alt=""></p>
 </li>
-</ol>
-<p><strong>記得也要import include</strong><br><img src="https://i.imgur.com/dOVo4x4.png" alt=""></p>
-<ol start="8">
-<li>Runserver<br><img src="https://i.imgur.com/t3PbCx9.png" alt=""></li>
+<li><p>Runserver<br><img src="https://i.imgur.com/t3PbCx9.png" alt=""></p>
+</li>
 </ol>
 
     </div>
@@ -479,6 +479,8 @@
 
 
 
+
+  
 
   
 

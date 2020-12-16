@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta name="google-site-verification" content="RwN5OOI1f7pbAaVUsMbKZsYo1v6ATxMWQVDkZ-1bt0Y" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/BucketTalk/css/main.css">
+
+
+<link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
+  
+  <link rel="stylesheet" href="/BucketTalk/lib/animate-css/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.min.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+  </script>
+
+  <meta name="description" content="在PHP+MySQL中除了需要熟悉PHP和MySQL個別的語法以外我認為關於GET與POST的運用也很重要因此接續上篇新增資料庫與資料表後要學習的是SELECT &amp; DELETE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP-MySQL系列 資料庫練習-SELECT &amp; DELETE">
+<meta property="og:url" content="https://jam68ty.github.io/BucketTalk/post/php-mysql-db2/index.html">
+<meta property="og:site_name" content="BucketTalk">
+<meta property="og:description" content="在PHP+MySQL中除了需要熟悉PHP和MySQL個別的語法以外我認為關於GET與POST的運用也很重要因此接續上篇新增資料庫與資料表後要學習的是SELECT &amp; DELETE">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/I6cXCcS.png">
+<meta property="og:image" content="https://i.imgur.com/CufKKtY.png">
+<meta property="og:image" content="https://i.imgur.com/adTLSwL.png">
+<meta property="og:image" content="https://i.imgur.com/m29NE5M.png">
+<meta property="article:published_time" content="2020-12-16T09:02:22.000Z">
+<meta property="article:modified_time" content="2020-12-16T09:07:08.656Z">
+<meta property="article:author" content="Chia Chen">
+<meta property="article:tag" content="PHP">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Select">
+<meta property="article:tag" content="Delete">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/I6cXCcS.png">
+
+<link rel="canonical" href="https://jam68ty.github.io/BucketTalk/post/php-mysql-db2/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>PHP-MySQL系列 資料庫練習-SELECT & DELETE | BucketTalk</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-174207718-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <main class="main">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/BucketTalk/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BucketTalk</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">return null</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-about">
+
+    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/BucketTalk/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SELECT"><span class="nav-number">1.</span> <span class="nav-text">SELECT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DELETE"><span class="nav-number">2.</span> <span class="nav-text">DELETE</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chia Chen"
+      src="/BucketTalk/image/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Chia Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/BucketTalk/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/BucketTalk/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/BucketTalk/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </header>
+
+      
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+      <div class="main-inner">
+        
+
+        <div class="content post posts-expand">
+          
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/php-mysql-db2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="name" content="Chia Chen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BucketTalk">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PHP-MySQL系列 資料庫練習-SELECT & DELETE
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-12-16 17:02:22 / 修改時間：17:07:08" itemprop="dateCreated datePublished" datetime="2020-12-16T17:02:22+08:00">2020-12-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/BucketTalk/categories/PHP-MySQL%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">PHP-MySQL系列</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在PHP+MySQL中<br>除了需要熟悉PHP和MySQL個別的語法以外<br>我認為關於GET與POST的運用也很重要<br>因此接續上篇新增資料庫與資料表後要學習的是SELECT &amp; DELETE</p>
+<a id="more"></a>
+<p>資料庫活用=&gt;把在資料庫裡的東西都列出來<br>會用到<code>mysqli_num_rows()</code>與<code>mysqli_fetch_assoc()</code><br>在stackoverlow中有人整理了幾個很詳細的用法：<span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMTg1Nzc3NzQvZGlmZmVyZW5jZXMtaW4tbXlzcWxpLWZldGNoLWZ1bmN0aW9ucw==">https://stackoverflow.com/questions/18577774/differences-in-mysqli-fetch-functions<i class="fa fa-external-link-alt"></i></span></p>
+<h1 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h1><ol>
+<li>新增一個<code>list.php</code><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">    <span class="variable">$conn</span>=<span class="keyword">require_once</span>(<span class="string">&#x27;config.php&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">        <span class="variable">$sql</span>=<span class="string">&quot;SELECT * FROM tb3&quot;</span>;</span><br><span class="line">        <span class="variable">$result</span> = mysqli_query(<span class="variable">$conn</span>,<span class="variable">$sql</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (mysqli_num_rows(<span class="variable">$result</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// output data of each row</span></span><br><span class="line">            <span class="keyword">while</span>(<span class="variable">$row</span> = mysqli_fetch_assoc(<span class="variable">$result</span>)) &#123;</span><br><span class="line">                </span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;col1: &quot;</span> . <span class="variable">$row</span>[<span class="string">&quot;tb3_col1&quot;</span>]. <span class="string">&quot; - col2: &quot;</span> . <span class="variable">$row</span>[<span class="string">&quot;tb3_col2&quot;</span>] . <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">    mysqli_close(<span class="variable">$conn</span>); <span class="comment">//最後記得把和資料庫的連線關起來</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;Null&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+且另外在db-tb3裡新增一些資料<br><img src="https://i.imgur.com/I6cXCcS.png" alt=""><br>最後傳回這些<br><img src="https://i.imgur.com/CufKKtY.png" alt=""></li>
+</ol>
+<p>或是我們可以用表格的形式來展現</p>
+<blockquote>
+<p><em>php標籤是可以混著html使用的</em></p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;table border=<span class="string">&quot;1&quot;</span>&gt;</span><br><span class="line">        &lt;thead&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td&gt;col1&lt;/td&gt;</span><br><span class="line">                &lt;td&gt;col2&lt;/td&gt;</span><br><span class="line">            &lt;/tr&gt;</span><br><span class="line">        &lt;/thead&gt;</span><br><span class="line">        &lt;tbody&gt;</span><br><span class="line">        <span class="meta">&lt;?php</span></span><br><span class="line">            <span class="variable">$conn</span>=<span class="keyword">require_once</span>(<span class="string">&#x27;config.php&#x27;</span>);</span><br><span class="line">            <span class="variable">$sql</span>=<span class="string">&quot;SELECT * FROM tb3&quot;</span>;</span><br><span class="line">            <span class="variable">$result</span> = mysqli_query(<span class="variable">$conn</span>,<span class="variable">$sql</span>);</span><br><span class="line">            <span class="keyword">if</span> (mysqli_num_rows(<span class="variable">$result</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span>(<span class="variable">$row</span> = mysqli_fetch_assoc(<span class="variable">$result</span>)) &#123;</span><br><span class="line">            <span class="meta">?&gt;</span></span><br><span class="line">                &lt;tr&gt;</span><br><span class="line">                    &lt;td&gt;<span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="variable">$row</span>[<span class="string">&#x27;tb3_col1&#x27;</span>]<span class="meta">?&gt;</span>&lt;/td&gt;</span><br><span class="line">                    &lt;td&gt;<span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="variable">$row</span>[<span class="string">&#x27;tb3_col2&#x27;</span>]<span class="meta">?&gt;</span>&lt;/td&gt;</span><br><span class="line">                &lt;/tr&gt;</span><br><span class="line">            <span class="meta">&lt;?php</span></span><br><span class="line">            &#125;</span><br><span class="line">                mysqli_close(<span class="variable">$conn</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;<span class="meta">?&gt;</span></span><br><span class="line">                &lt;tr&gt;</span><br><span class="line">                    &lt;td colspan=<span class="string">&quot;2&quot;</span>&gt;<span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="string">&quot;null&quot;</span> <span class="meta">?&gt;</span>&lt;/td&gt;</span><br><span class="line">                    </span><br><span class="line">                &lt;/tr&gt;</span><br><span class="line">            <span class="meta">&lt;?php</span></span><br><span class="line">                 &#125;</span><br><span class="line">            <span class="meta">?&gt;</span></span><br><span class="line">            &lt;/tbody&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/adTLSwL.png" alt=""></p>
+<p>另外如果要同時放兩個(無表格版與表格版)<br>記得前面先別關mysqli<br><img src="https://i.imgur.com/m29NE5M.png" alt=""></p>
+<h1 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h1><p>在table裡面新增一個欄位叫做delete，該欄位中回傳id(unique)，並且透過表單的方式進行刪除。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">    <span class="variable">$conn</span>=<span class="keyword">require_once</span>(<span class="string">&#x27;config.php&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">        <span class="variable">$sql</span>=<span class="string">&quot;SELECT * FROM tb3&quot;</span>;</span><br><span class="line">        <span class="variable">$result</span> = mysqli_query(<span class="variable">$conn</span>,<span class="variable">$sql</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (mysqli_num_rows(<span class="variable">$result</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// output data of each row</span></span><br><span class="line">            <span class="keyword">while</span>(<span class="variable">$row</span> = mysqli_fetch_assoc(<span class="variable">$result</span>)) &#123;</span><br><span class="line">                </span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;col1: &quot;</span> . <span class="variable">$row</span>[<span class="string">&quot;tb3_col1&quot;</span>]. <span class="string">&quot; - col2: &quot;</span> . <span class="variable">$row</span>[<span class="string">&quot;tb3_col2&quot;</span>] . <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">    <span class="comment">//mysqli_close($conn); //最後記得把和資料庫的連線關起來</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;Null&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;table border=<span class="string">&quot;1&quot;</span>&gt;</span><br><span class="line">        &lt;thead&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td&gt;col1&lt;/td&gt;</span><br><span class="line">                &lt;td&gt;col2&lt;/td&gt;</span><br><span class="line">                &lt;td&gt;delete&lt;/td&gt;</span><br><span class="line">            &lt;/tr&gt;</span><br><span class="line">        &lt;/thead&gt;</span><br><span class="line">        &lt;tbody&gt;</span><br><span class="line">        <span class="meta">&lt;?php</span></span><br><span class="line">            <span class="variable">$sql</span>=<span class="string">&quot;SELECT * FROM tb3&quot;</span>;</span><br><span class="line">            <span class="variable">$result</span> = mysqli_query(<span class="variable">$conn</span>,<span class="variable">$sql</span>);</span><br><span class="line">            <span class="keyword">if</span> (mysqli_num_rows(<span class="variable">$result</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span>(<span class="variable">$row</span> = mysqli_fetch_assoc(<span class="variable">$result</span>)) &#123;</span><br><span class="line">            <span class="meta">?&gt;</span></span><br><span class="line">                &lt;tr&gt;</span><br><span class="line">                    &lt;td&gt;<span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="variable">$row</span>[<span class="string">&#x27;tb3_col1&#x27;</span>]<span class="meta">?&gt;</span>&lt;/td&gt;</span><br><span class="line">                    &lt;td&gt;<span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="variable">$row</span>[<span class="string">&#x27;tb3_col2&#x27;</span>]<span class="meta">?&gt;</span>&lt;/td&gt;</span><br><span class="line">                    &lt;td&gt;&lt;form method=<span class="string">&quot;post&quot;</span>&gt;</span><br><span class="line">                        &lt;input type=<span class="string">&quot;hidden&quot;</span> name=<span class="string">&quot;id&quot;</span> value=<span class="string">&quot;&lt;?php echo <span class="subst">$row</span>[&#x27;tb3_col1&#x27;]?&gt;&quot;</span>&gt;</span><br><span class="line">                        &lt;input type=<span class="string">&quot;submit&quot;</span> value=<span class="string">&quot;delete&quot;</span> name=<span class="string">&quot;delete_btn&quot;</span>&gt;</span><br><span class="line">                        &lt;/form&gt;&lt;/td&gt;</span><br><span class="line">                &lt;/tr&gt;</span><br><span class="line">            <span class="meta">&lt;?php</span></span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;<span class="meta">?&gt;</span></span><br><span class="line">                &lt;tr&gt;</span><br><span class="line">                    &lt;td colspan=<span class="string">&quot;3&quot;</span>&gt;<span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="string">&quot;null&quot;</span>; <span class="meta">?&gt;</span>&lt;/td&gt;</span><br><span class="line">                    </span><br><span class="line">                &lt;/tr&gt;</span><br><span class="line">            <span class="meta">&lt;?php</span></span><br><span class="line">                 &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;delete_btn&#x27;</span>]))&#123;</span><br><span class="line">                <span class="variable">$sql2</span>=<span class="string">&quot;DELETE FROM tb3 WHERE tb3.tb3_col1=&#x27;&quot;</span>.<span class="variable">$_POST</span>[<span class="string">&quot;id&quot;</span>].<span class="string">&quot;&#x27;&quot;</span>;</span><br><span class="line">                <span class="keyword">if</span>(mysqli_query(<span class="variable">$conn</span>,<span class="variable">$sql2</span>))&#123;</span><br><span class="line">                    <span class="keyword">echo</span> <span class="string">&quot;delete!&quot;</span>;</span><br><span class="line">                    header(<span class="string">&quot;Refresh:0&quot;</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">echo</span> mysqli_errno(<span class="variable">$conn</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">            mysqli_close(<span class="variable">$conn</span>);</span><br><span class="line">            <span class="meta">?&gt;</span></span><br><span class="line">            &lt;/tbody&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure><br>UPDATE也是同樣的思路，這些都可以寫得更模組化一點</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/BucketTalk/tags/PHP/" rel="tag"># PHP</a>
+              <a href="/BucketTalk/tags/MySQL/" rel="tag"># MySQL</a>
+              <a href="/BucketTalk/tags/Select/" rel="tag"># Select</a>
+              <a href="/BucketTalk/tags/Delete/" rel="tag"># Delete</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/BucketTalk/post/cryptography-security-note2/" rel="prev" title="課堂筆記 資訊安全(II)">
+      <i class="fa fa-chevron-left"></i> 課堂筆記 資訊安全(II)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/BucketTalk/post/php-mysql-login/" rel="next" title="PHP-MySQL系列 登入與註冊系統">
+      PHP-MySQL系列 登入與註冊系統 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+        </div>
+        
+    
+      <div class="comments" id="comments">
+          <script src="https://utteranc.es/client.js"
+            repo="jam68ty/Comment"
+            issue-term="pathname"
+            label="Comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+          </script>
+      </div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chia Chen</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/BucketTalk/lib/anime.min.js"></script>
+
+<script src="/BucketTalk/js/utils.js"></script>
+
+<script src="/BucketTalk/js/motion.js"></script>
+
+
+<script src="/BucketTalk/js/next-boot.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

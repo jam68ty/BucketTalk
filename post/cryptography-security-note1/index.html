@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.2.0">
   <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
   <meta http-equiv="Cache-Control" content="no-transform">
   <meta http-equiv="Cache-Control" content="no-siteapp">
@@ -21,28 +21,30 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
   </script>
 
   <meta name="description" content="這學期修了資訊安全，因為覺得這些東西花了很多時間學習不希望這學期過了之後就忘記了，實在很可惜所以把一些整理與消化過後的筆記記錄下來">
 <meta property="og:type" content="article">
-<meta property="og:title" content="課堂筆記 資訊安全">
+<meta property="og:title" content="課堂筆記 資訊安全(I)">
 <meta property="og:url" content="https://jam68ty.github.io/BucketTalk/post/cryptography-security-note1/index.html">
 <meta property="og:site_name" content="BucketTalk">
 <meta property="og:description" content="這學期修了資訊安全，因為覺得這些東西花了很多時間學習不希望這學期過了之後就忘記了，實在很可惜所以把一些整理與消化過後的筆記記錄下來">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/MjcGF2k.png">
+<meta property="og:image" content="https://i.imgur.com/FwFqkHG.png">
 <meta property="og:image" content="https://i.imgur.com/4rNA5Po.png">
 <meta property="og:image" content="https://i.imgur.com/cOlxj3d.png">
 <meta property="og:image" content="https://i.imgur.com/akhlOMX.png">
 <meta property="article:published_time" content="2020-11-17T10:31:50.000Z">
-<meta property="article:modified_time" content="2020-11-17T11:06:28.406Z">
+<meta property="article:modified_time" content="2020-12-15T12:51:41.736Z">
 <meta property="article:author" content="Chia Chen">
 <meta property="article:tag" content="Cryptography">
 <meta property="article:tag" content="Substitution">
 <meta property="article:tag" content="Transposition">
 <meta property="article:tag" content="DES">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.imgur.com/4rNA5Po.png">
+<meta name="twitter:image" content="https://i.imgur.com/MjcGF2k.png">
 
 <link rel="canonical" href="https://jam68ty.github.io/BucketTalk/post/cryptography-security-note1/">
 
@@ -57,7 +59,7 @@
   };
 </script>
 
-  <title>課堂筆記 資訊安全 | BucketTalk</title>
+  <title>課堂筆記 資訊安全(I) | BucketTalk</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
     <script>
@@ -109,7 +111,11 @@
   </style>
 </noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -195,7 +201,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Security-Service-x-800"><span class="nav-number">1.</span> <span class="nav-text">Security Service(x.800)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#加密的手段"><span class="nav-number">2.</span> <span class="nav-text">加密的手段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#替代-Substitution"><span class="nav-number">2.1.</span> <span class="nav-text">替代(Substitution)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#換位-Transposition"><span class="nav-number">2.2.</span> <span class="nav-text">換位(Transposition)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DES加密"><span class="nav-number">3.</span> <span class="nav-text">DES加密</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DES加密法流程圖："><span class="nav-number">3.1.</span> <span class="nav-text">DES加密法流程圖：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#詳解"><span class="nav-number">3.2.</span> <span class="nav-text">詳解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#群"><span class="nav-number">4.</span> <span class="nav-text">群</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Security-Service-x-800"><span class="nav-number">1.</span> <span class="nav-text">Security Service(x.800)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E7%9A%84%E6%89%8B%E6%AE%B5"><span class="nav-number">2.</span> <span class="nav-text">加密的手段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%BF%E4%BB%A3-Substitution"><span class="nav-number">2.1.</span> <span class="nav-text">替代(Substitution)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%9B%E4%BD%8D-Transposition"><span class="nav-number">2.2.</span> <span class="nav-text">換位(Transposition)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DES%E5%8A%A0%E5%AF%86"><span class="nav-number">3.</span> <span class="nav-text">DES加密</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DES%E5%8A%A0%E5%AF%86%E6%B3%95%E6%B5%81%E7%A8%8B%E5%9C%96%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">DES加密法流程圖：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A9%B3%E8%A7%A3"><span class="nav-number">3.2.</span> <span class="nav-text">詳解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BE%A4"><span class="nav-number">4.</span> <span class="nav-text">群</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -211,7 +217,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/BucketTalk/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -224,7 +230,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/BucketTalk/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -284,7 +290,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          課堂筆記 資訊安全
+          課堂筆記 資訊安全(I)
         </h1>
 
         <div class="post-meta">
@@ -293,10 +299,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2020-11-17 18:31:50 / 修改時間：19:06:28" itemprop="dateCreated datePublished" datetime="2020-11-17T18:31:50+08:00">2020-11-17</time>
+              <time title="創建時間：2020-11-17 18:31:50" itemprop="dateCreated datePublished" datetime="2020-11-17T18:31:50+08:00">2020-11-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-12-15 20:51:41" itemprop="dateModified" datetime="2020-12-15T20:51:41+08:00">2020-12-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -320,7 +332,6 @@
       
         <p>這學期修了資訊安全，因為覺得這些東西花了很多時間學習<br>不希望這學期過了之後就忘記了，實在很可惜<br>所以把一些整理與消化過後的筆記記錄下來</p>
 <a id="more"></a>
-
 <h1 id="Security-Service-x-800"><a href="#Security-Service-x-800" class="headerlink" title="Security Service(x.800)"></a>Security Service(x.800)</h1><ol>
 <li>Authentication(認證性)：確認溝通雙方的身分</li>
 <li>Access Control(存取控制權)：預防未經驗證的存取</li>
@@ -335,28 +346,16 @@
 </ol>
 <h2 id="替代-Substitution"><a href="#替代-Substitution" class="headerlink" title="替代(Substitution)"></a>替代(Substitution)</h2><p>常見的替代(Substitution)加密法：</p>
 <ol>
-<li><p>Caesar Cipher：字母由向右三個字母替代</p>
-</li>
-<li><p>Affine Cipher：字母由向左或向右n個字母替代</p>
-</li>
-<li><p>Monoalphabetic Ciphers：單表加密(只對一個字母做加密)</p>
-</li>
+<li>Caesar Cipher：字母由向右三個字母替代</li>
+<li>Affine Cipher：字母由向左或向右n個字母替代</li>
+<li>Monoalphabetic Ciphers：單表加密(只對一個字母做加密)</li>
 <li><p>Playfair Cipher：<br> (1) 加密：將Key準備成一個5X5的表格(去掉重複的)，剩下未填滿的用剩下的英文字母填滿(I/J放一起)。接著將明文兩兩一組，未能湊齊用垃圾字元補齊。每一組的字母若在同一row，就用右邊的字母替代；在同一column就用下面的字母替代；若都不是則用對角線的字母替代。<br> (2) 解密：與encode不同在於，每一組的字母若在同一row，就用上面的字母替代；在同一column就用左邊的字母替代；若都不是則用對角線的字母替代。</p>
 </li>
-<li><p>Hill Ciphe：<br> (1)加密：</p>
-<pre><code>a. 先建立字典搜索表，A對照0、B對照1….etc
-b. 將明文兩兩一組(因為Key是一組2X2的矩陣)，組成一個2X1的矩陣，如meet me變成![](https://i.imgur.com/MjcGF2k.png)
-c. 將上一步驟獲得的數個2X1矩陣對應字典換成數字
-d. 承上一步驟，將得到的數個2X1矩陣個別與KEY進行矩陣相乘後除以26取餘數
-f. 接著對照回字典，得到加密後的文字</code></pre><p> (2)解密：</p>
-<pre><code>a. 先找到inverse Key
-舉例：
-![](https://i.imgur.com/FwFqkHG.png)
-b. 找到之後按照同樣的步驟對照回去</code></pre></li>
+<li><p>Hill Ciphe：<br>(1)加密：<br> a. 先建立字典搜索表，A對照0、B對照1….etc<br> b. 將明文兩兩一組(因為Key是一組2X2的矩陣)，組成一個2X1的矩陣，如meet me變成<img src="https://i.imgur.com/MjcGF2k.png" alt=""><br> c. 將上一步驟獲得的數個2X1矩陣對應字典換成數字<br> d. 承上一步驟，將得到的數個2X1矩陣個別與KEY進行矩陣相乘後除以26取餘數<br> f. 接著對照回字典，得到加密後的文字<br>(2)解密：<br> a. 先找到inverse Key<br> 舉例：<br> <img src="https://i.imgur.com/FwFqkHG.png" alt=""><br> b. 找到之後按照同樣的步驟對照回去</p>
+</li>
 <li><p>Polyalphabetic Ciphers：多表加密(對多個字母一次做加密)</p>
 </li>
-<li><p>One-Time Pad 一次性密碼</p>
-</li>
+<li>One-Time Pad 一次性密碼</li>
 </ol>
 <h2 id="換位-Transposition"><a href="#換位-Transposition" class="headerlink" title="換位(Transposition)"></a>換位(Transposition)</h2><p>常見的換位(Transposition)加密法：</p>
 <ol>
@@ -384,7 +383,10 @@ b. 找到之後按照同樣的步驟對照回去</code></pre></li>
 <li>單位元素(Identity element): e.a = a.e = a</li>
 <li>反元素(Inverse element): a.a^-1 = e</li>
 </ol>
-<p>另外如果還符合<br>5. 交換性(Communitive): a.b = b.a 稱為阿貝爾群(abelian group)</p>
+<p>另外如果還符合</p>
+<ol>
+<li>交換性(Communitive): a.b = b.a 稱為阿貝爾群(abelian group)</li>
+</ol>
 
     </div>
 
@@ -517,6 +519,8 @@ b. 找到之後按照同樣的步驟對照回去</code></pre></li>
 
 
 
+
+  
 
   
 

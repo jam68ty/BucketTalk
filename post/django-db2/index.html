@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.2.0">
   <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
   <meta http-equiv="Cache-Control" content="no-transform">
   <meta http-equiv="Cache-Control" content="no-siteapp">
@@ -21,7 +21,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
   </script>
 
   <meta name="description" content="這篇文章中會提到使用API Shell的指令對資料庫進行操作這邊的API是Django提供的一種介面讓使用者能夠直接對資料庫進行修改而不會去動到程式碼">
@@ -113,7 +113,11 @@
   </style>
 </noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -199,7 +203,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用API"><span class="nav-number">1.</span> <span class="nav-text">使用API</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8API"><span class="nav-number">1.</span> <span class="nav-text">使用API</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -215,7 +219,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/BucketTalk/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -228,7 +232,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/BucketTalk/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -324,7 +328,6 @@
       
         <p>這篇文章中會提到使用API Shell的指令對資料庫進行操作<br>這邊的API是Django提供的一種介面<br>讓使用者能夠直接對資料庫進行修改而不會去動到程式碼</p>
 <a id="more"></a>
-
 <h1 id="使用API"><a href="#使用API" class="headerlink" title="使用API"></a>使用API</h1><p>(這邊操作都是在Shell中，實際還是需要寫到models裡)</p>
 <ol>
 <li><p>開啟API Shell</p>
@@ -333,16 +336,16 @@
 <li><p>在API Shell裡面進行操作<br><img src="https://i.imgur.com/JGskpSW.png" alt=""></p>
 </li>
 </ol>
-<ol start="3">
+<ol>
 <li>因為Query回傳的資料不具有可讀性，因此在<code>polls/models.py</code>裡重新定義如何回傳資料<br><img src="https://i.imgur.com/nkQCmTn.png" alt=""></li>
 </ol>
 <blockquote>
 <p>SHELL的指令下錯怎麼辦？重新migrate<br>python manage.py makemigrations<br>python manage.py migrate</p>
 </blockquote>
-<ol start="4">
+<ol>
 <li>繼續為資料庫新增、修改資料<br><img src="https://i.imgur.com/Natcafm.png" alt=""><br><img src="https://i.imgur.com/ZYjyKkk.png" alt=""></li>
 </ol>
-<ol start="5">
+<ol>
 <li><p>使用Django的Admin介面</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py createsuperuser</span><br><span class="line"><span class="function">User:<span class="title">admin</span> </span></span><br><span class="line"><span class="function"><span class="title">Password</span>:123456789</span></span><br></pre></td></tr></table></figure>
 <p><img src="https://i.imgur.com/En3Or5D.png" alt=""></p>
@@ -352,10 +355,10 @@
 <p><img src="https://i.imgur.com/po5TsY6.png" alt=""></p>
 </li>
 </ol>
-<ol start="7">
+<ol>
 <li>但是我們的Question、Choice都沒有出現在資料庫裡，所以我們要讓他也能在Admin介面中修改，因此開啟<code>polls/admin.py</code><br><img src="https://i.imgur.com/Ov2BfZG.png" alt=""></li>
 </ol>
-<ol start="8">
+<ol>
 <li>完成後可以看到Question出現在我們的資料庫中(Choice也做一樣的修改就行了)<br><img src="https://i.imgur.com/dHlUzNE.png" alt=""></li>
 </ol>
 
@@ -489,6 +492,8 @@
 
 
 
+
+  
 
   
 

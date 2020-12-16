@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.2.0">
   <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
   <meta http-equiv="Cache-Control" content="no-transform">
   <meta http-equiv="Cache-Control" content="no-siteapp">
@@ -21,7 +21,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
   </script>
 
   <meta name="description" content="在做機器學習時獲得的資料圖片內容常常是很雜亂的訓練的目標可能只是一大張圖裡的一小區塊那此時我們可以進行批次裁切以節省時間">
@@ -105,7 +105,11 @@
   </style>
 </noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -191,7 +195,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#裁切大小"><span class="nav-number">1.</span> <span class="nav-text">裁切大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整程式碼"><span class="nav-number">2.</span> <span class="nav-text">完整程式碼</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%81%E5%88%87%E5%A4%A7%E5%B0%8F"><span class="nav-number">1.</span> <span class="nav-text">裁切大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-number">2.</span> <span class="nav-text">完整程式碼</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -207,7 +211,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/BucketTalk/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -220,7 +224,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/BucketTalk/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -323,9 +327,7 @@
         <p>在做機器學習時獲得的資料圖片內容常常是很雜亂的<br>訓練的目標可能只是一大張圖裡的一小區塊<br>那此時我們可以進行批次裁切以節省時間</p>
 <a id="more"></a>
 <h2 id="裁切大小"><a href="#裁切大小" class="headerlink" title="裁切大小"></a>裁切大小</h2><p>首先我們必須先確認好需要裁切的區域(X,Y軸座標)<br>如裁切目標座標為[0:498, 496:1263]，則裁切的區域為(496,0)與(1263,498)構成的矩形</p>
-<h2 id="完整程式碼"><a href="#完整程式碼" class="headerlink" title="完整程式碼"></a>完整程式碼</h2><p>程式碼中比較需要注意的是影像讀入的方式與前幾篇稍微有些不同</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img_1 &#x3D; cv2.imread(&#39;test.jpg&#39;)  #讀入圖片</span><br><span class="line">img_2 &#x3D; cv2.imdecode(np.fromfile(filepath,dtype&#x3D;np.uint8),cv2.IMREAD_COLOR)</span><br></pre></td></tr></table></figure>
-<p>但實際上都是讀入圖片，imread是從指定路徑讀入圖片，imdecode是從指定的緩存內讀入圖片</p>
+<h2 id="完整程式碼"><a href="#完整程式碼" class="headerlink" title="完整程式碼"></a>完整程式碼</h2><p>程式碼中比較需要注意的是影像讀入的方式與前幾篇稍微有些不同<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img_1 &#x3D; cv2.imread(&#39;test.jpg&#39;)  #讀入圖片</span><br><span class="line">img_2 &#x3D; cv2.imdecode(np.fromfile(filepath,dtype&#x3D;np.uint8),cv2.IMREAD_COLOR)</span><br></pre></td></tr></table></figure><br>但實際上都是讀入圖片，imread是從指定路徑讀入圖片，imdecode是從指定的緩存內讀入圖片</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">from os import walk</span><br><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">mypath &#x3D; &quot;目標資料夾&quot;</span><br><span class="line">file&#x3D;[]</span><br><span class="line"># 遞迴列出所有子目錄與檔案</span><br><span class="line">print(&quot;Processing....&quot;)</span><br><span class="line">for root, dirs, files in walk(mypath):</span><br><span class="line">    for i in range(len(files)):</span><br><span class="line">        filepath&#x3D;root+&quot;&#x2F;&quot;+files[i]</span><br><span class="line">        img &#x3D; cv2.imdecode(np.fromfile(filepath,dtype&#x3D;np.uint8),cv2.IMREAD_COLOR)</span><br><span class="line">        cropped &#x3D; img[0:498, 496:1263]  # 裁剪座標[y0:y1, x0:x1]</span><br><span class="line">        img_file &#x3D; &quot;data&#x2F;&quot;+root.split(&#39;&#x2F;&#39;)[1]+&#39;&#x2F;&#39;</span><br><span class="line">        if not os.path.exists(img_file):</span><br><span class="line">            os.mkdir(img_file)</span><br><span class="line">        cv2.imencode(&#39;.bmp&#39;, cropped)[1].tofile(img_file+files[i])</span><br><span class="line">print(&quot;Done.&quot;)</span><br></pre></td></tr></table></figure>
     </div>
 
@@ -458,6 +460,8 @@
 
 
 
+
+  
 
   
 

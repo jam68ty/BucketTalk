@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta name="google-site-verification" content="RwN5OOI1f7pbAaVUsMbKZsYo1v6ATxMWQVDkZ-1bt0Y" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/BucketTalk/css/main.css">
+
+
+<link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
+  
+  <link rel="stylesheet" href="/BucketTalk/lib/animate-css/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.min.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+  </script>
+
+  <meta name="description" content="在製作登入與註冊系統前必須先理解Cookie與Session的概念簡單來說，Cookie是本地端紀錄你的登入狀況Session則是伺服器端紀錄你的登入狀況推薦一篇淺顯易懂的文章給大家：白話 Session 與 Cookie：從經營雜貨店開始">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP-MySQL系列 登入與註冊系統">
+<meta property="og:url" content="https://jam68ty.github.io/BucketTalk/post/php-mysql-login/index.html">
+<meta property="og:site_name" content="BucketTalk">
+<meta property="og:description" content="在製作登入與註冊系統前必須先理解Cookie與Session的概念簡單來說，Cookie是本地端紀錄你的登入狀況Session則是伺服器端紀錄你的登入狀況推薦一篇淺顯易懂的文章給大家：白話 Session 與 Cookie：從經營雜貨店開始">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/4RG23UN.png">
+<meta property="og:image" content="https://i.imgur.com/4JsNGvf.png">
+<meta property="og:image" content="https://i.imgur.com/OYmgxmY.png">
+<meta property="og:image" content="https://i.imgur.com/1oZDKb4.png">
+<meta property="og:image" content="https://i.imgur.com/1ILtW8n.png">
+<meta property="article:published_time" content="2020-12-16T09:07:22.000Z">
+<meta property="article:modified_time" content="2020-12-16T09:32:00.403Z">
+<meta property="article:author" content="Chia Chen">
+<meta property="article:tag" content="PHP">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Login">
+<meta property="article:tag" content="Register">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/4RG23UN.png">
+
+<link rel="canonical" href="https://jam68ty.github.io/BucketTalk/post/php-mysql-login/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>PHP-MySQL系列 登入與註冊系統 | BucketTalk</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-174207718-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <main class="main">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/BucketTalk/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BucketTalk</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">return null</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-about">
+
+    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/BucketTalk/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E6%89%80%E9%9C%80%E7%9A%84%E9%A0%81%E9%9D%A2"><span class="nav-number">1.</span> <span class="nav-text">建立所需的頁面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%A3%E7%B7%9A%E8%B3%87%E6%96%99%E5%BA%AB"><span class="nav-number">2.</span> <span class="nav-text">連線資料庫</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#index-php-%E7%99%BB%E5%85%A5%E9%A0%81%E9%9D%A2-%E8%88%87register-html"><span class="nav-number">3.</span> <span class="nav-text">index.php(登入頁面)與register.html</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#login-php%E8%88%87logout-php"><span class="nav-number">4.</span> <span class="nav-text">login.php與logout.php</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#welcome-php"><span class="nav-number">5.</span> <span class="nav-text">welcome.php</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%88%E6%9E%9C"><span class="nav-number">6.</span> <span class="nav-text">效果</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chia Chen"
+      src="/BucketTalk/image/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Chia Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/BucketTalk/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/BucketTalk/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/BucketTalk/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </header>
+
+      
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+      <div class="main-inner">
+        
+
+        <div class="content post posts-expand">
+          
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/php-mysql-login/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="name" content="Chia Chen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BucketTalk">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PHP-MySQL系列 登入與註冊系統
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-12-16 17:07:22 / 修改時間：17:32:00" itemprop="dateCreated datePublished" datetime="2020-12-16T17:07:22+08:00">2020-12-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/BucketTalk/categories/PHP-MySQL%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">PHP-MySQL系列</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在製作登入與註冊系統前<br>必須先理解Cookie與Session的概念<br>簡單來說，<br>Cookie是本地端紀錄你的登入狀況<br>Session則是伺服器端紀錄你的登入狀況<br>推薦一篇淺顯易懂的文章給大家：<span class="exturl" data-url="aHR0cHM6Ly9odWxpdHcubWVkaXVtLmNvbS9zZXNzaW9uLWFuZC1jb29raWUtMTVlNDdlZDgzOGJj">白話 Session 與 Cookie：從經營雜貨店開始<i class="fa fa-external-link-alt"></i></span><br><a id="more"></a></p>
+<h1 id="建立所需的頁面"><a href="#建立所需的頁面" class="headerlink" title="建立所需的頁面"></a>建立所需的頁面</h1><p><img src="https://i.imgur.com/4RG23UN.png" alt=""></p>
+<p>其中包含了</p>
+<ul>
+<li>config.php：連線資料庫的基本檔案</li>
+<li>index.php：預設的首頁(登入頁面)</li>
+<li>login.php：處理登入</li>
+<li>logout.php：處理登出</li>
+<li>register.php：處理註冊</li>
+<li>register.html：註冊頁面</li>
+<li>welcome.php：登入成功後出現的頁面(裡面包含一個登出的連結)</li>
+</ul>
+<h1 id="連線資料庫"><a href="#連線資料庫" class="headerlink" title="連線資料庫"></a>連線資料庫</h1><p><code>config.php</code>是與資料庫有關的設定檔<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/* Database credentials. Assuming you are running MySQL</span></span><br><span class="line"><span class="comment">server with default setting (user &#x27;root&#x27; with no password) */</span></span><br><span class="line"><span class="comment">/*define() 函數定義一個常量。</span></span><br><span class="line"><span class="comment">在設定以後，常量的值無法更改</span></span><br><span class="line"><span class="comment">常量名不需要開頭的美元符號 ($)</span></span><br><span class="line"><span class="comment">作用域不影響對常量的訪問</span></span><br><span class="line"><span class="comment">常量值只能是字符串或數字*/</span></span><br><span class="line">define(<span class="string">&#x27;DB_SERVER&#x27;</span>, <span class="string">&#x27;localhost&#x27;</span>);</span><br><span class="line">define(<span class="string">&#x27;DB_USERNAME&#x27;</span>, <span class="string">&#x27;root&#x27;</span>);</span><br><span class="line">define(<span class="string">&#x27;DB_PASSWORD&#x27;</span>, <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">define(<span class="string">&#x27;DB_NAME&#x27;</span>, <span class="string">&#x27;test&#x27;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">/* Attempt to connect to MySQL database */</span></span><br><span class="line"><span class="variable">$link</span> = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);</span><br><span class="line"><span class="comment">// 輸入中文也OK的編碼</span></span><br><span class="line">mysqli_query(<span class="variable">$link</span>, <span class="string">&#x27;SET NAMES utf8&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Check connection</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$link</span> === <span class="literal">false</span>)&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;ERROR: Could not connect. &quot;</span> . mysqli_connect_error());</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$link</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="index-php-登入頁面-與register-html"><a href="#index-php-登入頁面-與register-html" class="headerlink" title="index.php(登入頁面)與register.html"></a>index.php(登入頁面)與register.html</h1><p><code>index.php</code>的程式碼中包含了SESSION的確認、登入的表單</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// Initialize the session</span></span><br><span class="line">session_start();</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Check if the user is already logged in, if yes then redirect him to welcome page</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_SESSION</span>[<span class="string">&quot;loggedin&quot;</span>]) &amp;&amp; <span class="variable">$_SESSION</span>[<span class="string">&quot;loggedin&quot;</span>] === <span class="literal">true</span>)&#123;</span><br><span class="line">    header(<span class="string">&quot;location: welcome.php&quot;</span>);</span><br><span class="line">    <span class="keyword">exit</span>;  <span class="comment">//記得要跳出來，不然會重複轉址過多次</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">&quot;Content-Type&quot;</span> content=<span class="string">&quot;text/html; charset=utf-8&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;登入介面&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;Log In&lt;/h1&gt;</span><br><span class="line">    &lt;h2&gt;你可以選擇登入或是註冊帳號~&lt;/h2&gt;</span><br><span class="line">&lt;form method=<span class="string">&quot;post&quot;</span> action=<span class="string">&quot;login.php&quot;</span>&gt;</span><br><span class="line">帳號：</span><br><span class="line">&lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;username&quot;</span>&gt;&lt;br/&gt;&lt;br/&gt;</span><br><span class="line">密碼：</span><br><span class="line">&lt;input type=<span class="string">&quot;password&quot;</span> name=<span class="string">&quot;password&quot;</span>&gt;&lt;br&gt;&lt;br&gt;</span><br><span class="line">&lt;input type=<span class="string">&quot;submit&quot;</span> value=<span class="string">&quot;登入&quot;</span> name=<span class="string">&quot;submit&quot;</span>&gt;&lt;br&gt;&lt;br&gt;</span><br><span class="line">&lt;a href=<span class="string">&quot;register.html&quot;</span>&gt;還沒有帳號？現在就註冊！&lt;/a&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><code>register.html</code>包含了簡單的檢核機制、註冊的表單(也可以把register.html&amp;register.php寫在一起)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html; charset=utf-8&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>會員註冊<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">        </span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">validateForm</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> x = <span class="built_in">document</span>.forms[<span class="string">&quot;registerForm&quot;</span>][<span class="string">&quot;password&quot;</span>].value;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> y = <span class="built_in">document</span>.forms[<span class="string">&quot;registerForm&quot;</span>][<span class="string">&quot;password_check&quot;</span>].value;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span>(x.length&lt;<span class="number">6</span>)&#123;</span></span><br><span class="line"><span class="javascript">                alert(<span class="string">&quot;密碼長度不足&quot;</span>);</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">            &#125;</span><br><span class="line"><span class="javascript">            <span class="keyword">if</span> (x != y) &#123;</span></span><br><span class="line"><span class="javascript">                alert(<span class="string">&quot;請確認密碼是否輸入正確&quot;</span>);</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>註冊頁面<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">&quot;registerForm&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span> <span class="attr">action</span>=<span class="string">&quot;register.php&quot;</span> <span class="attr">onsubmit</span>=<span class="string">&quot;return validateForm()&quot;</span>&gt;</span></span><br><span class="line">帳  號：</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">密  碼：</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">id</span>=<span class="string">&quot;password&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">確認密碼：</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password_check&quot;</span> <span class="attr">id</span>=<span class="string">&quot;password_check&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;註冊&quot;</span> <span class="attr">name</span>=<span class="string">&quot;submit&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;reset&quot;</span> <span class="attr">value</span>=<span class="string">&quot;重設&quot;</span> <span class="attr">name</span>=<span class="string">&quot;submit&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="login-php與logout-php"><a href="#login-php與logout-php" class="headerlink" title="login.php與logout.php"></a>login.php與logout.php</h1><p><code>login.php</code>負責處理登入的動作<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// Include config file</span></span><br><span class="line"><span class="variable">$conn</span>=<span class="keyword">require_once</span> <span class="string">&quot;config.php&quot;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Define variables and initialize with empty values</span></span><br><span class="line"><span class="variable">$username</span>=<span class="variable">$_POST</span>[<span class="string">&quot;username&quot;</span>];</span><br><span class="line"><span class="variable">$password</span>=<span class="variable">$_POST</span>[<span class="string">&quot;password&quot;</span>];</span><br><span class="line"><span class="comment">//增加hash可以提高安全性</span></span><br><span class="line"><span class="variable">$password_hash</span>=password_hash(<span class="variable">$password</span>,PASSWORD_DEFAULT);</span><br><span class="line"><span class="comment">// Processing form data when form is submitted</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_SERVER</span>[<span class="string">&quot;REQUEST_METHOD&quot;</span>] == <span class="string">&quot;POST&quot;</span>)&#123;</span><br><span class="line">    <span class="variable">$sql</span> = <span class="string">&quot;SELECT * FROM users WHERE username =&#x27;&quot;</span>.<span class="variable">$username</span>.<span class="string">&quot;&#x27;&quot;</span>;</span><br><span class="line">    <span class="variable">$result</span>=mysqli_query(<span class="variable">$conn</span>,<span class="variable">$sql</span>);</span><br><span class="line">    <span class="keyword">if</span>(mysqli_num_rows(<span class="variable">$result</span>)==<span class="number">1</span> &amp;&amp; <span class="variable">$password</span>==mysqli_fetch_assoc(<span class="variable">$result</span>)[<span class="string">&quot;password&quot;</span>])&#123;</span><br><span class="line">        session_start();</span><br><span class="line">        <span class="comment">// Store data in session variables</span></span><br><span class="line">        <span class="variable">$_SESSION</span>[<span class="string">&quot;loggedin&quot;</span>] = <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">//這些是之後可以用到的變數</span></span><br><span class="line">        <span class="variable">$_SESSION</span>[<span class="string">&quot;id&quot;</span>] = mysqli_fetch_assoc(<span class="variable">$result</span>)[<span class="string">&quot;id&quot;</span>];</span><br><span class="line">        <span class="variable">$_SESSION</span>[<span class="string">&quot;username&quot;</span>] = mysqli_fetch_assoc(<span class="variable">$result</span>)[<span class="string">&quot;username&quot;</span>];</span><br><span class="line">        header(<span class="string">&quot;location:welcome.php&quot;</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            function_alert(<span class="string">&quot;帳號或密碼錯誤&quot;</span>); </span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        function_alert(<span class="string">&quot;Something wrong&quot;</span>); </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Close connection</span></span><br><span class="line">    mysqli_close(<span class="variable">$link</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">function_alert</span>(<span class="params"><span class="variable">$message</span></span>) </span>&#123; </span><br><span class="line">      </span><br><span class="line">    <span class="comment">// Display the alert box  </span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;&lt;script&gt;alert(&#x27;<span class="subst">$message</span>&#x27;);</span></span><br><span class="line"><span class="string">     window.location.href=&#x27;index.php&#x27;;</span></span><br><span class="line"><span class="string">    &lt;/script&gt;&quot;</span>; </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125; </span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><code>logout.php</code>(必要！瀏覽器會記錄登入過的使用者，除非你去清除cookie)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">session_start(); </span><br><span class="line"><span class="variable">$_SESSION</span> = <span class="keyword">array</span>(); </span><br><span class="line">session_destroy(); </span><br><span class="line">header(<span class="string">&#x27;location:index.php&#x27;</span>); </span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>register.php<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="variable">$conn</span>=<span class="keyword">require_once</span>(<span class="string">&quot;config.php&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_SERVER</span>[<span class="string">&quot;REQUEST_METHOD&quot;</span>]==<span class="string">&quot;POST&quot;</span>)&#123;</span><br><span class="line">    <span class="variable">$username</span>=<span class="variable">$_POST</span>[<span class="string">&quot;username&quot;</span>];</span><br><span class="line">    <span class="variable">$password</span>=<span class="variable">$_POST</span>[<span class="string">&quot;password&quot;</span>];</span><br><span class="line">    <span class="comment">//檢查帳號是否重複</span></span><br><span class="line">    <span class="variable">$check</span>=<span class="string">&quot;SELECT * FROM user WHERE username=&#x27;&quot;</span>.<span class="variable">$username</span>.<span class="string">&quot;&#x27;&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span>(mysqli_num_rows(mysqli_query(<span class="variable">$conn</span>,<span class="variable">$check</span>))==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="variable">$sql</span>=<span class="string">&quot;INSERT INTO user (id,username, password)</span></span><br><span class="line"><span class="string">            VALUES(NULL,&#x27;&quot;</span>.<span class="variable">$username</span>.<span class="string">&quot;&#x27;,&#x27;&quot;</span>.<span class="variable">$password</span>.<span class="string">&quot;&#x27;)&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(mysqli_query(<span class="variable">$conn</span>, <span class="variable">$sql</span>))&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;註冊成功!3秒後將自動跳轉頁面&lt;br&gt;&quot;</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;a href=&#x27;index.php&#x27;&gt;未成功跳轉頁面請點擊此&lt;/a&gt;&quot;</span>;</span><br><span class="line">            header(<span class="string">&quot;refresh:32;url=index.php&quot;</span>);</span><br><span class="line">            <span class="keyword">exit</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;Error creating table: &quot;</span> . mysqli_error(<span class="variable">$conn</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;該帳號已有人使用!&lt;br&gt;3秒後將自動跳轉頁面&lt;br&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;a href=&#x27;register.html&#x27;&gt;未成功跳轉頁面請點擊此&lt;/a&gt;&quot;</span>;</span><br><span class="line">        header(<span class="string">&#x27;HTTP/1.0 302 Found&#x27;</span>);</span><br><span class="line">        <span class="comment">//header(&quot;refresh:3;url=register.html&quot;,true);</span></span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mysqli_close(<span class="variable">$conn</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">function_alert</span>(<span class="params"><span class="variable">$message</span></span>) </span>&#123; </span><br><span class="line">      </span><br><span class="line">    <span class="comment">// Display the alert box  </span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;&lt;script&gt;alert(&#x27;<span class="subst">$message</span>&#x27;);</span></span><br><span class="line"><span class="string">     window.location.href=&#x27;index.php&#x27;;</span></span><br><span class="line"><span class="string">    &lt;/script&gt;&quot;</span>; </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125; </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="welcome-php"><a href="#welcome-php" class="headerlink" title="welcome.php"></a>welcome.php</h1><p>最後則是<code>welcome.php</code>，為使用者成功登入後看到的畫面<br>之後可以透過<code>$_SESSION</code>控制不同身分使用者看到不同畫面</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">session_start();  <span class="comment">//很重要，可以用的變數存在session裡</span></span><br><span class="line"><span class="variable">$username</span>=<span class="variable">$_SESSION</span>[<span class="string">&quot;username&quot;</span>];</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;h1&gt;你好 &quot;</span>.<span class="variable">$username</span>.<span class="string">&quot;&lt;/h1&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;a href=&#x27;logout.php&#x27;&gt;登出&lt;/a&gt;&quot;</span>;</span><br><span class="line">    </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><ol>
+<li>首先是註冊頁面註冊帳號<br><img src="https://i.imgur.com/4JsNGvf.png" alt=""></li>
+<li>接著是註冊成功跳轉頁<br><img src="https://i.imgur.com/OYmgxmY.png" alt=""></li>
+<li>嘗試用剛剛註冊的帳號進行登入<br><img src="https://i.imgur.com/1oZDKb4.png" alt=""></li>
+<li>成功!透過用<code>$_SESSION</code>傳遞了username並顯示出來<br><img src="https://i.imgur.com/1ILtW8n.png" alt=""></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/BucketTalk/tags/PHP/" rel="tag"># PHP</a>
+              <a href="/BucketTalk/tags/MySQL/" rel="tag"># MySQL</a>
+              <a href="/BucketTalk/tags/Login/" rel="tag"># Login</a>
+              <a href="/BucketTalk/tags/Register/" rel="tag"># Register</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/BucketTalk/post/php-mysql-db2/" rel="prev" title="PHP-MySQL系列 資料庫練習-SELECT & DELETE">
+      <i class="fa fa-chevron-left"></i> PHP-MySQL系列 資料庫練習-SELECT & DELETE
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+        </div>
+        
+    
+      <div class="comments" id="comments">
+          <script src="https://utteranc.es/client.js"
+            repo="jam68ty/Comment"
+            issue-term="pathname"
+            label="Comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+          </script>
+      </div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chia Chen</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/BucketTalk/lib/anime.min.js"></script>
+
+<script src="/BucketTalk/js/utils.js"></script>
+
+<script src="/BucketTalk/js/motion.js"></script>
+
+
+<script src="/BucketTalk/js/next-boot.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.2.0">
   <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
   <meta http-equiv="Cache-Control" content="no-transform">
   <meta http-equiv="Cache-Control" content="no-siteapp">
@@ -21,7 +21,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
   </script>
 
   <meta property="og:type" content="website">
@@ -30,8 +30,7 @@
 <meta property="og:site_name" content="BucketTalk">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:author" content="Chia Chen">
-<meta property="article:tag" content="code">
-<meta property="article:tag" content=" note">
+<meta property="article:tag" content="code, note">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://jam68ty.github.io/BucketTalk/">
@@ -99,7 +98,11 @@
   </style>
 </noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -200,7 +203,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/BucketTalk/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -213,7 +216,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/BucketTalk/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -255,6 +258,231 @@
 
         <div class="content index posts-expand">
           
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/php-mysql-login/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="name" content="Chia Chen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BucketTalk">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/BucketTalk/post/php-mysql-login/" class="post-title-link" itemprop="url">PHP-MySQL系列 登入與註冊系統</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-12-16 17:07:22 / 修改時間：17:32:00" itemprop="dateCreated datePublished" datetime="2020-12-16T17:07:22+08:00">2020-12-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/BucketTalk/categories/PHP-MySQL%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">PHP-MySQL系列</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在製作登入與註冊系統前<br>必須先理解Cookie與Session的概念<br>簡單來說，<br>Cookie是本地端紀錄你的登入狀況<br>Session則是伺服器端紀錄你的登入狀況<br>推薦一篇淺顯易懂的文章給大家：<span class="exturl" data-url="aHR0cHM6Ly9odWxpdHcubWVkaXVtLmNvbS9zZXNzaW9uLWFuZC1jb29raWUtMTVlNDdlZDgzOGJj">白話 Session 與 Cookie：從經營雜貨店開始<i class="fa fa-external-link-alt"></i></span><br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/BucketTalk/post/php-mysql-login/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/php-mysql-db2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="name" content="Chia Chen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BucketTalk">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/BucketTalk/post/php-mysql-db2/" class="post-title-link" itemprop="url">PHP-MySQL系列 資料庫練習-SELECT & DELETE</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-12-16 17:02:22 / 修改時間：17:07:08" itemprop="dateCreated datePublished" datetime="2020-12-16T17:02:22+08:00">2020-12-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/BucketTalk/categories/PHP-MySQL%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">PHP-MySQL系列</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在PHP+MySQL中<br>除了需要熟悉PHP和MySQL個別的語法以外<br>我認為關於GET與POST的運用也很重要<br>因此接續上篇新增資料庫與資料表後要學習的是SELECT &amp; DELETE</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/BucketTalk/post/php-mysql-db2/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/cryptography-security-note2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="name" content="Chia Chen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BucketTalk">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/BucketTalk/post/cryptography-security-note2/" class="post-title-link" itemprop="url">課堂筆記 資訊安全(II)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-12-15 20:47:50 / 修改時間：21:01:13" itemprop="dateCreated datePublished" datetime="2020-12-15T20:47:50+08:00">2020-12-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/BucketTalk/categories/%E8%AA%B2%E5%A0%82%E7%AD%86%E8%A8%98%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">課堂筆記系列</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>許多加密法的安全性其實都是建立在數學的難解問題上<br>比如RSA的安全性就是建立在大數問題與離散對數的難解上<br>因此基礎數論是作為後面學習各種加密法的奠基</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/BucketTalk/post/cryptography-security-note2/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -348,7 +576,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/BucketTalk/post/cryptography-security-note1/" class="post-title-link" itemprop="url">課堂筆記 資訊安全</a>
+            <a href="/BucketTalk/post/cryptography-security-note1/" class="post-title-link" itemprop="url">課堂筆記 資訊安全(I)</a>
         </h2>
 
         <div class="post-meta">
@@ -357,10 +585,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2020-11-17 18:31:50 / 修改時間：19:06:28" itemprop="dateCreated datePublished" datetime="2020-11-17T18:31:50+08:00">2020-11-17</time>
+              <time title="創建時間：2020-11-17 18:31:50" itemprop="dateCreated datePublished" datetime="2020-11-17T18:31:50+08:00">2020-11-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-12-15 20:51:41" itemprop="dateModified" datetime="2020-12-15T20:51:41+08:00">2020-12-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -782,235 +1016,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/django-start/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
-      <meta itemprop="name" content="Chia Chen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BucketTalk">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/BucketTalk/post/django-start/" class="post-title-link" itemprop="url">Django系列 建立第一個專案</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2020-11-07 00:41:09 / 修改時間：00:54:43" itemprop="dateCreated datePublished" datetime="2020-11-07T00:41:09+08:00">2020-11-07</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/BucketTalk/categories/Django%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">Django系列</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>大學時曾經學過Django，架在了AWS上<br>但是當時年輕不懂事，沒有好好地聽老師上課<br>結果過了幾年，又需要用到，只得自己研究<br>這份筆記是研究所在寫資料庫的課堂作業時<br>根據Django的官方教學文件做出的筆記</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/BucketTalk/post/django-start/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/php-mysql-fileupload/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
-      <meta itemprop="name" content="Chia Chen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BucketTalk">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/BucketTalk/post/php-mysql-fileupload/" class="post-title-link" itemprop="url">PHP-MySQL系列 文件上傳</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2020-11-06 20:35:09 / 修改時間：21:32:53" itemprop="dateCreated datePublished" datetime="2020-11-06T20:35:09+08:00">2020-11-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/BucketTalk/categories/PHP-MySQL%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">PHP-MySQL系列</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>這篇文章主要在介紹基本的上傳文件<br>加入一些檢核的判斷句<br>可以防止使用者亂傳東西上來</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/BucketTalk/post/php-mysql-fileupload/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/php-mysql-layout/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
-      <meta itemprop="name" content="Chia Chen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BucketTalk">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/BucketTalk/post/php-mysql-layout/" class="post-title-link" itemprop="url">PHP-MySQL系列 網頁切版</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2020-11-06 20:31:09 / 修改時間：21:18:25" itemprop="dateCreated datePublished" datetime="2020-11-06T20:31:09+08:00">2020-11-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/BucketTalk/categories/PHP-MySQL%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">PHP-MySQL系列</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在同一個網站的不同網頁中，可能常常出現重複的內容<br>比如header、footer之類的<br>如果每次修改都需要一次大量修改<br>肯定會造成不小的麻煩<br>因此利用require和include省去這樣的麻煩<br>並且運用在網頁切版<br>這篇文章示範了固定頁首頁尾，僅變動內容的切版方式</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/BucketTalk/post/php-mysql-layout/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/BucketTalk/page/2/">2</a><a class="extend next" rel="next" href="/BucketTalk/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/BucketTalk/page/2/">2</a><a class="page-number" href="/BucketTalk/page/3/">3</a><a class="extend next" rel="next" href="/BucketTalk/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -1100,6 +1109,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      const script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

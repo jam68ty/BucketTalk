@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta name="google-site-verification" content="RwN5OOI1f7pbAaVUsMbKZsYo1v6ATxMWQVDkZ-1bt0Y" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/BucketTalk/css/main.css">
+
+
+<link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
+  
+  <link rel="stylesheet" href="/BucketTalk/lib/animate-css/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.min.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+  </script>
+
+  <meta name="description" content="最後提到RSA以及DH另外還有數學的另一個難題-橢圓曲線">
+<meta property="og:type" content="article">
+<meta property="og:title" content="課堂筆記 資訊安全(III)">
+<meta property="og:url" content="https://jam68ty.github.io/BucketTalk/post/cryptography-security-note3/index.html">
+<meta property="og:site_name" content="BucketTalk">
+<meta property="og:description" content="最後提到RSA以及DH另外還有數學的另一個難題-橢圓曲線">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/e5urdP6.png">
+<meta property="og:image" content="https://i.imgur.com/jQ5APl2.png">
+<meta property="og:image" content="https://i.imgur.com/5ZU6fCj.png">
+<meta property="article:published_time" content="2021-01-12T09:17:44.000Z">
+<meta property="article:modified_time" content="2021-01-12T09:20:29.891Z">
+<meta property="article:author" content="Chia Chen">
+<meta property="article:tag" content="Cryptography">
+<meta property="article:tag" content="RSA加密">
+<meta property="article:tag" content="Diffie-Hellman Key Exchange">
+<meta property="article:tag" content="EIGamal">
+<meta property="article:tag" content="Elliptic Curve Cryptography">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/e5urdP6.png">
+
+<link rel="canonical" href="https://jam68ty.github.io/BucketTalk/post/cryptography-security-note3/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>課堂筆記 資訊安全(III) | BucketTalk</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-174207718-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <main class="main">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/BucketTalk/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BucketTalk</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">return null</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-about">
+
+    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/BucketTalk/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RSA%E5%8A%A0%E5%AF%86"><span class="nav-number">1.</span> <span class="nav-text">RSA加密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Diffie-Hellman-Key-Exchange-%E8%BF%AA%E8%8F%B2-%E8%B5%AB%E7%88%BE%E6%9B%BC%E5%AF%86%E9%91%B0%E4%BA%A4%E6%8F%9B"><span class="nav-number">2.</span> <span class="nav-text">Diffie-Hellman Key Exchange 迪菲-赫爾曼密鑰交換</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EIGamal%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">EIGamal加密算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elliptic-Curve-Cryptography-%E6%A9%A2%E5%9C%93%E6%9B%B2%E7%B7%9A%E5%AF%86%E7%A2%BC%E5%AD%B8-ECC"><span class="nav-number">4.</span> <span class="nav-text">Elliptic Curve Cryptography 橢圓曲線密碼學 (ECC)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ECC%E5%9C%A8%E5%AF%A6%E6%95%B8%E4%B8%8A"><span class="nav-number">4.1.</span> <span class="nav-text">ECC在實數上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E6%A9%A2%E5%9C%93%E6%9B%B2%E7%B7%9A%E4%B8%8A%E7%9A%84%E6%89%80%E6%9C%89%E9%BB%9E"><span class="nav-number">4.2.</span> <span class="nav-text">找出橢圓曲線上的所有點</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ECC%E5%9C%A8%E6%9C%89%E9%99%90%E7%BE%A4%E4%B8%8A"><span class="nav-number">4.3.</span> <span class="nav-text">ECC在有限群上</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hash"><span class="nav-number">5.</span> <span class="nav-text">Hash</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chia Chen"
+      src="/BucketTalk/image/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Chia Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/BucketTalk/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/BucketTalk/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/BucketTalk/tags/">
+          
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </header>
+
+      
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+      <div class="main-inner">
+        
+
+        <div class="content post posts-expand">
+          
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/cryptography-security-note3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="name" content="Chia Chen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BucketTalk">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          課堂筆記 資訊安全(III)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-01-12 17:17:44 / 修改時間：17:20:29" itemprop="dateCreated datePublished" datetime="2021-01-12T17:17:44+08:00">2021-01-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/BucketTalk/categories/%E8%AA%B2%E5%A0%82%E7%AD%86%E8%A8%98%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">課堂筆記系列</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>最後提到RSA以及DH<br>另外還有數學的另一個難題-橢圓曲線</p>
+<a id="more"></a>
+<h1 id="RSA加密"><a href="#RSA加密" class="headerlink" title="RSA加密"></a>RSA加密</h1><p>步驟：</p>
+<ol>
+<li>找兩個夠大的質數，p &amp; q  -&gt; 用質數檢定法</li>
+<li>計算 $n=p \times q$ -&gt; 單向函數(one-way function)的簡單部分</li>
+<li>計算 $\phi(n)=(p-1) \times (q-1)$</li>
+<li>決定公開金鑰(加密)：where $1<e<\phi(n)$, $gcd(e,\phi(n))=1$ ->找一個數字跟phi(n)互值</li>
+<li>決定私密金鑰(解密)：$ed=1 \mod \phi(n)$ and $0 \le d \le n$  -&gt; e, d互為mod phi(n)的乘法反元素</li>
+<li>公開金鑰：$PU={ e,n }$</li>
+<li>私密金鑰：$PR={ d,n }$</li>
+</ol>
+<blockquote>
+<p>質數的重要性：<br>如果p是質數，a <em> i == a </em> j (mod p)<br>則具有消去律，i == j (mod p)</p>
+</blockquote>
+<h1 id="Diffie-Hellman-Key-Exchange-迪菲-赫爾曼密鑰交換"><a href="#Diffie-Hellman-Key-Exchange-迪菲-赫爾曼密鑰交換" class="headerlink" title="Diffie-Hellman Key Exchange 迪菲-赫爾曼密鑰交換"></a>Diffie-Hellman Key Exchange 迪菲-赫爾曼密鑰交換</h1><p>可以讓通訊雙方在不安全的環境下傳遞密鑰(Key Exchange)<br><img src="https://i.imgur.com/e5urdP6.png" alt=""><br><span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LXNhLzQuMC8=">CC BY-SA 4.0<i class="fa fa-external-link-alt"></i></span></p>
+<ol>
+<li>圖中的a與b是由雙方各自決定的自然數，且這兩個數必須小於p，g則是原根(透過這個數做特定計算可以得到一堆數字)。</li>
+<li>Alice傳遞g, p以及A ($A=g^a \bmod p$)</li>
+<li>Bob取得g, p, A後計算出B回傳給Alice ($B=g^b \bmod p$)</li>
+<li>兩個人都根據對方傳給自己的A或B加上自訂的自然數為指數除以p的餘數，會得到一個相同的K，作為之後做對稱式加密所需用到的Key。</li>
+</ol>
+<blockquote>
+<p>將$B^a$和$A^b$各自用$(g^b)^a$和$(g^a)^b$代回。$(g^b)^a \bmod p =(g^a)^b \bmod p$</p>
+</blockquote>
+<p>維基百科上的資料：<br><img src="https://i.imgur.com/jQ5APl2.png" alt=""></p>
+<h1 id="EIGamal加密算法"><a href="#EIGamal加密算法" class="headerlink" title="EIGamal加密算法"></a>EIGamal加密算法</h1><p>詳細步驟如下：</p>
+<ol>
+<li>首先知道 $q$ 與 $\alpha$，其中 $\alpha$ 為 $q$ 的原根</li>
+<li>首先是A產生一組公開金鑰的步驟<br> (1) A選擇一個質數作為他的私密金鑰($X_a$)<br> (2) $Y_a=\alpha^{X_a} \bmod q$<br> (3) 最後產生一組$PU=[q, \alpha, Y_a]$</li>
+<li><p>B想要傳送一段Message(M)<br> (1) B選擇一個隨機數k<br> (2) $K=(Y_a)^{k} \bmod q$<br> (3) 則加密後的$M$會有C1, C2</p>
+<p> $C_1=\alpha^k \bmod q$<br> $C_2=KM \bmod q$</p>
+</li>
+</ol>
+<h1 id="Elliptic-Curve-Cryptography-橢圓曲線密碼學-ECC"><a href="#Elliptic-Curve-Cryptography-橢圓曲線密碼學-ECC" class="headerlink" title="Elliptic Curve Cryptography 橢圓曲線密碼學 (ECC)"></a>Elliptic Curve Cryptography 橢圓曲線密碼學 (ECC)</h1><p>可以到這個網站上看動態的畫面：<span class="exturl" data-url="aHR0cHM6Ly93d3cuZGVzbW9zLmNvbS9jYWxjdWxhdG9yL2lhbGhkNzF3ZTM/bGFuZz16aC1UVw==">https://www.desmos.com/calculator/ialhd71we3?lang=zh-TW<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="ECC在實數上"><a href="#ECC在實數上" class="headerlink" title="ECC在實數上"></a>ECC在實數上</h2><p>$y^2=x^3+ax+b$<br>設有P,Q兩點位於此橢圓曲線上<br>則R=P+Q的計算過程：</p>
+<ol>
+<li>求 $\lambda$ (PQ之斜率)：$\lambda=(X_Q-X_p)/(Y_Q-Y_P)$</li>
+<li>$X_R=\lambda^2-X_p-X_Q$</li>
+<li>$Y_R=-Y_p+\lambda(X_p-X_R)$</li>
+<li>則$R=(X_R,Y_R)$</li>
+</ol>
+<p>2P=P+P的計算過程：</p>
+<ol>
+<li>從一開始的橢圓曲線得到a</li>
+<li>$X_R=((3(X_p)^2+a)/(2Y_p))^2-2X_p$</li>
+<li>$Y_R=(3(X_p)^2+a)/(2Y_p)(X_p-X_R)-Y_p$<br><img src="https://i.imgur.com/5ZU6fCj.png" alt=""></li>
+</ol>
+<h2 id="找出橢圓曲線上的所有點"><a href="#找出橢圓曲線上的所有點" class="headerlink" title="找出橢圓曲線上的所有點"></a>找出橢圓曲線上的所有點</h2><p>$E_p(a,b)$中的p代表mod p<br>(a,b)代表橢圓曲線中 $y^2=x^3+ax+b$ 的a, b<br>且我們只關心(0, 0)~(p-1, p-1)範圍的點<br>因此需要列表找出符合$y^2 \bmod p=x^3+ax+b \bmod p$的$x$與$y$</p>
+<h2 id="ECC在有限群上"><a href="#ECC在有限群上" class="headerlink" title="ECC在有限群上"></a>ECC在有限群上</h2><p>$E_p(a,b)$<br>$y^2=x^3+ax+b \bmod p$<br>設有P,Q兩點位於此橢圓曲線上<br>則R=P+Q的計算過程：</p>
+<ol>
+<li>求 $\lambda$ (PQ之斜率)：<br> (1)$P\neq Q$：$\lambda=(X_Q-X_P)/(Y_Q-Y_P) \bmod p$<br> (2)$P=Q$：$\lambda=(3(X_P)^2+a)/2Y_P \bmod p$</li>
+<li>$X_R=(\lambda^2-X_p-X_Q) \bmod p$</li>
+<li>$Y_R=(\lambda(X_P-X_R)-Y_P) \bmod p$</li>
+<li>則$R=(X_R,Y_R)$</li>
+</ol>
+<p>2P=P+P的算法與P+Q一樣，但是因為兩點相同，則必須用1.(1)$P\neq Q$的情況算出 $\lambda$</p>
+<h1 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line">password=<span class="string">&#x27;123456&#x27;</span></span><br><span class="line">h=hashlib.md5()</span><br><span class="line">h.update(password.encode())</span><br><span class="line">h.hexdigest()</span><br><span class="line">&gt; <span class="string">&#x27;e10adc3949ba59abbe56e057f20f883e&#x27;</span></span><br><span class="line"><span class="number">8</span>*h.digest_size, <span class="number">8</span>*h.block_size</span><br><span class="line">&gt; (<span class="number">128</span>, <span class="number">512</span>)</span><br><span class="line"></span><br><span class="line">h=hashlib.sha256()</span><br><span class="line">h.update(password.encode())</span><br><span class="line">h.hexdigest()</span><br><span class="line">&gt; <span class="string">&#x27;8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92&#x27;</span></span><br><span class="line"><span class="number">8</span>*h.digest_size, <span class="number">8</span>*h.block_size</span><br><span class="line">&gt; (<span class="number">256</span>, <span class="number">512</span>)</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/BucketTalk/tags/Cryptography/" rel="tag"># Cryptography</a>
+              <a href="/BucketTalk/tags/RSA%E5%8A%A0%E5%AF%86/" rel="tag"># RSA加密</a>
+              <a href="/BucketTalk/tags/Diffie-Hellman-Key-Exchange/" rel="tag"># Diffie-Hellman Key Exchange</a>
+              <a href="/BucketTalk/tags/EIGamal/" rel="tag"># EIGamal</a>
+              <a href="/BucketTalk/tags/Elliptic-Curve-Cryptography/" rel="tag"># Elliptic Curve Cryptography</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/BucketTalk/post/php-mysql-login/" rel="prev" title="PHP-MySQL系列 登入與註冊系統">
+      <i class="fa fa-chevron-left"></i> PHP-MySQL系列 登入與註冊系統
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+        </div>
+        
+    
+      <div class="comments" id="comments">
+          <script src="https://utteranc.es/client.js"
+            repo="jam68ty/Comment"
+            issue-term="pathname"
+            label="Comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+          </script>
+      </div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chia Chen</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/BucketTalk/lib/anime.min.js"></script>
+
+<script src="/BucketTalk/js/utils.js"></script>
+
+<script src="/BucketTalk/js/motion.js"></script>
+
+
+<script src="/BucketTalk/js/next-boot.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      const script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

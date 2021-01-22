@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta name="google-site-verification" content="RwN5OOI1f7pbAaVUsMbKZsYo1v6ATxMWQVDkZ-1bt0Y" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/BucketTalk/css/main.css">
+
+
+<link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
+  
+  <link rel="stylesheet" href="/BucketTalk/lib/animate-css/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.min.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+  </script>
+
+  <meta name="description" content="因為最後一堂課同學們一心都撲在了期末作業上所以我為同學們準備了比較輕鬆的內容利用Ajax更新部分頁面區塊，以節省資源">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP-MySQL系列 Ajax簡單應用">
+<meta property="og:url" content="https://jam68ty.github.io/BucketTalk/post/php-mysql-ajax/index.html">
+<meta property="og:site_name" content="BucketTalk">
+<meta property="og:description" content="因為最後一堂課同學們一心都撲在了期末作業上所以我為同學們準備了比較輕鬆的內容利用Ajax更新部分頁面區塊，以節省資源">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/XnrHkux.png">
+<meta property="og:image" content="https://i.imgur.com/vB5WNVl.png">
+<meta property="og:image" content="https://i.imgur.com/s8PbUEE.png">
+<meta property="og:image" content="https://i.imgur.com/6aDnPxT.png">
+<meta property="article:published_time" content="2021-01-22T08:07:22.000Z">
+<meta property="article:modified_time" content="2021-01-22T08:38:51.913Z">
+<meta property="article:author" content="Chia Chen">
+<meta property="article:tag" content="PHP">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Ajax">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/XnrHkux.png">
+
+<link rel="canonical" href="https://jam68ty.github.io/BucketTalk/post/php-mysql-ajax/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>PHP-MySQL系列 Ajax簡單應用 | BucketTalk</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-174207718-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <main class="main">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/BucketTalk/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BucketTalk</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">return null</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-about">
+
+    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/BucketTalk/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%88%E6%B8%AC%E8%A9%A6"><span class="nav-number">1.</span> <span class="nav-text">先測試</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web-API-XMLHttpRequest"><span class="nav-number">2.</span> <span class="nav-text">Web API - XMLHttpRequest</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8XMLHttpRequest%E6%89%93%E9%96%8B%E6%96%87%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">使用XMLHttpRequest打開文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8D%E5%8B%99%E5%99%A8%E9%9F%BF%E6%87%89-Server-Response"><span class="nav-number">4.</span> <span class="nav-text">服務器響應 Server Response</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%81%B8%E6%93%87%E9%81%B8%E5%96%AE%E3%80%81%E9%A1%AF%E7%A4%BA%E7%9B%B8%E9%97%9C%E8%B3%87%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">選擇選單、顯示相關資料</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chia Chen"
+      src="/BucketTalk/image/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Chia Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/BucketTalk/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/BucketTalk/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/BucketTalk/tags/">
+          
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </header>
+
+      
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+      <div class="main-inner">
+        
+
+        <div class="content post posts-expand">
+          
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/php-mysql-ajax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="name" content="Chia Chen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BucketTalk">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PHP-MySQL系列 Ajax簡單應用
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-01-22 16:07:22 / 修改時間：16:38:51" itemprop="dateCreated datePublished" datetime="2021-01-22T16:07:22+08:00">2021-01-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/BucketTalk/categories/PHP-MySQL%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">PHP-MySQL系列</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>因為最後一堂課同學們一心都撲在了期末作業上<br>所以我為同學們準備了比較輕鬆的內容<br>利用Ajax更新部分頁面區塊，以節省資源</p>
+<a id="more"></a>
+<p>利用Ajax處理事件，比如刪除資料不需要refresh整個page<br>本周是與ajax相關的基本知識：</p>
+<h1 id="先測試"><a href="#先測試" class="headerlink" title="先測試"></a>先測試</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html leng=<span class="string">&quot;utf-8&quot;</span>&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;Ajax 練習&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;button id=<span class="string">&quot;btn&quot;</span>&gt;test&lt;/button&gt;</span><br><span class="line">        &lt;script&gt;</span><br><span class="line">            document.getElementById(<span class="string">&#x27;btn&#x27;</span>).addEventListener(<span class="string">&#x27;click&#x27;</span>,myfun);</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">myfun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                document.write(<span class="string">&quot;success!&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>成果應該如下：<br><img src="https://i.imgur.com/XnrHkux.png" alt=""><br><img src="https://i.imgur.com/vB5WNVl.png" alt=""></p>
+<h1 id="Web-API-XMLHttpRequest"><a href="#Web-API-XMLHttpRequest" class="headerlink" title="Web API - XMLHttpRequest"></a>Web API - XMLHttpRequest</h1><p>藉由 XMLHttpRequest（XHR）物件的方式來存取伺服器端的資料，可以讓你直接經由指定的 URL 擷取資料卻不用刷新整個網頁。<br>相關的詳細說明：<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtVFcvZG9jcy9XZWIvQVBJL1hNTEh0dHBSZXF1ZXN0">https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest<i class="fa fa-external-link-alt"></i></span></p>
+<p>實作部分，在function裡面多加兩行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr=<span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">console.log(xhr);</span><br></pre></td></tr></table></figure><br>在瀏覽器裡按F12或直接右鍵檢查<br><img src="https://i.imgur.com/s8PbUEE.png" alt=""></p>
+<blockquote>
+<p>200: OK<br>403: Forbbiden<br>404: Not Found</p>
+<h1 id="使用XMLHttpRequest打開文件"><a href="#使用XMLHttpRequest打開文件" class="headerlink" title="使用XMLHttpRequest打開文件"></a>使用XMLHttpRequest打開文件</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myfun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> xhr=<span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">	xhr.open(<span class="string">&#x27;GET&#x27;</span>,<span class="string">&#x27;test.txt&#x27;</span>,<span class="literal">true</span>);</span><br><span class="line">	console.log(xhr);</span><br><span class="line">	xhr.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(xhr.status==<span class="number">200</span>)&#123;</span><br><span class="line">			document.write(this.responseURL+<span class="string">&quot;&lt;br&gt;&quot;</span>+this.responseText);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			document.write(<span class="string">&quot;File not found&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	xhr.send();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/6aDnPxT.png" alt=""></p>
+</blockquote>
+<h1 id="服務器響應-Server-Response"><a href="#服務器響應-Server-Response" class="headerlink" title="服務器響應 Server Response"></a>服務器響應 Server Response</h1><p><code>onreadystatechange</code>屬性</p>
+<ul>
+<li><code>readystate</code>：保留XMLHttpRequest的狀態<ul>
+<li>0: request not initialized</li>
+<li>1: server connection established</li>
+<li>2: request received</li>
+<li>3: processing request</li>
+<li>4: request finished and response is ready</li>
+</ul>
+</li>
+<li><code>onreadystatechange</code>：定義當readyState更改時要執行的函數</li>
+<li><code>status</code>：常見的error代號如404</li>
+<li><code>statusText</code>：error代號的說明</li>
+</ul>
+<h1 id="選擇選單、顯示相關資料"><a href="#選擇選單、顯示相關資料" class="headerlink" title="選擇選單、顯示相關資料"></a>選擇選單、顯示相關資料</h1><p><code>index.php</code><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html leng=<span class="string">&quot;utf-8&quot;</span>&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;Ajax 練習&lt;/title&gt;</span><br><span class="line">        &lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css&quot;</span> integrity=<span class="string">&quot;sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2&quot;</span> crossorigin=<span class="string">&quot;anonymous&quot;</span>&gt;</span><br><span class="line">        &lt;script src=<span class="string">&quot;https://code.jquery.com/jquery-3.5.1.slim.min.js&quot;</span> integrity=<span class="string">&quot;sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj&quot;</span> crossorigin=<span class="string">&quot;anonymous&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script src=<span class="string">&quot;https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js&quot;</span> integrity=<span class="string">&quot;sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx&quot;</span> crossorigin=<span class="string">&quot;anonymous&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script&gt;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">showUser</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(str==<span class="string">&#x27;&#x27;</span>)&#123;</span><br><span class="line">                    document.getElementById(<span class="string">&quot;txtHint&quot;</span>).innerHTML=<span class="string">&quot;no user selected&quot;</span>;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">var</span> xhr=<span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">                    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                        <span class="keyword">if</span> (this.readyState == <span class="number">4</span> &amp;&amp; this.status == <span class="number">200</span>) &#123;</span><br><span class="line">                            document.getElementById(<span class="string">&quot;txtHint&quot;</span>).innerHTML = this.responseText;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">					console.log(xhr);</span><br><span class="line">                &#125;</span><br><span class="line">            </span><br><span class="line">                xhr.open(<span class="string">&quot;GET&quot;</span>,<span class="string">&quot;user.php?name=&quot;</span>+str,<span class="literal">true</span>);</span><br><span class="line">                xhr.send();</span><br><span class="line">            &#125;</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;form&gt;</span><br><span class="line">&lt;select name=<span class="string">&quot;users&quot;</span> onchange=<span class="string">&quot;showUser(this.value)&quot;</span>&gt;</span><br><span class="line">  &lt;option value=<span class="string">&quot;&quot;</span>&gt;Select a person&lt;/option&gt;</span><br><span class="line">  &lt;option value=<span class="string">&quot;1&quot;</span>&gt;haha&lt;/option&gt;</span><br><span class="line">  &lt;option value=<span class="string">&quot;2&quot;</span>&gt;teacher&lt;/option&gt;</span><br><span class="line">  &lt;/select&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;div id=<span class="string">&quot;txtHint&quot;</span>&gt;&lt;b&gt;Detail about user will show here...&lt;/b&gt;&lt;/div&gt;</span><br><span class="line">        </span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure><br><code>user.php</code><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$name</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line"><span class="variable">$conn</span> = mysqli_connect(<span class="string">&#x27;localhost&#x27;</span>,<span class="string">&#x27;root&#x27;</span>,<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;db_test&#x27;</span>);</span><br><span class="line"><span class="keyword">if</span> (!<span class="variable">$conn</span>) &#123;</span><br><span class="line">  <span class="keyword">die</span>(<span class="string">&#x27;Could not connect: &#x27;</span> . mysqli_error(<span class="variable">$con</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$sql</span>=<span class="string">&quot;SELECT * FROM ajax WHERE id=&#x27;&quot;</span>.<span class="variable">$name</span>.<span class="string">&quot;&#x27;&quot;</span>;</span><br><span class="line"><span class="variable">$result</span> = mysqli_query(<span class="variable">$conn</span>, <span class="variable">$sql</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;table class=&#x27;table&#x27;&gt;</span></span><br><span class="line"><span class="string">&lt;tr&gt;</span></span><br><span class="line"><span class="string">&lt;th&gt;id&lt;/th&gt;</span></span><br><span class="line"><span class="string">&lt;th&gt;name&lt;/th&gt;</span></span><br><span class="line"><span class="string">&lt;th&gt;email&lt;/th&gt;</span></span><br><span class="line"><span class="string">&lt;th&gt;password&lt;/th&gt;</span></span><br><span class="line"><span class="string">&lt;/tr&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">while</span>(<span class="variable">$row</span> = mysqli_fetch_array(<span class="variable">$result</span>)) &#123;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;&lt;tr&gt;&quot;</span>;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;&lt;td&gt;&quot;</span> . <span class="variable">$row</span>[<span class="string">&#x27;id&#x27;</span>] . <span class="string">&quot;&lt;/td&gt;&quot;</span>;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;&lt;td&gt;&quot;</span> . <span class="variable">$row</span>[<span class="string">&#x27;name&#x27;</span>] . <span class="string">&quot;&lt;/td&gt;&quot;</span>;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;&lt;td&gt;&quot;</span> . <span class="variable">$row</span>[<span class="string">&#x27;email&#x27;</span>] . <span class="string">&quot;&lt;/td&gt;&quot;</span>;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;&lt;td&gt;&quot;</span> . <span class="variable">$row</span>[<span class="string">&#x27;password&#x27;</span>] . <span class="string">&quot;&lt;/td&gt;&quot;</span>;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;&lt;/tr&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;/table&gt;&quot;</span>;</span><br><span class="line">mysqli_close(<span class="variable">$conn</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/BucketTalk/tags/PHP/" rel="tag"># PHP</a>
+              <a href="/BucketTalk/tags/MySQL/" rel="tag"># MySQL</a>
+              <a href="/BucketTalk/tags/Ajax/" rel="tag"># Ajax</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/BucketTalk/post/cryptography-security-note3/" rel="prev" title="課堂筆記 資訊安全(III)">
+      <i class="fa fa-chevron-left"></i> 課堂筆記 資訊安全(III)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+        </div>
+        
+    
+      <div class="comments" id="comments">
+          <script src="https://utteranc.es/client.js"
+            repo="jam68ty/Comment"
+            issue-term="pathname"
+            label="Comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+          </script>
+      </div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chia Chen</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/BucketTalk/lib/anime.min.js"></script>
+
+<script src="/BucketTalk/js/utils.js"></script>
+
+<script src="/BucketTalk/js/motion.js"></script>
+
+
+<script src="/BucketTalk/js/next-boot.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

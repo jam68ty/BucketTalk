@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/deep-learning-note-face-detection1/</loc>
+    <lastmod>2021-01-23</lastmod>
+  </url>
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/opencv-data-agumentation/</loc>
+    <lastmod>2021-01-23</lastmod>
+  </url>
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/opencv-image-cropped/</loc>
+    <lastmod>2021-01-23</lastmod>
+  </url>
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/opencv-read-image/</loc>
+    <lastmod>2021-01-23</lastmod>
+  </url>
+  <url>
     <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/php-mysql-ajax/</loc>
     <lastmod>2021-01-22</lastmod>
   </url>
@@ -27,10 +43,6 @@
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/php-mysql-db1/</loc>
     <lastmod>2020-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/opencv-data-agumentation/</loc>
-    <lastmod>2020-11-06</lastmod>
   </url>
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/django-customize/</loc>
@@ -79,14 +91,6 @@
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/php-mysql-introduce/</loc>
     <lastmod>2020-11-06</lastmod>
-  </url>
-  <url>
-    <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/opencv-read-image/</loc>
-    <lastmod>2020-08-17</lastmod>
-  </url>
-  <url>
-    <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/opencv-image-cropped/</loc>
-    <lastmod>2020-08-17</lastmod>
   </url>
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/Implement-with-GitHub-Pages-And-Hexo/</loc>

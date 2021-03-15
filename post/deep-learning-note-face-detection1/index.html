@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://i.imgur.com/XxFGpwA.png">
 <meta property="og:image" content="https://i.imgur.com/4duMv7x.png">
 <meta property="article:published_time" content="2021-01-23T14:13:11.000Z">
-<meta property="article:modified_time" content="2021-01-23T14:27:53.357Z">
+<meta property="article:modified_time" content="2021-01-25T16:02:08.717Z">
 <meta property="article:author" content="Chia Chen">
 <meta property="article:tag" content="opencv">
 <meta property="article:tag" content="image process">
@@ -219,7 +219,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/BucketTalk/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -232,7 +232,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/BucketTalk/tags/">
           
-        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -301,10 +301,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2021-01-23 22:13:11 / 修改時間：22:27:53" itemprop="dateCreated datePublished" datetime="2021-01-23T22:13:11+08:00">2021-01-23</time>
+              <time title="創建時間：2021-01-23 22:13:11" itemprop="dateCreated datePublished" datetime="2021-01-23T22:13:11+08:00">2021-01-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-01-26 00:02:08" itemprop="dateModified" datetime="2021-01-26T00:02:08+08:00">2021-01-26</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -326,14 +332,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>放寒假了，好不容易完成了論文前三章跟得出了初步實驗結果<br>但是被老師打槍「需要討論」之後產生了自己很廢的想法<br>所以想念一些書來讓自己充實一點<br>剛好前陣子在Udemy上買了課程<br>因此記錄了一下課程的內容<br><span class="exturl" data-url="aHR0cHM6Ly93d3cudWRlbXkuY29tL2NvdXJzZS9jb21wdXRlci12aXNpb24tYS16Lw==">Deep Learning and Computer Vision A-Z™: OpenCV, SSD &amp; GANs<i class="fa fa-external-link-alt"></i></span><br>有興趣的人也可以買課程聽聽看(畢竟30天內退款真是個好東西)<br>裡面的老師目前聽下來覺得講得還不錯(聽得懂)<br>但實在是因為英文不太行，所以需要做一些筆記幫助吸收<br><em>文章中的圖片都是該課程中用到的圖片，僅幫助記憶、沒有其他目的</em></p>
+        <p>放寒假了，好不容易完成了論文前三章跟得出了初步實驗結果<br>但是被老師打槍「需要討論」之後產生了自己很廢的想法<br>所以想念一些書來讓自己充實一點<br>剛好前陣子在Udemy上買了課程<br>因此記錄了一下課程的內容<br><span class="exturl" data-url="aHR0cHM6Ly93d3cudWRlbXkuY29tL2NvdXJzZS9jb21wdXRlci12aXNpb24tYS16Lw==">Deep Learning and Computer Vision A-Z™: OpenCV, SSD &amp; GANs<i class="fa fa-external-link-alt"></i></span><br>有興趣的人也可以買課程聽聽看(畢竟30天內退款真是個好東西)<br>裡面的老師目前聽下來覺得講得還不錯(聽得懂)<br>但實在是因為英文不太行，所以需要做一些筆記幫助吸收<br><strong>文章中的圖片都是該課程中用到的圖片，僅幫助記憶、沒有其他目的</strong></p>
 <a id="more"></a>
 <h1 id="Viola-Jones-Algorithm"><a href="#Viola-Jones-Algorithm" class="headerlink" title="Viola-Jones Algorithm"></a>Viola-Jones Algorithm</h1><p>是Opencv library的原理，發展至今不只用於人臉圖像的偵測，也可用於實時(real-time)的影像偵測。<br>分為兩個階段：Training和Detection<br>但我們必須從Detection開始講起，這樣更有助於之後了解Training的過程。</p>
 <ol>
 <li>Detection 偵測<br>在Viola-Jones的演算法中，會先將圖片轉為灰階(Gray Scale)，接著由圖片的左上角開始逐格(Pixels)偵測指定範圍(Box)內是否含有指定的特徵(Feature)。此外，這張圖片的人臉最好是正面朝前，不要是由上而下、或是由左而右等奇怪的角度。<br>而每一個特徵都會有相對應的分數，當移到特定範圍後所偵測到的特徵分數最高時，則完成偵測，可以判斷為這「極有可能」是一張臉。(這是一個臉：有兩個眉毛、兩個眼睛、一個鼻子、一個嘴巴)<br>在這個掃描(Scan)偵測的過程中，Box的範圍可大可小，因此掃描可能發生很多次最終才找到臉。</li>
-<li>Training 訓練</li>
 </ol>
-<p>關於訓練，我們必須具備何謂「特徵」(Feature)的觀念</p>
 <h2 id="Haar-like-Feature-哈爾特徵"><a href="#Haar-like-Feature-哈爾特徵" class="headerlink" title="Haar-like Feature 哈爾特徵"></a>Haar-like Feature 哈爾特徵</h2><p>Feature的基本單位是Pixels</p>
 <ol>
 <li>Edge Features</li>
@@ -369,7 +373,10 @@
     <a href="/BucketTalk/post/php-mysql-ajax/" rel="prev" title="PHP-MySQL系列 Ajax簡單應用">
       <i class="fa fa-chevron-left"></i> PHP-MySQL系列 Ajax簡單應用
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/BucketTalk/post/deep-learning-note-face-detection2/" rel="next" title="深度學習筆記系列 臉部辨識基本理論(II)">
+      深度學習筆記系列 臉部辨識基本理論(II) <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     

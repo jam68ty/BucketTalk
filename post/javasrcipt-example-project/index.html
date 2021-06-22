@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta name="google-site-verification" content="RwN5OOI1f7pbAaVUsMbKZsYo1v6ATxMWQVDkZ-1bt0Y" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/BucketTalk/css/main.css">
+
+
+<link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
+  
+  <link rel="stylesheet" href="/BucketTalk/lib/animate-css/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.min.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+  </script>
+
+  <meta name="description" content="這個專案主要是參考這篇文章在嘗試的https:&#x2F;&#x2F;ithelp.ithome.com.tw&#x2F;users&#x2F;20110371&#x2F;ironman&#x2F;1616因為之前雖然碰過前後端但是用的比較不是現在主流在用的所以想把這塊也補起來">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaSrcipt Example Project">
+<meta property="og:url" content="https://jam68ty.github.io/BucketTalk/post/javasrcipt-example-project/index.html">
+<meta property="og:site_name" content="BucketTalk">
+<meta property="og:description" content="這個專案主要是參考這篇文章在嘗試的https:&#x2F;&#x2F;ithelp.ithome.com.tw&#x2F;users&#x2F;20110371&#x2F;ironman&#x2F;1616因為之前雖然碰過前後端但是用的比較不是現在主流在用的所以想把這塊也補起來">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/czsa0bS.png">
+<meta property="og:image" content="https://i.imgur.com/w5bMY4p.png">
+<meta property="og:image" content="https://i.imgur.com/ZaV3Pi5.png">
+<meta property="og:image" content="https://i.imgur.com/IDLDHG4.png">
+<meta property="og:image" content="https://i.imgur.com/EDyKFSd.png">
+<meta property="og:image" content="https://i.imgur.com/H70jxhK.png">
+<meta property="og:image" content="https://i.imgur.com/Nh0C8Io.png">
+<meta property="og:image" content="https://i.imgur.com/rHV157x.png">
+<meta property="og:image" content="https://i.imgur.com/aehXObX.png">
+<meta property="og:image" content="https://i.imgur.com/MgvdS7a.png">
+<meta property="og:image" content="https://i.imgur.com/oYdi1vr.png">
+<meta property="og:image" content="https://i.imgur.com/t22uPTK.png">
+<meta property="og:image" content="https://i.imgur.com/CpMaS1W.png">
+<meta property="og:image" content="https://i.imgur.com/LAQ9qoK.png">
+<meta property="og:image" content="https://i.imgur.com/3jybPxf.png">
+<meta property="og:image" content="https://i.imgur.com/9xcRLY5.png">
+<meta property="og:image" content="https://i.imgur.com/vH4S3jv.png">
+<meta property="og:image" content="https://i.imgur.com/MHKbGa1.png">
+<meta property="og:image" content="https://i.imgur.com/01KzMin.png">
+<meta property="og:image" content="https://i.imgur.com/B1VNynI.png">
+<meta property="og:image" content="https://i.imgur.com/LUr4w4S.png">
+<meta property="og:image" content="https://i.imgur.com/0AxOCmx.png">
+<meta property="og:image" content="https://i.imgur.com/9FrieNP.png">
+<meta property="og:image" content="https://i.imgur.com/ZO30p9O.png">
+<meta property="og:image" content="https://i.imgur.com/KmKHjXu.png">
+<meta property="og:image" content="https://i.imgur.com/9be3czU.png">
+<meta property="og:image" content="https://i.imgur.com/g21MkKH.png">
+<meta property="og:image" content="https://i.imgur.com/cBZXH53.png">
+<meta property="article:published_time" content="2021-06-22T15:24:56.000Z">
+<meta property="article:modified_time" content="2021-06-22T15:38:52.044Z">
+<meta property="article:author" content="Chia Chen">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="VScode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/czsa0bS.png">
+
+<link rel="canonical" href="https://jam68ty.github.io/BucketTalk/post/javasrcipt-example-project/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>JavaSrcipt Example Project | BucketTalk</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-174207718-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <main class="main">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/BucketTalk/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BucketTalk</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">return null</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-about">
+
+    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/BucketTalk/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaSrcipt-Example-Project"><span class="nav-number">1.</span> <span class="nav-text">JavaSrcipt Example Project</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88"><span class="nav-number">1.1.</span> <span class="nav-text">建立專案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8BNode-js%E7%9A%84package"><span class="nav-number">1.2.</span> <span class="nav-text">建立Node.js的package</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E5%88%A5%E4%BA%BA%E5%AF%AB%E5%A5%BD%E7%9A%84%E5%A5%97%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">安裝別人寫好的套件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%B7%E8%A1%8C%E7%AC%AC%E4%B8%80%E5%80%8B%E8%85%B3%E6%9C%AC"><span class="nav-number">1.4.</span> <span class="nav-text">執行第一個腳本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%9C%E7%AD%86%E8%A8%98"><span class="nav-number">1.5.</span> <span class="nav-text">雜筆記</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VS-Code%E5%81%B5%E9%8C%AF%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.5.1.</span> <span class="nav-text">VS Code偵錯模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VSCode-%E4%B8%AD%E6%96%B7%E9%BB%9E%E6%B8%AC%E8%A9%A6"><span class="nav-number">1.5.2.</span> <span class="nav-text">VSCode 中斷點測試</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="nav-number">1.5.3.</span> <span class="nav-text">ES6是什麼?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84ES6%E8%AA%9E%E6%B3%95"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">常用的ES6語法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Coding-Style-ESLint"><span class="nav-number">1.6.</span> <span class="nav-text">Coding Style - ESLint</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chia Chen"
+      src="/BucketTalk/image/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Chia Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/BucketTalk/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/BucketTalk/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/BucketTalk/tags/">
+          
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </header>
+
+      
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+      <div class="main-inner">
+        
+
+        <div class="content post posts-expand">
+          
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/javasrcipt-example-project/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="name" content="Chia Chen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BucketTalk">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaSrcipt Example Project
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-06-22 23:24:56 / 修改時間：23:38:52" itemprop="dateCreated datePublished" datetime="2021-06-22T23:24:56+08:00">2021-06-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/BucketTalk/categories/%E8%AA%B2%E5%A0%82%E7%AD%86%E8%A8%98%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">課堂筆記系列</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>這個專案主要是參考這篇文章在嘗試的<br><span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy91c2Vycy8yMDExMDM3MS9pcm9ubWFuLzE2MTY=">https://ithelp.ithome.com.tw/users/20110371/ironman/1616<i class="fa fa-external-link-alt"></i></span><br>因為之前雖然碰過前後端<br>但是用的比較不是現在主流在用的<br>所以想把這塊也補起來</p>
+<a id="more"></a>
+<h1 id="JavaSrcipt-Example-Project"><a href="#JavaSrcipt-Example-Project" class="headerlink" title="JavaSrcipt Example Project"></a>JavaSrcipt Example Project</h1><h2 id="建立專案"><a href="#建立專案" class="headerlink" title="建立專案"></a>建立專案</h2><ol>
+<li>先在本地端建立一個資料夾作為專案位置<br><img src="https://i.imgur.com/czsa0bS.png" alt=""></li>
+<li>開啟VS Code File - Open Folder，開啟剛剛建立的資料夾</li>
+<li>New Ternminal，在下方terminal輸入<code>touch README.md</code>(使用指令建立檔案)<br><img src="https://i.imgur.com/w5bMY4p.png" alt=""><blockquote>
+<p>若無touch，則輸入<code>npm install touch-cli -g</code>安裝touch的套件<br><img src="https://i.imgur.com/ZaV3Pi5.png" alt=""></p>
+</blockquote>
+</li>
+</ol>
+<h2 id="建立Node-js的package"><a href="#建立Node-js的package" class="headerlink" title="建立Node.js的package"></a>建立Node.js的package</h2><ol>
+<li>檢查node js的version：<code>node --version</code></li>
+<li>初始化node js專案所需的package：<code>node init</code><br><img src="https://i.imgur.com/IDLDHG4.png" alt=""></li>
+<li>完成後目錄下會自動出現<code>package.json</code>紀錄此專案的基本訊息<br><img src="https://i.imgur.com/EDyKFSd.png" alt=""></li>
+</ol>
+<h2 id="安裝別人寫好的套件"><a href="#安裝別人寫好的套件" class="headerlink" title="安裝別人寫好的套件"></a>安裝別人寫好的套件</h2><ol>
+<li>在terminal輸入<code>npm install lodash --save</code><br><img src="https://i.imgur.com/H70jxhK.png" alt=""></li>
+<li>完成後在這個專案中就會外來套件的相關檔案<br><img src="https://i.imgur.com/Nh0C8Io.png" alt=""></li>
+<li>並且在<code>package.json</code>裡也會出現dependency<br><img src="https://i.imgur.com/rHV157x.png" alt=""></li>
+</ol>
+<blockquote>
+<p>下載測試用的套件(會自動去找測試的程式執行)：<br><code>npm install jest -g</code></p>
+</blockquote>
+<h2 id="執行第一個腳本"><a href="#執行第一個腳本" class="headerlink" title="執行第一個腳本"></a>執行第一個腳本</h2><p>可以看到在之前的<code>npm init</code>的步驟裡，我們選擇了預設的<code>index.js</code>作為專案的entry point，因此我們要在專案裡新增一個<code>index.js</code><br><img src="https://i.imgur.com/aehXObX.png" alt=""></p>
+<ol>
+<li>建立<code>index.js</code>的檔案，並且輸入<code>console.log(&#39;Hello world!&#39;);</code><br><img src="https://i.imgur.com/MgvdS7a.png" alt=""></li>
+<li>執行<br>(1) 可以選擇使用terminal輸入<code>node index.js</code><br><img src="https://i.imgur.com/oYdi1vr.png" alt=""><br>(2) 建立腳本：在<code>package.json</code>裡建立腳本<br>(“Script Name”：”Script Content”)<br><img src="https://i.imgur.com/t22uPTK.png" alt=""><br>並在terminal中執行<code>npm run test</code><br><img src="https://i.imgur.com/CpMaS1W.png" alt=""><br>(3) 使用VS Code的Debug<br>第一次使用會需要安裝套件<br><img src="https://i.imgur.com/LAQ9qoK.png" alt=""><br>完成之後他會自動執行該專案的程式，程式會從前面<code>package.json</code>所設定的進入點開始跑<br><img src="https://i.imgur.com/3jybPxf.png" alt=""></li>
+</ol>
+<h2 id="雜筆記"><a href="#雜筆記" class="headerlink" title="雜筆記"></a>雜筆記</h2><h3 id="VS-Code偵錯模式"><a href="#VS-Code偵錯模式" class="headerlink" title="VS Code偵錯模式"></a>VS Code偵錯模式</h3><blockquote>
+<p>此篇為另建立的專案，專案名稱改為<code>hello-es6</code>，除此外皆相同</p>
+</blockquote>
+<ul>
+<li><p>使用Chrome Debug會自動在專案下建立一個<code>.vscode</code>的資料夾<br><img src="https://i.imgur.com/9xcRLY5.png" alt=""></p>
+</li>
+<li><p>裡面會有一個叫做<code>launch.json</code>的檔案存放可執行的組態<br><img src="https://i.imgur.com/vH4S3jv.png" alt=""></p>
+</li>
+<li><p>我們也可以自行新增新的組態<br><img src="https://i.imgur.com/MHKbGa1.png" alt=""></p>
+</li>
+<li><p>並把執行的腳本名稱換成前在<code>package.json</code>裡設定的腳本名稱<br><img src="https://i.imgur.com/01KzMin.png" alt=""></p>
+</li>
+<li><p>此時再進行Debug，那麼他的執行效果就等同於<code>npm run test</code><br><img src="https://i.imgur.com/B1VNynI.png" alt=""></p>
+</li>
+</ul>
+<h3 id="VSCode-中斷點測試"><a href="#VSCode-中斷點測試" class="headerlink" title="VSCode 中斷點測試"></a>VSCode 中斷點測試</h3><ul>
+<li>按該行程式前面就可以設定中斷點。</li>
+<li><p>可以看到只執行了line 6，因為中斷點設在line 7，因此最終只印出了a is: 1<br><img src="https://i.imgur.com/LUr4w4S.png" alt=""></p>
+</li>
+<li><p>可以利用上方浮動的工具跳中斷點，完整執行此程式<br><img src="https://i.imgur.com/0AxOCmx.png" alt=""></p>
+</li>
+</ul>
+<h3 id="ES6是什麼"><a href="#ES6是什麼" class="headerlink" title="ES6是什麼?"></a>ES6是什麼?</h3><ul>
+<li>JavaScript規範的版本之一，全名是ECMAScript 6</li>
+<li><p>一些簡單的介紹可以看：<span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy9hcnRpY2xlcy8xMDIwMDAwNw==">https://ithelp.ithome.com.tw/articles/10200007<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+<li><p>跟ES5比較明顯的差別舉例來說：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// es5 需要分開打用+串接</span></span><br><span class="line"><span class="keyword">var</span> name = ‘Name ‘ + first + ‘ ‘ + last + ‘.’</span><br><span class="line"><span class="comment">// es6 可以使用$&#123;&#125;直接放變數</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">`Name is <span class="subst">$&#123;first&#125;</span> <span class="subst">$&#123;last&#125;</span>.`</span></span><br><span class="line">-----------------------------------</span><br><span class="line"><span class="comment">// es5 多行必須分開</span></span><br><span class="line"><span class="keyword">var</span> name = ‘first line’</span><br><span class="line"> + ‘second line’</span><br><span class="line"><span class="comment">// es6 多行可以用一個「`」代替(markdown語法裡的顯示程式碼的標記)</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">`first line</span></span><br><span class="line"><span class="string">second line`</span></span><br></pre></td></tr></table></figure></li>
+<li>在ES6後出現了一個叫做Arrow function(fat arrow function)的功能(個人覺得有點像python裡的lambda function)</li>
+<li>簡單來說就是讓function變得更簡短，比如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x + <span class="number">1</span> &#125;</span><br></pre></td></tr></table></figure>
+可以寫成<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fun = <span class="function">(<span class="params">x</span>) =&gt;</span> x + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<ul>
+<li>但是若今天function沒有return value(void)，就要加上{}。比如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; x + <span class="number">3</span> &#125;</span><br></pre></td></tr></table></figure>
+可以寫成<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fun = <span class="function">(<span class="params">x</span>) =&gt;</span> &#123; x + <span class="number">3</span> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h4 id="常用的ES6語法"><a href="#常用的ES6語法" class="headerlink" title="常用的ES6語法"></a>常用的ES6語法</h4><ul>
+<li><p>引入package</p>
+<ul>
+<li>require: Node.js 和 ES6 都支援的引入</li>
+<li>export / import : 只有ES6 支援的導出引入</li>
+<li>module.exports / exports: 只有 Node.js 支援的導出</li>
+</ul>
+</li>
+<li><p>解構賦值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//es5</span></span><br><span class="line"><span class="keyword">const</span> p = &#123;<span class="attr">name</span>: <span class="string">&#x27;Amy&#x27;</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> name = p.name <span class="comment">// Amy</span></span><br><span class="line"><span class="keyword">const</span> id = p.id || <span class="string">&#x27;no ID&#x27;</span> <span class="comment">//no ID</span></span><br><span class="line"><span class="comment">// es6</span></span><br><span class="line"><span class="keyword">const</span> p = &#123;<span class="attr">name</span>: <span class="string">&#x27;Amy&#x27;</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> &#123;name, id = <span class="string">&#x27;no ID&#x27;</span>&#125; = p</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>參考：<span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy9hcnRpY2xlcy8xMDIwMDI5MA==">https://ithelp.ithome.com.tw/articles/10200290<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="Coding-Style-ESLint"><a href="#Coding-Style-ESLint" class="headerlink" title="Coding Style - ESLint"></a>Coding Style - ESLint</h2><p>為了維持一定的coding style，也為了團隊合作時不要看別人的程式看到瘋掉(或讓人瘋掉)，有一些套件工具可以使用，這邊使用ESLint。</p>
+<ol>
+<li>安裝ESLint：<code>npm install -g eslint</code></li>
+<li>在專案內產生套件執行檔<code>eslintrc.js</code>：<code>eslint --init</code>，他會問你一些關於程式碼的規範問題想怎麼設定</li>
+<li>設定一些規定的coding style<br><img src="https://i.imgur.com/9FrieNP.png" alt=""></li>
+<li>創一個<code>badcod.js</code>，裡面的程式雖然都可以執行，但是對於維護或是開發都不太友善<br><img src="https://i.imgur.com/ZO30p9O.png" alt=""></li>
+<li>執行<code>eslint badcode.js</code>，他會幫你挑出錯誤<br><img src="https://i.imgur.com/KmKHjXu.png" alt=""></li>
+<li>可選擇手動修正或是自動修正：<code>eslint badcode.js --fix</code><br><img src="https://i.imgur.com/9be3czU.png" alt=""></li>
+</ol>
+<blockquote>
+<p>當然，好的編譯器肯定都幫你做好了，只要去裝好套件，就算不像上面那樣執行、他也能幫你維持你的coding style<br><img src="https://i.imgur.com/g21MkKH.png" alt=""><br>像是我用了””和我所設定的coding style不合，他就會幫我報錯<br><img src="https://i.imgur.com/cBZXH53.png" alt=""></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/BucketTalk/tags/javascript/" rel="tag"># javascript</a>
+              <a href="/BucketTalk/tags/VScode/" rel="tag"># VScode</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/BucketTalk/post/CICD-Jenkins/" rel="prev" title="CICD工具-Jenkins入門">
+      <i class="fa fa-chevron-left"></i> CICD工具-Jenkins入門
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/BucketTalk/post/javasrcipt-express-demo/" rel="next" title="JavaScript Express Demo">
+      JavaScript Express Demo <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+        </div>
+        
+    
+      <div class="comments" id="comments">
+          <script src="https://utteranc.es/client.js"
+            repo="jam68ty/Comment"
+            issue-term="pathname"
+            label="Comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+          </script>
+      </div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chia Chen</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/BucketTalk/lib/anime.min.js"></script>
+
+<script src="/BucketTalk/js/utils.js"></script>
+
+<script src="/BucketTalk/js/motion.js"></script>
+
+
+<script src="/BucketTalk/js/next-boot.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      const script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

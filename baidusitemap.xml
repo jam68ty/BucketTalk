@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/javasrcipt-express-demo/</loc>
+    <lastmod>2021-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/javasrcipt-example-project/</loc>
+    <lastmod>2021-06-22</lastmod>
+  </url>
+  <url>
     <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/CICD-Jenkins/</loc>
     <lastmod>2021-03-17</lastmod>
   </url>

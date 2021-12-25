@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta name="google-site-verification" content="RwN5OOI1f7pbAaVUsMbKZsYo1v6ATxMWQVDkZ-1bt0Y" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/BucketTalk/css/main.css">
+
+
+<link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
+  
+  <link rel="stylesheet" href="/BucketTalk/lib/animate-css/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.min.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+  </script>
+
+  <meta name="description" content="進到公司後被要求的第一件事就是看這本書雖然在看的時候一直有種為什麼我在這？我在幹嘛？之類的感覺但是沒想到這些東西會一直在之後做專案的時候冒出來就連我自己都覺得很神奇很推薦大家有空的話也可以看看他雖然短期之內不會有立竿見影的效果但我覺得書中的觀念會在不知不覺中影響著自己">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA搞不清楚系列 - Clean Code 讀書心得">
+<meta property="og:url" content="https://jam68ty.github.io/BucketTalk/post/java-clean-code-reading-review/index.html">
+<meta property="og:site_name" content="BucketTalk">
+<meta property="og:description" content="進到公司後被要求的第一件事就是看這本書雖然在看的時候一直有種為什麼我在這？我在幹嘛？之類的感覺但是沒想到這些東西會一直在之後做專案的時候冒出來就連我自己都覺得很神奇很推薦大家有空的話也可以看看他雖然短期之內不會有立竿見影的效果但我覺得書中的觀念會在不知不覺中影響著自己">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://im2.book.com.tw/image/getImage?i=https://www.books.com.tw/img/001/057/98/0010579897_bc_01.jpg&amp;v=513f2000&amp;w=348&amp;h=348">
+<meta property="article:published_time" content="2021-12-25T06:21:17.000Z">
+<meta property="article:modified_time" content="2021-12-25T06:35:07.582Z">
+<meta property="article:author" content="Chia Chen">
+<meta property="article:tag" content="Clean Code">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://im2.book.com.tw/image/getImage?i=https://www.books.com.tw/img/001/057/98/0010579897_bc_01.jpg&amp;v=513f2000&amp;w=348&amp;h=348">
+
+<link rel="canonical" href="https://jam68ty.github.io/BucketTalk/post/java-clean-code-reading-review/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>JAVA搞不清楚系列 - Clean Code 讀書心得 | BucketTalk</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-174207718-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <main class="main">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/BucketTalk/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BucketTalk</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">return null</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-about">
+
+    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/BucketTalk/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-1-%E7%84%A1%E7%91%95%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1 - 無瑕的程式碼</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-2-%E6%9C%89%E6%84%8F%E7%BE%A9%E7%9A%84%E5%91%BD%E5%90%8D"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2 - 有意義的命名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-3-%E5%87%BD%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3 - 函式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-4-%E8%A8%BB%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">Chapter 4 - 註解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-5-%E7%B7%A8%E6%8E%92"><span class="nav-number">5.</span> <span class="nav-text">Chapter 5 - 編排</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-6-%E7%89%A9%E4%BB%B6%E5%8F%8A%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B"><span class="nav-number">6.</span> <span class="nav-text">Chapter 6 - 物件及資料結構</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E6%8A%BD%E8%B1%A1%E5%8C%96"><span class="nav-number">6.1.</span> <span class="nav-text">資料抽象化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E5%82%B3%E8%BC%B8%E7%89%A9%E4%BB%B6-Data-Transfer-Objects-DTO"><span class="nav-number">6.2.</span> <span class="nav-text">資料傳輸物件(Data Transfer Objects, DTO)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-number">6.3.</span> <span class="nav-text">結論</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-7-%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">Chapter 7 - 錯誤處理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-8-%E9%82%8A%E7%95%8C"><span class="nav-number">8.</span> <span class="nav-text">Chapter 8 - 邊界</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-9-%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6"><span class="nav-number">9.</span> <span class="nav-text">Chapter 9 - 單元測試</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-10-%E9%A1%9E%E5%88%A5"><span class="nav-number">10.</span> <span class="nav-text">Chapter 10 - 類別</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-11-%E7%B3%BB%E7%B5%B1"><span class="nav-number">10.1.</span> <span class="nav-text">Chapter 11 - 系統</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-12-%E7%BE%BD%E5%8C%96"><span class="nav-number">11.</span> <span class="nav-text">Chapter 12 - 羽化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-13-%E5%B9%B3%E8%A1%8C%E5%8C%96"><span class="nav-number">12.</span> <span class="nav-text">Chapter 13 - 平行化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-14-%E6%8C%81%E7%BA%8C%E5%9C%B0%E7%B2%BE%E7%85%89"><span class="nav-number">13.</span> <span class="nav-text">Chapter 14 - 持續地精煉</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Other-References"><span class="nav-number">14.</span> <span class="nav-text">Other References</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chia Chen"
+      src="/BucketTalk/image/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Chia Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/BucketTalk/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/BucketTalk/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/BucketTalk/tags/">
+          
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </header>
+
+      
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+      <div class="main-inner">
+        
+
+        <div class="content post posts-expand">
+          
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/java-clean-code-reading-review/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="name" content="Chia Chen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BucketTalk">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JAVA搞不清楚系列 - Clean Code 讀書心得
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-12-25 14:21:17 / 修改時間：14:35:07" itemprop="dateCreated datePublished" datetime="2021-12-25T14:21:17+08:00">2021-12-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/BucketTalk/categories/JAVA%E6%90%9E%E4%B8%8D%E6%B8%85%E6%A5%9A%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">JAVA搞不清楚系列</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="https://www.books.com.tw/products/0010579897"><img src="https://im2.book.com.tw/image/getImage?i=https://www.books.com.tw/img/001/057/98/0010579897_bc_01.jpg&amp;v=513f2000&amp;w=348&amp;h=348" alt=""></a><br>進到公司後被要求的第一件事就是看這本書<br>雖然在看的時候一直有種為什麼我在這？我在幹嘛？之類的感覺<br>但是沒想到這些東西會一直在之後做專案的時候冒出來<br>就連我自己都覺得很神奇<br>很推薦大家有空的話也可以看看他<br>雖然短期之內不會有立竿見影的效果<br>但我覺得書中的觀念會在不知不覺中影響著自己</p>
+<a id="more"></a>
+<h1 id="Chapter-1-無瑕的程式碼"><a href="#Chapter-1-無瑕的程式碼" class="headerlink" title="Chapter 1 - 無瑕的程式碼"></a>Chapter 1 - 無瑕的程式碼</h1><ol>
+<li>集中：不要在一段程式裡面想做一堆事</li>
+<li>獨立：盡量減少依賴關係，以便於維護</li>
+<li>可讀：讓人看得懂，設計成便於測試的</li>
+<li>優化：盡可能的優化他，以免引得別人想來做優化而誤導致一堆混亂</li>
+</ol>
+<blockquote>
+<p>命名應該名副其實，他會告訴你為什麼要存在、做什麼事、該怎麼用，如果你需要註解來補充就不算名符其實。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.notion.so/f24f93d3cef24782af599005067c480f"></a></p>
+<h1 id="Chapter-2-有意義的命名"><a href="#Chapter-2-有意義的命名" class="headerlink" title="Chapter 2 - 有意義的命名"></a>Chapter 2 - 有意義的命名</h1><ol>
+<li><p>讓名稱代表意圖—使其名副其實</p>
+<blockquote>
+<p>代碼的簡潔度很重要，但是如果簡潔變成了模糊則沒有意義</p>
+</blockquote>
+</li>
+<li>避免誤導：拼寫與意圖相似的字詞</li>
+<li>產生有意義的區別：如Data &amp; Info幾乎沒差就選一個用就好</li>
+<li>使用能唸出來的名稱：不要亂縮寫</li>
+<li>使用可被搜尋的名字：命名的長度與其scope的大小相應</li>
+<li>不要裝可愛：<del>HolyHandGrenade</del> ⇒ DeleteItem</li>
+<li>每個概念使用一種字詞：fecth or retrieve or get</li>
+<li>別說雙關語：add object or append list</li>
+<li>使用解決方案領域的命名&amp;使用問題領域的命名：技術性命名</li>
+<li>添加有意義的上下文資訊：firstname+lastname+street+city = Address or define an object Address that IDE also can identify it.</li>
+</ol>
+<h1 id="Chapter-3-函式"><a href="#Chapter-3-函式" class="headerlink" title="Chapter 3 - 函式"></a>Chapter 3 - 函式</h1><aside>
+💡 簡短！更簡短！
+
+</aside>
+
+<p>每個函式都只做一件事，只包含一層抽象概念，從函式中無法再提煉出另外一個新函示。</p>
+<aside>
+📌 將函式維持在單一層次的抽象概念
+
+</aside>
+
+<ul>
+<li>函式避免使用switch的敘</li>
+<li>理想的函數沒有參數—參數越多越不直觀、測試起來也越複雜，使用只有一個輸入型參數的函式是最好的做法</li>
+<li>輸出型的參數要避免使用：appendFooter(s) ⇒ report.appendFooter() //更明確的知道是加東西到哪裏</li>
+</ul>
+<h1 id="Chapter-4-註解"><a href="#Chapter-4-註解" class="headerlink" title="Chapter 4 - 註解"></a>Chapter 4 - 註解</h1><ul>
+<li>註解是用來彌補失敗的程式碼，如果一段code無法清楚說明他的意圖而需要註解去輔助，則這不是一段成功的code。</li>
+<li>寫註解的動機往往是因為糟糕程式碼的存在，而註解只會越來越糟—因為工程師們在維護或是調整程式時容易忘記維護註解。</li>
+<li>與其花時間整理註解，不如整理糟糕的程式碼。</li>
+</ul>
+<h1 id="Chapter-5-編排"><a href="#Chapter-5-編排" class="headerlink" title="Chapter 5 - 編排"></a>Chapter 5 - 編排</h1><p>一、 垂直編排</p>
+<ol>
+<li>概念間的垂直空白間隔：不同概念用空白間隔開來</li>
+<li>垂直密度：相關程式碼應該更緊密</li>
+<li>垂直距離：相近的概念不該被分散在不同檔案中</li>
+<li>變數宣告盡可能靠近變數被宣告的地方</li>
+<li>相依的函式在垂直編排上應該盡可能地靠近</li>
+</ol>
+<blockquote>
+<p>概念相似性(Conceptual Affinity)：程式裡的某些程式碼，希望能和其他程式碼盡可能地相近，因為他們在概念上有著相似的性質。</p>
+<ol>
+<li>垂直的順序：<strong>被呼叫的函式應該出現在呼叫他的函式下方</strong></li>
+</ol>
+</blockquote>
+<p>二、 水平編排</p>
+<ol>
+<li>空白使得左右分隔更突出</li>
+<li>使用空白來強調運算子的優先權(沒空白的優先權越高)</li>
+<li>使用縮排展現層級關係</li>
+</ol>
+<h1 id="Chapter-6-物件及資料結構"><a href="#Chapter-6-物件及資料結構" class="headerlink" title="Chapter 6 - 物件及資料結構"></a>Chapter 6 - 物件及資料結構</h1><h2 id="資料抽象化"><a href="#資料抽象化" class="headerlink" title="資料抽象化"></a>資料抽象化</h2><p>抽象的介面：使用者不需要知道實現的過程，就能操縱資料</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//具體化的交通工具類別</span></span><br><span class="line">FuelTankCapacityInGallons()&#123;</span><br><span class="line">	<span class="function"><span class="keyword">double</span> <span class="title">getGallonsOfGasoline</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//抽象化的交通工具類別</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Vehicle</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">double</span> <span class="title">getPercentFuelRemaining</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>我們不希望有任何人依賴這些變數。我們想保持一個自由的空間，這空間讓我們能自由地更改這些變數的型態，或是在出現突如其來的奇想或是衝動時，能自由地變更實現內容的程式碼。</p>
+</blockquote>
+<p><strong>The Law of Demeter (德摩特爾法則)</strong></p>
+<p>模組不該知道「關於他所操縱物件的內部運作」。物件將他們的資料隱藏起來，然後曝露其本身的操縱行為。</p>
+<blockquote>
+<p>只和朋友說話，不和陌生人說話。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> String ouputDir = ctxt.getOptions().getScratchDir().getAbsolutePath();</span><br></pre></td></tr></table></figure>
+<p>上述程式碼被稱為train wreck (火車事故)，在程式碼中要盡力避免，可以改寫成：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Options opts = ctxt.getOptions();</span><br><span class="line">File scratchDir = opts.getScratchDir();</span><br><span class="line"><span class="keyword">final</span> String ouputDir = scratchDir.getAbsolutePath();</span><br></pre></td></tr></table></figure>
+<h2 id="資料傳輸物件-Data-Transfer-Objects-DTO"><a href="#資料傳輸物件-Data-Transfer-Objects-DTO" class="headerlink" title="資料傳輸物件(Data Transfer Objects, DTO)"></a>資料傳輸物件(Data Transfer Objects, DTO)</h2><p>最佳的資料結構形式，是一個類別裡只有一個公用變數，沒有任何函式。</p>
+<p>當我們要與資料庫溝通或是解析由socket傳來的訊息或諸如此類的事時，DTO在將「資料庫的原始資料」轉換成「應用程式內的物件」時，往往應用於轉換過程中的第一階段。</p>
+<p>最常見的形式：Bean；Bean擁有可以被讀取、設定函式操作的私有變數(半封裝特性)</p>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><ul>
+<li>物件導向設計：有增加<em>新資料</em>型態的彈性</li>
+<li>資料型態和結構化的設計：有增加<em>新行為</em>的彈性</li>
+</ul>
+<h1 id="Chapter-7-錯誤處理"><a href="#Chapter-7-錯誤處理" class="headerlink" title="Chapter 7 - 錯誤處理"></a>Chapter 7 - 錯誤處理</h1><p><strong>檢查型例外：Try-Catch-Finally</strong></p>
+<p>優點：try區塊就像是快交易處理(transaction)。不管在try裡發生了什麼意外，catch讓程式維持在一致的狀態。</p>
+<p>缺點：使用檢查型例外的代價是違反了開放閉合準則(Open/Closed Principle)。如果對軟體中層次較低的函式進行修改，會迫使必須修改一連串高層次函式的署名。檢查型例外在相依性所花費的工夫比實質效益還要高上不少。</p>
+<p>錯誤的處理最重要的就是「提供發生例外的相關資訊」</p>
+<p>可以包裹第三方API，減少依賴，在未來不必花費太多力氣就可選擇更換使用另一個不同的函式庫。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">LocalPort port = <span class="keyword">new</span> LocalPort(<span class="number">12</span>)</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	port.open();</span><br><span class="line">&#125; <span class="keyword">catch</span> (PortDeviceFailure e) &#123;</span><br><span class="line">	reportError(e);</span><br><span class="line">	logger.log(e.getMessage(), e);</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//LocalPort是一個簡單的包裹類別，幫助我們捕捉和翻譯從ACMEPort類別所拋出的例外事件</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LocalPort</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> ACMEPort innerPort;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">LocalPort</span> <span class="params">(<span class="keyword">int</span> portNumber)</span></span>&#123;</span><br><span class="line">		innerPort = <span class="keyword">new</span> ACMEPort(portNumber);</span><br><span class="line">&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">open</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			innerPort.open();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (DeviceResponseExcrption e)&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> PortDeviceFailure(e);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ATM1212UnlockedException e)&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> PortDeviceFailure(e);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (GMXError e)&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> PortDeviceFailure(e);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<aside>
+📌 在程式中，不要傳遞Null，不管是null檢查或者是null exception，對於程式來說都是不好的。
+
+</aside>
+
+<h1 id="Chapter-8-邊界"><a href="#Chapter-8-邊界" class="headerlink" title="Chapter 8 - 邊界"></a>Chapter 8 - 邊界</h1><p>第三方軟體套件和框架的提供者，努力讓第三方軟體套件和框架具有更廣泛的適用性，使他們能夠在許多不同的環境中工作、吸引更多的使用者。從另一 方面來說使用者希望介面能夠專注於他們所要的特別需求，這種張力會導致我們的系統邊界出現問題。</p>
+<p>我們會希望邊界上的介面被隱藏，將邊界介面放在類別裡或放在相近的類別家族裡，避免在公用API裡回傳介面，或者將介面當作參數傳給API。</p>
+<p><strong>學習式測試(learning test)</strong></p>
+<p>比照在應用程式裡的使用方式，來呼叫第三方軟體API。實質上是在做控制實驗，以檢驗我們對於這個API的了解程度。這個測試的重點在於我們想要從API獲得什麼樣的結果。(練習怎麼使用第三方的API)</p>
+<h1 id="Chapter-9-單元測試"><a href="#Chapter-9-單元測試" class="headerlink" title="Chapter 9 - 單元測試"></a>Chapter 9 - 單元測試</h1><p>Test-Driven Development(TDD, 測試驅動開發)：先寫測試程序，然後編碼實現其功能</p>
+<p>TDD的三大法則：</p>
+<ol>
+<li>在撰寫一個單元測試(測試失敗的單元測試)前，不可撰寫任何產品程式</li>
+<li>只撰寫剛好無法通過的單元測試，不能編譯也算無法通過</li>
+<li>只撰寫剛好能通過當前測試失敗的產品程式</li>
+</ol>
+<p>單元測試讓我們的程式保持擴充彈性、可維護性及可再利用性。</p>
+<h1 id="Chapter-10-類別"><a href="#Chapter-10-類別" class="headerlink" title="Chapter 10 - 類別"></a>Chapter 10 - 類別</h1><p>一開頭應該是一連串的變數(公用靜態變數被放在最開頭→私有靜態變數→私有實體變數)</p>
+<p>公用函式→私有函示 (降層法則  stepdown rule)</p>
+<ul>
+<li>單一職責原則 (Single Responsibility Principle, SRP)<ul>
+<li>類別的職責不該太多，且類別的命名應足以描述其職責</li>
+<li>一個類別或一個模組應該有一個，也只能有一個修改的理由(他負責的功能不太多)</li>
+</ul>
+</li>
+</ul>
+<aside>
+⚠️ 每個小類別「封裝單一的職責」、「只有一個修改的理由」、「與其他少數幾個類別合作來完成系統要求的行為」
+
+</aside>
+
+<ul>
+<li>相依性反向原則(Dependency Inversion Principle, DIP)：類別應該相依於抽象概念，而不是相依在具體細節上。(否則在改動細節時可能會造成整個程式碼的潰敗，也更不容易測試)</li>
+<li>凝聚性：高的凝聚性代表的是類別裡的方法和變數是互相依賴、共同形成一整個邏輯。</li>
+</ul>
+<h2 id="Chapter-11-系統"><a href="#Chapter-11-系統" class="headerlink" title="Chapter 11 - 系統"></a>Chapter 11 - 系統</h2><aside>
+⚠️ 建造與使用—將執行邏輯與起始過程劃分開來
+
+</aside>
+
+<p>最常見的分離方法就是主函式 Main，將所有與建造有關的程式碼都在主函式里執行。(build放在Main function裡)</p>
+<ul>
+<li>相依性注入(Dependency Injection, DI)：將建立的過程從使用中分離出來。最知名的DI容器就是Spring(使用@annotation)，在真正需要物件前不建立物件。</li>
+<li>POJO(Plain-Old Java Object) 簡單Java物件：只需要繼承Object就可以，沒有特定規定，只要建立的類別有setter/getter方法都可以稱為POJO。</li>
+</ul>
+<h1 id="Chapter-12-羽化"><a href="#Chapter-12-羽化" class="headerlink" title="Chapter 12 - 羽化"></a>Chapter 12 - 羽化</h1><p>簡單設計四守則：</p>
+<ol>
+<li>執行完所有的測試：為了能讓系統被測試，類別自然會變得單一、小規模，因此能符合SRP(單一職責)。且越多測試會更容易用到相依性反向的原則。→保持低耦合度與高凝聚力(Chapter10)</li>
+<li>沒有重複的部分：在小處重複使用(為了移除重複的程式碼可能會違反SRP，因此可能又會再寫出一個更小職責的功能)</li>
+<li>表達程式設計師的本意：選擇良好的名稱、讓函式和類別簡短、使用標準命名法</li>
+<li>最小化類別和方法的數量</li>
+</ol>
+<h1 id="Chapter-13-平行化"><a href="#Chapter-13-平行化" class="headerlink" title="Chapter 13 - 平行化"></a>Chapter 13 - 平行化</h1><p>將「做什麼」和「何時做」分開來</p>
+<p>但是不同執行緒共享資料時容易造成結果不同(因為執行的順序路徑有太多種組合)，因此建議：</p>
+<ol>
+<li>跟平行化有關的程式碼要分割開來</li>
+<li>用keyword synchronized(同步化)來限制資料視野。嚴格限制共享資料的存取次數</li>
+<li>不去改資料，而是使用資料的複本。最後去多個執行緒蒐集這些複本</li>
+<li>將資料劃分開來，盡量不去共享資料</li>
+</ol>
+<aside>
+📌 平行化程式中很難發現錯誤，因為存在上千條路徑，很難重現一樣的錯誤。可以加上wait(), sleep(), priority()等函式試圖產生失敗，或是強制產生失敗
+
+</aside>
+
+<h1 id="Chapter-14-持續地精煉"><a href="#Chapter-14-持續地精煉" class="headerlink" title="Chapter 14 - 持續地精煉"></a>Chapter 14 - 持續地精煉</h1><p>程式碼需要不斷的修改，慢慢地往某一個特定目標修正，並且在過程中遵守TDD的原則，在每一次的變動中都必須確保系統能像之前一樣運作。</p>
+<p>使用單元測試與驗收測試，以確保每一次改動並不會讓系統潰敗且能保持與此前一致的運作邏輯(或是更精美)</p>
+<h1 id="Other-References"><a href="#Other-References" class="headerlink" title="Other References"></a>Other References</h1><ul>
+<li>Enum的使用方法：<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cudHBpc29mdHdhcmUuY29tL3RwdS9hcnRpY2xlRGV0YWlscy8xNDMy">https://www.tpisoftware.com/tpu/articleDetails/1432<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy9hcnRpY2xlcy8xMDE4NDc5NA==">https://ithelp.ithome.com.tw/articles/10184794<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+</li>
+<li>如何提升Java效能：<span class="exturl" data-url="aHR0cHM6Ly9pdGVyMDEuY29tLzEwNzI3MC5odG1s">https://iter01.com/186974.html<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/BucketTalk/tags/Clean-Code/" rel="tag"># Clean Code</a>
+              <a href="/BucketTalk/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/BucketTalk/post/java-pojo-dto-dao/" rel="prev" title="JAVA搞不清楚系列 - POJO, PO, DTO, DAO, BO, VO">
+      <i class="fa fa-chevron-left"></i> JAVA搞不清楚系列 - POJO, PO, DTO, DAO, BO, VO
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+        </div>
+        
+    
+      <div class="comments" id="comments">
+          <script src="https://utteranc.es/client.js"
+            repo="jam68ty/Comment"
+            issue-term="pathname"
+            label="Comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+          </script>
+      </div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chia Chen</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/BucketTalk/lib/anime.min.js"></script>
+
+<script src="/BucketTalk/js/utils.js"></script>
+
+<script src="/BucketTalk/js/motion.js"></script>
+
+
+<script src="/BucketTalk/js/next-boot.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      const script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

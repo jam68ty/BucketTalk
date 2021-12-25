@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/java-clean-code-reading-review/</loc>
+    <lastmod>2021-12-25</lastmod>
+  </url>
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/opencv-data-agumentation/</loc>
+    <lastmod>2021-12-25</lastmod>
+  </url>
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/opencv-data-argumentation/</loc>
+    <lastmod>2021-12-25</lastmod>
+  </url>
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/java-pojo-dto-dao/</loc>
+    <lastmod>2021-12-25</lastmod>
+  </url>
+  <url>
     <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/javasrcipt-express-demo/</loc>
     <lastmod>2021-06-22</lastmod>
   </url>
@@ -23,10 +39,6 @@
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/deep-learning-note-face-detection1/</loc>
     <lastmod>2021-01-25</lastmod>
-  </url>
-  <url>
-    <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/opencv-data-agumentation/</loc>
-    <lastmod>2021-01-23</lastmod>
   </url>
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/BucketTalk/post/opencv-image-cropped/</loc>

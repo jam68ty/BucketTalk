@@ -1,27 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta name="google-site-verification" content="RwN5OOI1f7pbAaVUsMbKZsYo1v6ATxMWQVDkZ-1bt0Y" />
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.2.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/BucketTalk/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/BucketTalk/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/BucketTalk/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/BucketTalk/css/main.css">
 
 
 <link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
-  
-  <link rel="stylesheet" href="/BucketTalk/lib/animate-css/animate.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.min.css">
-  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
 
-<script class="hexo-configurations">
+<script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="放寒假了，好不容易完成了論文前三章跟得出了初步實驗結果但是被老師打槍「需要討論」之後產生了自己很廢的想法所以想念一些書來讓自己充實一點剛好前陣子在Udemy上買了課程因此記錄了一下課程的內容Deep Learning and Computer Vision A-Z™: OpenCV, SSD &amp; GANs有興趣的人也可以買課程聽聽看(畢竟30天內退款真是個好東西)裡面的老師目前聽下來覺得講">
@@ -51,7 +47,7 @@
 <link rel="canonical" href="https://jam68ty.github.io/BucketTalk/post/deep-learning-note-face-detection1/">
 
 
-<script class="page-configurations">
+<script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
@@ -63,15 +59,6 @@
 
   <title>深度學習筆記系列 臉部辨識基本理論(I) | BucketTalk</title>
   
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
-    <script>
-      if (CONFIG.hostname === location.hostname) {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-174207718-1');
-      }
-    </script>
 
 
 
@@ -80,36 +67,24 @@
 
   <noscript>
   <style>
-  body { margin-top: 2rem; }
-
+  .use-motion .brand,
   .use-motion .menu-item,
-  .use-motion .sidebar,
+  .sidebar-inner,
   .use-motion .post-block,
   .use-motion .pagination,
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-header {
-    visibility: visible;
-  }
-
-  .use-motion .header,
-  .use-motion .site-brand-container .toggle,
-  .use-motion .footer { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
   .use-motion .site-title,
-  .use-motion .site-subtitle,
-  .use-motion .custom-logo-image {
+  .use-motion .site-subtitle {
     opacity: initial;
     top: initial;
   }
 
-  .use-motion .logo-line {
-    transform: scaleX(1);
-  }
-
-  .search-pop-overlay, .sidebar-nav { display: none; }
-  .sidebar-panel { display: block; }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -123,23 +98,22 @@
   <div class="container use-motion">
     <div class="headband"></div>
 
-    <main class="main">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-        <div class="header-inner"><div class="site-brand-container">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切換導航欄">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/BucketTalk/" class="brand" rel="start">
-      <i class="logo-line"></i>
+      <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">BucketTalk</h1>
-      <i class="logo-line"></i>
+      <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">return null</p>
   </div>
@@ -152,21 +126,12 @@
 
 
 
+
 <nav class="site-nav">
   <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-home">
 
-    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+    <a href="/BucketTalk/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -181,99 +146,22 @@
 
 
 </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
+    </header>
 
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目錄
-        </li>
-        <li class="sidebar-nav-overview">
-          本站概要
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Viola-Jones-Algorithm"><span class="nav-number">1.</span> <span class="nav-text">Viola-Jones Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Haar-like-Feature-%E5%93%88%E7%88%BE%E7%89%B9%E5%BE%B5"><span class="nav-number">1.1.</span> <span class="nav-text">Haar-like Feature 哈爾特徵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integral-Image-%E7%A9%8D%E5%88%86%E5%9C%96"><span class="nav-number">1.2.</span> <span class="nav-text">Integral Image 積分圖</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
-      </section>
-      <!--/noindex-->
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Chia Chen"
-      src="/BucketTalk/image/avatar.jpg">
-  <p class="site-author-name" itemprop="name">Chia Chen</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/BucketTalk/archives/">
-        
-          <span class="site-state-item-count">33</span>
-          <span class="site-state-item-name">文章</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/BucketTalk/categories/">
-          
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">分類</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/BucketTalk/tags/">
-          
-        <span class="site-state-item-count">55</span>
-        <span class="site-state-item-name">標籤</span></a>
-      </div>
-  </nav>
-</div>
-
-
-  <div class="links-of-blogroll animated">
-    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-      Links
-    </div>
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
-        </li>
-    </ul>
-  </div>
-
-      </section>
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </header>
-
-      
+    
   <div class="back-to-top">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
 
-<noscript>
-  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
 
-
+    <main class="main">
       <div class="main-inner">
-        
-
-        <div class="content post posts-expand">
+        <div class="content-wrap">
           
+
+          <div class="content post posts-expand">
+            
 
     
   
@@ -282,7 +170,7 @@
     <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/deep-learning-note-face-detection1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="image" content="/BucketTalk/images/avatar.gif">
       <meta itemprop="name" content="Chia Chen">
       <meta itemprop="description" content="">
     </span>
@@ -332,8 +220,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>放寒假了，好不容易完成了論文前三章跟得出了初步實驗結果<br>但是被老師打槍「需要討論」之後產生了自己很廢的想法<br>所以想念一些書來讓自己充實一點<br>剛好前陣子在Udemy上買了課程<br>因此記錄了一下課程的內容<br><span class="exturl" data-url="aHR0cHM6Ly93d3cudWRlbXkuY29tL2NvdXJzZS9jb21wdXRlci12aXNpb24tYS16Lw==">Deep Learning and Computer Vision A-Z™: OpenCV, SSD &amp; GANs<i class="fa fa-external-link-alt"></i></span><br>有興趣的人也可以買課程聽聽看(畢竟30天內退款真是個好東西)<br>裡面的老師目前聽下來覺得講得還不錯(聽得懂)<br>但實在是因為英文不太行，所以需要做一些筆記幫助吸收<br><strong>文章中的圖片都是該課程中用到的圖片，僅幫助記憶、沒有其他目的</strong></p>
-<a id="more"></a>
+        <p>放寒假了，好不容易完成了論文前三章跟得出了初步實驗結果<br>但是被老師打槍「需要討論」之後產生了自己很廢的想法<br>所以想念一些書來讓自己充實一點<br>剛好前陣子在Udemy上買了課程<br>因此記錄了一下課程的內容<br><a target="_blank" rel="noopener" href="https://www.udemy.com/course/computer-vision-a-z/">Deep Learning and Computer Vision A-Z™: OpenCV, SSD &amp; GANs</a><br>有興趣的人也可以買課程聽聽看(畢竟30天內退款真是個好東西)<br>裡面的老師目前聽下來覺得講得還不錯(聽得懂)<br>但實在是因為英文不太行，所以需要做一些筆記幫助吸收<br><strong>文章中的圖片都是該課程中用到的圖片，僅幫助記憶、沒有其他目的</strong></p>
+<span id="more"></span>
 <h1 id="Viola-Jones-Algorithm"><a href="#Viola-Jones-Algorithm" class="headerlink" title="Viola-Jones Algorithm"></a>Viola-Jones Algorithm</h1><p>是Opencv library的原理，發展至今不只用於人臉圖像的偵測，也可用於實時(real-time)的影像偵測。<br>分為兩個階段：Training和Detection<br>但我們必須從Detection開始講起，這樣更有助於之後了解Training的過程。</p>
 <ol>
 <li>Detection 偵測<br>在Viola-Jones的演算法中，會先將圖片轉為灰階(Gray Scale)，接著由圖片的左上角開始逐格(Pixels)偵測指定範圍(Box)內是否含有指定的特徵(Feature)。此外，這張圖片的人臉最好是正面朝前，不要是由上而下、或是由左而右等奇怪的角度。<br>而每一個特徵都會有相對應的分數，當移到特定範圍後所偵測到的特徵分數最高時，則完成偵測，可以判斷為這「極有可能」是一張臉。(這是一個臉：有兩個眉毛、兩個眼睛、一個鼻子、一個嘴巴)<br>在這個掃描(Scan)偵測的過程中，Box的範圍可大可小，因此掃描可能發生很多次最終才找到臉。</li>
@@ -345,7 +233,7 @@
 <li>Four-rectangle Features<br><img src="https://i.imgur.com/5Z4dkA6.png" alt=""><br>在一張經過灰階化的圖片中，我們會試圖找出人臉上具有上述三樣特徵的局部：比如人的嘴巴可以說是Line Feature(中間深、上下淺)、人的眉毛相對於額頭是Edge Feature等。<br>針對每一個部位的特徵，我們會將他與為以Pixel為單位的網格重疊，並且每一網格中又根據顏色深淺透過標準化(Normalization)給予0~1的數字。<br><img src="https://i.imgur.com/7NUZj4K.png" alt=""><br>比如說上圖是一個人的鼻子部分，此部位符合Edge Feature，因此我們將他與以pixel為單位的網格($8 \times 4$)重疊後，並給予每一網格一個顏色深淺的數字。而亮面(左側)所有的數字加起來後取平均(W=0.166)，暗面所有數字加起來後取平均(B=0.568)，最後B-W=0.402。當這個數字越接近1，代表這部分的特別的黑白分明；當數字越接近0，代表這部分應該都是同一個顏色。(網格數值相加的部分與Integral Image有關)<br>在實際偵測中，我們會以該範圍($8 \times 4$)的網格逐步偵測圖片，找到接近B-W的值(Threshold 閥值、灰度劃分)。圖片可能存在多個符合該特徵的部位，但構成一張臉並不只依賴單一特徵，因此透過其他特徵部位的相對位置我們可以確認這是不是我們要的部位。</li>
 </ol>
 <h2 id="Integral-Image-積分圖"><a href="#Integral-Image-積分圖" class="headerlink" title="Integral Image 積分圖"></a>Integral Image 積分圖</h2><p>在Integral Image中，我們將Harr-like Feature中每個網格中的值標準化為0~10的數值以方便計算。而計算方式很簡單，就是創建一個與原圖相同size的網格圖，每當要計算該格積分時，需對應原圖的左上部分相加，如下圖的Integral Image中要計算綠色框框的積分，需將原圖綠色箭頭範圍內的數全部相加。<br><img src="https://i.imgur.com/XxFGpwA.png" alt=""><br>完成Integral Image後，當我們需要Image中紅色部分的數值，我們只需計算Integral Image中(框框的右下角-框框的右上方+框框的左上方-框框的左方)=紅色框框的值。<br><img src="https://i.imgur.com/4duMv7x.png" alt=""><br>Integral Image的好處是就算要計算的框框範圍裡有超過1000個以上的數字，他也可以快速的計算出來(Scalable)，以幫助我們找Harr-like Feature。</p>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>圖片與內容來源皆來自課程：<br><span class="exturl" data-url="aHR0cHM6Ly93d3cudWRlbXkuY29tL2NvdXJzZS9jb21wdXRlci12aXNpb24tYS16Lw==">Deep Learning and Computer Vision A-Z™: OpenCV, SSD &amp; GANs<i class="fa fa-external-link-alt"></i></span></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>圖片與內容來源皆來自課程：<br><a target="_blank" rel="noopener" href="https://www.udemy.com/course/computer-vision-a-z/">Deep Learning and Computer Vision A-Z™: OpenCV, SSD &amp; GANs</a></p>
 
     </div>
 
@@ -387,19 +275,8 @@
 
 
 
-        </div>
-        
-    
-      <div class="comments" id="comments">
-          <script src="https://utteranc.es/client.js"
-            repo="jam68ty/Comment"
-            issue-term="pathname"
-            label="Comment"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-          </script>
-      </div>
+          </div>
+          
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -423,6 +300,69 @@
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Viola-Jones-Algorithm"><span class="nav-number">1.</span> <span class="nav-text">Viola-Jones Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Haar-like-Feature-%E5%93%88%E7%88%BE%E7%89%B9%E5%BE%B5"><span class="nav-number">1.1.</span> <span class="nav-text">Haar-like Feature 哈爾特徵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integral-Image-%E7%A9%8D%E5%88%86%E5%9C%96"><span class="nav-number">1.2.</span> <span class="nav-text">Integral Image 積分圖</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Chia Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/BucketTalk/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/BucketTalk/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/BucketTalk/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
       </div>
     </main>
 
@@ -434,13 +374,15 @@
 
 <div class="copyright">
   
-  &copy; 2020 – 
-  <span itemprop="copyrightYear">2021</span>
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa fa-star"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chia Chen</span>
 </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
+  </div>
 
         
 
@@ -457,32 +399,37 @@
 
   
   <script src="/BucketTalk/lib/anime.min.js"></script>
+  <script src="/BucketTalk/lib/velocity/velocity.min.js"></script>
+  <script src="/BucketTalk/lib/velocity/velocity.ui.min.js"></script>
 
 <script src="/BucketTalk/js/utils.js"></script>
 
 <script src="/BucketTalk/js/motion.js"></script>
 
 
+<script src="/BucketTalk/js/schemes/muse.js"></script>
+
+
 <script src="/BucketTalk/js/next-boot.js"></script>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 

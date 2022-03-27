@@ -1,27 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta name="google-site-verification" content="RwN5OOI1f7pbAaVUsMbKZsYo1v6ATxMWQVDkZ-1bt0Y" />
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.2.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/BucketTalk/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/BucketTalk/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/BucketTalk/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/BucketTalk/css/main.css">
 
 
 <link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
-  
-  <link rel="stylesheet" href="/BucketTalk/lib/animate-css/animate.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.min.css">
-  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
 
-<script class="hexo-configurations">
+<script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="這篇文章中會提到一些簡單的客製化內容比如我們在後台管理介面中，想看到什麼或是不想看到什麼。 這一篇應該是Django教學筆記的最後一篇除非我突然去把一年前的作業翻出來再看一次不然我研討會的程式還沒寫完已經要開天窗了">
@@ -62,7 +58,7 @@
 <link rel="canonical" href="https://jam68ty.github.io/BucketTalk/post/django-customize/">
 
 
-<script class="page-configurations">
+<script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
@@ -74,15 +70,6 @@
 
   <title>Django系列 客製化 | BucketTalk</title>
   
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
-    <script>
-      if (CONFIG.hostname === location.hostname) {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-174207718-1');
-      }
-    </script>
 
 
 
@@ -91,36 +78,24 @@
 
   <noscript>
   <style>
-  body { margin-top: 2rem; }
-
+  .use-motion .brand,
   .use-motion .menu-item,
-  .use-motion .sidebar,
+  .sidebar-inner,
   .use-motion .post-block,
   .use-motion .pagination,
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-header {
-    visibility: visible;
-  }
-
-  .use-motion .header,
-  .use-motion .site-brand-container .toggle,
-  .use-motion .footer { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
   .use-motion .site-title,
-  .use-motion .site-subtitle,
-  .use-motion .custom-logo-image {
+  .use-motion .site-subtitle {
     opacity: initial;
     top: initial;
   }
 
-  .use-motion .logo-line {
-    transform: scaleX(1);
-  }
-
-  .search-pop-overlay, .sidebar-nav { display: none; }
-  .sidebar-panel { display: block; }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -134,23 +109,22 @@
   <div class="container use-motion">
     <div class="headband"></div>
 
-    <main class="main">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-        <div class="header-inner"><div class="site-brand-container">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切換導航欄">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/BucketTalk/" class="brand" rel="start">
-      <i class="logo-line"></i>
+      <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">BucketTalk</h1>
-      <i class="logo-line"></i>
+      <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">return null</p>
   </div>
@@ -163,21 +137,12 @@
 
 
 
+
 <nav class="site-nav">
   <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-home">
 
-    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+    <a href="/BucketTalk/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -192,99 +157,22 @@
 
 
 </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
+    </header>
 
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目錄
-        </li>
-        <li class="sidebar-nav-overview">
-          本站概要
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%A2%E8%A3%BD%E5%8C%96%E8%A8%AD%E8%A8%88"><span class="nav-number">1.</span> <span class="nav-text">客製化設計</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9css"><span class="nav-number">1.1.</span> <span class="nav-text">修改css</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9admin%E4%BB%8B%E9%9D%A2%E7%9A%84%E5%A4%96%E8%A7%80%E8%88%87%E9%A1%AF%E7%A4%BA%E5%85%A7%E5%AE%B9"><span class="nav-number">1.2.</span> <span class="nav-text">修改admin介面的外觀與顯示內容</span></a></li></ol></li></ol></div>
-      </section>
-      <!--/noindex-->
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Chia Chen"
-      src="/BucketTalk/image/avatar.jpg">
-  <p class="site-author-name" itemprop="name">Chia Chen</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/BucketTalk/archives/">
-        
-          <span class="site-state-item-count">33</span>
-          <span class="site-state-item-name">文章</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/BucketTalk/categories/">
-          
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">分類</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/BucketTalk/tags/">
-          
-        <span class="site-state-item-count">55</span>
-        <span class="site-state-item-name">標籤</span></a>
-      </div>
-  </nav>
-</div>
-
-
-  <div class="links-of-blogroll animated">
-    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-      Links
-    </div>
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
-        </li>
-    </ul>
-  </div>
-
-      </section>
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </header>
-
-      
+    
   <div class="back-to-top">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
 
-<noscript>
-  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
 
-
+    <main class="main">
       <div class="main-inner">
-        
-
-        <div class="content post posts-expand">
+        <div class="content-wrap">
           
+
+          <div class="content post posts-expand">
+            
 
     
   
@@ -293,7 +181,7 @@
     <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/django-customize/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="image" content="/BucketTalk/images/avatar.gif">
       <meta itemprop="name" content="Chia Chen">
       <meta itemprop="description" content="">
     </span>
@@ -339,7 +227,7 @@
       
         <p>這篇文章中會提到一些簡單的客製化內容<br>比如我們在後台管理介面中，想看到什麼<br>或是不想看到什麼。</p>
 <p>這一篇應該是Django教學筆記的最後一篇<br>除非我突然去把一年前的作業翻出來再看一次<br>不然我研討會的程式還沒寫完<br>已經要開天窗了</p>
-<a id="more"></a>
+<span id="more"></span>
 <h1 id="客製化設計"><a href="#客製化設計" class="headerlink" title="客製化設計"></a>客製化設計</h1><h2 id="修改css"><a href="#修改css" class="headerlink" title="修改css"></a>修改css</h2><ol>
 <li><p>在polls底下建立一個名為static的資料夾，在static下再建一個polls的資料夾，接著創建style.css<br><img src="https://i.imgur.com/HL9IVd0.png" alt=""></p>
 </li>
@@ -372,7 +260,7 @@
 <li><p>最後<code>127.0.0.1:8000/admin</code>進入的頁面就不會直接是後台<br><img src="https://i.imgur.com/lYgettD.png" alt=""></p>
 </li>
 </ol>
-<p>另外因應老師的作業要求，需要有查詢功能<br>原本應該是要對資料庫進行SELECT之類的搜索<br>但在Django中有很強的全文檢索工具<span class="exturl" data-url="aHR0cHM6Ly9pdmFuam8zOTE5MS5waXhuZXQubmV0L2Jsb2cvcG9zdC8yMjMyODAyMjgtcHl0aG9uLWRqYW5nby0lRTUlQUQlQjglRTclQkYlOTIlRTclQjQlODAlRTklOEMlODQlMjglRTUlOEQlODElMjktLSVFNCVCRCVCRiVFNyU5NCVBOHdob29zaCUyQmhheXN0YWNrJTJCamllYmE=">Haystack<i class="fa fa-external-link-alt"></i></span><br>所以當初就稍微的小小偷懶了一下，用了這份工具<br>有興趣的話大家也可以參考。</p>
+<p>另外因應老師的作業要求，需要有查詢功能<br>原本應該是要對資料庫進行SELECT之類的搜索<br>但在Django中有很強的全文檢索工具<a target="_blank" rel="noopener" href="https://ivanjo39191.pixnet.net/blog/post/223280228-python-django-%E5%AD%B8%E7%BF%92%E7%B4%80%E9%8C%84%28%E5%8D%81%29--%E4%BD%BF%E7%94%A8whoosh%2Bhaystack%2Bjieba">Haystack</a><br>所以當初就稍微的小小偷懶了一下，用了這份工具<br>有興趣的話大家也可以參考。</p>
 
     </div>
 
@@ -409,19 +297,8 @@
 
 
 
-        </div>
-        
-    
-      <div class="comments" id="comments">
-          <script src="https://utteranc.es/client.js"
-            repo="jam68ty/Comment"
-            issue-term="pathname"
-            label="Comment"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-          </script>
-      </div>
+          </div>
+          
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -445,6 +322,69 @@
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%A2%E8%A3%BD%E5%8C%96%E8%A8%AD%E8%A8%88"><span class="nav-number">1.</span> <span class="nav-text">客製化設計</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9css"><span class="nav-number">1.1.</span> <span class="nav-text">修改css</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9admin%E4%BB%8B%E9%9D%A2%E7%9A%84%E5%A4%96%E8%A7%80%E8%88%87%E9%A1%AF%E7%A4%BA%E5%85%A7%E5%AE%B9"><span class="nav-number">1.2.</span> <span class="nav-text">修改admin介面的外觀與顯示內容</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Chia Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/BucketTalk/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/BucketTalk/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/BucketTalk/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
       </div>
     </main>
 
@@ -456,13 +396,15 @@
 
 <div class="copyright">
   
-  &copy; 2020 – 
-  <span itemprop="copyrightYear">2021</span>
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa fa-star"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chia Chen</span>
 </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
+  </div>
 
         
 
@@ -479,32 +421,37 @@
 
   
   <script src="/BucketTalk/lib/anime.min.js"></script>
+  <script src="/BucketTalk/lib/velocity/velocity.min.js"></script>
+  <script src="/BucketTalk/lib/velocity/velocity.ui.min.js"></script>
 
 <script src="/BucketTalk/js/utils.js"></script>
 
 <script src="/BucketTalk/js/motion.js"></script>
 
 
+<script src="/BucketTalk/js/schemes/muse.js"></script>
+
+
 <script src="/BucketTalk/js/next-boot.js"></script>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 

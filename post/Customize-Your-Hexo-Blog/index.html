@@ -1,27 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta name="google-site-verification" content="RwN5OOI1f7pbAaVUsMbKZsYo1v6ATxMWQVDkZ-1bt0Y" />
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.2.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/BucketTalk/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/BucketTalk/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/BucketTalk/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/BucketTalk/css/main.css">
 
 
 <link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
-  
-  <link rel="stylesheet" href="/BucketTalk/lib/animate-css/animate.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.min.css">
-  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
 
-<script class="hexo-configurations">
+<script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="Blog的個人化方法有太多，實在是沒有辦法用幾篇文章就說明白更何況我自己也還沒有全部試過呢~在網路上找到不錯的資源也都可以試著實作當然要記得自己改了什麼東西，免得為了試新功能導致原本的專案毀損這就牽扯到hexo的master跟branch了，這些以後有空再來研究看看吧~這邊我們先從Hexo的主題套用說起!">
@@ -55,7 +51,7 @@
 <link rel="canonical" href="https://jam68ty.github.io/BucketTalk/post/Customize-Your-Hexo-Blog/">
 
 
-<script class="page-configurations">
+<script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
@@ -67,15 +63,6 @@
 
   <title>個人化你的Hexo Blog | BucketTalk</title>
   
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
-    <script>
-      if (CONFIG.hostname === location.hostname) {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-174207718-1');
-      }
-    </script>
 
 
 
@@ -84,36 +71,24 @@
 
   <noscript>
   <style>
-  body { margin-top: 2rem; }
-
+  .use-motion .brand,
   .use-motion .menu-item,
-  .use-motion .sidebar,
+  .sidebar-inner,
   .use-motion .post-block,
   .use-motion .pagination,
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-header {
-    visibility: visible;
-  }
-
-  .use-motion .header,
-  .use-motion .site-brand-container .toggle,
-  .use-motion .footer { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
   .use-motion .site-title,
-  .use-motion .site-subtitle,
-  .use-motion .custom-logo-image {
+  .use-motion .site-subtitle {
     opacity: initial;
     top: initial;
   }
 
-  .use-motion .logo-line {
-    transform: scaleX(1);
-  }
-
-  .search-pop-overlay, .sidebar-nav { display: none; }
-  .sidebar-panel { display: block; }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -127,23 +102,22 @@
   <div class="container use-motion">
     <div class="headband"></div>
 
-    <main class="main">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-        <div class="header-inner"><div class="site-brand-container">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切換導航欄">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/BucketTalk/" class="brand" rel="start">
-      <i class="logo-line"></i>
+      <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">BucketTalk</h1>
-      <i class="logo-line"></i>
+      <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">return null</p>
   </div>
@@ -156,21 +130,12 @@
 
 
 
+
 <nav class="site-nav">
   <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-home">
 
-    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+    <a href="/BucketTalk/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -185,99 +150,22 @@
 
 
 </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
+    </header>
 
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目錄
-        </li>
-        <li class="sidebar-nav-overview">
-          本站概要
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A4%87%E8%A3%BD%E4%B8%BB%E9%A1%8C%E6%AA%94"><span class="nav-number">1.</span> <span class="nav-text">複製主題檔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%8F%9B%E4%B8%BB%E9%A1%8C"><span class="nav-number">2.</span> <span class="nav-text">更換主題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%B7%E8%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">執行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT%E4%B8%BB%E9%A1%8C%E4%B8%8B%E7%9A%84%E5%80%8B%E4%BA%BA%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">NexT主題下的個人化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A%E5%80%8B%E4%BA%BA%E5%8C%96"><span class="nav-number">5.</span> <span class="nav-text">更多個人化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A9%95%E8%AB%96%E5%8D%80"><span class="nav-number">6.</span> <span class="nav-text">評論區</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">7.</span> <span class="nav-text">References</span></a></li></ol></div>
-      </section>
-      <!--/noindex-->
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Chia Chen"
-      src="/BucketTalk/image/avatar.jpg">
-  <p class="site-author-name" itemprop="name">Chia Chen</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/BucketTalk/archives/">
-        
-          <span class="site-state-item-count">33</span>
-          <span class="site-state-item-name">文章</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/BucketTalk/categories/">
-          
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">分類</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/BucketTalk/tags/">
-          
-        <span class="site-state-item-count">55</span>
-        <span class="site-state-item-name">標籤</span></a>
-      </div>
-  </nav>
-</div>
-
-
-  <div class="links-of-blogroll animated">
-    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-      Links
-    </div>
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
-        </li>
-    </ul>
-  </div>
-
-      </section>
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </header>
-
-      
+    
   <div class="back-to-top">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
 
-<noscript>
-  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
 
-
+    <main class="main">
       <div class="main-inner">
-        
-
-        <div class="content post posts-expand">
+        <div class="content-wrap">
           
+
+          <div class="content post posts-expand">
+            
 
     
   
@@ -286,7 +174,7 @@
     <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/Customize-Your-Hexo-Blog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="image" content="/BucketTalk/images/avatar.gif">
       <meta itemprop="name" content="Chia Chen">
       <meta itemprop="description" content="">
     </span>
@@ -336,8 +224,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Blog的個人化方法有太多，實在是沒有辦法用幾篇文章就說明白<br>更何況我自己也還沒有全部試過呢~<br>在網路上找到不錯的資源也都可以試著實作<br>當然要記得自己改了什麼東西，免得為了試新功能導致原本的專案毀損<br>這就牽扯到hexo的master跟branch了，這些以後有空再來研究看看吧~<br>這邊我們先從Hexo的主題套用說起!<br><a id="more"></a></p>
-<p>Hexo預設使用的主題是landscape，我們在專案的themes資料夾中可以看到這個主題檔案<br>目前最多人使用的主題是: <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL25leHQtdGhlbWUvaGV4by10aGVtZS1uZXh0">NexT<i class="fa fa-external-link-alt"></i></span><br>這個主題的文件十分清楚且可以進行很多個人化的設置，所以這邊以套用這個主題為例<br>另外這邊也有很多主題可以挑選使用：<span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL3RoZW1lcy8=">https://hexo.io/themes/<i class="fa fa-external-link-alt"></i></span></p>
+        <p>Blog的個人化方法有太多，實在是沒有辦法用幾篇文章就說明白<br>更何況我自己也還沒有全部試過呢~<br>在網路上找到不錯的資源也都可以試著實作<br>當然要記得自己改了什麼東西，免得為了試新功能導致原本的專案毀損<br>這就牽扯到hexo的master跟branch了，這些以後有空再來研究看看吧~<br>這邊我們先從Hexo的主題套用說起!<br><span id="more"></span></p>
+<p>Hexo預設使用的主題是landscape，我們在專案的themes資料夾中可以看到這個主題檔案<br>目前最多人使用的主題是: <a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-theme-next">NexT</a><br>這個主題的文件十分清楚且可以進行很多個人化的設置，所以這邊以套用這個主題為例<br>另外這邊也有很多主題可以挑選使用：<a target="_blank" rel="noopener" href="https://hexo.io/themes/">https://hexo.io/themes/</a></p>
 <h2 id="複製主題檔"><a href="#複製主題檔" class="headerlink" title="複製主題檔"></a>複製主題檔</h2><p>首先我們進到themes資料夾下並複製NexT的檔案下來，結果可以看到目錄下多了一個主題hexo-theme-next<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next.git</span><br></pre></td></tr></table></figure><br><img src="https://drive.google.com/uc?export=view&amp;id=1pSWz2mCLm_dSUFUhAV9tahIUK2j9SVVt" alt=""></p>
 <p>另外git clone完後記得回到上一層目錄<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure></p>
 <h2 id="更換主題"><a href="#更換主題" class="headerlink" title="更換主題"></a>更換主題</h2><p>接著把<code>_config.yml</code>中的theme改為剛剛下載下來的主題hexo-theme-next<br><img src="https://drive.google.com/uc?export=view&amp;id=1G2H4BmbXoWcwU2p8DbThoAWEQxqL0Z7T" alt=""></p>
@@ -353,22 +241,22 @@
 <ol>
 <li><p>取消底下的由 Hexo 強力驅動 v3.7.1 | 主題 — NexT<br>搜尋powered:將true設置成false<br><img src="https://drive.google.com/uc?export=view&amp;id=1YZAKj9gU25y43fuJDqrx9NADhKs99Fej" alt=""></p>
 </li>
-<li><p>安裝sitemap、baidusitemap(<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLnR5cGVhcnQuY2MvSEVYTyVFNiU5MCVBRCVFOSU4NSU4RCVFNCVCOCVCQiVFOSVBMSU4Q25leHQlRTUlOUYlQkElRTclQTQlOEUlRTklODUlOEQlRTclQkQlQUUlRTYlOTUlOTklRTUlQUQlQjgv">參考<i class="fa fa-external-link-alt"></i></span>)</p>
+<li><p>安裝sitemap、baidusitemap(<a target="_blank" rel="noopener" href="https://blog.typeart.cc/HEXO%E6%90%AD%E9%85%8D%E4%B8%BB%E9%A1%8Cnext%E5%9F%BA%E7%A4%8E%E9%85%8D%E7%BD%AE%E6%95%99%E5%AD%B8/">參考</a>)</p>
 </li>
-<li><p>新增tags、categories、archives 頁面…等等就不一一贅述<br>還可以參考 <span class="exturl" data-url="aHR0cHM6Ly9pby1vaS5tZS90ZWNoL2hleG8tbmV4dC1vcHRpbWl6YXRpb24v">https://io-oi.me/tech/hexo-next-optimization/<i class="fa fa-external-link-alt"></i></span><br>裡面還有很多用法我還沒試過的大家都可以試試看</p>
+<li><p>新增tags、categories、archives 頁面…等等就不一一贅述<br>還可以參考 <a target="_blank" rel="noopener" href="https://io-oi.me/tech/hexo-next-optimization/">https://io-oi.me/tech/hexo-next-optimization/</a><br>裡面還有很多用法我還沒試過的大家都可以試試看</p>
 </li>
 </ol>
 <h2 id="評論區"><a href="#評論區" class="headerlink" title="評論區"></a>評論區</h2><p>評論區目前我使用的是utterances<br>這是一個使用Github的repo去儲存評論的工具，設置起來也很簡單，且訪客必須使用GitHub的帳號登入才能留言。</p>
 <ol>
 <li>先新增一個Repository，取了名字要記得，權限記得設為public，否則訪客的評論進不來。</li>
-<li><p>進入到 <span class="exturl" data-url="aHR0cHM6Ly91dHRlcmFuYy5lcy8/aW5zdGFsbGF0aW9uX2lkPTEwOTQwNTIyJmFtcDtzZXR1cF9hY3Rpb249aW5zdGFsbA==">https://utteranc.es/?installation_id=10940522&amp;setup_action=install<i class="fa fa-external-link-alt"></i></span><br>在Configuration的repo打上你的github id以及剛剛創建的repo名稱，如user/comments<br><img src="https://drive.google.com/uc?export=view&amp;id=1Yr_mwP87hBAxq34HwHyiQjzgVYcbMJg-" alt=""></p>
+<li><p>進入到 <a target="_blank" rel="noopener" href="https://utteranc.es/?installation_id=10940522&amp;setup_action=install">https://utteranc.es/?installation_id=10940522&amp;setup_action=install</a><br>在Configuration的repo打上你的github id以及剛剛創建的repo名稱，如user/comments<br><img src="https://drive.google.com/uc?export=view&amp;id=1Yr_mwP87hBAxq34HwHyiQjzgVYcbMJg-" alt=""></p>
 </li>
 <li><p>打開主題配置 <code>hexo_theme_next/_config.yml</code> 加上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># utterances</span><br><span class="line">utterances:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure></li>
-<li>在<code>hexo-theme-next/layout/_partials/comments.njk</code>裡的<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- <span class="keyword">if</span> page.comments %&#125;</span><br></pre></td></tr></table></figure>
-後面加上<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.utterances.enable %&#125;</span><br><span class="line">  &lt;div class&#x3D;&quot;comments&quot; id&#x3D;&quot;comments&quot;&gt;</span><br><span class="line">        這裡請複製utterances網頁裡產生的程式碼</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-並且將<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- if theme.injects.comment.length &#x3D;&#x3D; 1 %&#125;</span><br></pre></td></tr></table></figure>
-改為<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- elif theme.injects.comment.length &#x3D;&#x3D; 1 %&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># utterances</span><br><span class="line">utterances:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure></li>
+<li>在<code>hexo-theme-next/layout/_partials/comments.njk</code>裡的<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- <span class="keyword">if</span> page.<span class="property">comments</span> %&#125;</span><br></pre></td></tr></table></figure>
+後面加上<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.utterances.enable %&#125;</span><br><span class="line">  &lt;div class=&quot;comments&quot; id=&quot;comments&quot;&gt;</span><br><span class="line">        這裡請複製utterances網頁裡產生的程式碼</span><br><span class="line">  &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+並且將<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- if theme.injects.comment.length == 1 %&#125;</span><br></pre></td></tr></table></figure>
+改為<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- elif theme.injects.comment.length == 1 %&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>這樣就完成啦~效果圖如下<br><img src="https://drive.google.com/uc?export=view&amp;id=1udE4VdweOj3uXmeNqhzzWUCLa3u5GF09" alt=""></p>
@@ -376,8 +264,8 @@
 <li>並且回到GitHub的repo裡可以看到剛剛的回覆<br><img src="https://drive.google.com/uc?export=view&amp;id=1hiVvx3HQodwIpJDCSDJVAa414ALKT1R1" alt=""></li>
 </ol>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
-<li><span class="exturl" data-url="aHR0cHM6Ly9pby1vaS5tZS90ZWNoL2hleG8tbmV4dC1vcHRpbWl6YXRpb24v">https://io-oi.me/tech/hexo-next-optimization/<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cDovL2tpZG5leXdlYWt4LmNvbS8yMDE5LzE5bG9nLTEwMjYtaGV4by1jb20uaHRtbA==">http://kidneyweakx.com/2019/19log-1026-hexo-com.html<i class="fa fa-external-link-alt"></i></span></li>
+<li><a target="_blank" rel="noopener" href="https://io-oi.me/tech/hexo-next-optimization/">https://io-oi.me/tech/hexo-next-optimization/</a></li>
+<li><a target="_blank" rel="noopener" href="http://kidneyweakx.com/2019/19log-1026-hexo-com.html">http://kidneyweakx.com/2019/19log-1026-hexo-com.html</a></li>
 </ol>
 
     </div>
@@ -417,19 +305,8 @@
 
 
 
-        </div>
-        
-    
-      <div class="comments" id="comments">
-          <script src="https://utteranc.es/client.js"
-            repo="jam68ty/Comment"
-            issue-term="pathname"
-            label="Comment"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-          </script>
-      </div>
+          </div>
+          
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -453,6 +330,69 @@
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A4%87%E8%A3%BD%E4%B8%BB%E9%A1%8C%E6%AA%94"><span class="nav-number">1.</span> <span class="nav-text">複製主題檔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%8F%9B%E4%B8%BB%E9%A1%8C"><span class="nav-number">2.</span> <span class="nav-text">更換主題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%B7%E8%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">執行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT%E4%B8%BB%E9%A1%8C%E4%B8%8B%E7%9A%84%E5%80%8B%E4%BA%BA%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">NexT主題下的個人化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A%E5%80%8B%E4%BA%BA%E5%8C%96"><span class="nav-number">5.</span> <span class="nav-text">更多個人化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A9%95%E8%AB%96%E5%8D%80"><span class="nav-number">6.</span> <span class="nav-text">評論區</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">7.</span> <span class="nav-text">References</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Chia Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/BucketTalk/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/BucketTalk/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/BucketTalk/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
       </div>
     </main>
 
@@ -464,13 +404,15 @@
 
 <div class="copyright">
   
-  &copy; 2020 – 
-  <span itemprop="copyrightYear">2021</span>
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa fa-star"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chia Chen</span>
 </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
+  </div>
 
         
 
@@ -487,32 +429,37 @@
 
   
   <script src="/BucketTalk/lib/anime.min.js"></script>
+  <script src="/BucketTalk/lib/velocity/velocity.min.js"></script>
+  <script src="/BucketTalk/lib/velocity/velocity.ui.min.js"></script>
 
 <script src="/BucketTalk/js/utils.js"></script>
 
 <script src="/BucketTalk/js/motion.js"></script>
 
 
+<script src="/BucketTalk/js/schemes/muse.js"></script>
+
+
 <script src="/BucketTalk/js/next-boot.js"></script>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 

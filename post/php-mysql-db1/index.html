@@ -1,27 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta name="google-site-verification" content="RwN5OOI1f7pbAaVUsMbKZsYo1v6ATxMWQVDkZ-1bt0Y" />
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.2.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/BucketTalk/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/BucketTalk/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/BucketTalk/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/BucketTalk/css/main.css">
 
 
 <link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
-  
-  <link rel="stylesheet" href="/BucketTalk/lib/animate-css/animate.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.min.css">
-  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
 
-<script class="hexo-configurations">
+<script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="因為之前曾經用過MSSQL所以相對的覺得PHP+MySQL整個已經包好還有後臺管理系統可以用、簡單了很多但是老師說，因為牽扯到資料庫的語法同學們會需要花更多時間去重複練習">
@@ -51,7 +47,7 @@
 <link rel="canonical" href="https://jam68ty.github.io/BucketTalk/post/php-mysql-db1/">
 
 
-<script class="page-configurations">
+<script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
@@ -63,15 +59,6 @@
 
   <title>PHP-MySQL系列 資料庫練習-連接、創建表格、插入資料 | BucketTalk</title>
   
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
-    <script>
-      if (CONFIG.hostname === location.hostname) {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-174207718-1');
-      }
-    </script>
 
 
 
@@ -80,36 +67,24 @@
 
   <noscript>
   <style>
-  body { margin-top: 2rem; }
-
+  .use-motion .brand,
   .use-motion .menu-item,
-  .use-motion .sidebar,
+  .sidebar-inner,
   .use-motion .post-block,
   .use-motion .pagination,
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-header {
-    visibility: visible;
-  }
-
-  .use-motion .header,
-  .use-motion .site-brand-container .toggle,
-  .use-motion .footer { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
   .use-motion .site-title,
-  .use-motion .site-subtitle,
-  .use-motion .custom-logo-image {
+  .use-motion .site-subtitle {
     opacity: initial;
     top: initial;
   }
 
-  .use-motion .logo-line {
-    transform: scaleX(1);
-  }
-
-  .search-pop-overlay, .sidebar-nav { display: none; }
-  .sidebar-panel { display: block; }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -123,23 +98,22 @@
   <div class="container use-motion">
     <div class="headband"></div>
 
-    <main class="main">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-        <div class="header-inner"><div class="site-brand-container">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切換導航欄">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/BucketTalk/" class="brand" rel="start">
-      <i class="logo-line"></i>
+      <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">BucketTalk</h1>
-      <i class="logo-line"></i>
+      <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">return null</p>
   </div>
@@ -152,21 +126,12 @@
 
 
 
+
 <nav class="site-nav">
   <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-home">
 
-    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+    <a href="/BucketTalk/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -181,99 +146,22 @@
 
 
 </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
+    </header>
 
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目錄
-        </li>
-        <li class="sidebar-nav-overview">
-          本站概要
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E7%A2%BA%E9%80%A3%E8%87%B3%E8%B3%87%E6%96%99%E5%BA%AB"><span class="nav-number">1.</span> <span class="nav-text">正確連至資料庫</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8phpmyadmin%E4%B8%AD%E5%BB%BA%E7%AB%8Bdb"><span class="nav-number">1.1.</span> <span class="nav-text">在phpmyadmin中建立db</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8Bconfig-php"><span class="nav-number">1.2.</span> <span class="nav-text">建立config.php</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8Bindex-php"><span class="nav-number">1.3.</span> <span class="nav-text">建立index.php</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8php%E6%96%B0%E5%A2%9ETable-%E8%BC%83%E5%B0%91%E7%94%A8%E5%88%B0"><span class="nav-number">2.</span> <span class="nav-text">用php新增Table(較少用到)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E8%B3%87%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">新增資料</span></a></li></ol></div>
-      </section>
-      <!--/noindex-->
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Chia Chen"
-      src="/BucketTalk/image/avatar.jpg">
-  <p class="site-author-name" itemprop="name">Chia Chen</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/BucketTalk/archives/">
-        
-          <span class="site-state-item-count">33</span>
-          <span class="site-state-item-name">文章</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/BucketTalk/categories/">
-          
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">分類</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/BucketTalk/tags/">
-          
-        <span class="site-state-item-count">55</span>
-        <span class="site-state-item-name">標籤</span></a>
-      </div>
-  </nav>
-</div>
-
-
-  <div class="links-of-blogroll animated">
-    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-      Links
-    </div>
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
-        </li>
-    </ul>
-  </div>
-
-      </section>
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </header>
-
-      
+    
   <div class="back-to-top">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
 
-<noscript>
-  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
 
-
+    <main class="main">
       <div class="main-inner">
-        
-
-        <div class="content post posts-expand">
+        <div class="content-wrap">
           
+
+          <div class="content post posts-expand">
+            
 
     
   
@@ -282,7 +170,7 @@
     <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/php-mysql-db1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="image" content="/BucketTalk/images/avatar.gif">
       <meta itemprop="name" content="Chia Chen">
       <meta itemprop="description" content="">
     </span>
@@ -327,17 +215,17 @@
 
       
         <p>因為之前曾經用過MSSQL<br>所以相對的覺得PHP+MySQL整個已經包好<br>還有後臺管理系統可以用、簡單了很多<br>但是老師說，因為牽扯到資料庫的語法<br>同學們會需要花更多時間去重複練習</p>
-<a id="more"></a>
+<span id="more"></span>
 <h1 id="正確連至資料庫"><a href="#正確連至資料庫" class="headerlink" title="正確連至資料庫"></a>正確連至資料庫</h1><h2 id="在phpmyadmin中建立db"><a href="#在phpmyadmin中建立db" class="headerlink" title="在phpmyadmin中建立db"></a>在phpmyadmin中建立db</h2><p><img src="https://i.imgur.com/fETs2MC.png" alt=""></p>
-<h2 id="建立config-php"><a href="#建立config-php" class="headerlink" title="建立config.php"></a>建立<code>config.php</code></h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/* Database credentials. Assuming you are running MySQL</span></span><br><span class="line"><span class="comment">server with default setting (user &#x27;root&#x27; with no password) */</span></span><br><span class="line"><span class="comment">/*define() 函數定義一個常量。</span></span><br><span class="line"><span class="comment">在設定以後，常量的值「無法」更改</span></span><br><span class="line"><span class="comment">不需要開頭的美元符號 ($)</span></span><br><span class="line"><span class="comment">作用域不影響對常量的訪問</span></span><br><span class="line"><span class="comment">常量值只能是字符串或數字*/</span></span><br><span class="line">define(<span class="string">&#x27;DB_SERVER&#x27;</span>, <span class="string">&#x27;localhost&#x27;</span>);</span><br><span class="line">define(<span class="string">&#x27;DB_USERNAME&#x27;</span>, <span class="string">&#x27;root&#x27;</span>);</span><br><span class="line">define(<span class="string">&#x27;DB_PASSWORD&#x27;</span>, <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">define(<span class="string">&#x27;DB_NAME&#x27;</span>, <span class="string">&#x27;db_test&#x27;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">/* Attempt to connect to MySQL database */</span></span><br><span class="line"><span class="variable">$link</span> = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);</span><br><span class="line"><span class="comment">// 輸入中文也OK的編碼</span></span><br><span class="line">mysqli_query(<span class="variable">$link</span>, <span class="string">&#x27;SET NAMES utf8&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Check connection</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$link</span> === <span class="literal">false</span>)&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;ERROR: Could not connect. &quot;</span> . mysqli_connect_error());</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;Connected!&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$link</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="建立config-php"><a href="#建立config-php" class="headerlink" title="建立config.php"></a>建立<code>config.php</code></h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/* Database credentials. Assuming you are running MySQL</span></span><br><span class="line"><span class="comment">server with default setting (user &#x27;root&#x27; with no password) */</span></span><br><span class="line"><span class="comment">/*define() 函數定義一個常量。</span></span><br><span class="line"><span class="comment">在設定以後，常量的值「無法」更改</span></span><br><span class="line"><span class="comment">不需要開頭的美元符號 ($)</span></span><br><span class="line"><span class="comment">作用域不影響對常量的訪問</span></span><br><span class="line"><span class="comment">常量值只能是字符串或數字*/</span></span><br><span class="line"><span class="title function_ invoke__">define</span>(<span class="string">&#x27;DB_SERVER&#x27;</span>, <span class="string">&#x27;localhost&#x27;</span>);</span><br><span class="line"><span class="title function_ invoke__">define</span>(<span class="string">&#x27;DB_USERNAME&#x27;</span>, <span class="string">&#x27;root&#x27;</span>);</span><br><span class="line"><span class="title function_ invoke__">define</span>(<span class="string">&#x27;DB_PASSWORD&#x27;</span>, <span class="string">&#x27;&#x27;</span>);</span><br><span class="line"><span class="title function_ invoke__">define</span>(<span class="string">&#x27;DB_NAME&#x27;</span>, <span class="string">&#x27;db_test&#x27;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">/* Attempt to connect to MySQL database */</span></span><br><span class="line"><span class="variable">$link</span> = <span class="title function_ invoke__">mysqli_connect</span>(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);</span><br><span class="line"><span class="comment">// 輸入中文也OK的編碼</span></span><br><span class="line"><span class="title function_ invoke__">mysqli_query</span>(<span class="variable">$link</span>, <span class="string">&#x27;SET NAMES utf8&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Check connection</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$link</span> === <span class="literal">false</span>)&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;ERROR: Could not connect. &quot;</span> . <span class="title function_ invoke__">mysqli_connect_error</span>());</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;Connected!&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$link</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="建立index-php"><a href="#建立index-php" class="headerlink" title="建立index.php"></a>建立<code>index.php</code></h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">&quot;Content-Type&quot;</span> content=<span class="string">&quot;text/html; charset=utf-8&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;連接資料庫&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;資料庫練習&lt;/h1&gt;</span><br><span class="line">   <span class="meta">&lt;?php</span> </span><br><span class="line">    <span class="variable">$conn</span>=<span class="keyword">require_once</span>(<span class="string">&#x27;config.php&#x27;</span>);</span><br><span class="line">    <span class="meta">?&gt;</span></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <p>最後成功連線的結果如下：<br><img src="https://i.imgur.com/86YdI4L.png" alt=""></p>
 <h1 id="用php新增Table-較少用到"><a href="#用php新增Table-較少用到" class="headerlink" title="用php新增Table(較少用到)"></a>用php新增Table(較少用到)</h1><p>新增table大部分會選擇使用phpmyadmin建立</p>
 <p><img src="https://i.imgur.com/82mIejY.png" alt=""></p>
-<p>選擇用php建立的方法如下(通常會需要建立很多審核機制)：<br>剛剛的<code>index.php</code>裡新增了一個表單讓使用者決定要新增的table名稱、欄位等<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">&quot;createTable.php&quot;</span> method=<span class="string">&quot;post&quot;</span>&gt;</span><br><span class="line">    Tabel Name: &lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;tb_name&quot;</span>&gt;</span><br><span class="line">    Colume <span class="number">1</span>: &lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;col1&quot;</span>&gt;</span><br><span class="line">    Colume <span class="number">2</span>: &lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;col2&quot;</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">&quot;submit&quot;</span> name=<span class="string">&quot;submit&quot;</span> value=<span class="string">&quot;建立&quot;</span>&gt;</span><br><span class="line">    &lt;/form&gt;</span><br></pre></td></tr></table></figure><br>再新增一個<code>createTable.php</code><br>(或者可以選擇寫在同一頁，用的是第三周教到的<code>htmlspecialchars($_SERVER[&#39;PHP_SELF&#39;])</code>)<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">    <span class="variable">$conn</span>=<span class="keyword">require_once</span>(<span class="string">&#x27;config.php&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&quot;submit&quot;</span>]))&#123;</span><br><span class="line">        <span class="variable">$tb_name</span>=<span class="variable">$_POST</span>[<span class="string">&quot;tb_name&quot;</span>];</span><br><span class="line">        <span class="variable">$col1</span>=<span class="variable">$_POST</span>[<span class="string">&quot;col1&quot;</span>];</span><br><span class="line">        <span class="variable">$col2</span>=<span class="variable">$_POST</span>[<span class="string">&quot;col2&quot;</span>];</span><br><span class="line"></span><br><span class="line">        <span class="variable">$sql</span>=<span class="string">&quot;CREATE TABLE &quot;</span>.<span class="variable">$tb_name</span>.<span class="string">&quot; (</span></span><br><span class="line"><span class="string">        &quot;</span>.<span class="variable">$col1</span>.<span class="string">&quot; INT(6) NOT NULL PRIMARY KEY,</span></span><br><span class="line"><span class="string">        &quot;</span>.<span class="variable">$col2</span>.<span class="string">&quot; VARCHAR(50))&quot;</span>;</span><br><span class="line">            <span class="keyword">if</span>(mysqli_query(<span class="variable">$conn</span>,<span class="variable">$sql</span>))&#123;</span><br><span class="line">                <span class="keyword">echo</span> mysqli_info(<span class="variable">$conn</span>);</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;Created!&lt;br&gt;&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;Failed!&lt;br&gt;&quot;</span>;</span><br><span class="line">                <span class="keyword">echo</span> mysqli_errno(<span class="variable">$conn</span>);</span><br><span class="line">            &#125;</span><br><span class="line">    mysqli_close(<span class="variable">$conn</span>); <span class="comment">//最後記得把和資料庫的連線關起來</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>補充</strong><br>header()的用法<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;操作錯誤!&quot;</span>;</span><br><span class="line">        header(<span class="string">&#x27;Location:index.php&#x27;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>選擇用php建立的方法如下(通常會需要建立很多審核機制)：<br>剛剛的<code>index.php</code>裡新增了一個表單讓使用者決定要新增的table名稱、欄位等<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">&quot;createTable.php&quot;</span> method=<span class="string">&quot;post&quot;</span>&gt;</span><br><span class="line">    Tabel Name: &lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;tb_name&quot;</span>&gt;</span><br><span class="line">    Colume <span class="number">1</span>: &lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;col1&quot;</span>&gt;</span><br><span class="line">    Colume <span class="number">2</span>: &lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;col2&quot;</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">&quot;submit&quot;</span> name=<span class="string">&quot;submit&quot;</span> value=<span class="string">&quot;建立&quot;</span>&gt;</span><br><span class="line">    &lt;/form&gt;</span><br></pre></td></tr></table></figure><br>再新增一個<code>createTable.php</code><br>(或者可以選擇寫在同一頁，用的是第三周教到的<code>htmlspecialchars($_SERVER[&#39;PHP_SELF&#39;])</code>)<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">    <span class="variable">$conn</span>=<span class="keyword">require_once</span>(<span class="string">&#x27;config.php&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&quot;submit&quot;</span>]))&#123;</span><br><span class="line">        <span class="variable">$tb_name</span>=<span class="variable">$_POST</span>[<span class="string">&quot;tb_name&quot;</span>];</span><br><span class="line">        <span class="variable">$col1</span>=<span class="variable">$_POST</span>[<span class="string">&quot;col1&quot;</span>];</span><br><span class="line">        <span class="variable">$col2</span>=<span class="variable">$_POST</span>[<span class="string">&quot;col2&quot;</span>];</span><br><span class="line"></span><br><span class="line">        <span class="variable">$sql</span>=<span class="string">&quot;CREATE TABLE &quot;</span>.<span class="variable">$tb_name</span>.<span class="string">&quot; (</span></span><br><span class="line"><span class="string">        &quot;</span>.<span class="variable">$col1</span>.<span class="string">&quot; INT(6) NOT NULL PRIMARY KEY,</span></span><br><span class="line"><span class="string">        &quot;</span>.<span class="variable">$col2</span>.<span class="string">&quot; VARCHAR(50))&quot;</span>;</span><br><span class="line">            <span class="keyword">if</span>(<span class="title function_ invoke__">mysqli_query</span>(<span class="variable">$conn</span>,<span class="variable">$sql</span>))&#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="title function_ invoke__">mysqli_info</span>(<span class="variable">$conn</span>);</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;Created!&lt;br&gt;&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;Failed!&lt;br&gt;&quot;</span>;</span><br><span class="line">                <span class="keyword">echo</span> <span class="title function_ invoke__">mysqli_errno</span>(<span class="variable">$conn</span>);</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="title function_ invoke__">mysqli_close</span>(<span class="variable">$conn</span>); <span class="comment">//最後記得把和資料庫的連線關起來</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>補充</strong><br>header()的用法<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;操作錯誤!&quot;</span>;</span><br><span class="line">        <span class="title function_ invoke__">header</span>(<span class="string">&#x27;Location:index.php&#x27;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <h1 id="新增資料"><a href="#新增資料" class="headerlink" title="新增資料"></a>新增資料</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">&quot;InsertData.php&quot;</span> method=<span class="string">&quot;post&quot;</span>&gt;</span><br><span class="line"><span class="variable">$col1</span>: &lt;input type=<span class="string">&quot;number&quot;</span> name=<span class="string">&quot;col1_val&quot;</span>&gt;</span><br><span class="line"><span class="variable">$col2</span>: &lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;col2_val&quot;</span>&gt;</span><br><span class="line">&lt;input type=<span class="string">&quot;submit&quot;</span> name=<span class="string">&quot;submit2&quot;</span> value=<span class="string">&quot;插入資料&quot;</span>&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-<p>插入資料的內容與create table大同小異，注意這邊submit的name有改過<br><code>insertDate.php</code><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">    <span class="variable">$conn</span>=<span class="keyword">require_once</span>(<span class="string">&#x27;config.php&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&quot;submit2&quot;</span>]))&#123;</span><br><span class="line">        <span class="variable">$col1_val</span>=<span class="variable">$_POST</span>[<span class="string">&quot;col1_val&quot;</span>];</span><br><span class="line">        <span class="variable">$col2_val</span>=<span class="variable">$_POST</span>[<span class="string">&quot;col2_val&quot;</span>];</span><br><span class="line">        <span class="variable">$sql</span>=<span class="string">&quot;INSERT INTO tb2 VALUES (&quot;</span>.<span class="variable">$col1_val</span>.<span class="string">&quot;, &#x27;&quot;</span>.<span class="variable">$col2_val</span>.<span class="string">&quot;&#x27;)&quot;</span>;  <span class="comment">//這邊的table name會用的是早已確定存在在資料庫中的</span></span><br><span class="line">            <span class="keyword">if</span>(mysqli_query(<span class="variable">$conn</span>,<span class="variable">$sql</span>))&#123;</span><br><span class="line">                <span class="keyword">echo</span> mysqli_info(<span class="variable">$conn</span>);</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;Inserted!&lt;br&gt;&quot;</span>;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;Failed!&lt;br&gt;&quot;</span>;</span><br><span class="line">                <span class="keyword">echo</span> mysqli_errno(<span class="variable">$conn</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line">    mysqli_close(<span class="variable">$conn</span>);&#125;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;操作錯誤!&quot;</span>;</span><br><span class="line">        header(<span class="string">&#x27;Location:index.php&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>插入資料的內容與create table大同小異，注意這邊submit的name有改過<br><code>insertDate.php</code><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">    <span class="variable">$conn</span>=<span class="keyword">require_once</span>(<span class="string">&#x27;config.php&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&quot;submit2&quot;</span>]))&#123;</span><br><span class="line">        <span class="variable">$col1_val</span>=<span class="variable">$_POST</span>[<span class="string">&quot;col1_val&quot;</span>];</span><br><span class="line">        <span class="variable">$col2_val</span>=<span class="variable">$_POST</span>[<span class="string">&quot;col2_val&quot;</span>];</span><br><span class="line">        <span class="variable">$sql</span>=<span class="string">&quot;INSERT INTO tb2 VALUES (&quot;</span>.<span class="variable">$col1_val</span>.<span class="string">&quot;, &#x27;&quot;</span>.<span class="variable">$col2_val</span>.<span class="string">&quot;&#x27;)&quot;</span>;  <span class="comment">//這邊的table name會用的是早已確定存在在資料庫中的</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="title function_ invoke__">mysqli_query</span>(<span class="variable">$conn</span>,<span class="variable">$sql</span>))&#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="title function_ invoke__">mysqli_info</span>(<span class="variable">$conn</span>);</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;Inserted!&lt;br&gt;&quot;</span>;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;Failed!&lt;br&gt;&quot;</span>;</span><br><span class="line">                <span class="keyword">echo</span> <span class="title function_ invoke__">mysqli_errno</span>(<span class="variable">$conn</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line">    <span class="title function_ invoke__">mysqli_close</span>(<span class="variable">$conn</span>);&#125;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;操作錯誤!&quot;</span>;</span><br><span class="line">        <span class="title function_ invoke__">header</span>(<span class="string">&#x27;Location:index.php&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>最後完成的結果如下：<br><img src="https://i.imgur.com/rXQnIas.png" alt=""><br><img src="https://i.imgur.com/tFonc5a.png" alt=""><br><img src="https://i.imgur.com/40hxa4t.png" alt=""></p>
 <p>刪除或修改也是一樣的想法<br>只是可能是透過onclick的事件處理來執行php腳本</p>
 
@@ -379,19 +267,8 @@
 
 
 
-        </div>
-        
-    
-      <div class="comments" id="comments">
-          <script src="https://utteranc.es/client.js"
-            repo="jam68ty/Comment"
-            issue-term="pathname"
-            label="Comment"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-          </script>
-      </div>
+          </div>
+          
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -415,6 +292,69 @@
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E7%A2%BA%E9%80%A3%E8%87%B3%E8%B3%87%E6%96%99%E5%BA%AB"><span class="nav-number">1.</span> <span class="nav-text">正確連至資料庫</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8phpmyadmin%E4%B8%AD%E5%BB%BA%E7%AB%8Bdb"><span class="nav-number">1.1.</span> <span class="nav-text">在phpmyadmin中建立db</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8Bconfig-php"><span class="nav-number">1.2.</span> <span class="nav-text">建立config.php</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8Bindex-php"><span class="nav-number">1.3.</span> <span class="nav-text">建立index.php</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8php%E6%96%B0%E5%A2%9ETable-%E8%BC%83%E5%B0%91%E7%94%A8%E5%88%B0"><span class="nav-number">2.</span> <span class="nav-text">用php新增Table(較少用到)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E8%B3%87%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">新增資料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Chia Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/BucketTalk/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/BucketTalk/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/BucketTalk/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
       </div>
     </main>
 
@@ -426,13 +366,15 @@
 
 <div class="copyright">
   
-  &copy; 2020 – 
-  <span itemprop="copyrightYear">2021</span>
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa fa-star"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chia Chen</span>
 </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
+  </div>
 
         
 
@@ -449,32 +391,37 @@
 
   
   <script src="/BucketTalk/lib/anime.min.js"></script>
+  <script src="/BucketTalk/lib/velocity/velocity.min.js"></script>
+  <script src="/BucketTalk/lib/velocity/velocity.ui.min.js"></script>
 
 <script src="/BucketTalk/js/utils.js"></script>
 
 <script src="/BucketTalk/js/motion.js"></script>
 
 
+<script src="/BucketTalk/js/schemes/muse.js"></script>
+
+
 <script src="/BucketTalk/js/next-boot.js"></script>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 

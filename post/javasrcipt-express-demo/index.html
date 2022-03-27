@@ -1,27 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta name="google-site-verification" content="RwN5OOI1f7pbAaVUsMbKZsYo1v6ATxMWQVDkZ-1bt0Y" />
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.2.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/BucketTalk/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/BucketTalk/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/BucketTalk/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/BucketTalk/css/main.css">
 
 
 <link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
-  
-  <link rel="stylesheet" href="/BucketTalk/lib/animate-css/animate.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.min.css">
-  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
 
-<script class="hexo-configurations">
+<script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="這篇主要做了兩個專案：  第一個是使用Express建立後端 第二個則是使用React建立前端並利用前後端的架構測試GET&#x2F;POST">
@@ -56,7 +52,7 @@
 <link rel="canonical" href="https://jam68ty.github.io/BucketTalk/post/javasrcipt-express-demo/">
 
 
-<script class="page-configurations">
+<script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
@@ -68,15 +64,6 @@
 
   <title>JavaScript Express Demo | BucketTalk</title>
   
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
-    <script>
-      if (CONFIG.hostname === location.hostname) {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-174207718-1');
-      }
-    </script>
 
 
 
@@ -85,36 +72,24 @@
 
   <noscript>
   <style>
-  body { margin-top: 2rem; }
-
+  .use-motion .brand,
   .use-motion .menu-item,
-  .use-motion .sidebar,
+  .sidebar-inner,
   .use-motion .post-block,
   .use-motion .pagination,
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-header {
-    visibility: visible;
-  }
-
-  .use-motion .header,
-  .use-motion .site-brand-container .toggle,
-  .use-motion .footer { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
   .use-motion .site-title,
-  .use-motion .site-subtitle,
-  .use-motion .custom-logo-image {
+  .use-motion .site-subtitle {
     opacity: initial;
     top: initial;
   }
 
-  .use-motion .logo-line {
-    transform: scaleX(1);
-  }
-
-  .search-pop-overlay, .sidebar-nav { display: none; }
-  .sidebar-panel { display: block; }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -128,23 +103,22 @@
   <div class="container use-motion">
     <div class="headband"></div>
 
-    <main class="main">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-        <div class="header-inner"><div class="site-brand-container">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切換導航欄">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/BucketTalk/" class="brand" rel="start">
-      <i class="logo-line"></i>
+      <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">BucketTalk</h1>
-      <i class="logo-line"></i>
+      <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">return null</p>
   </div>
@@ -157,21 +131,12 @@
 
 
 
+
 <nav class="site-nav">
   <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-home">
 
-    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+    <a href="/BucketTalk/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -186,99 +151,22 @@
 
 
 </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
+    </header>
 
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目錄
-        </li>
-        <li class="sidebar-nav-overview">
-          本站概要
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-Express-Demo"><span class="nav-number">1.</span> <span class="nav-text">JavaScript Express Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Express%E4%BD%9C%E7%82%BA%E5%BE%8C%E7%AB%AF"><span class="nav-number">1.1.</span> <span class="nav-text">使用Express作為後端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88%E3%80%81%E9%81%B8%E6%93%87%E6%9E%B6%E6%A7%8B"><span class="nav-number">1.1.1.</span> <span class="nav-text">建立專案、選擇架構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8BAPI"><span class="nav-number">1.1.2.</span> <span class="nav-text">建立API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8React%E4%BD%9C%E7%82%BA%E5%89%8D%E7%AB%AF"><span class="nav-number">1.2.</span> <span class="nav-text">使用React作為前端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%89%8D%E7%AB%AF%E5%A5%97%E4%BB%B6-React"><span class="nav-number">1.2.1.</span> <span class="nav-text">使用前端套件 - React</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9Port"><span class="nav-number">1.2.2.</span> <span class="nav-text">更改Port</span></a></li></ol></li></ol></li></ol></div>
-      </section>
-      <!--/noindex-->
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Chia Chen"
-      src="/BucketTalk/image/avatar.jpg">
-  <p class="site-author-name" itemprop="name">Chia Chen</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/BucketTalk/archives/">
-        
-          <span class="site-state-item-count">33</span>
-          <span class="site-state-item-name">文章</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/BucketTalk/categories/">
-          
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">分類</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/BucketTalk/tags/">
-          
-        <span class="site-state-item-count">55</span>
-        <span class="site-state-item-name">標籤</span></a>
-      </div>
-  </nav>
-</div>
-
-
-  <div class="links-of-blogroll animated">
-    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-      Links
-    </div>
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
-        </li>
-    </ul>
-  </div>
-
-      </section>
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </header>
-
-      
+    
   <div class="back-to-top">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
 
-<noscript>
-  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
 
-
+    <main class="main">
       <div class="main-inner">
-        
-
-        <div class="content post posts-expand">
+        <div class="content-wrap">
           
+
+          <div class="content post posts-expand">
+            
 
     
   
@@ -287,7 +175,7 @@
     <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/javasrcipt-express-demo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="image" content="/BucketTalk/images/avatar.gif">
       <meta itemprop="name" content="Chia Chen">
       <meta itemprop="description" content="">
     </span>
@@ -336,7 +224,7 @@
 <li>第一個是使用Express建立後端</li>
 <li>第二個則是使用React建立前端<br>並利用前後端的架構測試GET/POST</li>
 </ol>
-<a id="more"></a>
+<span id="more"></span>
 <h1 id="JavaScript-Express-Demo"><a href="#JavaScript-Express-Demo" class="headerlink" title="JavaScript Express Demo"></a>JavaScript Express Demo</h1><h2 id="使用Express作為後端"><a href="#使用Express作為後端" class="headerlink" title="使用Express作為後端"></a>使用Express作為後端</h2><h3 id="建立專案、選擇架構"><a href="#建立專案、選擇架構" class="headerlink" title="建立專案、選擇架構"></a>建立專案、選擇架構</h3><ol>
 <li><p>建立一個專案命名為<code>javascript-express</code><br><img src="https://i.imgur.com/qTNeXvf.png" alt=""></p>
 </li>
@@ -345,7 +233,7 @@
 <li><p>選擇模板：<code>express --view=pug .</code></p>
 </li>
 <li>執行<code>npm install</code>安裝相依套件</li>
-<li>執行<code>$env:DEBUG=&#39;javascript-express:*&#39;; npm start</code>查看port是否listening(各環境語法不同：<span class="exturl" data-url="aHR0cHM6Ly9leHByZXNzanMuY29tL2VuL3N0YXJ0ZXIvZ2VuZXJhdG9yLmh0bWw=">https://expressjs.com/en/starter/generator.html<i class="fa fa-external-link-alt"></i></span>)</li>
+<li>執行<code>$env:DEBUG=&#39;javascript-express:*&#39;; npm start</code>查看port是否listening(各環境語法不同：<a target="_blank" rel="noopener" href="https://expressjs.com/en/starter/generator.html">https://expressjs.com/en/starter/generator.html</a>)</li>
 </ol>
 <p>如果上述都成功的話，進入<code>http://localhost:3000</code>可以看到以下畫面<br><img src="https://i.imgur.com/mBplFgr.png" alt=""></p>
 <p>要停止的話只需要按ctrl+C<br>下次要再開啟的話也只需要輸入<code>npm start</code>就好<br><img src="https://i.imgur.com/Gb9gse8.png" alt=""></p>
@@ -353,7 +241,7 @@
 <p>等同於執行<code>node ./bin/www</code></p>
 </blockquote>
 <h3 id="建立API"><a href="#建立API" class="headerlink" title="建立API"></a>建立API</h3><ol>
-<li>在<code>javascript/routes/index.js</code>裡新增一個GET API<br><img src="https://i.imgur.com/Rbp3KhR.png" alt=""><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">router.get(<span class="string">&#x27;/api/sayHi&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">&#x27;hi&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>在<code>javascript/routes/index.js</code>裡新增一個GET API<br><img src="https://i.imgur.com/Rbp3KhR.png" alt=""><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">router.<span class="title function_">get</span>(<span class="string">&#x27;/api/sayHi&#x27;</span>, <span class="keyword">function</span>(<span class="params">req, res, next</span>) &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&#x27;hi&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
 <li><p>執行伺服器：<code>npm start</code><br><img src="https://i.imgur.com/TjcogXS.png" alt=""></p>
 </li>
 <li><p>瀏覽器上右鍵-檢查，可以看到發出了一個GET的Http request<br><img src="https://i.imgur.com/kPrOiUJ.png" alt=""></p>
@@ -372,13 +260,13 @@
 <h3 id="更改Port"><a href="#更改Port" class="headerlink" title="更改Port"></a>更改Port</h3><p>因為現在前端(專案react-web)占用port 3000，所以要把後端(專案javascript-express)的port改成3001</p>
 <ol>
 <li>將<code>javascript-express/package.json</code>裡的script改成<code>set PORT=3001 &amp;&amp; node ./bin/www</code> (不同系統有差異)<br><img src="https://i.imgur.com/2Bt4GXf.png" alt=""></li>
-<li>在<code>javascript-express/app.js</code>裡放入<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cors = <span class="built_in">require</span>(<span class="string">&#x27;cors&#x27;</span>); <span class="comment">//放最前面</span></span><br><span class="line">app.use(cors());  <span class="comment">//放在var app = express();後</span></span><br></pre></td></tr></table></figure></li>
+<li>在<code>javascript-express/app.js</code>裡放入<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cors = <span class="built_in">require</span>(<span class="string">&#x27;cors&#x27;</span>); <span class="comment">//放最前面</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">cors</span>());  <span class="comment">//放在var app = express();後</span></span><br></pre></td></tr></table></figure></li>
 <li><p>最後可以得到前端為<code>http://localhost:3000/</code>，後端則為<code>http://localhost:3001/</code></p>
 </li>
 <li><p>使用POSTMAN測試前後端有沒有通訊成功<br><img src="https://i.imgur.com/mjSzRdX.png" alt=""></p>
 <blockquote>
 <p>我們之前在後端那邊設了一個</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">router.get(<span class="string">&#x27;/api/sayHi&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">&#x27;hi&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">router.<span class="title function_">get</span>(<span class="string">&#x27;/api/sayHi&#x27;</span>, <span class="keyword">function</span>(<span class="params">req, res, next</span>) &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&#x27;hi&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>因此在「前端(3001)」使用「後端(3000)」的API的情況下送了一個request出去，也可以看到從後端response回了一個response回來</p>
 </blockquote>
 </li>
@@ -421,19 +309,8 @@
 
 
 
-        </div>
-        
-    
-      <div class="comments" id="comments">
-          <script src="https://utteranc.es/client.js"
-            repo="jam68ty/Comment"
-            issue-term="pathname"
-            label="Comment"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-          </script>
-      </div>
+          </div>
+          
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -457,6 +334,69 @@
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-Express-Demo"><span class="nav-number">1.</span> <span class="nav-text">JavaScript Express Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Express%E4%BD%9C%E7%82%BA%E5%BE%8C%E7%AB%AF"><span class="nav-number">1.1.</span> <span class="nav-text">使用Express作為後端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88%E3%80%81%E9%81%B8%E6%93%87%E6%9E%B6%E6%A7%8B"><span class="nav-number">1.1.1.</span> <span class="nav-text">建立專案、選擇架構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8BAPI"><span class="nav-number">1.1.2.</span> <span class="nav-text">建立API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8React%E4%BD%9C%E7%82%BA%E5%89%8D%E7%AB%AF"><span class="nav-number">1.2.</span> <span class="nav-text">使用React作為前端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%89%8D%E7%AB%AF%E5%A5%97%E4%BB%B6-React"><span class="nav-number">1.2.1.</span> <span class="nav-text">使用前端套件 - React</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9Port"><span class="nav-number">1.2.2.</span> <span class="nav-text">更改Port</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Chia Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/BucketTalk/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/BucketTalk/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/BucketTalk/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
       </div>
     </main>
 
@@ -468,13 +408,15 @@
 
 <div class="copyright">
   
-  &copy; 2020 – 
-  <span itemprop="copyrightYear">2021</span>
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa fa-star"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chia Chen</span>
 </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
+  </div>
 
         
 
@@ -491,87 +433,39 @@
 
   
   <script src="/BucketTalk/lib/anime.min.js"></script>
+  <script src="/BucketTalk/lib/velocity/velocity.min.js"></script>
+  <script src="/BucketTalk/lib/velocity/velocity.ui.min.js"></script>
 
 <script src="/BucketTalk/js/utils.js"></script>
 
 <script src="/BucketTalk/js/motion.js"></script>
 
 
+<script src="/BucketTalk/js/schemes/muse.js"></script>
+
+
 <script src="/BucketTalk/js/next-boot.js"></script>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      const script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 

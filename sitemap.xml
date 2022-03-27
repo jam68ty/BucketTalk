@@ -1,830 +1,782 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/about/index.html</loc>
     
+    <lastmod>2022-03-27</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/java-clean-code-reading-review/</loc>
-    <lastmod>2021-12-25T06:35:07.582Z</lastmod>
-    <data>
-        <display>
-        <title>JAVA搞不清楚系列 - Clean Code 讀書心得</title>
-        <pubTime>2021-12-25T06:21:17.000Z</pubTime>
-        
-        <tag>Java </tag>
-         
-        <tag>Clean Code </tag>
-         
-         
-           
-             
-              <breadCrumb title="JAVA搞不清楚系列" url="https://jam68ty.github.io/BucketTalk/categories/JAVA%25E6%2590%259E%25E4%25B8%258D%25E6%25B8%2585%25E6%25A5%259A%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2021-12-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/java-pojo-dto-dao/</loc>
-    <lastmod>2021-12-25T06:33:54.623Z</lastmod>
-    <data>
-        <display>
-        <title>JAVA搞不清楚系列 - POJO, PO, DTO, DAO, BO, VO</title>
-        <pubTime>2021-12-25T06:15:45.000Z</pubTime>
-        
-        <tag>POJO </tag>
-         
-        <tag>DTO </tag>
-         
-        <tag>DAO </tag>
-         
-        <tag>Java </tag>
-         
-         
-           
-             
-              <breadCrumb title="JAVA搞不清楚系列" url="https://jam68ty.github.io/BucketTalk/categories/JAVA%25E6%2590%259E%25E4%25B8%258D%25E6%25B8%2585%25E6%25A5%259A%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2021-12-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/opencv-data-argumentation/</loc>
-    <lastmod>2021-12-25T06:33:54.623Z</lastmod>
-    <data>
-        <display>
-        <title>OpenCV系列 資料增強 Data Argumentation</title>
-        <pubTime>2020-08-05T03:28:51.000Z</pubTime>
-        
-        <tag>opencv </tag>
-         
-        <tag>image process </tag>
-         
-        <tag>影像處理 </tag>
-         
-        <tag>機器學習 </tag>
-         
-        <tag>keras </tag>
-         
-         
-           
-             
-              <breadCrumb title="機器學習筆記" url="https://jam68ty.github.io/BucketTalk/categories/%25E6%25A9%259F%25E5%2599%25A8%25E5%25AD%25B8%25E7%25BF%2592%25E7%25AD%2586%25E8%25A8%2598/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2021-12-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/opencv-data-agumentation/</loc>
-    <lastmod>2021-12-25T06:33:54.623Z</lastmod>
-    <data>
-        <display>
-        <title>OpenCV系列 資料擴增 Data Agumentation</title>
-        <pubTime>2020-08-05T03:28:51.000Z</pubTime>
-        
-        <tag>opencv </tag>
-         
-        <tag>image process </tag>
-         
-        <tag>影像處理 </tag>
-         
-        <tag>機器學習 </tag>
-         
-        <tag>keras </tag>
-         
-         
-           
-             
-              <breadCrumb title="ML/DL筆記" url="https://jam68ty.github.io/BucketTalk/categories/ML-DL%25E7%25AD%2586%25E8%25A8%2598/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2021-12-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/javasrcipt-express-demo/</loc>
-    <lastmod>2021-06-22T15:44:41.702Z</lastmod>
-    <data>
-        <display>
-        <title>JavaScript Express Demo</title>
-        <pubTime>2021-06-22T15:33:56.000Z</pubTime>
-        
-        <tag>javascript </tag>
-         
-        <tag>VScode </tag>
-         
-        <tag>React </tag>
-         
-        <tag>VScode Express </tag>
-         
-         
-           
-             
-              <breadCrumb title="課堂筆記系列" url="https://jam68ty.github.io/BucketTalk/categories/%25E8%25AA%25B2%25E5%25A0%2582%25E7%25AD%2586%25E8%25A8%2598%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2021-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/javasrcipt-example-project/</loc>
-    <lastmod>2021-06-22T15:38:52.044Z</lastmod>
-    <data>
-        <display>
-        <title>JavaSrcipt Example Project</title>
-        <pubTime>2021-06-22T15:24:56.000Z</pubTime>
-        
-        <tag>javascript </tag>
-         
-        <tag>VScode </tag>
-         
-         
-           
-             
-              <breadCrumb title="課堂筆記系列" url="https://jam68ty.github.io/BucketTalk/categories/%25E8%25AA%25B2%25E5%25A0%2582%25E7%25AD%2586%25E8%25A8%2598%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2021-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/CICD-Jenkins/</loc>
-    <lastmod>2021-03-17T13:38:28.636Z</lastmod>
-    <data>
-        <display>
-        <title>CICD工具-Jenkins入門</title>
-        <pubTime>2021-03-17T13:24:56.000Z</pubTime>
-        
-        <tag>CI/CD </tag>
-         
-        <tag>Jenkins </tag>
-         
-         
-           
-             
-              <breadCrumb title="課堂筆記系列" url="https://jam68ty.github.io/BucketTalk/categories/%25E8%25AA%25B2%25E5%25A0%2582%25E7%25AD%2586%25E8%25A8%2598%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2021-03-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/php-mysql-login/</loc>
-    <lastmod>2021-03-15T01:44:53.325Z</lastmod>
-    <data>
-        <display>
-        <title>PHP-MySQL系列 登入與註冊系統</title>
-        <pubTime>2020-12-16T09:07:22.000Z</pubTime>
-        
-        <tag>PHP </tag>
-         
-        <tag>MySQL </tag>
-         
-        <tag>Login </tag>
-         
-        <tag>Register </tag>
-         
-         
-           
-             
-              <breadCrumb title="PHP-MySQL系列" url="https://jam68ty.github.io/BucketTalk/categories/PHP-MySQL%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2021-03-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/deep-learning-note-face-detection2/</loc>
-    <lastmod>2021-03-13T09:05:49.424Z</lastmod>
-    <data>
-        <display>
-        <title>深度學習筆記系列 臉部辨識基本理論(II)</title>
-        <pubTime>2021-01-25T16:00:02.000Z</pubTime>
-        
-        <tag>opencv </tag>
-         
-        <tag>image process </tag>
-         
-        <tag>影像處理 </tag>
-         
-        <tag>深度學習 </tag>
-         
-        <tag>Viola-Jones Algorithm </tag>
-         
-        <tag>Adaboost </tag>
-         
-         
-           
-             
-              <breadCrumb title="ML/DL筆記" url="https://jam68ty.github.io/BucketTalk/categories/ML-DL%25E7%25AD%2586%25E8%25A8%2598/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2021-03-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/deep-learning-note-face-detection1/</loc>
-    <lastmod>2021-01-25T16:02:08.717Z</lastmod>
-    <data>
-        <display>
-        <title>深度學習筆記系列 臉部辨識基本理論(I)</title>
-        <pubTime>2021-01-23T14:13:11.000Z</pubTime>
-        
-        <tag>opencv </tag>
-         
-        <tag>image process </tag>
-         
-        <tag>影像處理 </tag>
-         
-        <tag>深度學習 </tag>
-         
-        <tag>Viola-Jones Algorithm </tag>
-         
-        <tag>Haar-like Feature </tag>
-         
-        <tag>Integral Image </tag>
-         
-         
-           
-             
-              <breadCrumb title="ML/DL筆記" url="https://jam68ty.github.io/BucketTalk/categories/ML-DL%25E7%25AD%2586%25E8%25A8%2598/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2021-01-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/opencv-image-cropped/</loc>
-    <lastmod>2021-01-23T14:11:56.002Z</lastmod>
-    <data>
-        <display>
-        <title>OpenCV系列 影像批次裁切</title>
-        <pubTime>2020-08-05T03:29:10.000Z</pubTime>
-        
-        <tag>opencv </tag>
-         
-        <tag>image process </tag>
-         
-        <tag>影像處理 </tag>
-         
-        <tag>機器學習 </tag>
-         
-         
-           
-             
-              <breadCrumb title="ML/DL筆記" url="https://jam68ty.github.io/BucketTalk/categories/ML-DL%25E7%25AD%2586%25E8%25A8%2598/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2021-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/opencv-read-image/</loc>
-    <lastmod>2021-01-23T14:11:55.979Z</lastmod>
-    <data>
-        <display>
-        <title>OpenCV系列 使用OpenCV讀入影像</title>
-        <pubTime>2020-08-05T03:28:09.000Z</pubTime>
-        
-        <tag>opencv </tag>
-         
-        <tag>image process </tag>
-         
-        <tag>影像處理 </tag>
-         
-        <tag>機器學習 </tag>
-         
-         
-           
-             
-              <breadCrumb title="ML/DL筆記" url="https://jam68ty.github.io/BucketTalk/categories/ML-DL%25E7%25AD%2586%25E8%25A8%2598/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2021-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/php-mysql-ajax/</loc>
-    <lastmod>2021-01-22T08:38:51.913Z</lastmod>
-    <data>
-        <display>
-        <title>PHP-MySQL系列 Ajax簡單應用</title>
-        <pubTime>2021-01-22T08:07:22.000Z</pubTime>
-        
-        <tag>PHP </tag>
-         
-        <tag>MySQL </tag>
-         
-        <tag>Ajax </tag>
-         
-         
-           
-             
-              <breadCrumb title="PHP-MySQL系列" url="https://jam68ty.github.io/BucketTalk/categories/PHP-MySQL%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2021-01-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/cryptography-security-note3/</loc>
-    <lastmod>2021-01-12T09:20:29.891Z</lastmod>
-    <data>
-        <display>
-        <title>課堂筆記 資訊安全(III)</title>
-        <pubTime>2021-01-12T09:17:44.000Z</pubTime>
-        
-        <tag>Cryptography </tag>
-         
-        <tag>RSA加密 </tag>
-         
-        <tag>Diffie-Hellman Key Exchange </tag>
-         
-        <tag>EIGamal </tag>
-         
-        <tag>Elliptic Curve Cryptography </tag>
-         
-         
-           
-             
-              <breadCrumb title="課堂筆記系列" url="https://jam68ty.github.io/BucketTalk/categories/%25E8%25AA%25B2%25E5%25A0%2582%25E7%25AD%2586%25E8%25A8%2598%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2021-01-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/php-mysql-db2/</loc>
-    <lastmod>2020-12-16T09:07:08.656Z</lastmod>
-    <data>
-        <display>
-        <title>PHP-MySQL系列 資料庫練習-SELECT & DELETE</title>
-        <pubTime>2020-12-16T09:02:22.000Z</pubTime>
-        
-        <tag>PHP </tag>
-         
-        <tag>MySQL </tag>
-         
-        <tag>Select </tag>
-         
-        <tag>Delete </tag>
-         
-         
-           
-             
-              <breadCrumb title="PHP-MySQL系列" url="https://jam68ty.github.io/BucketTalk/categories/PHP-MySQL%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-12-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/cryptography-security-note2/</loc>
-    <lastmod>2020-12-15T13:01:13.061Z</lastmod>
-    <data>
-        <display>
-        <title>課堂筆記 資訊安全(II)</title>
-        <pubTime>2020-12-15T12:47:50.000Z</pubTime>
-        
-        <tag>Cryptography </tag>
-         
-        <tag>Prime </tag>
-         
-        <tag>Fermat&#39;s Theorem </tag>
-         
-        <tag>Euler Totient Function </tag>
-         
-        <tag>Prime-counting function </tag>
-         
-        <tag>Goldbach&#39;s Conjecture </tag>
-         
-         
-           
-             
-              <breadCrumb title="課堂筆記系列" url="https://jam68ty.github.io/BucketTalk/categories/%25E8%25AA%25B2%25E5%25A0%2582%25E7%25AD%2586%25E8%25A8%2598%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/cryptography-security-note1/</loc>
-    <lastmod>2020-12-15T12:51:41.736Z</lastmod>
-    <data>
-        <display>
-        <title>課堂筆記 資訊安全(I)</title>
-        <pubTime>2020-11-17T10:31:50.000Z</pubTime>
-        
-        <tag>Cryptography </tag>
-         
-        <tag>Substitution </tag>
-         
-        <tag>Transposition </tag>
-         
-        <tag>DES </tag>
-         
-         
-           
-             
-              <breadCrumb title="課堂筆記系列" url="https://jam68ty.github.io/BucketTalk/categories/%25E8%25AA%25B2%25E5%25A0%2582%25E7%25AD%2586%25E8%25A8%2598%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/php-mysql-db1/</loc>
-    <lastmod>2020-11-17T11:09:05.256Z</lastmod>
-    <data>
-        <display>
-        <title>PHP-MySQL系列 資料庫練習-連接、創建表格、插入資料</title>
-        <pubTime>2020-11-17T11:31:40.000Z</pubTime>
-        
-        <tag>PHP </tag>
-         
-        <tag>MySQL </tag>
-         
-        <tag>Connect </tag>
-         
-        <tag>Create </tag>
-         
-        <tag>Insert </tag>
-         
-         
-           
-             
-              <breadCrumb title="PHP-MySQL系列" url="https://jam68ty.github.io/BucketTalk/categories/PHP-MySQL%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-11-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/django-customize/</loc>
-    <lastmod>2020-11-06T17:38:27.871Z</lastmod>
-    <data>
-        <display>
-        <title>Django系列 客製化</title>
-        <pubTime>2020-11-06T17:45:09.000Z</pubTime>
-        
-        <tag>Django </tag>
-         
-        <tag>Customize </tag>
-         
-         
-           
-             
-              <breadCrumb title="Django系列" url="https://jam68ty.github.io/BucketTalk/categories/Django%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/django-test/</loc>
-    <lastmod>2020-11-06T17:38:27.865Z</lastmod>
-    <data>
-        <display>
-        <title>Django系列 自動化測試</title>
-        <pubTime>2020-11-06T17:29:09.000Z</pubTime>
-        
-        <tag>Django </tag>
-         
-        <tag>Auto Test </tag>
-         
-         
-           
-             
-              <breadCrumb title="Django系列" url="https://jam68ty.github.io/BucketTalk/categories/Django%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/django-view/</loc>
-    <lastmod>2020-11-06T17:30:26.572Z</lastmod>
-    <data>
-        <display>
-        <title>Django系列 介面(Views)</title>
-        <pubTime>2020-11-06T16:55:09.000Z</pubTime>
-        
-        <tag>Django </tag>
-         
-        <tag>Database </tag>
-         
-        <tag>Views </tag>
-         
-         
-           
-             
-              <breadCrumb title="Django系列" url="https://jam68ty.github.io/BucketTalk/categories/Django%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/Common-Fuction-In-Hexo/</loc>
-    <lastmod>2020-11-06T17:24:24.528Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo常用功能</title>
-        <pubTime>2020-07-30T16:01:59.000Z</pubTime>
-        
-        <tag>GitHubPages </tag>
-         
-        <tag>Hexo </tag>
-         
-        <tag>Blog </tag>
-         
-         
-           
-             
-              <breadCrumb title="使用 GitHub Pages &amp; Hexo 建立個人Blog" url="https://jam68ty.github.io/BucketTalk/categories/%25E4%25BD%25BF%25E7%2594%25A8-GitHub-Pages-Hexo-%25E5%25BB%25BA%25E7%25AB%258B%25E5%2580%258B%25E4%25BA%25BABlog/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/django-db2/</loc>
-    <lastmod>2020-11-06T16:55:01.038Z</lastmod>
-    <data>
-        <display>
-        <title>Django系列 資料庫(二)</title>
-        <pubTime>2020-11-06T16:45:09.000Z</pubTime>
-        
-        <tag>Django </tag>
-         
-        <tag>Database </tag>
-         
-        <tag>models </tag>
-         
-         
-           
-             
-              <breadCrumb title="Django系列" url="https://jam68ty.github.io/BucketTalk/categories/Django%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/django-db1/</loc>
-    <lastmod>2020-11-06T16:55:01.036Z</lastmod>
-    <data>
-        <display>
-        <title>Django系列 資料庫(一)</title>
-        <pubTime>2020-11-06T16:42:09.000Z</pubTime>
-        
-        <tag>Django </tag>
-         
-        <tag>Database </tag>
-         
-        <tag>models </tag>
-         
-         
-           
-             
-              <breadCrumb title="Django系列" url="https://jam68ty.github.io/BucketTalk/categories/Django%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/django-start/</loc>
-    <lastmod>2020-11-06T16:54:43.102Z</lastmod>
-    <data>
-        <display>
-        <title>Django系列 建立第一個專案</title>
-        <pubTime>2020-11-06T16:41:09.000Z</pubTime>
-        
-        <tag>Django </tag>
-         
-         
-           
-             
-              <breadCrumb title="Django系列" url="https://jam68ty.github.io/BucketTalk/categories/Django%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/php-mysql-fileupload/</loc>
-    <lastmod>2020-11-06T13:32:53.309Z</lastmod>
-    <data>
-        <display>
-        <title>PHP-MySQL系列 文件上傳</title>
-        <pubTime>2020-11-06T12:35:09.000Z</pubTime>
-        
-        <tag>PHP </tag>
-         
-        <tag>MySQL </tag>
-         
-         
-           
-             
-              <breadCrumb title="PHP-MySQL系列" url="https://jam68ty.github.io/BucketTalk/categories/PHP-MySQL%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/php-mysql-layout/</loc>
-    <lastmod>2020-11-06T13:18:25.691Z</lastmod>
-    <data>
-        <display>
-        <title>PHP-MySQL系列 網頁切版</title>
-        <pubTime>2020-11-06T12:31:09.000Z</pubTime>
-        
-        <tag>PHP </tag>
-         
-        <tag>MySQL </tag>
-         
-         
-           
-             
-              <breadCrumb title="PHP-MySQL系列" url="https://jam68ty.github.io/BucketTalk/categories/PHP-MySQL%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/php-mysql-form2/</loc>
-    <lastmod>2020-11-06T13:18:04.315Z</lastmod>
-    <data>
-        <display>
-        <title>PHP-MySQL系列 Form表單(二)</title>
-        <pubTime>2020-11-06T12:30:09.000Z</pubTime>
-        
-        <tag>PHP </tag>
-         
-        <tag>MySQL </tag>
-         
-         
-           
-             
-              <breadCrumb title="PHP-MySQL系列" url="https://jam68ty.github.io/BucketTalk/categories/PHP-MySQL%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/php-mysql-form1/</loc>
-    <lastmod>2020-11-06T13:17:54.597Z</lastmod>
-    <data>
-        <display>
-        <title>PHP-MySQL系列 Form表單(一)</title>
-        <pubTime>2020-11-06T12:29:09.000Z</pubTime>
-        
-        <tag>PHP </tag>
-         
-        <tag>MySQL </tag>
-         
-         
-           
-             
-              <breadCrumb title="PHP-MySQL系列" url="https://jam68ty.github.io/BucketTalk/categories/PHP-MySQL%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/php-mysql-introduce/</loc>
-    <lastmod>2020-11-06T13:04:08.239Z</lastmod>
-    <data>
-        <display>
-        <title>PHP-MySQL系列 簡介</title>
-        <pubTime>2020-11-06T12:28:09.000Z</pubTime>
-        
-        <tag>PHP </tag>
-         
-        <tag>MySQL </tag>
-         
-         
-           
-             
-              <breadCrumb title="PHP-MySQL系列" url="https://jam68ty.github.io/BucketTalk/categories/PHP-MySQL%25E7%25B3%25BB%25E5%2588%2597/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-11-06</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/index.html</loc>
     
+    <lastmod>2020-08-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/categories/index.html</loc>
+    
+    <lastmod>2020-08-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/Implement-with-GitHub-Pages-And-Hexo/</loc>
-    <lastmod>2020-08-17T15:20:51.680Z</lastmod>
-    <data>
-        <display>
-        <title>實作使用GitHub Pages & Hexo 建立個人Blog</title>
-        <pubTime>2020-07-30T16:01:56.000Z</pubTime>
-        
-        <tag>GitHubPages </tag>
-         
-        <tag>Hexo </tag>
-         
-        <tag>Blog </tag>
-         
-        <tag>Implement </tag>
-         
-         
-           
-             
-              <breadCrumb title="使用 GitHub Pages &amp; Hexo 建立個人Blog" url="https://jam68ty.github.io/BucketTalk/categories/%25E4%25BD%25BF%25E7%2594%25A8-GitHub-Pages-Hexo-%25E5%25BB%25BA%25E7%25AB%258B%25E5%2580%258B%25E4%25BA%25BABlog/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-08-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/Customize-Your-Hexo-Blog/</loc>
-    <lastmod>2020-08-17T15:20:51.669Z</lastmod>
-    <data>
-        <display>
-        <title>個人化你的Hexo Blog</title>
-        <pubTime>2020-07-30T16:01:57.000Z</pubTime>
-        
-        <tag>GitHubPages </tag>
-         
-        <tag>Hexo </tag>
-         
-        <tag>Blog </tag>
-         
-        <tag>utterances </tag>
-         
-         
-           
-             
-              <breadCrumb title="使用 GitHub Pages &amp; Hexo 建立個人Blog" url="https://jam68ty.github.io/BucketTalk/categories/%25E4%25BD%25BF%25E7%2594%25A8-GitHub-Pages-Hexo-%25E5%25BB%25BA%25E7%25AB%258B%25E5%2580%258B%25E4%25BA%25BABlog/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-08-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/post/Create-Blog-With-GitHub-Pages-And-Hexo/</loc>
-    <lastmod>2020-08-17T15:20:51.652Z</lastmod>
-    <data>
-        <display>
-        <title>GitHub Pages & Hexo 開始你的Blog吧!</title>
-        <pubTime>2020-07-30T16:01:54.000Z</pubTime>
-        
-        <tag>GitHubPages </tag>
-         
-        <tag>Hexo </tag>
-         
-        <tag>Blog </tag>
-         
-         
-           
-             
-              <breadCrumb title="使用 GitHub Pages &amp; Hexo 建立個人Blog" url="https://jam68ty.github.io/BucketTalk/categories/%25E4%25BD%25BF%25E7%2594%25A8-GitHub-Pages-Hexo-%25E5%25BB%25BA%25E7%25AB%258B%25E5%2580%258B%25E4%25BA%25BABlog/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2020-08-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/archives/index.html</loc>
+    
+    <lastmod>2020-07-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/GitHubPages/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Hexo/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Blog/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/CI-CD/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Jenkins/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/utterances/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Cryptography/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Substitution/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Transposition/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/DES/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/RSA%E5%8A%A0%E5%AF%86/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Diffie-Hellman-Key-Exchange/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/EIGamal/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Elliptic-Curve-Cryptography/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Implement/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/opencv/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/image-process/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/%E5%BD%B1%E5%83%8F%E8%99%95%E7%90%86/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Viola-Jones-Algorithm/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Adaboost/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Haar-like-Feature/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Integral-Image/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Django/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Database/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/models/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Prime/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Fermat-s-Theorem/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Euler-Totient-Function/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Prime-counting-function/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Goldbach-s-Conjecture/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Customize/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Auto-Test/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/POJO/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/DTO/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/DAO/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Java/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Views/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Clean-Code/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/javascript/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/VScode/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/React/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/VScode-Express/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/keras/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/PHP/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/MySQL/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Ajax/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Select/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Delete/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Connect/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Create/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Insert/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Login/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Register/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/categories/%E4%BD%BF%E7%94%A8-GitHub-Pages-Hexo-%E5%BB%BA%E7%AB%8B%E5%80%8B%E4%BA%BABlog/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/categories/%E8%AA%B2%E5%A0%82%E7%AD%86%E8%A8%98%E7%B3%BB%E5%88%97/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/categories/ML-DL%E7%AD%86%E8%A8%98/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/categories/Django%E7%B3%BB%E5%88%97/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/categories/JAVA%E6%90%9E%E4%B8%8D%E6%B8%85%E6%A5%9A%E7%B3%BB%E5%88%97/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/categories/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/categories/PHP-MySQL%E7%B3%BB%E5%88%97/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 </urlset>

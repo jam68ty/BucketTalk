@@ -5,19 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 6.1.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/BucketTalk/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/BucketTalk/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/BucketTalk/images/logo.svg" color="#222">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/BucketTalk/css/main.css">
 
 
 <link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/BucketTalk/lib/pace/pace-theme-minimal.min.css">
+  <script src="/BucketTalk/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="因為最後一堂課同學們一心都撲在了期末作業上所以我為同學們準備了比較輕鬆的內容利用Ajax更新部分頁面區塊，以節省資源">
@@ -55,6 +56,15 @@
 
   <title>PHP-MySQL系列 Ajax簡單應用 | BucketTalk</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-174207718-1');
+      }
+    </script>
 
 
 
@@ -130,6 +140,21 @@
     <a href="/BucketTalk/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
 
   </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/BucketTalk/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
@@ -140,7 +165,8 @@
 
 
 
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8945494872196150"
+     crossorigin="anonymous"></script>
 </div>
     </header>
 
@@ -166,7 +192,7 @@
     <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/php-mysql-ajax/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/BucketTalk/images/avatar.gif">
+      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
       <meta itemprop="name" content="Chia Chen">
       <meta itemprop="description" content="">
     </span>
@@ -215,7 +241,7 @@
 <p>利用Ajax處理事件，比如刪除資料不需要refresh整個page<br>本周是與ajax相關的基本知識：</p>
 <h1 id="先測試"><a href="#先測試" class="headerlink" title="先測試"></a>先測試</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html leng=<span class="string">&quot;utf-8&quot;</span>&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;Ajax 練習&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;button id=<span class="string">&quot;btn&quot;</span>&gt;test&lt;/button&gt;</span><br><span class="line">        &lt;script&gt;</span><br><span class="line">            document.<span class="title function_ invoke__">getElementById</span>(<span class="string">&#x27;btn&#x27;</span>).<span class="title function_ invoke__">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>,myfun);</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">myfun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                document.<span class="title function_ invoke__">write</span>(<span class="string">&quot;success!&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <p>成果應該如下：<br><img src="https://i.imgur.com/XnrHkux.png" alt=""><br><img src="https://i.imgur.com/vB5WNVl.png" alt=""></p>
-<h1 id="Web-API-XMLHttpRequest"><a href="#Web-API-XMLHttpRequest" class="headerlink" title="Web API - XMLHttpRequest"></a>Web API - XMLHttpRequest</h1><p>藉由 XMLHttpRequest（XHR）物件的方式來存取伺服器端的資料，可以讓你直接經由指定的 URL 擷取資料卻不用刷新整個網頁。<br>相關的詳細說明：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest">https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest</a></p>
+<h1 id="Web-API-XMLHttpRequest"><a href="#Web-API-XMLHttpRequest" class="headerlink" title="Web API - XMLHttpRequest"></a>Web API - XMLHttpRequest</h1><p>藉由 XMLHttpRequest（XHR）物件的方式來存取伺服器端的資料，可以讓你直接經由指定的 URL 擷取資料卻不用刷新整個網頁。<br>相關的詳細說明：<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtVFcvZG9jcy9XZWIvQVBJL1hNTEh0dHBSZXF1ZXN0">https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest<i class="fa fa-external-link-alt"></i></span></p>
 <p>實作部分，在function裡面多加兩行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr=<span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">console.<span class="title function_ invoke__">log</span>(xhr);</span><br></pre></td></tr></table></figure><br>在瀏覽器裡按F12或直接右鍵檢查<br><img src="https://i.imgur.com/s8PbUEE.png" alt=""></p>
 <blockquote>
 <p>200: OK<br>403: Forbbiden<br>404: Not Found</p>
@@ -276,6 +302,17 @@
 
           </div>
           
+     
+      <div class="comments" id="comments">
+          <script src="https://utteranc.es/client.js"
+            repo="jam68ty/Comment"
+            issue-term="pathname"
+            label="Comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+          </script>
+      </div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -328,6 +365,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chia Chen"
+      src="/BucketTalk/image/avatar.jpg">
   <p class="site-author-name" itemprop="name">Chia Chen</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -342,11 +381,13 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/BucketTalk/categories/">
+          
         <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/BucketTalk/tags/">
+          
         <span class="site-state-item-count">55</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
@@ -354,6 +395,19 @@
 </div>
 
 
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL0NoaWFDaGVuQ2hhbmcyNQ==" title="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;ChiaChenChang25">My Linkedin</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
+        </li>
+    </ul>
+  </div>
 
       </div>
 
@@ -373,15 +427,13 @@
 
 <div class="copyright">
   
-  &copy; 
+  &copy; 2020 – 
   <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-star"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chia Chen</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
-  </div>
 
         
 
@@ -406,7 +458,7 @@
 <script src="/BucketTalk/js/motion.js"></script>
 
 
-<script src="/BucketTalk/js/schemes/muse.js"></script>
+<script src="/BucketTalk/js/schemes/pisces.js"></script>
 
 
 <script src="/BucketTalk/js/next-boot.js"></script>
@@ -429,6 +481,8 @@
 
 
 
+
+  
 
   
 

@@ -5,19 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 6.1.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/BucketTalk/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/BucketTalk/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/BucketTalk/images/logo.svg" color="#222">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/BucketTalk/css/main.css">
 
 
 <link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/BucketTalk/lib/pace/pace-theme-minimal.min.css">
+  <script src="/BucketTalk/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="大二之後再也沒碰過Java，許多觀念也都已經忘光光開始工作後這些東西通通回來找我了如此看來還有許多我搞不清楚的東西呢這篇記錄了一些在Java專案中必須知道的基本知識(但是我之前真的不知道QQ)">
@@ -53,6 +54,15 @@
 
   <title>JAVA搞不清楚系列 - POJO, PO, DTO, DAO, BO, VO | BucketTalk</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-174207718-1');
+      }
+    </script>
 
 
 
@@ -128,6 +138,21 @@
     <a href="/BucketTalk/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
 
   </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/BucketTalk/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
@@ -138,7 +163,8 @@
 
 
 
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8945494872196150"
+     crossorigin="anonymous"></script>
 </div>
     </header>
 
@@ -164,7 +190,7 @@
     <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/java-pojo-dto-dao/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/BucketTalk/images/avatar.gif">
+      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
       <meta itemprop="name" content="Chia Chen">
       <meta itemprop="description" content="">
     </span>
@@ -213,7 +239,7 @@
 <h1 id="POJO-Plain-Old-Java-Object"><a href="#POJO-Plain-Old-Java-Object" class="headerlink" title="POJO (Plain Old Java Object)"></a>POJO (Plain Old Java Object)</h1><p>POJO就是一個Java物件只包含自己的屬性(private)和提取或儲存這些屬性的method(get、set)，而其他的Object也是以POJO為基準開始延伸。</p>
 <h1 id="PO-Persistent-Object-Entity"><a href="#PO-Persistent-Object-Entity" class="headerlink" title="PO (Persistent Object) = Entity"></a>PO (Persistent Object) = Entity</h1><p>資料庫的table所對應的java物件，通常與使用hibernate相關。除了get, set沒有其他方法</p>
 <blockquote>
-<p>Spring Boot JAP有一個套件叫做Lombok，可以替我們省去寫getter and setter的功夫，只需要加上Annotation @Getter @Setter 即可<br>可參考：<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10238653">https://ithelp.ithome.com.tw/articles/10238653</a></p>
+<p>Spring Boot JAP有一個套件叫做Lombok，可以替我們省去寫getter and setter的功夫，只需要加上Annotation @Getter @Setter 即可<br>可參考：<span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy9hcnRpY2xlcy8xMDIzODY1Mw==">https://ithelp.ithome.com.tw/articles/10238653<i class="fa fa-external-link-alt"></i></span></p>
 </blockquote>
 <h1 id="DTO-Data-Transfer-Object"><a href="#DTO-Data-Transfer-Object" class="headerlink" title="DTO (Data Transfer Object)"></a>DTO (Data Transfer Object)</h1><p>用來傳輸的物件，只會把需要被傳輸出去的資料包裝起來</p>
 <h1 id="DAO-Data-Access-Object"><a href="#DAO-Data-Access-Object" class="headerlink" title="DAO (Data Access Object)"></a>DAO (Data Access Object)</h1><p>用於ORM將資料從資料庫中提取的邏輯物件，主要包含提取資料庫的資料並包裝成PO(就是跟SQL有關的邏輯都會在這，像是查詢或是新增資料等)</p>
@@ -224,9 +250,9 @@
 <p>資料包裝，對應資料庫的屬性或是包含多個PO組成一個較複雜的資料物件-&gt; 簡單來說就是展示用的資料<br>如在DTO中定義為：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;gender&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;female&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;age&quot;</span> <span class="punctuation">:</span> <span class="number">20</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure><br>而年紀不須完整的被展現出來，只需展示出一個範圍，則VO會定義成：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;gender&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;female&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;age&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;18~25&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></p>
 <p>用一張圖來解釋的話就是這樣：<br><img src="https://i.imgur.com/G3HD9fn.png" alt=""></p>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h1><ol>
-<li><a target="_blank" rel="noopener" href="https://medium.com/@charle0911/%E4%B8%80%E6%AC%A1%E6%90%9E%E6%87%82java-pojo-po-dto-vo-bo-59fce7a0eda9">https://medium.com/@charle0911/%E4%B8%80%E6%AC%A1%E6%90%9E%E6%87%82java-pojo-po-dto-vo-bo-59fce7a0eda9</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35762537">https://zhuanlan.zhihu.com/p/35762537</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/102389552">https://zhuanlan.zhihu.com/p/102389552</a></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BjaGFybGUwOTExLyVFNCVCOCU4MCVFNiVBQyVBMSVFNiU5MCU5RSVFNiU4NyU4MmphdmEtcG9qby1wby1kdG8tdm8tYm8tNTlmY2U3YTBlZGE5">https://medium.com/@charle0911/%E4%B8%80%E6%AC%A1%E6%90%9E%E6%87%82java-pojo-po-dto-vo-bo-59fce7a0eda9<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8zNTc2MjUzNw==">https://zhuanlan.zhihu.com/p/35762537<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8xMDIzODk1NTI=">https://zhuanlan.zhihu.com/p/102389552<i class="fa fa-external-link-alt"></i></span></li>
 </ol>
 
     </div>
@@ -268,6 +294,17 @@
 
           </div>
           
+     
+      <div class="comments" id="comments">
+          <script src="https://utteranc.es/client.js"
+            repo="jam68ty/Comment"
+            issue-term="pathname"
+            label="Comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+          </script>
+      </div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -320,6 +357,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chia Chen"
+      src="/BucketTalk/image/avatar.jpg">
   <p class="site-author-name" itemprop="name">Chia Chen</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -334,11 +373,13 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/BucketTalk/categories/">
+          
         <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/BucketTalk/tags/">
+          
         <span class="site-state-item-count">55</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
@@ -346,6 +387,19 @@
 </div>
 
 
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL0NoaWFDaGVuQ2hhbmcyNQ==" title="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;ChiaChenChang25">My Linkedin</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
+        </li>
+    </ul>
+  </div>
 
       </div>
 
@@ -365,15 +419,13 @@
 
 <div class="copyright">
   
-  &copy; 
+  &copy; 2020 – 
   <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-star"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chia Chen</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
-  </div>
 
         
 
@@ -398,7 +450,7 @@
 <script src="/BucketTalk/js/motion.js"></script>
 
 
-<script src="/BucketTalk/js/schemes/muse.js"></script>
+<script src="/BucketTalk/js/schemes/pisces.js"></script>
 
 
 <script src="/BucketTalk/js/next-boot.js"></script>
@@ -423,6 +475,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

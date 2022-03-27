@@ -5,19 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 6.1.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/BucketTalk/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/BucketTalk/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/BucketTalk/images/logo.svg" color="#222">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/BucketTalk/css/main.css">
 
 
 <link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/BucketTalk/lib/pace/pace-theme-minimal.min.css">
+  <script src="/BucketTalk/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="在PHP+MySQL中除了需要熟悉PHP和MySQL個別的語法以外我認為關於GET與POST的運用也很重要因此接續上篇新增資料庫與資料表後要學習的是SELECT &amp; DELETE">
@@ -56,6 +57,15 @@
 
   <title>PHP-MySQL系列 資料庫練習-SELECT & DELETE | BucketTalk</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-174207718-1');
+      }
+    </script>
 
 
 
@@ -131,6 +141,21 @@
     <a href="/BucketTalk/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
 
   </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/BucketTalk/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
@@ -141,7 +166,8 @@
 
 
 
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8945494872196150"
+     crossorigin="anonymous"></script>
 </div>
     </header>
 
@@ -167,7 +193,7 @@
     <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/php-mysql-db2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/BucketTalk/images/avatar.gif">
+      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
       <meta itemprop="name" content="Chia Chen">
       <meta itemprop="description" content="">
     </span>
@@ -213,7 +239,7 @@
       
         <p>在PHP+MySQL中<br>除了需要熟悉PHP和MySQL個別的語法以外<br>我認為關於GET與POST的運用也很重要<br>因此接續上篇新增資料庫與資料表後要學習的是SELECT &amp; DELETE</p>
 <span id="more"></span>
-<p>資料庫活用=&gt;把在資料庫裡的東西都列出來<br>會用到<code>mysqli_num_rows()</code>與<code>mysqli_fetch_assoc()</code><br>在stackoverlow中有人整理了幾個很詳細的用法：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/18577774/differences-in-mysqli-fetch-functions">https://stackoverflow.com/questions/18577774/differences-in-mysqli-fetch-functions</a></p>
+<p>資料庫活用=&gt;把在資料庫裡的東西都列出來<br>會用到<code>mysqli_num_rows()</code>與<code>mysqli_fetch_assoc()</code><br>在stackoverlow中有人整理了幾個很詳細的用法：<span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMTg1Nzc3NzQvZGlmZmVyZW5jZXMtaW4tbXlzcWxpLWZldGNoLWZ1bmN0aW9ucw==">https://stackoverflow.com/questions/18577774/differences-in-mysqli-fetch-functions<i class="fa fa-external-link-alt"></i></span></p>
 <h1 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h1><ol>
 <li>新增一個<code>list.php</code><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">    <span class="variable">$conn</span>=<span class="keyword">require_once</span>(<span class="string">&#x27;config.php&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">        <span class="variable">$sql</span>=<span class="string">&quot;SELECT * FROM tb3&quot;</span>;</span><br><span class="line">        <span class="variable">$result</span> = <span class="title function_ invoke__">mysqli_query</span>(<span class="variable">$conn</span>,<span class="variable">$sql</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">mysqli_num_rows</span>(<span class="variable">$result</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// output data of each row</span></span><br><span class="line">            <span class="keyword">while</span>(<span class="variable">$row</span> = <span class="title function_ invoke__">mysqli_fetch_assoc</span>(<span class="variable">$result</span>)) &#123;</span><br><span class="line">                </span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;col1: &quot;</span> . <span class="variable">$row</span>[<span class="string">&quot;tb3_col1&quot;</span>]. <span class="string">&quot; - col2: &quot;</span> . <span class="variable">$row</span>[<span class="string">&quot;tb3_col2&quot;</span>] . <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">    <span class="title function_ invoke__">mysqli_close</span>(<span class="variable">$conn</span>); <span class="comment">//最後記得把和資料庫的連線關起來</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;Null&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 且另外在db-tb3裡新增一些資料<br><img src="https://i.imgur.com/I6cXCcS.png" alt=""><br>最後傳回這些<br><img src="https://i.imgur.com/CufKKtY.png" alt=""></li>
@@ -266,6 +292,17 @@
 
           </div>
           
+     
+      <div class="comments" id="comments">
+          <script src="https://utteranc.es/client.js"
+            repo="jam68ty/Comment"
+            issue-term="pathname"
+            label="Comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+          </script>
+      </div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -318,6 +355,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chia Chen"
+      src="/BucketTalk/image/avatar.jpg">
   <p class="site-author-name" itemprop="name">Chia Chen</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -332,11 +371,13 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/BucketTalk/categories/">
+          
         <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/BucketTalk/tags/">
+          
         <span class="site-state-item-count">55</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
@@ -344,6 +385,19 @@
 </div>
 
 
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL0NoaWFDaGVuQ2hhbmcyNQ==" title="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;ChiaChenChang25">My Linkedin</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
+        </li>
+    </ul>
+  </div>
 
       </div>
 
@@ -363,15 +417,13 @@
 
 <div class="copyright">
   
-  &copy; 
+  &copy; 2020 – 
   <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-star"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chia Chen</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
-  </div>
 
         
 
@@ -396,7 +448,7 @@
 <script src="/BucketTalk/js/motion.js"></script>
 
 
-<script src="/BucketTalk/js/schemes/muse.js"></script>
+<script src="/BucketTalk/js/schemes/pisces.js"></script>
 
 
 <script src="/BucketTalk/js/next-boot.js"></script>
@@ -419,6 +471,8 @@
 
 
 
+
+  
 
   
 

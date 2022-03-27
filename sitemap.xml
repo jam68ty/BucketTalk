@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://jam68ty.github.io/BucketTalk/post/opencv-data-argumentation/</loc>
+    <loc>https://jam68ty.github.io/BucketTalk/post/opencv-data-agumentation/</loc>
     
     <lastmod>2021-12-25</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://jam68ty.github.io/BucketTalk/post/opencv-data-agumentation/</loc>
+    <loc>https://jam68ty.github.io/BucketTalk/post/opencv-data-argumentation/</loc>
     
     <lastmod>2021-12-25</lastmod>
     
@@ -498,6 +498,20 @@
   </url>
   
   <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Django/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Customize/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://jam68ty.github.io/BucketTalk/tags/RSA%E5%8A%A0%E5%AF%86/</loc>
     <lastmod>2022-03-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -540,13 +554,6 @@
   </url>
   
   <url>
-    <loc>https://jam68ty.github.io/BucketTalk/tags/Django/</loc>
-    <lastmod>2022-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://jam68ty.github.io/BucketTalk/tags/Database/</loc>
     <lastmod>2022-03-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -561,14 +568,7 @@
   </url>
   
   <url>
-    <loc>https://jam68ty.github.io/BucketTalk/tags/Customize/</loc>
-    <lastmod>2022-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jam68ty.github.io/BucketTalk/tags/Auto-Test/</loc>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Views/</loc>
     <lastmod>2022-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -583,6 +583,13 @@
   
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/tags/Java/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Auto-Test/</loc>
     <lastmod>2022-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -610,6 +617,20 @@
   </url>
   
   <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/keras/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://jam68ty.github.io/BucketTalk/tags/javascript/</loc>
     <lastmod>2022-03-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -618,13 +639,6 @@
   
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/tags/VScode/</loc>
-    <lastmod>2022-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jam68ty.github.io/BucketTalk/tags/Views/</loc>
     <lastmod>2022-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -645,20 +659,6 @@
   </url>
   
   <url>
-    <loc>https://jam68ty.github.io/BucketTalk/tags/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/</loc>
-    <lastmod>2022-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jam68ty.github.io/BucketTalk/tags/keras/</loc>
-    <lastmod>2022-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://jam68ty.github.io/BucketTalk/tags/PHP/</loc>
     <lastmod>2022-03-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -667,20 +667,6 @@
   
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/tags/MySQL/</loc>
-    <lastmod>2022-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jam68ty.github.io/BucketTalk/tags/Select/</loc>
-    <lastmod>2022-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jam68ty.github.io/BucketTalk/tags/Delete/</loc>
     <lastmod>2022-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -702,6 +688,20 @@
   
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/tags/Insert/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Select/</loc>
+    <lastmod>2022-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Delete/</loc>
     <lastmod>2022-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

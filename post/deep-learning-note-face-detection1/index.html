@@ -5,19 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 6.1.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/BucketTalk/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/BucketTalk/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/BucketTalk/images/logo.svg" color="#222">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/BucketTalk/css/main.css">
 
 
 <link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/BucketTalk/lib/pace/pace-theme-minimal.min.css">
+  <script src="/BucketTalk/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="放寒假了，好不容易完成了論文前三章跟得出了初步實驗結果但是被老師打槍「需要討論」之後產生了自己很廢的想法所以想念一些書來讓自己充實一點剛好前陣子在Udemy上買了課程因此記錄了一下課程的內容Deep Learning and Computer Vision A-Z™: OpenCV, SSD &amp; GANs有興趣的人也可以買課程聽聽看(畢竟30天內退款真是個好東西)裡面的老師目前聽下來覺得講">
@@ -59,6 +60,15 @@
 
   <title>深度學習筆記系列 臉部辨識基本理論(I) | BucketTalk</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-174207718-1');
+      }
+    </script>
 
 
 
@@ -134,6 +144,21 @@
     <a href="/BucketTalk/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
 
   </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/BucketTalk/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
@@ -144,7 +169,8 @@
 
 
 
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8945494872196150"
+     crossorigin="anonymous"></script>
 </div>
     </header>
 
@@ -170,7 +196,7 @@
     <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/BucketTalk/post/deep-learning-note-face-detection1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/BucketTalk/images/avatar.gif">
+      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
       <meta itemprop="name" content="Chia Chen">
       <meta itemprop="description" content="">
     </span>
@@ -220,7 +246,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>放寒假了，好不容易完成了論文前三章跟得出了初步實驗結果<br>但是被老師打槍「需要討論」之後產生了自己很廢的想法<br>所以想念一些書來讓自己充實一點<br>剛好前陣子在Udemy上買了課程<br>因此記錄了一下課程的內容<br><a target="_blank" rel="noopener" href="https://www.udemy.com/course/computer-vision-a-z/">Deep Learning and Computer Vision A-Z™: OpenCV, SSD &amp; GANs</a><br>有興趣的人也可以買課程聽聽看(畢竟30天內退款真是個好東西)<br>裡面的老師目前聽下來覺得講得還不錯(聽得懂)<br>但實在是因為英文不太行，所以需要做一些筆記幫助吸收<br><strong>文章中的圖片都是該課程中用到的圖片，僅幫助記憶、沒有其他目的</strong></p>
+        <p>放寒假了，好不容易完成了論文前三章跟得出了初步實驗結果<br>但是被老師打槍「需要討論」之後產生了自己很廢的想法<br>所以想念一些書來讓自己充實一點<br>剛好前陣子在Udemy上買了課程<br>因此記錄了一下課程的內容<br><span class="exturl" data-url="aHR0cHM6Ly93d3cudWRlbXkuY29tL2NvdXJzZS9jb21wdXRlci12aXNpb24tYS16Lw==">Deep Learning and Computer Vision A-Z™: OpenCV, SSD &amp; GANs<i class="fa fa-external-link-alt"></i></span><br>有興趣的人也可以買課程聽聽看(畢竟30天內退款真是個好東西)<br>裡面的老師目前聽下來覺得講得還不錯(聽得懂)<br>但實在是因為英文不太行，所以需要做一些筆記幫助吸收<br><strong>文章中的圖片都是該課程中用到的圖片，僅幫助記憶、沒有其他目的</strong></p>
 <span id="more"></span>
 <h1 id="Viola-Jones-Algorithm"><a href="#Viola-Jones-Algorithm" class="headerlink" title="Viola-Jones Algorithm"></a>Viola-Jones Algorithm</h1><p>是Opencv library的原理，發展至今不只用於人臉圖像的偵測，也可用於實時(real-time)的影像偵測。<br>分為兩個階段：Training和Detection<br>但我們必須從Detection開始講起，這樣更有助於之後了解Training的過程。</p>
 <ol>
@@ -233,7 +259,7 @@
 <li>Four-rectangle Features<br><img src="https://i.imgur.com/5Z4dkA6.png" alt=""><br>在一張經過灰階化的圖片中，我們會試圖找出人臉上具有上述三樣特徵的局部：比如人的嘴巴可以說是Line Feature(中間深、上下淺)、人的眉毛相對於額頭是Edge Feature等。<br>針對每一個部位的特徵，我們會將他與為以Pixel為單位的網格重疊，並且每一網格中又根據顏色深淺透過標準化(Normalization)給予0~1的數字。<br><img src="https://i.imgur.com/7NUZj4K.png" alt=""><br>比如說上圖是一個人的鼻子部分，此部位符合Edge Feature，因此我們將他與以pixel為單位的網格($8 \times 4$)重疊後，並給予每一網格一個顏色深淺的數字。而亮面(左側)所有的數字加起來後取平均(W=0.166)，暗面所有數字加起來後取平均(B=0.568)，最後B-W=0.402。當這個數字越接近1，代表這部分的特別的黑白分明；當數字越接近0，代表這部分應該都是同一個顏色。(網格數值相加的部分與Integral Image有關)<br>在實際偵測中，我們會以該範圍($8 \times 4$)的網格逐步偵測圖片，找到接近B-W的值(Threshold 閥值、灰度劃分)。圖片可能存在多個符合該特徵的部位，但構成一張臉並不只依賴單一特徵，因此透過其他特徵部位的相對位置我們可以確認這是不是我們要的部位。</li>
 </ol>
 <h2 id="Integral-Image-積分圖"><a href="#Integral-Image-積分圖" class="headerlink" title="Integral Image 積分圖"></a>Integral Image 積分圖</h2><p>在Integral Image中，我們將Harr-like Feature中每個網格中的值標準化為0~10的數值以方便計算。而計算方式很簡單，就是創建一個與原圖相同size的網格圖，每當要計算該格積分時，需對應原圖的左上部分相加，如下圖的Integral Image中要計算綠色框框的積分，需將原圖綠色箭頭範圍內的數全部相加。<br><img src="https://i.imgur.com/XxFGpwA.png" alt=""><br>完成Integral Image後，當我們需要Image中紅色部分的數值，我們只需計算Integral Image中(框框的右下角-框框的右上方+框框的左上方-框框的左方)=紅色框框的值。<br><img src="https://i.imgur.com/4duMv7x.png" alt=""><br>Integral Image的好處是就算要計算的框框範圍裡有超過1000個以上的數字，他也可以快速的計算出來(Scalable)，以幫助我們找Harr-like Feature。</p>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>圖片與內容來源皆來自課程：<br><a target="_blank" rel="noopener" href="https://www.udemy.com/course/computer-vision-a-z/">Deep Learning and Computer Vision A-Z™: OpenCV, SSD &amp; GANs</a></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>圖片與內容來源皆來自課程：<br><span class="exturl" data-url="aHR0cHM6Ly93d3cudWRlbXkuY29tL2NvdXJzZS9jb21wdXRlci12aXNpb24tYS16Lw==">Deep Learning and Computer Vision A-Z™: OpenCV, SSD &amp; GANs<i class="fa fa-external-link-alt"></i></span></p>
 
     </div>
 
@@ -277,6 +303,17 @@
 
           </div>
           
+     
+      <div class="comments" id="comments">
+          <script src="https://utteranc.es/client.js"
+            repo="jam68ty/Comment"
+            issue-term="pathname"
+            label="Comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+          </script>
+      </div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -329,6 +366,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chia Chen"
+      src="/BucketTalk/image/avatar.jpg">
   <p class="site-author-name" itemprop="name">Chia Chen</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -343,11 +382,13 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/BucketTalk/categories/">
+          
         <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/BucketTalk/tags/">
+          
         <span class="site-state-item-count">55</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
@@ -355,6 +396,19 @@
 </div>
 
 
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL0NoaWFDaGVuQ2hhbmcyNQ==" title="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;ChiaChenChang25">My Linkedin</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
+        </li>
+    </ul>
+  </div>
 
       </div>
 
@@ -374,15 +428,13 @@
 
 <div class="copyright">
   
-  &copy; 
+  &copy; 2020 – 
   <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-star"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chia Chen</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
-  </div>
 
         
 
@@ -407,7 +459,7 @@
 <script src="/BucketTalk/js/motion.js"></script>
 
 
-<script src="/BucketTalk/js/schemes/muse.js"></script>
+<script src="/BucketTalk/js/schemes/pisces.js"></script>
 
 
 <script src="/BucketTalk/js/next-boot.js"></script>
@@ -430,6 +482,8 @@
 
 
 
+
+  
 
   
 

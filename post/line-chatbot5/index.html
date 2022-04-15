@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/BucketTalk/css/main.css">
+
+
+<link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/BucketTalk/lib/pace/pace-theme-minimal.min.css">
+  <script src="/BucketTalk/lib/pace/pace.min.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8945494872196150"
+     crossorigin="anonymous"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Flex Message是Line提供給開發者更靈活的顯示訊息的工具這也是我最喜歡的一部分可以把訊息做成自己喜歡的樣子全憑美感！自由發揮！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Line Chatbot - 用Flex Message包裝來自Google Map API 的訊息">
+<meta property="og:url" content="https://jam68ty.github.io/post/line-chatbot5/index.html">
+<meta property="og:site_name" content="BucketTalk">
+<meta property="og:description" content="Flex Message是Line提供給開發者更靈活的顯示訊息的工具這也是我最喜歡的一部分可以把訊息做成自己喜歡的樣子全憑美感！自由發揮！">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/2o8nGkW.jpg">
+<meta property="og:image" content="https://i.imgur.com/I9yk4Yu.png">
+<meta property="article:published_time" content="2022-04-15T09:00:56.000Z">
+<meta property="article:modified_time" content="2022-04-15T09:23:12.265Z">
+<meta property="article:author" content="Chia Chen">
+<meta property="article:tag" content="Django">
+<meta property="article:tag" content="Line Chatbot">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Flex Message">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/2o8nGkW.jpg">
+
+<link rel="canonical" href="https://jam68ty.github.io/post/line-chatbot5/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>Line Chatbot - 用Flex Message包裝來自Google Map API 的訊息 | BucketTalk</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-174207718-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/BucketTalk/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">BucketTalk</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">return null</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/BucketTalk/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/BucketTalk/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8945494872196150"
+     crossorigin="anonymous"></script>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/post/line-chatbot5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="name" content="Chia Chen">
+      <meta itemprop="description" content="technical study notes, learning & sharing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BucketTalk">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Line Chatbot - 用Flex Message包裝來自Google Map API 的訊息
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2022-04-15 17:00:56 / 修改時間：17:23:12" itemprop="dateCreated datePublished" datetime="2022-04-15T17:00:56+08:00">2022-04-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Flex Message是Line提供給開發者更靈活的顯示訊息的工具<br>這也是我最喜歡的一部分<br>可以把訊息做成自己喜歡的樣子<br><img src="https://i.imgur.com/2o8nGkW.jpg" alt=""><br>全憑美感！自由發揮！</p>
+<span id="more"></span>
+<p>但是要用Flex Message沒有想像中的簡單<br>尤其是陷入各種少一個大括號一個小括號的問題<br>又或者是Python的縮排問題時<br>真的非常無解、會解非常久～<br>所以誠心建議大家使用好的外掛來幫助開發<br>(但我沒有試到一個我喜歡的，如果有人有推薦的VSCode外掛可以分享一下嗎)</p>
+<h1 id="建立Flex-Message"><a href="#建立Flex-Message" class="headerlink" title="建立Flex Message"></a>建立Flex Message</h1><ol>
+<li>用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmxpbmUuYml6L2ZsZXgtc2ltdWxhdG9yLw==">Flex Message Simulator<i class="fa fa-external-link-alt"></i></span>建立一個範本並產生JSON</li>
+</ol>
+<p><img src="https://i.imgur.com/I9yk4Yu.png" alt=""></p>
+<ol>
+<li>建立function用來處理一些放入變數的問題，並迴圈產生多個FlexMessage</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">def flex_result(restaurant_detail)<span class="punctuation">:</span></span><br><span class="line">    result_len = len(restaurant_detail)</span><br><span class="line">    print(<span class="string">&quot;搜尋結果：&quot;</span> + str(result_len))</span><br><span class="line">    if(result_len&gt;=<span class="number">10</span>)<span class="punctuation">:</span></span><br><span class="line">      random_index = random.sample(range(<span class="number">0</span><span class="punctuation">,</span> result_len)<span class="punctuation">,</span> <span class="number">10</span>)</span><br><span class="line">    elif(result_len==<span class="number">0</span>)<span class="punctuation">:</span></span><br><span class="line">      print(<span class="string">&quot;no result&quot;</span>)</span><br><span class="line">      return <span class="string">&quot;&quot;</span></span><br><span class="line">    else<span class="punctuation">:</span></span><br><span class="line">      random_index = list(range(<span class="number">0</span><span class="punctuation">,</span> result_len))</span><br><span class="line">    contents = <span class="string">&quot;&#123;&#x27;type&#x27;: &#x27;carousel&#x27;,&#x27;contents&#x27;: [&quot;</span></span><br><span class="line">    for i in random_index<span class="punctuation">:</span></span><br><span class="line">        res = restaurant_detail.iloc<span class="punctuation">[</span>i<span class="punctuation">]</span></span><br><span class="line">        contents += <span class="string">&quot;&quot;</span><span class="string">&quot;&#123; </span></span><br><span class="line"><span class="string">      &#x27;type&#x27;: &#x27;bubble&#x27;,</span></span><br><span class="line"><span class="string">      &#x27;size&#x27;: &#x27;kilo&#x27;,</span></span><br><span class="line"><span class="string">      &#x27;hero&#x27;: &#123;</span></span><br><span class="line"><span class="string">        &#x27;type&#x27;: &#x27;image&#x27;,</span></span><br><span class="line"><span class="string">        &#x27;url&#x27;: &quot;</span><span class="string">&quot;&quot;</span> + <span class="string">&quot;&quot;</span><span class="string">&quot;&#x27;https://maps.googleapis.com/maps/api/place/photo?photoreference=&quot;</span><span class="string">&quot;&quot;</span> + res<span class="punctuation">[</span>&#x27;image&#x27;<span class="punctuation">]</span> + <span class="string">&quot;&quot;</span><span class="string">&quot;&amp;sensor=false&amp;maxheight=500&amp;maxwidth=500&amp;key=&quot;</span><span class="string">&quot;&quot;</span> + google_api_key + <span class="string">&quot;&#x27;,&quot;</span> + <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">        &#x27;size&#x27;: &#x27;full&#x27;,</span></span><br><span class="line"><span class="string">        &#x27;aspectMode&#x27;: &#x27;cover&#x27;,</span></span><br><span class="line"><span class="string">       .....略</span></span><br><span class="line"><span class="string">        ]</span></span><br><span class="line"><span class="string">      </span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    &#125;,&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">    print(contents)</span><br><span class="line">    return contents.strip(&#x27;<span class="punctuation">,</span>&#x27;) + <span class="string">&quot;]&#125;&quot;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>用FlexMessage的方式傳送訊息 (因為contents是字串，因此需要轉成dict)</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">contents = flex_result(res)</span><br><span class="line">line_bot_api.reply_message(event.reply_token, [</span><br><span class="line">  TextSendMessage(text=<span class="string">&quot;我隨機挑選了幾間餐廳，希望你會喜歡！&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="串Google-Map-API"><a href="#串Google-Map-API" class="headerlink" title="串Google Map API"></a>串Google Map API</h1><p>因為想要查詢附近美食，所以用到了line的傳送「位置訊息」的功能，這個功能會傳送目前位置的座標給sever，此時我們就可以利用這個資訊來去查找</p>
+<blockquote>
+<p>這邊用到了GCP的服務，所以要付錢<br>但是免費仔們可以使用<span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC5nb29nbGUuY29tL2ZyZWUvZG9jcy9nY3AtZnJlZS10aWVyP2hsPXpoLXR3">免費方案<i class="fa fa-external-link-alt"></i></span>，只要不要超出使用流量就不會被收錢，有興趣的可以看看，風險就是不知道他什麼時候改免費方案的內容 (2022.04.15)</p>
+</blockquote>
+<ol>
+<li>開啟GCP的<span class="exturl" data-url="aHR0cHM6Ly9jb25zb2xlLmNsb3VkLmdvb2dsZS5jb20vYXBpcy9hcGkvcGxhY2VzLWJhY2tlbmQuZ29vZ2xlYXBpcy5jb20vb3ZlcnZpZXc/cHJvamVjdD1hdXRoZW50aWMtaG9zdC0zNDMxMDc=">Places API<i class="fa fa-external-link-alt"></i></span>的服務</li>
+<li>記下產生的API金鑰(我這邊在<code>settings.py</code>裡設了一個google_api_key的變數以供全域使用)</li>
+<li>用法範例</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_nearby_food</span>(<span class="params">lat, lng, <span class="built_in">range</span></span>):</span><br><span class="line">  restaurants = []</span><br><span class="line">  params = &#123;&#125;</span><br><span class="line">  url = <span class="string">&quot;https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=&quot;</span> + <span class="built_in">str</span>(lat) + <span class="string">&quot;,&quot;</span> + <span class="built_in">str</span>(lng) + <span class="string">&quot;&amp;radius=&quot;</span> + <span class="built_in">str</span>(<span class="built_in">range</span>) +<span class="string">&quot;&amp;type=restaurant&amp;opennow&amp;language=zh-TW&amp;key=&quot;</span>+google_api_key</span><br><span class="line">  res = requests.get(url, params=params)</span><br><span class="line">  results = json.loads(res.content)</span><br><span class="line">  restaurants.extend(results[<span class="string">&#x27;results&#x27;</span>])</span><br><span class="line">  time.sleep(<span class="number">2</span>)</span><br><span class="line">  <span class="keyword">while</span> <span class="string">&quot;next_page_token&quot;</span> <span class="keyword">in</span> results:</span><br><span class="line">    params[<span class="string">&#x27;pagetoken&#x27;</span>] = results[<span class="string">&#x27;next_page_token&#x27;</span>],</span><br><span class="line">    res = requests.get(url, params=params)</span><br><span class="line">    results = json.loads(res.content)</span><br><span class="line">    restaurants.extend(results[<span class="string">&#x27;results&#x27;</span>])</span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    <span class="comment"># print(restaurants)</span></span><br><span class="line">  <span class="keyword">if</span>(restaurants <span class="keyword">is</span> empty):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;沒東西&quot;</span>)</span><br><span class="line">  <span class="keyword">return</span> restaurants</span><br></pre></td></tr></table></figure>
+<p>至於詳細Google還有提供什麼資訊可以去官方文件查查：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vbWFwcy9kb2N1bWVudGF0aW9uL3BsYWNlcy93ZWItc2VydmljZS9zZWFyY2g=">Place Search<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vbWFwcy9kb2N1bWVudGF0aW9uL3BsYWNlcy93ZWItc2VydmljZS9zdXBwb3J0ZWRfdHlwZXM=">Place Types<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<p>剩下的各種功能大都可以透過摸索實作出來，比如利用Django內建的sqlite做使用者收藏餐廳的功能。<br>實作的過程也會覺得非常有成就感以及有趣，<br>如果很寂寞的話做一個假的女友機器人跟自己聊天可能也很不錯吧(?)</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/BucketTalk/tags/Django/" rel="tag"># Django</a>
+              <a href="/BucketTalk/tags/Line-Chatbot/" rel="tag"># Line Chatbot</a>
+              <a href="/BucketTalk/tags/Python/" rel="tag"># Python</a>
+              <a href="/BucketTalk/tags/Flex-Message/" rel="tag"># Flex Message</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/BucketTalk/post/line-chatbot4/" rel="prev" title="Line Chatbot - 機器人睡著了？使用Scheduler把他叫醒吧！">
+      <i class="fa fa-chevron-left"></i> Line Chatbot - 機器人睡著了？使用Scheduler把他叫醒吧！
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+     
+      <div class="comments" id="comments">
+          <script src="https://utteranc.es/client.js"
+            repo="jam68ty/Comment"
+            issue-term="pathname"
+            label="Comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+          </script>
+      </div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8BFlex-Message"><span class="nav-number">1.</span> <span class="nav-text">建立Flex Message</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%B2Google-Map-API"><span class="nav-number">2.</span> <span class="nav-text">串Google Map API</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chia Chen"
+      src="/BucketTalk/image/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Chia Chen</p>
+  <div class="site-description" itemprop="description">technical study notes, learning & sharing</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/BucketTalk/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/BucketTalk/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/BucketTalk/tags/">
+          
+        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL0NoaWFDaGVuQ2hhbmcyNQ==" title="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;ChiaChenChang25">My Linkedin</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chia Chen</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/BucketTalk/lib/anime.min.js"></script>
+  <script src="/BucketTalk/lib/velocity/velocity.min.js"></script>
+  <script src="/BucketTalk/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/BucketTalk/js/utils.js"></script>
+
+<script src="/BucketTalk/js/motion.js"></script>
+
+
+<script src="/BucketTalk/js/schemes/pisces.js"></script>
+
+
+<script src="/BucketTalk/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

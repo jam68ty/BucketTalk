@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BucketTalk/image/favicon.png">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/BucketTalk/css/main.css">
+
+
+<link rel="stylesheet" href="/BucketTalk/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/BucketTalk/lib/pace/pace-theme-minimal.min.css">
+  <script src="/BucketTalk/lib/pace/pace.min.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8945494872196150"
+     crossorigin="anonymous"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jam68ty.github.io","root":"/BucketTalk/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","width":350,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="聊天機器人一直存在我的生活周遭常常想著哪天我也自己來玩一個看看所以就在空閒的時候做了一個用來尋找附近美食的機器人順便開了一個系列紀錄一下的過程 P.S.範例截的圖是另外一個做失敗的機器人但我又不想重新截圖，所以就用著了，但做法都是一樣的只是機器人名字不一樣而已">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Line Chatbot - 前置作業">
+<meta property="og:url" content="https://jam68ty.github.io/post/line-chatbot1/index.html">
+<meta property="og:site_name" content="BucketTalk">
+<meta property="og:description" content="聊天機器人一直存在我的生活周遭常常想著哪天我也自己來玩一個看看所以就在空閒的時候做了一個用來尋找附近美食的機器人順便開了一個系列紀錄一下的過程 P.S.範例截的圖是另外一個做失敗的機器人但我又不想重新截圖，所以就用著了，但做法都是一樣的只是機器人名字不一樣而已">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/iqpalaj.png">
+<meta property="og:image" content="https://i.imgur.com/KMC7Azf.png">
+<meta property="og:image" content="https://i.imgur.com/833ohYs.png">
+<meta property="og:image" content="https://i.imgur.com/lESJOoV.png">
+<meta property="og:image" content="https://i.imgur.com/KCafIcR.png">
+<meta property="og:image" content="https://i.imgur.com/WtjlTOp.png">
+<meta property="og:image" content="https://i.imgur.com/oNyFxZx.png">
+<meta property="og:image" content="https://i.imgur.com/XxBjWb6.png">
+<meta property="og:image" content="https://i.imgur.com/8lvTx7M.png">
+<meta property="og:image" content="https://i.imgur.com/7VGuW5K.png">
+<meta property="og:image" content="https://i.imgur.com/wZ5vjqg.png">
+<meta property="article:published_time" content="2022-04-15T07:22:48.000Z">
+<meta property="article:modified_time" content="2022-04-15T07:52:54.522Z">
+<meta property="article:author" content="Chia Chen">
+<meta property="article:tag" content="Django">
+<meta property="article:tag" content="Line Chatbot">
+<meta property="article:tag" content="Ngrok">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/iqpalaj.png">
+
+<link rel="canonical" href="https://jam68ty.github.io/post/line-chatbot1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>Line Chatbot - 前置作業 | BucketTalk</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174207718-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-174207718-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/BucketTalk/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">BucketTalk</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">return null</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/BucketTalk/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/BucketTalk/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/BucketTalk/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/BucketTalk/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/BucketTalk/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8945494872196150"
+     crossorigin="anonymous"></script>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://jam68ty.github.io/post/line-chatbot1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/BucketTalk/image/avatar.jpg">
+      <meta itemprop="name" content="Chia Chen">
+      <meta itemprop="description" content="technical study notes, learning & sharing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BucketTalk">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Line Chatbot - 前置作業
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2022-04-15 15:22:48 / 修改時間：15:52:54" itemprop="dateCreated datePublished" datetime="2022-04-15T15:22:48+08:00">2022-04-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>聊天機器人一直存在我的生活周遭<br>常常想著哪天我也自己來玩一個看看<br>所以就在空閒的時候做了一個<br>用來尋找附近美食的機器人<br>順便開了一個系列紀錄一下的過程<br><img src="https://i.imgur.com/iqpalaj.png" alt=""><br><img src="https://i.imgur.com/KMC7Azf.png" alt=""></p>
+<p>P.S.範例截的圖是另外一個做失敗的機器人但我又不想重新截圖，所以就用著了，但做法都是一樣的只是機器人名字不一樣而已</p>
+<span id="more"></span>
+<h1 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h1><h2 id="開發環境與工具"><a href="#開發環境與工具" class="headerlink" title="開發環境與工具"></a>開發環境與工具</h2><ol>
+<li>Python (Anaconda)</li>
+<li>VS Code</li>
+<li>Ngork</li>
+</ol>
+<h2 id="Line方面設定"><a href="#Line方面設定" class="headerlink" title="Line方面設定"></a>Line方面設定</h2><p>先到<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmxpbmUuYml6L2VuLw==">Line developer<i class="fa fa-external-link-alt"></i></span>註冊 → Create Provider → 建立Messaging API</p>
+<aside>
+💡 在Basic Settings裡有Channel secret，在Messaging API settings裡有Channel access token
+</aside>
+
+
+
+<h1 id="建立步驟"><a href="#建立步驟" class="headerlink" title="建立步驟"></a>建立步驟</h1><h2 id="Anaconda-Env"><a href="#Anaconda-Env" class="headerlink" title="Anaconda Env"></a>Anaconda Env</h2><p>建議可以使用虛擬環境以保持套件的乾淨</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">conda create --name=django-env python=3.6.6  <span class="comment">#建立環境</span></span><br><span class="line">conda activate django-env <span class="comment">#啟動環境</span></span><br><span class="line">conda deactivate <span class="comment">#關閉環境</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h2><ol>
+<li>安裝套件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install django</span><br><span class="line">pip install line-bot-sdk</span><br><span class="line">pip install beautifulsoup4</span><br><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
+<ol>
+<li>建立Django專案</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">django-admin startproject mylinebot .  <span class="comment">#建立Django專案</span></span><br><span class="line"> </span><br><span class="line">python manage.py startapp weatherlinebot  <span class="comment">#建立Django應用程式(App)</span></span><br><span class="line"> </span><br><span class="line">python manage.py migrate  <span class="comment">#執行資料遷移(Migration)</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/833ohYs.png" alt=""></p>
+<p>(1) 在專案主程式的<code>settings.py</code>中加上line的access config</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Line Chat Bot Settings</span></span><br><span class="line">LINE_CHANNEL_ACCESS_TOKEN = <span class="string">&#x27;AucguavwbkWCxY5FbQCwGhx2F6E7slhtxra4cKNgiXnKYEUcTCUe7b1kR09yKVrbtIYNqNw6jOTbTKrOVpK6ZKX0qHqbOsamrCdKJ4e+bSIiHmPppo2QljFEhZt3Unexv4h4A0IkNR9mo9KC95iC5gdB04t89/1O/w1cDnyilFU=&#x27;</span></span><br><span class="line">LINE_CHANNEL_SECRET = <span class="string">&#x27;32689659c38a00a77e0adbae0eedab36&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>(2) 在<code>INSTALLED_APPS</code>的地方加上自己的APP</p>
+<p><img src="https://i.imgur.com/lESJOoV.png" alt=""></p>
+<ol>
+<li>開發Line bot應用程式</li>
+</ol>
+<p>(1) 在應用程式下的<code>views.py</code>加上下面程式碼</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse, HttpResponseBadRequest, HttpResponseForbidden</span><br><span class="line"><span class="keyword">from</span> django.views.decorators.csrf <span class="keyword">import</span> csrf_exempt</span><br><span class="line"><span class="keyword">from</span> django.conf <span class="keyword">import</span> settings</span><br><span class="line"> </span><br><span class="line"><span class="keyword">from</span> linebot <span class="keyword">import</span> LineBotApi, WebhookParser</span><br><span class="line"><span class="keyword">from</span> linebot.exceptions <span class="keyword">import</span> InvalidSignatureError, LineBotApiError</span><br><span class="line"><span class="keyword">from</span> linebot.models <span class="keyword">import</span> MessageEvent, TextSendMessage</span><br><span class="line"></span><br><span class="line"><span class="comment"># 之前在settings裡定義過 </span></span><br><span class="line">line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)</span><br><span class="line">parser = WebhookParser(settings.LINE_CHANNEL_SECRET)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="meta">@csrf_exempt</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">callback</span>(<span class="params">request</span>):</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        signature = request.META[<span class="string">&#x27;HTTP_X_LINE_SIGNATURE&#x27;</span>]</span><br><span class="line">        body = request.body.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            events = parser.parse(body, signature)  <span class="comment"># 傳入的事件</span></span><br><span class="line">        <span class="keyword">except</span> InvalidSignatureError:</span><br><span class="line">            <span class="keyword">return</span> HttpResponseForbidden()</span><br><span class="line">        <span class="keyword">except</span> LineBotApiError:</span><br><span class="line">            <span class="keyword">return</span> HttpResponseBadRequest()</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> event <span class="keyword">in</span> events:</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">isinstance</span>(event, MessageEvent):  <span class="comment"># 如果有訊息事件</span></span><br><span class="line">                line_bot_api.reply_message(  <span class="comment"># 回復傳入的訊息文字</span></span><br><span class="line">                    event.reply_token,</span><br><span class="line">                    TextSendMessage(text=event.message.text)</span><br><span class="line">                )</span><br><span class="line">        <span class="keyword">return</span> HttpResponse()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> HttpResponseBadRequest()</span><br></pre></td></tr></table></figure>
+<p>其中<code>line_bot_api.reply_message()</code>就是處理回傳的部分，也可以像下面改成這樣：</p>
+<p><img src="https://i.imgur.com/KCafIcR.png" alt=""></p>
+<p>(2) 設定連結網址：在APP應用程式下新增<code>urls.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"> </span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;callback&#x27;</span>, views.callback)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>(3) 在專案主程式下的<code>urls.py</code>加入APP應用程式的連結網址</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> include</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">&#x27;weatherlinebot/&#x27;</span>, include(<span class="string">&#x27;weatherlinebot.urls&#x27;</span>)) <span class="comment">#包含應用程式的網址</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<ol>
+<li>開啟連線</li>
+</ol>
+<p>(1) Ngrok本地port對外公開</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ngrok http 8000 <span class="comment">#Django在local運行的port</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/WtjlTOp.png" alt=""></p>
+<p>(2) 把網域填到APP應用程式下<code>settings.py</code>的ALLOWED_HOSTS中 (或者是測試時直接放一個<code>*</code>允許所有host)</p>
+<p><img src="https://i.imgur.com/oNyFxZx.png" alt=""></p>
+<p>(3) 執行Line bot的APP</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py runserver</span><br></pre></td></tr></table></figure>
+<p>(4) 設定Line Bot的webhook(訂閱事件)</p>
+<p><img src="https://i.imgur.com/XxBjWb6.png" alt=""></p>
+<p>(5) 打開Use webhook</p>
+<p><img src="https://i.imgur.com/8lvTx7M.png" alt=""></p>
+<p>(7) 把下面的Auto-reply messages的Enable關閉</p>
+<p><img src="https://i.imgur.com/7VGuW5K.png" alt=""></p>
+<ol>
+<li>掃描QR code加入好友後的結果</li>
+</ol>
+<p><img src="https://i.imgur.com/wZ5vjqg.png" alt=""></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/BucketTalk/tags/Django/" rel="tag"># Django</a>
+              <a href="/BucketTalk/tags/Line-Chatbot/" rel="tag"># Line Chatbot</a>
+              <a href="/BucketTalk/tags/Ngrok/" rel="tag"># Ngrok</a>
+              <a href="/BucketTalk/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/BucketTalk/post/java-clean-code-reading-review/" rel="prev" title="JAVA搞不清楚系列 - Clean Code 讀書心得">
+      <i class="fa fa-chevron-left"></i> JAVA搞不清楚系列 - Clean Code 讀書心得
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/BucketTalk/post/line-chatbot2/" rel="next" title="Line Chatbot - 部署到Heroku上">
+      Line Chatbot - 部署到Heroku上 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+     
+      <div class="comments" id="comments">
+          <script src="https://utteranc.es/client.js"
+            repo="jam68ty/Comment"
+            issue-term="pathname"
+            label="Comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+          </script>
+      </div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E4%BD%9C%E6%A5%AD"><span class="nav-number">1.</span> <span class="nav-text">前置作業</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83%E8%88%87%E5%B7%A5%E5%85%B7"><span class="nav-number">1.1.</span> <span class="nav-text">開發環境與工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Line%E6%96%B9%E9%9D%A2%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.2.</span> <span class="nav-text">Line方面設定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E6%AD%A5%E9%A9%9F"><span class="nav-number">2.</span> <span class="nav-text">建立步驟</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Anaconda-Env"><span class="nav-number">2.1.</span> <span class="nav-text">Anaconda Env</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django"><span class="nav-number">2.2.</span> <span class="nav-text">Django</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chia Chen"
+      src="/BucketTalk/image/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Chia Chen</p>
+  <div class="site-description" itemprop="description">technical study notes, learning & sharing</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/BucketTalk/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/BucketTalk/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/BucketTalk/tags/">
+          
+        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL0NoaWFDaGVuQ2hhbmcyNQ==" title="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;ChiaChenChang25">My Linkedin</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9qb2luZXRyYXZlbC5jb20v" title="https:&#x2F;&#x2F;joinetravel.com&#x2F;">Jo in Travel</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chia Chen</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/BucketTalk/lib/anime.min.js"></script>
+  <script src="/BucketTalk/lib/velocity/velocity.min.js"></script>
+  <script src="/BucketTalk/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/BucketTalk/js/utils.js"></script>
+
+<script src="/BucketTalk/js/motion.js"></script>
+
+
+<script src="/BucketTalk/js/schemes/pisces.js"></script>
+
+
+<script src="/BucketTalk/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>課堂筆記 資訊安全(III) | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="最後提到RSA以及DH另外還有數學的另一個難題-橢圓曲線 RSA加密步驟：  找兩個夠大的質數，p &amp; q -&gt; 用質數檢定法 計算 $n&#x3D;p \times q$ -&gt; 單向函數(one-way function)的簡單部分 計算 $\phi(n)&#x3D;(p-1) \times (q-1)$ 決定公開金鑰(加密)：where $1找一個數字跟phi(n)互值 決">
+<meta property="og:type" content="article">
+<meta property="og:title" content="課堂筆記 資訊安全(III)">
+<meta property="og:url" content="https://jam68ty.github.io/BucketTalk/2021/01/12/cryptography-security-note-3/index.html">
+<meta property="og:site_name" content="BucketTalk">
+<meta property="og:description" content="最後提到RSA以及DH另外還有數學的另一個難題-橢圓曲線 RSA加密步驟：  找兩個夠大的質數，p &amp; q -&gt; 用質數檢定法 計算 $n&#x3D;p \times q$ -&gt; 單向函數(one-way function)的簡單部分 計算 $\phi(n)&#x3D;(p-1) \times (q-1)$ 決定公開金鑰(加密)：where $1找一個數字跟phi(n)互值 決">
+<meta property="og:locale">
+<meta property="og:image" content="https://jam68ty.github.io/BucketTalk/img/avatar.png">
+<meta property="article:published_time" content="2021-01-12T07:25:14.000Z">
+<meta property="article:modified_time" content="2024-07-09T07:30:55.524Z">
+<meta property="article:author" content="Chia Chen">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jam68ty.github.io/BucketTalk/img/avatar.png"><link rel="shortcut icon" href="/BucketTalk/img/logo_small.png"><link rel="canonical" href="https://jam68ty.github.io/BucketTalk/2021/01/12/cryptography-security-note-3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/BucketTalk/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/BucketTalk/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '課堂筆記 資訊安全(III)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-09 15:30:55'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/BucketTalk/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/BucketTalk/archives/"><div class="headline">Articles</div><div class="length-num">32</div></a><a href="/BucketTalk/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/BucketTalk/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/BucketTalk/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/BucketTalk/" title="BucketTalk"><img class="site-icon" src="/BucketTalk/img/logo.png"/><span class="site-name">BucketTalk</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/BucketTalk/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">課堂筆記 資訊安全(III)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-01-12T07:25:14.000Z" title="Created 2021-01-12 15:25:14">2021-01-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-09T07:30:55.524Z" title="Updated 2024-07-09 15:30:55">2024-07-09</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="課堂筆記 資訊安全(III)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p>最後提到RSA以及DH<br>另外還有數學的另一個難題-橢圓曲線</p>
+<h1 id="RSA加密"><a href="#RSA加密" class="headerlink" title="RSA加密"></a>RSA加密</h1><p>步驟：</p>
+<ol>
+<li>找兩個夠大的質數，p &amp; q -&gt; 用質數檢定法</li>
+<li>計算 $n&#x3D;p \times q$ -&gt; 單向函數(one-way function)的簡單部分</li>
+<li>計算 $\phi(n)&#x3D;(p-1) \times (q-1)$</li>
+<li>決定公開金鑰(加密)：where $1找一個數字跟phi(n)互值</li>
+<li>決定私密金鑰(解密)：$ed&#x3D;1 \mod \phi(n)$ and $0 \le d \le n$ -&gt; e, d互為mod phi(n)的乘法反元素</li>
+<li>公開金鑰：$PU&#x3D;{ e,n }$</li>
+<li>私密金鑰：$PR&#x3D;{ d,n }$</li>
+</ol>
+<blockquote>
+<p>質數的重要性：<br>如果p是質數，a <em>i &#x3D;&#x3D; a</em> j (mod p)<br>則具有消去律，i &#x3D;&#x3D; j (mod p)</p>
+</blockquote>
+<h1 id="Diffie-Hellman-Key-Exchange-迪菲-赫爾曼密鑰交換"><a href="#Diffie-Hellman-Key-Exchange-迪菲-赫爾曼密鑰交換" class="headerlink" title="Diffie-Hellman Key Exchange 迪菲-赫爾曼密鑰交換"></a>Diffie-Hellman Key Exchange 迪菲-赫爾曼密鑰交換</h1><p>可以讓通訊雙方在不安全的環境下傳遞密鑰(Key Exchange)<br><img src="https://i.imgur.com/e5urdP6.png"><br>CC BY-SA 4.0</p>
+<ol>
+<li>圖中的a與b是由雙方各自決定的自然數，且這兩個數必須小於p，g則是原根(透過這個數做特定計算可以得到一堆數字)。</li>
+<li>Alice傳遞g, p以及A ($A&#x3D;g^a \bmod p$)</li>
+<li>Bob取得g, p, A後計算出B回傳給Alice ($B&#x3D;g^b \bmod p$)</li>
+<li>兩個人都根據對方傳給自己的A或B加上自訂的自然數為指數除以p的餘數，會得到一個相同的K，作為之後做對稱式加密所需用到的Key。</li>
+</ol>
+<blockquote>
+<p>將$B^a$和$A^b$各自用$(g^b)^a$和$(g^a)^b$代回。$(g^b)^a \bmod p &#x3D;(g^a)^b \bmod p$</p>
+</blockquote>
+<p>維基百科上的資料：<br><img src="https://i.imgur.com/jQ5APl2.png"></p>
+<h1 id="EIGamal加密算法"><a href="#EIGamal加密算法" class="headerlink" title="EIGamal加密算法"></a>EIGamal加密算法</h1><p>詳細步驟如下：</p>
+<ol>
+<li><p>首先知道 $q$ 與 $\alpha$，其中 $\alpha$ 為 $q$ 的原根</p>
+</li>
+<li><p>首先是A產生一組公開金鑰的步驟<br>(1) A選擇一個質數作為他的私密金鑰($X_a$)<br>(2) $Y_a&#x3D;\alpha^{X_a} \bmod q$<br>(3) 最後產生一組$PU&#x3D;[q, \alpha, Y_a]$</p>
+</li>
+<li><p>B想要傳送一段Message(M)<br>(1) B選擇一個隨機數k<br>(2) $K&#x3D;(Y_a)^{k} \bmod q$<br>(3) 則加密後的$M$會有C1, C2</p>
+<p>$C_1&#x3D;\alpha^k \bmod q$<br>$C_2&#x3D;KM \bmod q$</p>
+</li>
+</ol>
+<h1 id="Elliptic-Curve-Cryptography-橢圓曲線密碼學-ECC"><a href="#Elliptic-Curve-Cryptography-橢圓曲線密碼學-ECC" class="headerlink" title="Elliptic Curve Cryptography 橢圓曲線密碼學 (ECC)"></a>Elliptic Curve Cryptography 橢圓曲線密碼學 (ECC)</h1><p>可以到這個網站上看動態的畫面：<a target="_blank" rel="noopener" href="https://www.desmos.com/calculator/ialhd71we3?lang=zh-TW">https://www.desmos.com/calculator/ialhd71we3?lang=zh-TW</a></p>
+<h2 id="ECC在實數上"><a href="#ECC在實數上" class="headerlink" title="ECC在實數上"></a>ECC在實數上</h2><p>$y^2&#x3D;x^3+ax+b$<br>設有P,Q兩點位於此橢圓曲線上<br>則R&#x3D;P+Q的計算過程：</p>
+<ol>
+<li>求 $\lambda$ (PQ之斜率)：$\lambda&#x3D;(X_Q-X_p)&#x2F;(Y_Q-Y_P)$</li>
+<li>$X_R&#x3D;\lambda^2-X_p-X_Q$</li>
+<li>$Y_R&#x3D;-Y_p+\lambda(X_p-X_R)$</li>
+<li>則$R&#x3D;(X_R,Y_R)$</li>
+</ol>
+<p>2P&#x3D;P+P的計算過程：</p>
+<ol>
+<li>從一開始的橢圓曲線得到a</li>
+<li>$X_R&#x3D;((3(X_p)^2+a)&#x2F;(2Y_p))^2-2X_p$</li>
+<li>$Y_R&#x3D;(3(X_p)^2+a)&#x2F;(2Y_p)(X_p-X_R)-Y_p$<br><img src="https://i.imgur.com/5ZU6fCj.png"></li>
+</ol>
+<h2 id="找出橢圓曲線上的所有點"><a href="#找出橢圓曲線上的所有點" class="headerlink" title="找出橢圓曲線上的所有點"></a>找出橢圓曲線上的所有點</h2><p>$E_p(a,b)$中的p代表mod p<br>(a,b)代表橢圓曲線中 $y^2&#x3D;x^3+ax+b$ 的a, b<br>且我們只關心(0, 0)~(p-1, p-1)範圍的點<br>因此需要列表找出符合$y^2 \bmod p&#x3D;x^3+ax+b \bmod p$的$x$與$y$</p>
+<h2 id="ECC在有限群上"><a href="#ECC在有限群上" class="headerlink" title="ECC在有限群上"></a>ECC在有限群上</h2><p>$E_p(a,b)$<br>$y^2&#x3D;x^3+ax+b \bmod p$<br>設有P,Q兩點位於此橢圓曲線上<br>則R&#x3D;P+Q的計算過程：</p>
+<ol>
+<li>求 $\lambda$ (PQ之斜率)：<br>(1)$P\neq Q$：$\lambda&#x3D;(X_Q-X_P)&#x2F;(Y_Q-Y_P) \bmod p$<br>(2)$P&#x3D;Q$：$\lambda&#x3D;(3(X_P)^2+a)&#x2F;2Y_P \bmod p$</li>
+<li>$X_R&#x3D;(\lambda^2-X_p-X_Q) \bmod p$</li>
+<li>$Y_R&#x3D;(\lambda(X_P-X_R)-Y_P) \bmod p$</li>
+<li>則$R&#x3D;(X_R,Y_R)$</li>
+</ol>
+<p>2P&#x3D;P+P的算法與P+Q一樣，但是因為兩點相同，則必須用1.(1)$P\neq Q$的情況算出 $\lambda$</p>
+<h1 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line">password=<span class="string">&#x27;123456&#x27;</span></span><br><span class="line">h=hashlib.md5()</span><br><span class="line">h.update(password.encode())</span><br><span class="line">h.hexdigest()</span><br><span class="line">&gt; <span class="string">&#x27;e10adc3949ba59abbe56e057f20f883e&#x27;</span></span><br><span class="line"><span class="number">8</span>*h.digest_size, <span class="number">8</span>*h.block_size</span><br><span class="line">&gt; (<span class="number">128</span>, <span class="number">512</span>)</span><br><span class="line"></span><br><span class="line">h=hashlib.sha256()</span><br><span class="line">h.update(password.encode())</span><br><span class="line">h.hexdigest()</span><br><span class="line">&gt; <span class="string">&#x27;8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92&#x27;</span></span><br><span class="line"><span class="number">8</span>*h.digest_size, <span class="number">8</span>*h.block_size</span><br><span class="line">&gt; (<span class="number">256</span>, <span class="number">512</span>)</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://jam68ty.github.io/BucketTalk">Chia Chen</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://jam68ty.github.io/BucketTalk/2021/01/12/cryptography-security-note-3/">https://jam68ty.github.io/BucketTalk/2021/01/12/cryptography-security-note-3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/BucketTalk/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/BucketTalk/2021/01/23/deep-learning-face-detection-1/" title="深度學習筆記系列 臉部辨識基本理論(I)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">深度學習筆記系列 臉部辨識基本理論(I)</div></div></a></div><div class="next-post pull-right"><a href="/BucketTalk/2020/12/15/cryptography-security-note-2/" title="課堂筆記 資訊安全(II)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">課堂筆記 資訊安全(II)</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/BucketTalk/img/avatar.png" onerror="this.onerror=null;this.src='/BucketTalk/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Chia Chen</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/BucketTalk/archives/"><div class="headline">Articles</div><div class="length-num">32</div></a><a href="/BucketTalk/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/BucketTalk/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RSA%E5%8A%A0%E5%AF%86"><span class="toc-number">1.</span> <span class="toc-text">RSA加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Diffie-Hellman-Key-Exchange-%E8%BF%AA%E8%8F%B2-%E8%B5%AB%E7%88%BE%E6%9B%BC%E5%AF%86%E9%91%B0%E4%BA%A4%E6%8F%9B"><span class="toc-number">2.</span> <span class="toc-text">Diffie-Hellman Key Exchange 迪菲-赫爾曼密鑰交換</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EIGamal%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">EIGamal加密算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Elliptic-Curve-Cryptography-%E6%A9%A2%E5%9C%93%E6%9B%B2%E7%B7%9A%E5%AF%86%E7%A2%BC%E5%AD%B8-ECC"><span class="toc-number">4.</span> <span class="toc-text">Elliptic Curve Cryptography 橢圓曲線密碼學 (ECC)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ECC%E5%9C%A8%E5%AF%A6%E6%95%B8%E4%B8%8A"><span class="toc-number">4.1.</span> <span class="toc-text">ECC在實數上</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%BE%E5%87%BA%E6%A9%A2%E5%9C%93%E6%9B%B2%E7%B7%9A%E4%B8%8A%E7%9A%84%E6%89%80%E6%9C%89%E9%BB%9E"><span class="toc-number">4.2.</span> <span class="toc-text">找出橢圓曲線上的所有點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECC%E5%9C%A8%E6%9C%89%E9%99%90%E7%BE%A4%E4%B8%8A"><span class="toc-number">4.3.</span> <span class="toc-text">ECC在有限群上</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hash"><span class="toc-number">5.</span> <span class="toc-text">Hash</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/BucketTalk/2022/04/20/java-spring-boot-multi-module-project/" title="JAVA搞不清楚系列 - Spring Boot Multi Module Porject">JAVA搞不清楚系列 - Spring Boot Multi Module Porject</a><time datetime="2022-04-20T07:38:58.000Z" title="Created 2022-04-20 15:38:58">2022-04-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/BucketTalk/2022/04/15/Line-Chatbot-5/" title="Line Chat Bot 聊天機器人 - 用Flex Message包裝來自Google Map API 的訊息">Line Chat Bot 聊天機器人 - 用Flex Message包裝來自Google Map API 的訊息</a><time datetime="2022-04-15T06:52:09.000Z" title="Created 2022-04-15 14:52:09">2022-04-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/BucketTalk/2022/04/15/Line-Chatbot-4/" title="Line Chat Bot 聊天機器人 - 機器人睡著了？使用Scheduler把他叫醒吧！">Line Chat Bot 聊天機器人 - 機器人睡著了？使用Scheduler把他叫醒吧！</a><time datetime="2022-04-15T06:15:32.000Z" title="Created 2022-04-15 14:15:32">2022-04-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/BucketTalk/2022/04/15/Line-Chatbot-3/" title="Line Chat Bot 聊天機器人 - 使用Richmenu">Line Chat Bot 聊天機器人 - 使用Richmenu</a><time datetime="2022-04-15T06:15:28.000Z" title="Created 2022-04-15 14:15:28">2022-04-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/BucketTalk/2022/04/15/Line-Chatbot-2/" title="Line Chat Bot 聊天機器人 - 部署到Heroku上">Line Chat Bot 聊天機器人 - 部署到Heroku上</a><time datetime="2022-04-15T06:05:28.000Z" title="Created 2022-04-15 14:05:28">2022-04-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Chia Chen</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/BucketTalk/js/utils.js?v=4.13.0"></script><script src="/BucketTalk/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

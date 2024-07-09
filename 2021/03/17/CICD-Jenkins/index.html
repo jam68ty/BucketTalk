@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CICD工具 - Jenkins入門 | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="因為實習的關係需要做一些Survey 所以也把自己做的這些學習過程紀錄一下 Jenkins介紹Jenkins是一個持續整合(Continuous Integration, CI)的Web-base伺服器。 自動化工具將個模組的程式碼從版本控制伺服器上下載下來，若程式碼有所變動便進行程式碼編譯並測試 Jenkins由Java開發，需要Java Runtime Environment (JRE)才能執">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CICD工具 - Jenkins入門">
+<meta property="og:url" content="https://jam68ty.github.io/BucketTalk/2021/03/17/CICD-Jenkins/index.html">
+<meta property="og:site_name" content="BucketTalk">
+<meta property="og:description" content="因為實習的關係需要做一些Survey 所以也把自己做的這些學習過程紀錄一下 Jenkins介紹Jenkins是一個持續整合(Continuous Integration, CI)的Web-base伺服器。 自動化工具將個模組的程式碼從版本控制伺服器上下載下來，若程式碼有所變動便進行程式碼編譯並測試 Jenkins由Java開發，需要Java Runtime Environment (JRE)才能執">
+<meta property="og:locale">
+<meta property="og:image" content="https://jam68ty.github.io/BucketTalk/img/avatar.png">
+<meta property="article:published_time" content="2021-03-17T05:05:28.000Z">
+<meta property="article:modified_time" content="2024-07-09T07:17:57.352Z">
+<meta property="article:author" content="Chia Chen">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jam68ty.github.io/BucketTalk/img/avatar.png"><link rel="shortcut icon" href="/BucketTalk/img/logo_small.png"><link rel="canonical" href="https://jam68ty.github.io/BucketTalk/2021/03/17/CICD-Jenkins/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/BucketTalk/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/BucketTalk/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CICD工具 - Jenkins入門',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-09 15:17:57'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/BucketTalk/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/BucketTalk/archives/"><div class="headline">Articles</div><div class="length-num">32</div></a><a href="/BucketTalk/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/BucketTalk/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/BucketTalk/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/BucketTalk/" title="BucketTalk"><img class="site-icon" src="/BucketTalk/img/logo.png"/><span class="site-name">BucketTalk</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/BucketTalk/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/BucketTalk/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">CICD工具 - Jenkins入門</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-03-17T05:05:28.000Z" title="Created 2021-03-17 13:05:28">2021-03-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-09T07:17:57.352Z" title="Updated 2024-07-09 15:17:57">2024-07-09</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CICD工具 - Jenkins入門"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p>因為實習的關係需要做一些Survey</p>
+<p>所以也把自己做的這些學習過程紀錄一下</p>
+<h1 id="Jenkins介紹"><a href="#Jenkins介紹" class="headerlink" title="Jenkins介紹"></a>Jenkins介紹</h1><p>Jenkins是一個持續整合(Continuous Integration, CI)的Web-base伺服器。</p>
+<p>自動化工具將個模組的程式碼從版本控制伺服器上下載下來，若程式碼有所變動便進行程式碼編譯並測試</p>
+<p>Jenkins由Java開發，需要Java Runtime Environment (JRE)才能執行(JDK也可)，可以利用GUI或是CLI安裝。<br><em>另外因為是一開始學習所用，還沒辦法做到CD的部分</em></p>
+<h1 id="Jenkins架構圖"><a href="#Jenkins架構圖" class="headerlink" title="Jenkins架構圖"></a>Jenkins架構圖</h1><p><img src="https://i.imgur.com/A4qewgh.png"></p>
+<h1 id="實踐步驟"><a href="#實踐步驟" class="headerlink" title="實踐步驟"></a>實踐步驟</h1><h2 id="安裝Jenkins"><a href="#安裝Jenkins" class="headerlink" title="安裝Jenkins"></a>安裝Jenkins</h2><p>JDK: <a target="_blank" rel="noopener" href="https://www.java.com/zh-TW/download/">https://www.java.com/zh-TW/download/</a><br>Jenkins直接至官網下載安裝即可：<a target="_blank" rel="noopener" href="https://www.jenkins.io/zh/">https://www.jenkins.io/zh/</a><br><img src="https://i.imgur.com/wARjRG5.png"></p>
+<p>Jenkins安裝完成後會需要安裝Plugin，選Suggested的就好<br>另外會需要輸入初始密碼(Jenkins會告訴我們初始密碼的位置)，以及創建初始管理者。</p>
+<p>打開瀏覽器進入<a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080</a></p>
+<p>Free-Style 類型的專案提供了非常大的彈性讓使用者來做原始碼管理以及建置。如果建置的流程涉及到多個專案，則可以透過 Pipeline 類型的專案來組合及定義建置邏輯。</p>
+<h2 id="Free-Style-Demo"><a href="#Free-Style-Demo" class="headerlink" title="Free-Style Demo"></a>Free-Style Demo</h2><h3 id="建立專案"><a href="#建立專案" class="headerlink" title="建立專案"></a>建立專案</h3><ol>
+<li><p>新增作業 - 輸入專案名稱 - 選擇Free-Style</p>
+</li>
+<li><p>建置 - 新增建置步驟 - 執行windows批次指令 - 輸入echo “hello” - 儲存<br>使用Windows系統是執行批次指令，Unix或Mac是Shell</p>
+</li>
+<li><p>完成後選擇馬上建置 - 在下方的建置歷程就可以看到剛剛的建置log<br><img src="https://i.imgur.com/jvsYk9t.png"><br><img src="https://i.imgur.com/6oN1SPN.png"></p>
+</li>
+</ol>
+<h3 id="原始碼管理與建置觸發程序"><a href="#原始碼管理與建置觸發程序" class="headerlink" title="原始碼管理與建置觸發程序"></a>原始碼管理與建置觸發程序</h3><p>透過原始碼管理 (source code management, SCM)系統，例如GitHub來獲得專案的原始碼，並設置建置觸發程序 (build triggers)來實踐持續整合。</p>
+<ol>
+<li>把git上的專案URL使用HTTPS的方式加入到組態中，須注意若為Private的專案需要在Credentials中加入git的帳號密碼(Add-jenkins-enter username&amp;password)<br><img src="https://i.imgur.com/McYPQoL.png"></li>
+<li>建置觸發條件：若是未設置建置條件，通常都需管理者手動進行Jenkins的建置，而一般常見的觸發條件有兩種：</li>
+</ol>
+<ul>
+<li>定期建置<br>使用Cron Format的方式去訂時間自動進行實踐整合，格式為MINUTE HOUR DOM MONTH DOW(使用TAB隔開)，更詳細的規則可以在Help裡看到<br><img src="https://i.imgur.com/irYwmFR.png"></li>
+<li><strong>GitHub hook trigger for GITScm polling</strong><br>讓Jenkins自動監控在原始碼專案是否有任何push event 發生，若有事件發生則自動進行建置。</li>
+<li>新增GitHub personal access token<br>Github - Settings - Developer settings - Personal access tokens - Generate new token - 輸入token的描述並勾選repo scope - Generate token<br><img src="https://i.imgur.com/6lYksgz.png"></li>
+<li>將獲得的Token加入到組態中原本Repository URL的地方<br>由<a target="_blank" rel="noopener" href="https://github.com/jam68ty/jenkins/_test.git">https://github.com/jam68ty/jenkins\_test.git</a> 變為<br>https:&#x2F;&#x2F;{token}@github.com&#x2F;jam68ty&#x2F;jenkins_test.git(這步驟可忽略，因為只有些教學有，有沒有改暫時不影響)<br><img src="https://i.imgur.com/gDZSj5R.png"></li>
+<li>勾選建置觸發程序中的GitHub hook trigger for GITScm polling<br><img src="https://i.imgur.com/u1VS0xx.png"></li>
+<li>在GitHub上整合Jenkins <strong>這步在每次ngrok關掉後都需要重做</strong><ul>
+<li>需要先獲得暫時的domain name，可以參考這篇文章，注意Jenkins的port是8080，所以要下的指令是ngrok http 8080<br><img src="https://i.imgur.com/91RshDZ.png"></li>
+</ul>
+</li>
+</ul>
+<p>Windows系統只需要在安裝完ngrok後執行執行檔即可，但是Mac需要將執行檔移到專案目錄下並執行shell才可以</p>
+<ul>
+<li>在Github專案下的Setting - Webhooks - Add webhook - Payload URL用剛剛透過ngrok取得的URL(<a target="_blank" rel="noopener" href="https://24ce68bbcccb.ngrok.io/github-webhook/">https://24ce68bbcccb.ngrok.io/github-webhook/</a>)<br> <img src="https://i.imgur.com/wlNjTK6.png"></li>
+<li>再次Git push，如果有成功的話在Github Hook Log可以看到監控的結果，旁邊的歷程紀錄也會有<br> <img src="https://i.imgur.com/CJL8ORP.png"></li>
+</ul>
+<p>Git 語法<br>新增檔案：git add .</p>
+<p>Commit此次版本：git commit -m “test1”</p>
+<p>推送至Github上：git push</p>
+<h3 id="過程中踩的坑"><a href="#過程中踩的坑" class="headerlink" title="過程中踩的坑"></a>過程中踩的坑</h3><ol>
+<li>webhook的網址一定要加最後一個斜線</li>
+<li>token要記得，他只會顯示一次</li>
+<li>在組態設定中的Git部分，分支要設成空白(因為我Github上專案是main不是master，但jenkins預設是master)</li>
+<li>在整個jenkins之下的管理jenkins-設定系統-Github Servers中新增一個Server，只需輸入name與credentials。Credentials的Kind選Secret text，secret的部分則輸入Token。(有些教學有做這步有些沒有，具體的差異不太清楚，跟前面要把Token加入到組態中原本Repository URL一樣)</li>
+<li>Mac安裝Jenkins要記得把安裝頁面上的指令執行完(安裝後還需要啟動)</li>
+</ol>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p><a target="_blank" rel="noopener" href="https://www.jenkins.io/zh/doc/pipeline/tour/getting-started/">https://www.jenkins.io/zh/doc/pipeline/tour/getting-started/</a><br><a target="_blank" rel="noopener" href="https://tso-liang-wu.gitbook.io/learn-ansible-and-jenkins-in-30-days/jenkins/jenkins/jenkins-pipeline">https://tso-liang-wu.gitbook.io/learn-ansible-and-jenkins-in-30-days/jenkins/jenkins/jenkins-pipeline</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://jam68ty.github.io/BucketTalk">Chia Chen</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://jam68ty.github.io/BucketTalk/2021/03/17/CICD-Jenkins/">https://jam68ty.github.io/BucketTalk/2021/03/17/CICD-Jenkins/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/BucketTalk/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/BucketTalk/2021/03/17/java-clean-code/" title="JAVA搞不清楚系列 - Clean Code 讀書心得"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">JAVA搞不清楚系列 - Clean Code 讀書心得</div></div></a></div><div class="next-post pull-right"><a href="/BucketTalk/2021/01/26/deep-learning-face-detection-2/" title="深度學習筆記系列 臉部辨識基本理論(II)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">深度學習筆記系列 臉部辨識基本理論(II)</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/BucketTalk/img/avatar.png" onerror="this.onerror=null;this.src='/BucketTalk/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Chia Chen</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/BucketTalk/archives/"><div class="headline">Articles</div><div class="length-num">32</div></a><a href="/BucketTalk/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/BucketTalk/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Jenkins%E4%BB%8B%E7%B4%B9"><span class="toc-number">1.</span> <span class="toc-text">Jenkins介紹</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Jenkins%E6%9E%B6%E6%A7%8B%E5%9C%96"><span class="toc-number">2.</span> <span class="toc-text">Jenkins架構圖</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%A6%E8%B8%90%E6%AD%A5%E9%A9%9F"><span class="toc-number">3.</span> <span class="toc-text">實踐步驟</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9DJenkins"><span class="toc-number">3.1.</span> <span class="toc-text">安裝Jenkins</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Free-Style-Demo"><span class="toc-number">3.2.</span> <span class="toc-text">Free-Style Demo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88"><span class="toc-number">3.2.1.</span> <span class="toc-text">建立專案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E7%A2%BC%E7%AE%A1%E7%90%86%E8%88%87%E5%BB%BA%E7%BD%AE%E8%A7%B8%E7%99%BC%E7%A8%8B%E5%BA%8F"><span class="toc-number">3.2.2.</span> <span class="toc-text">原始碼管理與建置觸發程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%8E%E7%A8%8B%E4%B8%AD%E8%B8%A9%E7%9A%84%E5%9D%91"><span class="toc-number">3.2.3.</span> <span class="toc-text">過程中踩的坑</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/BucketTalk/2022/04/20/java-spring-boot-multi-module-project/" title="JAVA搞不清楚系列 - Spring Boot Multi Module Porject">JAVA搞不清楚系列 - Spring Boot Multi Module Porject</a><time datetime="2022-04-20T07:38:58.000Z" title="Created 2022-04-20 15:38:58">2022-04-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/BucketTalk/2022/04/15/Line-Chatbot-5/" title="Line Chat Bot 聊天機器人 - 用Flex Message包裝來自Google Map API 的訊息">Line Chat Bot 聊天機器人 - 用Flex Message包裝來自Google Map API 的訊息</a><time datetime="2022-04-15T06:52:09.000Z" title="Created 2022-04-15 14:52:09">2022-04-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/BucketTalk/2022/04/15/Line-Chatbot-4/" title="Line Chat Bot 聊天機器人 - 機器人睡著了？使用Scheduler把他叫醒吧！">Line Chat Bot 聊天機器人 - 機器人睡著了？使用Scheduler把他叫醒吧！</a><time datetime="2022-04-15T06:15:32.000Z" title="Created 2022-04-15 14:15:32">2022-04-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/BucketTalk/2022/04/15/Line-Chatbot-3/" title="Line Chat Bot 聊天機器人 - 使用Richmenu">Line Chat Bot 聊天機器人 - 使用Richmenu</a><time datetime="2022-04-15T06:15:28.000Z" title="Created 2022-04-15 14:15:28">2022-04-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/BucketTalk/2022/04/15/Line-Chatbot-2/" title="Line Chat Bot 聊天機器人 - 部署到Heroku上">Line Chat Bot 聊天機器人 - 部署到Heroku上</a><time datetime="2022-04-15T06:05:28.000Z" title="Created 2022-04-15 14:05:28">2022-04-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Chia Chen</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/BucketTalk/js/utils.js?v=4.13.0"></script><script src="/BucketTalk/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

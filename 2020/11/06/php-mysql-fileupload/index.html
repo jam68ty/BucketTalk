@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>PHP-MySQL系列 文件上傳 | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="這篇文章主要在介紹基本的上傳文件加入一些檢核的判斷句可以防止使用者亂傳東西上來 文件相關基本函數開啟文件fopen()關閉文件fclose()讀取單行fgets()讀取單字符fgetc檢查文件結尾feof()想學更細的：https:&#x2F;&#x2F;www.w3schools.com&#x2F;php&#x2F;php\_file\_open.asp 文件上傳前置作業 要先開啟php.ini中的file_uploadsinput標">
+<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>PHP-MySQL系列 文件上傳 | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="這篇文章主要在介紹基本的上傳文件加入一些檢核的判斷句可以防止使用者亂傳東西上來 文件相關基本函數開啟文件fopen()關閉文件fclose()讀取單行fgets()讀取單字符fgetc檢查文件結尾feof()想學更細的：https:&#x2F;&#x2F;www.w3schools.com&#x2F;php&#x2F;php\_file\_open.asp 文件上傳前置作業 要先開啟php.ini中的file_uploadsinput標">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP-MySQL系列 文件上傳">
 <meta property="og:url" content="https://jam68ty.github.io/BucketTalk/2020/11/06/php-mysql-fileupload/index.html">
@@ -129,7 +129,7 @@
       win.activateLightMode = () => {
         document.documentElement.setAttribute('data-theme', 'light')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
         }
       }
       const t = saveToLocal.get('theme')

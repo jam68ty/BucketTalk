@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Django系列 客製化 | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="這篇文章中會提到一些簡單的客製化內容比如我們在後台管理介面中，想看到什麼或是不想看到什麼。 這一篇應該是Django教學筆記的最後一篇除非我突然去把一年前的作業翻出來再看一次不然我研討會的程式還沒寫完已經要開天窗了 客製化設計修改css 在polls底下建立一個名為static的資料夾，在static下再建一個polls的資料夾，接著創建style.css  index.html中引入css  效">
+<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Django系列 客製化 | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="這篇文章中會提到一些簡單的客製化內容比如我們在後台管理介面中，想看到什麼或是不想看到什麼。 這一篇應該是Django教學筆記的最後一篇除非我突然去把一年前的作業翻出來再看一次不然我研討會的程式還沒寫完已經要開天窗了 客製化設計修改css 在polls底下建立一個名為static的資料夾，在static下再建一個polls的資料夾，接著創建style.css  index.html中引入css  效">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django系列 客製化">
 <meta property="og:url" content="https://jam68ty.github.io/BucketTalk/2020/11/07/django-customize/index.html">
@@ -129,7 +129,7 @@
       win.activateLightMode = () => {
         document.documentElement.setAttribute('data-theme', 'light')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
         }
       }
       const t = saveToLocal.get('theme')

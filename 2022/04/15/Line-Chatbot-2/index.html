@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Line Chat Bot 聊天機器人 - 部署到Heroku上 | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="由於電腦隨時可能關機，所以我們需要一台sever隨時開著通常會需要去購買網域但是身為一個免費仔，免費的東西不拿來用不行這邊就用了Heroku這個PaaS，開發者可自行在Heroku平台開發和佈署各種網站  先下載Heroku 安裝Git 安裝Gunicorn: pip install gunicorn 進入資料夾下執行：  12345&#x2F;&#x2F;登入herokuheroku login&#x2F;&#x2F;在Heroku上">
+<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Line Chat Bot 聊天機器人 - 部署到Heroku上 | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="由於電腦隨時可能關機，所以我們需要一台sever隨時開著通常會需要去購買網域但是身為一個免費仔，免費的東西不拿來用不行這邊就用了Heroku這個PaaS，開發者可自行在Heroku平台開發和佈署各種網站  先下載Heroku 安裝Git 安裝Gunicorn: pip install gunicorn 進入資料夾下執行：  12345&#x2F;&#x2F;登入herokuheroku login&#x2F;&#x2F;在Heroku上">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Line Chat Bot 聊天機器人 - 部署到Heroku上">
 <meta property="og:url" content="https://jam68ty.github.io/BucketTalk/2022/04/15/Line-Chatbot-2/index.html">
@@ -129,7 +129,7 @@
       win.activateLightMode = () => {
         document.documentElement.setAttribute('data-theme', 'light')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
         }
       }
       const t = saveToLocal.get('theme')

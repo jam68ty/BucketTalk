@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Django系列 資料庫(二) | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="這篇文章中會提到使用API Shell的指令對資料庫進行操作這邊的API是Django提供的一種介面讓使用者能夠直接對資料庫進行修改而不會去動到程式碼 使用API(這邊操作都是在Shell中，實際還是需要寫到models裡)  開啟API Shell $ python manage.py shell  在API Shell裡面進行操作  因為Query回傳的資料不具有可讀性，因此在polls&#x2F;mo">
+<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Django系列 資料庫(二) | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="這篇文章中會提到使用API Shell的指令對資料庫進行操作這邊的API是Django提供的一種介面讓使用者能夠直接對資料庫進行修改而不會去動到程式碼 使用API(這邊操作都是在Shell中，實際還是需要寫到models裡)  開啟API Shell $ python manage.py shell  在API Shell裡面進行操作  因為Query回傳的資料不具有可讀性，因此在polls&#x2F;mo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django系列 資料庫(二)">
 <meta property="og:url" content="https://jam68ty.github.io/BucketTalk/2020/11/07/django-db2/index.html">
@@ -129,7 +129,7 @@
       win.activateLightMode = () => {
         document.documentElement.setAttribute('data-theme', 'light')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
         }
       }
       const t = saveToLocal.get('theme')

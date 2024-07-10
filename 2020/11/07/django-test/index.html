@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Django系列 自動化測試 | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="其實自動化測試的程式我覺得比其他東西都難寫很多我們系上很多人畢業前出去做了QA的實習(包括我)但是所謂的QA卻只是無聊的做著人工檢測直到現在我仍然不是很明白自動化測試到底該怎麼實作到實際的大型專案中尤其是當系統很大時，牽一髮而動全身。 自動化測試 使用Shell發現BUG(未來時間發布的問題應該回傳FALSE，結果仍需由人工判斷)  使用自動測試-&gt;在test.py裡將在Shell中進行的測">
+<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Django系列 自動化測試 | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="其實自動化測試的程式我覺得比其他東西都難寫很多我們系上很多人畢業前出去做了QA的實習(包括我)但是所謂的QA卻只是無聊的做著人工檢測直到現在我仍然不是很明白自動化測試到底該怎麼實作到實際的大型專案中尤其是當系統很大時，牽一髮而動全身。 自動化測試 使用Shell發現BUG(未來時間發布的問題應該回傳FALSE，結果仍需由人工判斷)  使用自動測試-&gt;在test.py裡將在Shell中進行的測">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django系列 自動化測試">
 <meta property="og:url" content="https://jam68ty.github.io/BucketTalk/2020/11/07/django-test/index.html">
@@ -129,7 +129,7 @@
       win.activateLightMode = () => {
         document.documentElement.setAttribute('data-theme', 'light')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
         }
       }
       const t = saveToLocal.get('theme')

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>課堂筆記 資訊安全(III) | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="最後提到RSA以及DH另外還有數學的另一個難題-橢圓曲線 RSA加密步驟：  找兩個夠大的質數，p &amp; q -&gt; 用質數檢定法 計算 $n&#x3D;p \times q$ -&gt; 單向函數(one-way function)的簡單部分 計算 $\phi(n)&#x3D;(p-1) \times (q-1)$ 決定公開金鑰(加密)：where $1找一個數字跟phi(n)互值 決">
+<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>課堂筆記 資訊安全(III) | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="最後提到RSA以及DH另外還有數學的另一個難題-橢圓曲線 RSA加密步驟：  找兩個夠大的質數，p &amp; q -&gt; 用質數檢定法 計算 $n&#x3D;p \times q$ -&gt; 單向函數(one-way function)的簡單部分 計算 $\phi(n)&#x3D;(p-1) \times (q-1)$ 決定公開金鑰(加密)：where $1找一個數字跟phi(n)互值 決">
 <meta property="og:type" content="article">
 <meta property="og:title" content="課堂筆記 資訊安全(III)">
 <meta property="og:url" content="https://jam68ty.github.io/BucketTalk/2021/01/12/cryptography-security-note-3/index.html">
@@ -129,7 +129,7 @@
       win.activateLightMode = () => {
         document.documentElement.setAttribute('data-theme', 'light')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
         }
       }
       const t = saveToLocal.get('theme')

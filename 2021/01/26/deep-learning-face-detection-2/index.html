@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>深度學習筆記系列 臉部辨識基本理論(II) | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="延續上一篇，這篇的主要內容是在談Viola-Jones的訓練部分以及教材中後面的Adaboost、Cascading。  Training 訓練  (1) 在訓練的部分，我們首先會將圖片縮至 24x24 pixel當訓練用圖過大時，要去對應Harr-like Feature的組合可能性就會太多(不同的長寬高等等)，因此訓練時我們會將訓練圖片縮小；要偵測時會將特徵放大。 (2) 準備訓練用的圖片-標">
+<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>深度學習筆記系列 臉部辨識基本理論(II) | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="延續上一篇，這篇的主要內容是在談Viola-Jones的訓練部分以及教材中後面的Adaboost、Cascading。  Training 訓練  (1) 在訓練的部分，我們首先會將圖片縮至 24x24 pixel當訓練用圖過大時，要去對應Harr-like Feature的組合可能性就會太多(不同的長寬高等等)，因此訓練時我們會將訓練圖片縮小；要偵測時會將特徵放大。 (2) 準備訓練用的圖片-標">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深度學習筆記系列 臉部辨識基本理論(II)">
 <meta property="og:url" content="https://jam68ty.github.io/BucketTalk/2021/01/26/deep-learning-face-detection-2/index.html">
@@ -129,7 +129,7 @@
       win.activateLightMode = () => {
         document.documentElement.setAttribute('data-theme', 'light')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
         }
       }
       const t = saveToLocal.get('theme')

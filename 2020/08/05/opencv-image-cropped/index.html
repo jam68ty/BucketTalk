@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>OpenCV系列 影像批次裁切 | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在做機器學習時獲得的資料圖片內容常常是很雜亂的訓練的目標可能只是一大張圖裡的一小區塊那此時我們可以進行批次裁切以節省時間 裁切大小首先我們必須先確認好需要裁切的區域(X,Y軸座標)如裁切目標座標為[0:498, 496:1263]，則裁切的區域為(496,0)與(1263,498)構成的矩形 完整程式碼程式碼中比較需要注意的是影像讀入的方式與前幾篇稍微有些不同   12img_1 &#x3D; cv2.im">
+<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>OpenCV系列 影像批次裁切 | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="在做機器學習時獲得的資料圖片內容常常是很雜亂的訓練的目標可能只是一大張圖裡的一小區塊那此時我們可以進行批次裁切以節省時間 裁切大小首先我們必須先確認好需要裁切的區域(X,Y軸座標)如裁切目標座標為[0:498, 496:1263]，則裁切的區域為(496,0)與(1263,498)構成的矩形 完整程式碼程式碼中比較需要注意的是影像讀入的方式與前幾篇稍微有些不同   12img_1 &#x3D; cv2.im">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenCV系列 影像批次裁切">
 <meta property="og:url" content="https://jam68ty.github.io/BucketTalk/2020/08/05/opencv-image-cropped/index.html">
@@ -129,7 +129,7 @@
       win.activateLightMode = () => {
         document.documentElement.setAttribute('data-theme', 'light')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
         }
       }
       const t = saveToLocal.get('theme')

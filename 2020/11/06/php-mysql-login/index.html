@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>PHP-MySQL系列 登入與註冊系統 | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在製作登入與註冊系統前必須先理解Cookie與Session的概念簡單來說，Cookie是本地端紀錄你的登入狀況Session則是伺服器端紀錄你的登入狀況推薦一篇淺顯易懂的文章給大家：白話 Session 與 Cookie：從經營雜貨店開始 建立所需的頁面 其中包含了  config.php：連線資料庫的基本檔案 index.php：預設的首頁(登入頁面) login.php：處理登入 logou">
+<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>PHP-MySQL系列 登入與註冊系統 | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="在製作登入與註冊系統前必須先理解Cookie與Session的概念簡單來說，Cookie是本地端紀錄你的登入狀況Session則是伺服器端紀錄你的登入狀況推薦一篇淺顯易懂的文章給大家：白話 Session 與 Cookie：從經營雜貨店開始 建立所需的頁面 其中包含了  config.php：連線資料庫的基本檔案 index.php：預設的首頁(登入頁面) login.php：處理登入 logou">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP-MySQL系列 登入與註冊系統">
 <meta property="og:url" content="https://jam68ty.github.io/BucketTalk/2020/11/06/php-mysql-login/index.html">
@@ -129,7 +129,7 @@
       win.activateLightMode = () => {
         document.documentElement.setAttribute('data-theme', 'light')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
         }
       }
       const t = saveToLocal.get('theme')

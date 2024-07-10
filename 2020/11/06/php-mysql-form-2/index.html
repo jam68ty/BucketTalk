@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>PHP-MySQL系列 Form表單(二) | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="這篇文章又針對表單進行了一些進階的寫法比如加入程式碼計算使用者年紀或是加入審核機制防呆等 算出使用者年紀用到date、strtotime   12$now&#x3D;date(&quot;Y&quot;);$birth_year&#x3D;date(&quot;Y&quot;,strtotime($birth)); 123456789$birth&#x3D;$_POST[&quot;birth&quot;];$now&#x3D;date">
+<!DOCTYPE html><html lang="en,zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>PHP-MySQL系列 Form表單(二) | BucketTalk</title><meta name="author" content="Chia Chen"><meta name="copyright" content="Chia Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="這篇文章又針對表單進行了一些進階的寫法比如加入程式碼計算使用者年紀或是加入審核機制防呆等 算出使用者年紀用到date、strtotime   12$now&#x3D;date(&quot;Y&quot;);$birth_year&#x3D;date(&quot;Y&quot;,strtotime($birth)); 123456789$birth&#x3D;$_POST[&quot;birth&quot;];$now&#x3D;date">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP-MySQL系列 Form表單(二)">
 <meta property="og:url" content="https://jam68ty.github.io/BucketTalk/2020/11/06/php-mysql-form-2/index.html">
@@ -129,7 +129,7 @@
       win.activateLightMode = () => {
         document.documentElement.setAttribute('data-theme', 'light')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
         }
       }
       const t = saveToLocal.get('theme')

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://jam68ty.github.io/BucketTalk/2024/07/31/hexo-enhancement/</loc>
+    <loc>https://jam68ty.github.io/BucketTalk/2024/07/31/hexo-theme-customization/</loc>
     
     <lastmod>2024-07-31</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://jam68ty.github.io/BucketTalk/2024/07/31/hexo-theme-customization/</loc>
+    <loc>https://jam68ty.github.io/BucketTalk/2024/07/31/hexo-enhancement/</loc>
     
     <lastmod>2024-07-31</lastmod>
     
@@ -402,6 +402,13 @@
   </url>
   
   <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Flex-Message/</loc>
+    <lastmod>2024-07-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://jam68ty.github.io/BucketTalk/tags/Richmenu/</loc>
     <lastmod>2024-07-31</lastmod>
     <changefreq>weekly</changefreq>
@@ -410,20 +417,6 @@
   
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/tags/%E8%B3%87%E8%A8%8A%E5%AE%89%E5%85%A8/</loc>
-    <lastmod>2024-07-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jam68ty.github.io/BucketTalk/tags/Flex-Message/</loc>
-    <lastmod>2024-07-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jam68ty.github.io/BucketTalk/tags/%E5%8A%A0%E5%AF%86/</loc>
     <lastmod>2024-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -445,6 +438,13 @@
   
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/tags/%E5%AF%86%E7%A2%BC%E5%AD%B8/</loc>
+    <lastmod>2024-07-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/%E5%8A%A0%E5%AF%86/</loc>
     <lastmod>2024-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -556,13 +556,6 @@
   </url>
   
   <url>
-    <loc>https://jam68ty.github.io/BucketTalk/tags/Clean-Code/</loc>
-    <lastmod>2024-07-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://jam68ty.github.io/BucketTalk/tags/Spring-Boot/</loc>
     <lastmod>2024-07-31</lastmod>
     <changefreq>weekly</changefreq>
@@ -578,6 +571,13 @@
   
   <url>
     <loc>https://jam68ty.github.io/BucketTalk/tags/AI/</loc>
+    <lastmod>2024-07-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jam68ty.github.io/BucketTalk/tags/Clean-Code/</loc>
     <lastmod>2024-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
